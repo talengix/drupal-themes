@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>3925B03F-897E-44CA-80B8-775F2BC89FCA</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <filter color-interpolation-filters="auto" id="filter-3">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 0.999619 0 0 0 0 0.999619 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="course-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course---Main" transform="translate(-1187.000000, -185.000000)">
+            <g id="course/menu/main" transform="translate(0.000000, 176.000000)">
+                <polygon id="bg" fill="none" points="0 40 1920 40 1920 0 0 0"></polygon>
+                <g id="Menu" transform="translate(323.000000, 8.000000)">
+                    <g id="Menu-6" transform="translate(864.000000, 0.000000)">
+                        <g id="icon/course/certificate_24px" transform="translate(-0.000000, 1.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Background/Mask"></g>
+                            <g filter="url(#filter-3)" id="award">
+                                <g mask="url(#mask-2)">
+                                    <g transform="translate(5.000000, 3.000000)" fill="#495057" fill-rule="nonzero">
+                                        <path d="M8.627625,0.972 L6.75,0 L4.872375,0.972 L2.782125,1.28925 L1.834875,3.17925 L0.33075,4.66425 L0.675,6.75 L0.33075,8.83575 L1.834875,10.32075 L2.782125,12.21075 L4.872375,12.528 L6.75,13.5 L8.627625,12.528 L10.717875,12.21075 L11.665125,10.32075 L13.16925,8.83575 L12.825,6.75 L13.16925,4.66425 L11.665125,3.17925 L10.717875,1.28925 L8.627625,0.972 Z M9.973125,2.314125 L10.742625,3.84975 L11.964375,5.05575 L11.685375,6.75 L11.964375,8.44425 L10.742625,9.65025 L9.973125,11.185875 L8.274375,11.4435 L6.75,12.23325 L5.225625,11.4435 L3.526875,11.185875 L2.757375,9.65025 L1.535625,8.44425 L1.81575,6.75 L1.5345,5.05575 L2.757375,3.84975 L3.526875,2.314125 L5.225625,2.0565 L6.75,1.26675 L8.2755,2.0565 L9.973125,2.314125 Z" id="Shape"></path>
+                                        <polygon id="Path" points="2.25 13.26825 2.25 18 6.75 16.875 11.25 18 11.25 13.26825 8.97975 13.6125 6.75 14.76675 4.52025 13.6125"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

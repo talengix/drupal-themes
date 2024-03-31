@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="25px" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C9320C9A-ED09-49B0-B970-0BF5A18097AA</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <polygon id="path-3" points="12 8 6 14 7.41 15.41 12 10.83 16.59 15.41 18 14"></polygon>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course-Information-Page" transform="translate(-304.000000, -3081.000000)">
+            <g id="Syllabus-Section" transform="translate(304.000000, 2777.000000)">
+                <g id="accordion/desktop/default" transform="translate(0.000000, 104.000000)">
+                    <g id="Group-4" transform="translate(0.000000, 200.000000)">
+                        <g id="icon/navigation/expand_more_24px" transform="translate(0.000000, 0.406270)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Background/Mask"></g>
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <use id="-↳Color" fill="#0096D7" xlink:href="#path-3"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

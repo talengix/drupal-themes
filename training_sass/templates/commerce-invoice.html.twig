@@ -1,0 +1,163 @@
+{#
+/**
+ * @file
+ * Template for the invoice.
+ *
+ * Available variables:
+ * - invoice_entity: The invoice entity.
+ * - billing_information: The billing information.
+ * - totals: An array of invoice totals values with the following keys:
+ *   - subtotal: The invoice subtotal price.
+ *   - adjustments: An array of adjustment totals:
+ *     - type: The adjustment type.
+ *     - label: The adjustment label.
+ *     - total: The adjustment total price.
+ *     - weight: The adjustment weight, taken from the adjustment type.
+ *   - total: The invoice total price.
+ *
+ * @ingroup themeable
+ */
+#}
+
+
+<div style="font-family: 'Open Sans', sans-serif !important; font-size: 13px;">
+  <table style="width: 100%; border-collapse: collapse;" cellspacing="0" cellpadding="0">
+    <tr>
+      <td style="padding-bottom: 64px;">
+        <div style="color: #0096d7; font-size: 52px; font-weight: bold;font-family: 'Open Sans', sans-serif !important;">{{ 'INVOICE'|t }} </div>
+        <div style="color: #050a30;">{{ 'INVOICE NO '|t }} {{ invoice_entity.getInvoiceNumber }}</div>
+      </td>
+      <td style="padding-bottom: 64px; float: right; padding-top: 16px; ext-align:right; float: right;">
+        {% if (logo_url) %}
+          <img src="{{ logo_url }}" style="width: 180px; height: 35px; text-align:right; float: right;"/>
+        {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-bottom: 64px;">
+        <div>
+          <div style="color: #050a30; font-weight: bold;">{{ "INVOICE TO"|t }}:</div>
+          <div class="user-name" style="color: #050a30; font-weight: bold;">{{ user_display_name }}</div>
+          {% if (organisation_name) %}
+            <div class="organisation-name" style="color: #050a30; font-weight: bold;">{{ organisation_name }}</div>
+          {% endif %}
+          {% if (billing_address_street) %}
+            <div class="billing-address-street" style="color: #050a30;">{{ billing_address_street }}</div>
+          {% endif %}
+          {% if (billing_address_city) %}
+            <div class="billing-address-city" style="color: #050a30;">{{ billing_address_city }}</div>
+          {% endif %}
+          {% if (billing_address_postal_code) %}
+            <div class="billing-address-postal_code" style="color: #050a30;">{{ billing_address_postal_code }}</div>
+          {% endif %}
+          {% if (billing_address_country) %}
+            <div class="billing-address-country" style="color: #050a30;">{{ billing_address_country }}</div>
+          {% endif %}
+          {% if (vat_number) %}
+            <div class="vat-number" style="color: #050a30;">{{ vat_number }}</div>
+          {% endif %}
+        </div>
+      </td>
+      <td style="color: #050a30; padding-bottom: 64px; vertical-align: bottom; text-align: right;">
+        <div>{{ 'Date'|t }} : {{ invoice_entity.getInvoiceDateTime|format_date('course_date_format_d_m_y_') }}</div>
+      </td>
+      </tr>
+  </table>
+</div>
+<div style="position: relative; font-family: 'Open Sans', sans-serif !important; font-size: 13px;">
+  <table style="border-collapse: collapse; width: 100%;" cellspacing="0" cellpadding="0">
+    <thead>
+    <tr style="background-color: #0096d7; color: #ffffff;">
+      <th style="text-align: left; padding: 12px 16px 12px 16px; width: 40%;">{{ 'Description'|t }}</th>
+      <th style="text-align: left; padding: 12px 16px 12px 16px; width: 15%;">{{ 'Course ID'|t }}</th>
+      <th style="padding: 12px 16px 12px 16px; width: 10%;">{{ 'Qty'|t }}</th>
+      <th style="padding: 12px 16px 12px 16px; width: 15%;">{{ 'Price'|t }}</th>
+      <th style="padding: 12px 16px 12px 16px; width: 20%;">{{ 'Total'|t }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% block invoice_items %}
+      {% for invoice_item in invoice_entity.getItems %}
+        <tr>
+          <td style="border-bottom: 1px solid #797E83; padding: 28px 12px 28px 12px;">{{ invoice_item.label }}</td>
+          <td style="border-bottom: 1px solid #797E83; padding: 28px 12px 28px 12px;">{{ skus[invoice_item.id] }}</td>
+          <td style="border-bottom: 1px solid #797E83; text-align: center; padding: 28px 12px 28px 12px;">
+            {{ invoice_item.getQuantity|number_format }}
+          </td>
+          <td style="border-bottom: 1px solid #797E83; text-align: center; padding: 28px 12px 28px 12px;">{{ invoice_item.getUnitPrice|commerce_price_format }}</td>
+          <td style="border-bottom: 1px solid #797E83; text-align: center; padding: 28px 12px 28px 12px;">
+            {{ invoice_item.getTotalPrice|commerce_price_format }}
+          </td>
+        </tr>
+      {% endfor %}
+    {% endblock %}
+
+    <tr>
+      <td style="padding-top: 40px; padding-bottom: 16px;">
+        {% if payment_method %}
+          <b>{{ 'Payment Method : '|t }}</b> {{ payment_method }}
+        {% else %}
+          {% if reverse_charge %}
+             <b>{{ 'Reverse-Charge : '|t }}</b> {{ "Recipient of service is liable for VAT"|t }}
+          {% endif %}
+        {% endif %}
+       </td>
+      <td style="text-align: right; padding-bottom: 16px; padding-top: 40px;" colspan="3">{{ 'Subtotal'|t }} : </td>
+      <td style="padding-bottom: 16px; padding-top: 40px; text-align: center;">{{ totals.subtotal|commerce_price_format }}</td>
+    </tr>
+          {% for adjustment in totals.adjustments %}
+            <tr>
+              <td style="padding-bottom: 16px; text-align: right;" colspan="4">
+                {{ adjustment.label }} :
+              </td>
+              <td style="padding-bottom: 16px; text-align: center;">
+                {{ adjustment.total|commerce_price_format }}
+              </td>
+            </tr>
+          {% endfor %}
+          <tr>
+          {% if reverse_charge %}
+            <td><b>{{ 'Reverse-Charge : '|t }}</b> {{ "Recipient of service is liable for VAT"|t }}</td>
+          {% else %}
+            <td></td>
+          {% endif %}
+            <td></td>
+            <td></td>
+            <td style="padding-top: 32px; font-weight: bold; text-align: right;">
+              <div style="background-color: #0096d7; color: #ffffff; padding-top: 12px; padding-left: 40px; padding-bottom: 12px;">{{ 'Total'|t }} :</div>
+            </td>
+            <td style="padding-top: 32px; font-weight: bold; text-align: center;">
+              <div style="background-color: #0096d7; color: #ffffff; padding-top: 12px; padding-bottom: 12px;">{{ invoice_entity.getTotalPrice|commerce_price_format }}</div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+</div>
+{% if (footer_text) %}
+  <div style="font-size: 13px; padding-top: 32px; font-family: 'Open Sans', sans-serif !important;">
+    {{ footer_text }}
+  </div>
+{% endif %}
+<footer style="position: absolute; bottom: 0; font-size: 11px; padding-top: 16px; padding-bottom: 64px;">
+<div style="border-top: 1px solid #797E83; padding-bottom: 64px; padding-top: 16px; font-family: 'Open Sans', sans-serif !important;">
+  <div style="display: inline-block; padding-right: 24px;">
+    <div>TrainingAid GbR</div>
+    <div>Hofmannstr. 15</div>
+    <div>91052 Erlangen</div>
+    <div>Germany</div>
+  </div>
+  <div style="display: inline-block; padding-right: 24px;">
+    <div>Email: support@trainingaid.org</div>
+    <div>Web: www.trainingaid.org</div>
+  </div>
+  <div style="display: inline-block; padding-right: 24px;">
+    <div>Erlangen</div>
+    <div>Steuernummer: 216/158/54007</div>
+    <div>VAT: DE286585478</div>
+  </div>
+  <div style="display: inline-block;">
+    <div>Managing Directors: Ferdinand</div>
+    <div>Weps, Ayako Ezaki</div>
+  </div>
+  </div>
+</footer>

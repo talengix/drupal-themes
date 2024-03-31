@@ -1,0 +1,137 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    'course_schedule_wrapper'
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% set break = false %}
+{% set course_type = 'Online' %}
+
+{% for item in items if not break %}
+  {% set course_type_id = item.content['#commerce_product'].field_course_type[0].target_id %}
+  {% if course_types[course_type_id] == 'In-Person' %}
+    {% set course_type = 'In-Person' %}
+    {% set break = true %}
+  {% endif %}
+{% endfor %}
+
+{% set course_schedule_header %}
+<div class="course_schedule_header row no-gutters">
+  <div class="course-columns-header">
+    <div class="row no-gutters schedule-header-row">
+      {# <div class="collapse-icon col-1"></div> #}
+      <div class="schedule-course-dates">{{ 'Dates'|t }}</div>
+      <div class="schedule-course-length">{{ 'Length'|t }}</div>
+      <div class="schedule-course-type">{{ 'Type'|t }}</div>
+      {#{% if course_type == 'In-Person' %}
+        <div class="schedule-course-location">{{ 'Location'|t }}</div>
+      {% else %}#}
+        <div class="schedule-course-style">{{ 'Format'|t }}</div>
+      {#{% endif %}#}
+      <div class="schedule-course-language">{{ 'Language'|t }}</div>
+      <div class="schedule-course-price">{{ 'Price'|t }}</div>
+    </div>
+  </div>
+  <div class="schedule-course-register">{{ 'Register'|t }}</div>
+</div>
+{% endset %}
+
+{% set course_availability_indicators %}
+<div class="course-course_availability_indicators">
+  <div>
+    <span class="green-dot dot"></span>
+    {{ 'Enough spaces available'|t }}</div>
+  <div>
+    <span class="orange-dot dot"></span>
+    {{ "Don't wait too long"|t }}</div>
+  <div>
+    <span class="red-dot dot"></span>
+    {{ 'Fully booked'|t }}</div>
+  <div>
+    <i class="far fa-check-circle"></i>
+    {{ 'Training already confirmed'|t }}</div>
+</div>
+{% endset %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{attributes.addClass(classes,'field__items')}} id={{field_name}}>
+      {% if items|length > 0 %}
+        {{ course_schedule_header }}
+        <div id="course-schedule-data">
+          {{ table_header }}
+          {% for item in items %}
+            <div class="product-row card">{{ item.content }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {{ course_availability_indicators }}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{attributes.addClass(classes,'field__item')}} id={{field_name}}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{attributes.addClass(classes)}} id={{field_name}}>
+    <div{{title_attributes.addClass(title_classes)}}>{{ label }}</div>
+    {% if multiple %}
+      <div class='field__items'>
+      {% endif %}
+      {% for item in items %}
+        <div{{item.attributes.addClass('field__item')}}>{{ item.content }}</div>
+      {% endfor %}
+      {% if multiple %}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

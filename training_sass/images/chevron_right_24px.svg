@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="81px" viewBox="0 0 80 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>3C1B37B4-D698-42CC-B7CF-39106CF0B3F4</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="80" height="80"></rect>
+        <polygon id="path-3" points="33.3333333 20 28.6333333 24.7 43.9 40 28.6333333 55.3 33.3333333 60 53.3333333 40"></polygon>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course-Information-Page" transform="translate(-1280.000000, -5107.000000)">
+            <g id="Testimonials" transform="translate(224.000000, 4952.000000)">
+                <g id="icon/navigation/chevron_right_24px" transform="translate(1056.000000, 155.500000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Background/Mask"></g>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="-↳Color" fill="#0096D7" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

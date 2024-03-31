@@ -1,0 +1,94 @@
+<div id="page-wrapper">
+  <div id="page">
+    <div class="search-block">
+<div class="search-box collapse" id="collapseSearch">
+        {{ page.search_block }}
+        <a class="search-close collapsed" data-bs-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" tabindex="-1"><i class="fa-regular fa-x"></i></a>
+      </div>
+    <header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
+      <div class="search-box collapse" id="collapseSearch">
+        <form role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn" type="submit">Search</button>
+        </form>
+        <a class="search-close collapsed" data-bs-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" tabindex="-1"><i class="fa-regular fa-x"></i></a>
+      </div>
+      {% block head %}
+        {{ page.primary_menu }}
+      {% endblock %}
+    </header>
+    <a id="button"></a>
+    <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title" id="myModalLabel">Confirm Remove</div>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <a class="btn btn-danger btn-ok remove-button">Remove</a>
+            <button type="button" class="cancel-button btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="courseExpired" tabindex="-1" aria-labelledby="courseExpired" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Course Expired</h5>
+            <a href="#" class="btn-search hide" data-bs-dismiss="modal" aria-label="Close"></a>
+          </div>
+          <div class="modal-body">
+            <p>Your access to this course is no longer active. If you need support, please contact us at support@trainingaid.org.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="courseNotStarted" tabindex="-1" aria-labelledby="courseNotStarted" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Course Information</h5>
+            <a href="#" class="btn-search hide" data-bs-dismiss="modal" aria-label="Close"></a>
+          </div>
+          <div class="modal-body">
+            <p>This course has not started yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="main-wrapper" class="layout-main-wrapper bg-grey clearfix">
+      {% block content %}
+        <div id="main" class="{{ container }}">
+          {{ drupal_block('local_tasks_block', wrapper=false) }}
+          <div class="row row-offcanvas row-offcanvas-left clearfix">
+            <main{{ content_attributes }}>
+              <a id="main-content" tabindex="-1"></a>
+              {{ page.content }}
+            </main>
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+    <footer class="site-footer simple-footer">
+      <img src="/themes/custom/training_aid/images/simple-footer-logo-small.png" class="d-block m-auto" alt="">
+      {{ page.footer_simple }}
+      <ul class="legal">
+        <li class="copy">
+          Copyright © 2023   All rights reserved
+        </li>
+        <li>
+          <a href="/terms" class="nav-link nav-link--terms" data-drupal-link-system-path="node/91">Terms of Use</a>
+        </li>
+        <li>
+          <a href="/privacy" class="nav-link nav-link--privacy" data-drupal-link-system-path="node/92">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="/imprint" class="nav-link nav-link--imprint" data-drupal-link-system-path="node/333">Imprint</a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</div>

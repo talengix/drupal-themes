@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>73CED86B-063D-4C26-860B-3CF9396347BF</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32"></rect>
+        <path d="M4,24 L28,24 L28,21.3333333 L4,21.3333333 L4,24 Z M4,17.3333333 L28,17.3333333 L28,14.6666667 L4,14.6666667 L4,17.3333333 Z M4,8 L4,10.6666667 L28,10.6666667 L28,8 L4,8 Z" id="path-3"></path>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu/mobile/navbar/default" transform="translate(-400.000000, -12.000000)">
+            <polygon id="bg" fill="none" points="0 56 448 56 448 0 0 0"></polygon>
+            <g id="icon/navigation/menu_24px" transform="translate(400.000000, 12.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Background/Mask"></g>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="-↳Color" fill="#FFFFFF" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>

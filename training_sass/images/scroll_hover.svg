@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>button/special/Round/Hover</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <polygon id="path-3" points="16.59 8.59 12 13.17 7.41 8.59 6 10 12 16 18 10"></polygon>
+        <rect id="path-5" x="0" y="0" width="24" height="24"></rect>
+        <polygon id="path-7" points="16.59 8.59 12 13.17 7.41 8.59 6 10 12 16 18 10"></polygon>
+    </defs>
+    <g id="button/special/Round/Hover" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="bg" fill="#037DB3" cx="24" cy="24" r="20"></circle>
+        <g id="icon/navigation/expand_more_24px" transform="translate(12.000000, 17.500000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Background/Mask"></g>
+            <mask id="mask-4" fill="white">
+                <use xlink:href="#path-3"></use>
+            </mask>
+            <use id="-↳Color" fill="#FFFFFF" xlink:href="#path-3"></use>
+        </g>
+        <g id="icon/navigation/expand_more_24px" transform="translate(12.000000, 7.500000)">
+            <mask id="mask-6" fill="white">
+                <use xlink:href="#path-5"></use>
+            </mask>
+            <g id="Background/Mask"></g>
+            <mask id="mask-8" fill="white">
+                <use xlink:href="#path-7"></use>
+            </mask>
+            <use id="-↳Color" fill="#FFFFFF" xlink:href="#path-7"></use>
+        </g>
+    </g>
+</svg>

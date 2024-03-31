@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>53D98F84-6FC6-4594-932A-06349607B8B5</title>
+    <defs>
+        <path d="M4,224 L860,224 C862.209139,224 864,222.209139 864,220 L864,4 C864,1.790861 862.209139,-4.05812251e-16 860,0 L4,0 C1.790861,4.05812251e-16 -2.705415e-16,1.790861 0,4 L0,220 C2.705415e-16,222.209139 1.790861,224 4,224 Z" id="path-1"></path>
+        <filter x="-2.3%" y="-7.1%" width="104.6%" height="117.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="24" height="24"></rect>
+        <filter color-interpolation-filters="auto" id="filter-5">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.600000 0 0 0 0 0.600000 0 0 0 0 0.600000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="course-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="course-tab/quiz/results" transform="translate(-864.000000, -2200.000000)">
+            <polygon id="bg" fill="none" points="0 2984 1920 2984 1920 216 0 216"></polygon>
+            <g id="Area---Discussions" transform="translate(752.000000, 1953.000000)">
+                <g id="course/discussion/post/default" transform="translate(0.000000, 55.000000)">
+                    <g id="bg">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <path stroke="#EBEBEB" stroke-width="0.5" d="M4,0.25 L860,0.25 C861.035534,0.25 861.973034,0.669733047 862.65165,1.34834957 C863.330267,2.02696609 863.75,2.96446609 863.75,4 L863.75,4 L863.75,220 C863.75,221.035534 863.330267,221.973034 862.65165,222.65165 C861.973034,223.330267 861.035534,223.75 860,223.75 L860,223.75 L4,223.75 C2.96446609,223.75 2.02696609,223.330267 1.34834957,222.65165 C0.669733047,221.973034 0.25,221.035534 0.25,220 L0.25,220 L0.25,4 C0.25,2.96446609 0.669733047,2.02696609 1.34834957,1.34834957 C2.02696609,0.669733047 2.96446609,0.25 4,0.25 L4,0.25 L4,0.25 Z" stroke-linejoin="square" fill="none" fill-rule="evenodd"></path>
+                    </g>
+                    <g id="icon/course/forum/chat_24px" transform="translate(112.000000, 192.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Background/Mask"></g>
+                        <g filter="url(#filter-5)" id="chat">
+                            <g mask="url(#mask-4)">
+                                <g transform="translate(3.000000, 4.000000)" fill="#495057" fill-rule="nonzero" id="Shape">
+                                    <path d="M3.01275,12.25575 C3.24916985,12.4930733 3.36753025,12.8234102 3.335625,13.156875 C3.2565588,13.9191503 3.10666133,14.672404 2.887875,15.406875 C4.45725,15.0435 5.41575,14.62275 5.851125,14.40225 C6.09806605,14.277178 6.38245013,14.247538 6.649875,14.319 C7.41648921,14.5233766 8.20661135,14.6262551 9,14.625 C13.4955,14.625 16.875,11.467125 16.875,7.875 C16.875,4.284 13.4955,1.125 9,1.125 C4.5045,1.125 1.125,4.284 1.125,7.875 C1.125,9.5265 1.819125,11.05875 3.01275,12.25575 Z M2.458125,16.648875 C2.19157703,16.7017145 1.9241647,16.7500963 1.656,16.794 C1.431,16.83 1.26,16.596 1.348875,16.38675 C1.44876575,16.1511741 1.54032258,15.9121507 1.623375,15.670125 L1.62675,15.658875 C1.90575,14.848875 2.133,13.917375 2.21625,13.05 C0.835875,11.66625 0,9.855 0,7.875 C0,3.52575 4.02975,0 9,0 C13.97025,0 18,3.52575 18,7.875 C18,12.22425 13.97025,15.75 9,15.75 C8.10860823,15.7512017 7.22091013,15.6354643 6.359625,15.40575 C5.774625,15.701625 4.51575,16.2405 2.458125,16.648875 L2.458125,16.648875 Z"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

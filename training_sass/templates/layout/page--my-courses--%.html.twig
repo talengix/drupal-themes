@@ -1,0 +1,174 @@
+<div id="page-wrapper">
+  <div id="page">
+    <div class="search-block">
+      <a class="btn-search-close hide" href="#"></a>
+      {{ page.search_block }}
+    </div>
+    <header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
+      <div class="search-box collapse" id="collapseSearch">
+        <form role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn" type="submit">Search</button>
+        </form>
+        <a class="search-close collapsed" data-bs-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" tabindex="-1"><i class="fa-regular fa-x"></i></a>
+      </div>
+      {% block head %}
+        {{ page.primary_menu }}
+      {% endblock %}
+    </header>
+    <a id="button"></a>
+    <div class="modal fade" id="confirm-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title" id="myModalLabel">Confirm Remove</div>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <a class="btn btn-danger btn-ok remove-button">Remove</a>
+            <button type="button" class="cancel-button btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if page.highlighted %}
+      <div class="highlighted">
+        <aside class="{{ container }} section clearfix" role="complementary">
+          {{ page.highlighted }}
+        </aside>
+      </div>
+    {% endif %}
+    {% if page.featured_top %}
+      {% block featured %}
+        <div class="featured-top">
+          <aside class="featured-top__inner section {{ container }} clearfix" role="complementary">
+            {{ page.featured_top }}
+          </aside>
+        </div>
+      {% endblock %}
+    {% endif %}
+    {% if is_course_content_page or is_course_related_page %}
+      <input type="hidden" name="course_id" value="{{ course_id }}" />
+      <div id="main-wrapper" class="layout-main-wrapper full-width bg-grey course-content-page clearfix">
+      {% else %}
+      {% endif %}
+      {% block content %}
+        {% if is_course_content_page or is_course_related_page %}
+          <div class="commerce-course-data-wrapper">
+            {% if course_partner_details %}
+              <div class="title-wrapper d-flex justify-content-between align-items-center">
+                <div class="course-title"><h2>{{ course_partner_details.course_name }}</h2></div>
+                <div class="course-partner-image d-none d-lg-block"><img src='{{ course_partner_details.partner_image }}' /></div>
+              </div>
+            {% endif %}
+            {% if course_menu_tabs %}
+              <div class="course-menu-tabs-wrapper row no-gutters col-12">
+                <div class="course-specific-tabs col-12">
+                  {% set tab_options = [] %}
+                  {% for course_tab in course_menu_tabs %}
+                    {% set tab_classes = course_tab.classes %}
+                    <div class="{{ tab_classes|join(" ") }} col"><a href="{{ course_tab.url }}">{{ course_tab.title }}</a></div>
+                    {% set tab_options = tab_options|merge({(course_tab.tab_id): {'title': course_tab.title, 'selected': course_tab.selected}}) %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="course-tabs-select col-12">
+                <select>
+                  {% for tab_key, course_tab in tab_options %}
+                    {% if course_tab.selected == true %}
+                      <option value="{{ tab_key }}" selected>{{ course_tab.title }}</option>
+                    {% else %}
+                      <option value="{{ tab_key }}" {{course_tab.selected}}>{{ course_tab.title }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            {% endif %}
+            {% if is_course_content_page %}
+              <div class="progress-bar-wrapper">
+                <div class="progress-bar-with-text">
+                  <div class="course-completion-perc-text">2% Complete</div>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+            {% if is_course_content_page and course_notification_messages %}
+              <div class="course_notif_msgs_wrapper col-12 justify-content-center" id="course_notif_msgs">
+                {% for notif_msg in course_notification_messages %}
+                  <div class="course-notif-msg-item card">
+                    <div class="card-header title" id="notif-msg-{{ loop.index }}">
+                      <div class="collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{loop.index}}">{{ notif_msg.title }}</div>
+                      <span class="notif-msg-close"></span>
+                    </div>
+                    <div id="collapse-{{loop.index}}" class="message collapse" aria-labelledby="notif-msg-{{ loop.index }}" data-parent="#course_notif_msgs">
+                      <div class="card-body">{{ notif_msg.message|render }}</div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+        {% if is_course_content_page or is_course_related_page %}
+          <div id="main" class="{{ container }}">
+            <div class="row row-offcanvas row-offcanvas-left clearfix course-content-wrapper {{ course_related_page }}">
+            {% else %}
+              <div class="row row-offcanvas row-offcanvas-left clearfix">
+              {% endif %}
+              <main{{ content_attributes }}>
+                <section class="section">
+                  <a id="main-content" tabindex="-1"></a>
+                  {{ page.content }}
+                </section>
+              </main>
+              {% if page.sidebar_first %}
+                <div{{ sidebar_first_attributes }}>
+                  <aside class="section" role="complementary">
+                    {{ page.sidebar_first }}
+                  </aside>
+                </div>
+              {% endif %}
+              {% if page.sidebar_second %}
+                <div class="sidebar_second sidebar col-md-3 order-last d-none d-lg-block">
+                  <aside class="section" role="complementary">
+                    {{ page.sidebar_second }}
+                  </aside>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+    {% if page.featured_bottom_first or page.featured_bottom_second or page.featured_bottom_third %}
+      <div class="featured-bottom">
+        <aside class="{{ container }} clearfix" role="complementary">
+          {{ page.featured_bottom_first }}
+          {{ page.featured_bottom_second }}
+          {{ page.featured_bottom_third }}
+        </aside>
+      </div>
+    {% endif %}
+    <footer class="site-footer simple-footer">
+      <img src="/themes/custom/training_aid/images/simple-footer-logo-small.png" class="d-block m-auto" alt="">
+      {{ page.footer_simple }}
+      <ul class="legal">
+        <li class="copy">
+          Copyright © 2023   All rights reserved
+        </li>
+        <li>
+          <a href="/terms" class="nav-link nav-link--terms" data-drupal-link-system-path="node/91">Terms of Use</a>
+        </li>
+        <li>
+          <a href="/privacy" class="nav-link nav-link--privacy" data-drupal-link-system-path="node/92">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="/imprint" class="nav-link nav-link--imprint" data-drupal-link-system-path="node/333">Imprint</a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+</div>

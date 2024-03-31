@@ -1,0 +1,165 @@
+<div id="page-wrapper">
+  <div id="page">
+    <header id="header" class="header" role="banner" aria-label="{{ 'Site header'|t}}">
+      <div class="top-alert">alert</div>
+      <div class="top"><a class="" data-bs-toggle="modal" data-bs-target="#myModal">newsletter</a></div>
+      <div class="search-box collapse" id="collapseSearch">
+        {{ page.search_block }}
+        <a class="search-close collapsed" data-bs-toggle="collapse" href="#collapseSearch" role="button" aria-expanded="false" aria-controls="collapseSearch" tabindex="-1"><i class="fa-regular fa-x"></i></a>
+      </div>
+      {% block head %}
+        {{ page.primary_menu }}
+      {% endblock %}
+    </header>
+    <a id="button"></a>
+    {% if page.highlighted %}
+      <div class="highlighted">
+        <aside class="{{ container }} section clearfix" role="complementary">
+          {{ page.highlighted }}
+        </aside>
+      </div>
+    {% endif %}
+    {% if page.featured_top %}
+      {% block featured %}
+        <div class="featured-top">
+          <aside class="featured-top__inner section {{ container }} clearfix" role="complementary">
+            {{ page.featured_top }}
+          </aside>
+        </div>
+      {% endblock %}
+    {% endif %}
+    <div id="main-wrapper" class="layout-main-wrapper clearfix">
+      {% block content %}
+        <div id="main" class="container">
+          <div class="row row-offcanvas row-offcanvas-left clearfix">
+            <main{{ content_attributes }}>
+              <a id="main-content" tabindex="-1"></a>
+              <section class="hero">
+                {{ drupal_block('block_content:5ec71c7b-2678-40a7-ba28-0d0174f39f38') }}
+              </section>
+              <section class="upcoming-courses">
+                {{ drupal_view('upcoming_courses', 'upcoming_courses') }}
+              </section>
+              <section class="custom-training">
+                {{ drupal_block('block_content:6f08f9ba-4094-495a-96ca-5239977b939d') }}
+              </section>
+              <section class="know-why">
+                {{ drupal_block('block_content:47dafb7c-e11a-4b81-a537-ea2e215ffa03') }}
+              </section>
+              <section class="resources-tools">
+                {{ drupal_block('block_content:bde3cc8c-633e-4280-b33c-c9ff1f9a9f49') }}
+              </section>
+              <section class="our-expertise">
+                {{ drupal_block('block_content:9a7e075f-2ac5-4fe0-939f-1ce0b199254f') }}
+              </section>
+              <section class="call-action">
+                {{ drupal_block('block_content:50964356-dbe1-459e-88de-afe6adac67a1') }}
+              </section>
+              <section class="section">
+                {{ drupal_view('articles', 'front_article_cards') }}
+              </section>
+            </main>
+          </div>
+        </div>
+      {% endblock %}
+    </div>
+    <div class="back-top back-to-top d-lg-none">
+      <a id="back-to-top" href="#" class="btn btn-primary" role="button">Back to Top</a>
+    </div>
+    {% if page.featured_bottom_first or page.featured_bottom_second or page.featured_bottom_third %}
+      <div class="featured-bottom">
+        <aside class="{{ container }} clearfix" role="complementary">
+          {{ page.featured_bottom_first }}
+          {{ page.featured_bottom_second }}
+        </aside>
+        {{ page.featured_bottom_third }}
+      </div>
+    {% endif %}
+    <footer class="site-footer">
+      {% block footer %}
+        <div class="{{ container }}">
+          <div class="site-footer__lg d-none d-lg-block">
+            <div class="row">
+              <div class="col-lg-4">
+                {{ page.footer_first }}
+              </div>
+              <div class="col-lg-8">
+                <div class="row">
+                  <div class="col-md-3">
+                    {{ page.footer_second }}
+                  </div>
+                  <div class="col-md-3">
+                    {{ page.footer_third }}
+                  </div>
+                  <div class="col-md-3">
+                    {{ page.footer_fourth }}
+                  </div>
+                  <div class="col-md-3">
+                    {{ page.footer_fifth }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="site-footer__sm d-block d-lg-none">
+            <div class="row">
+              <div class="col-md-12">
+                {{ page.footer_menu_sm }}
+              </div>
+              <div class="menu-social d-block d-lg-none">
+                <ul>
+                  <li><a class="fa facebook" href="#">Facebook</a></li>
+                  <li><a class="fa linkedin" href="#">Linkedin</a></li>
+                  <li><a class="fa twitter" href="#">Twitter</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="site-footer__bottom">
+            {{ page.footer_bottom }}
+          </div>
+          <div class="site-footer__legal">
+            <div class="legal-menu-sm">
+              {{ page.footer_legal }}
+            </div>
+            <img class="d-block d-lg-none mx-auto mt-5" src="https://www.trainingaid.org/themes/custom/training_aid/images/trainingaid-footer-logo.png">
+            <div class="copyright">
+              <span>Copyright © 2022 TrainingAid. All rights reserved</span>
+              {{ page.footer_legal }}
+            </div>
+          </div>
+        </div>
+        {# {% if page.footer_simple %}
+          <div class="site-footer__simple">
+            {{ page.footer_simple }}
+          {% endif %} #}
+        </div>
+      {% endblock %}
+    </footer>
+    <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+ {{ page. newsletter_modal }}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+  </div>
+</div>

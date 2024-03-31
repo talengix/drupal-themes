@@ -1,0 +1,366 @@
+/* 
+Theme Name: Bootstrap 4 Sass
+Description: Bootstrap 4 with Sass
+*/
+
+// import files
+@import "import";
+
+/* GENERAL STYLES
+-------------------------------------------------*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: $white;
+  color: $ta-text;
+  overflow-x: hidden;
+
+  &:not(.user-logged-in) {
+
+    #navbar-main {
+
+      .nav-item {
+
+        @include media-breakpoint-up(lg) {
+          
+          &:last-child {
+            display: flex;
+            align-items: center;
+
+            .nav-link {
+              border: 1px solid #fff;
+              border-radius: 3px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* TYPOGRAPHY
+--------------------------------------------------*/
+a {
+    color: $ta-link;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: $ta-text;
+}
+
+h1.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+ }
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 32px;
+
+  @include media-breakpoint-up(lg) {
+    font-size: 36px;
+    line-height: 48px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 32px;
+ }
+
+h4 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+a {
+  color: $ta-blue;
+}
+
+a:hover {
+  color: $ta-blue-hover;
+}
+.search-block form .form-control::-moz-placeholder {
+  color: #fff;
+  opacity: 1
+}
+
+.search-block form .form-control:-ms-input-placeholder {
+  color: #fff;
+}
+
+.search-block form .form-control::-webkit-input-placeholder {
+  color: #fff;
+}
+
+em {
+  color: $ta-text;
+
+  &.placeholder {
+    background-color: transparent;
+  }
+}
+.path-frontpage {
+
+  section {
+    margin-top: 80px;
+
+    h2 {
+      font-size: 36px;
+      line-height: 48px;
+      color: $ta-text;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 48px;
+      font-weight: 600;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 24px;
+        margin-top: 20px;
+        line-height: 48px;
+      }
+
+      &.blue {
+        color: $ta-blue;
+      }
+    }
+
+    a {
+      font-weight: 600;
+    }
+
+    &.hero {
+      margin-top: 80px;
+      margin-bottom: 180px;
+      text-align: center;
+      background-image: url(/themes/custom/training_aid/images/bg_hero.png);
+      background-position: center bottom;
+      background-size: auto;
+      background-repeat: no-repeat;
+      padding-bottom: 30px;
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 3.6rem;
+        margin-right: auto;
+        margin-left: auto;
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      h2 {
+        font-size: 22px;
+        line-height: 30px;
+        max-width: 500px;
+        font-weight: 400;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 30px;
+      }
+
+      a {
+        font-size: 1.25rem;
+        display: inline-block;
+        width: 272px;
+        margin-top: 25px;
+        padding: 12px 20px;
+        text-align: center;
+        border-radius: 52px;
+
+        &::after {
+          position: relative;
+          left: 1rem;
+          content: '>>';
+        }
+      }
+    }
+
+    &.resources-tools {
+
+      h2 {
+        margin-bottom: 8px;
+        text-align: center;
+
+        &.sub {
+          font-size: 1.6rem;
+        }
+      }
+
+      h3 {
+        color: $ta-text;
+        margin-top: 0;
+      }
+
+      .owl-item {
+
+        > div {
+          position: relative;
+          height: 100%;
+          margin-bottom: 15px;
+          padding: 15px;
+          border-radius: 4px;
+          background: #fef0c8;
+          font-weight: 600;
+
+          h3 {
+
+          }
+
+          img {
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+            width: 52px;
+            display: block;
+          }
+        }
+      }
+    }
+
+    &.our-expertise {
+
+      .owl-item {
+
+        p {
+          padding-right: 40px;
+        }
+      }
+
+    }
+
+    &.custom-training {
+
+      p.bigger {
+        font-size: 18px;
+        line-height: 26px;
+        margin: 15px 0 50px 0;
+      }
+
+      .col-lg-4 {
+        margin-bottom: 30px;
+
+        > div {
+          position: relative; 
+          height: 100%;
+          padding-bottom: 20px;
+
+          a {
+            display: block;
+            position: absolute;
+            bottom: 0;
+          }
+        }
+      }
+    }
+
+    &.know-why {
+
+      img {
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 26px;
+
+        @include media-breakpoint-up(lg) {
+          padding-right: 50px;
+        }
+      }
+    }
+
+    &.call-action {
+
+      .banner {
+        padding: 5px 0 30px 0;
+        text-align: center;
+        color: #495057;
+        border-radius: 6px;
+        background: #f9c83f;
+
+        h3 {
+          color: $ta-text;
+          font-size: 1.75rem;
+        }
+
+        a {
+          font-weight: 600;
+          padding: 10px 30px;
+          color: #000;
+          border-radius: 5px;
+          background: #fff;
+
+          &::hover {
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.node__content {
+  
+  ul {
+    font-size: 1rem;
+    line-height: 1.7rem;
+    margin: 1.875rem 0;
+    
+    li {
+      line-height: 1.5rem;
+      padding-bottom: 0;
+      margin-bottom: 0.625rem;
+    }
+  }
+
+  h1 {
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+  }
+
+  h2 {
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+  }
+
+  h3 {
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+  }
+
+  h4 {
+    padding-top: 1rem;
+    padding-bottom: 0.4rem;
+  }
+
+}
+

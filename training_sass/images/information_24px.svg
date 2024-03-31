@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>D0953094-EBB1-4216-AA6B-D5E51E76E6EE</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="32" height="32"></rect>
+        <filter color-interpolation-filters="auto" id="filter-3">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 0.999619 0 0 0 0 0.999619 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="course-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course---Main" transform="translate(-316.000000, -492.000000)">
+            <polygon id="bg" fill="none" points="0 6872 1920 6872 1920 216 0 216"></polygon>
+            <g id="course/navi/sidebar" transform="translate(304.000000, 360.000000)">
+                <g id="Menu-0.2" transform="translate(0.000000, 120.000000)">
+                    <polygon id="bg_unit" fill="none" points="0 56 416 56 416 0 0 0"></polygon>
+                    <polygon id="bg_icon" fill="none" points="0 56 56 56 56 0 0 0"></polygon>
+                    <g id="icon/course/paperclip_24px" transform="translate(12.000000, 12.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Background/Mask"></g>
+                        <g filter="url(#filter-3)" id="color">
+                            <g mask="url(#mask-2)">
+                                <g transform="translate(9.333333, 4.000000)" fill="#495057" fill-rule="nonzero" id="Path">
+                                    <path d="M0.75,4.5 C0.75,2.42893219 2.42893219,0.75 4.5,0.75 C6.57106781,0.75 8.25,2.42893219 8.25,4.5 L8.25,18 C8.25,19.2426407 7.24264069,20.25 6,20.25 C4.75735931,20.25 3.75,19.2426407 3.75,18 L3.75,7.5 C3.75,7.08578644 4.08578644,6.75 4.5,6.75 C4.91421356,6.75 5.25,7.08578644 5.25,7.5 L5.25,18 C5.25,18.4142136 5.58578644,18.75 6,18.75 C6.41421356,18.75 6.75,18.4142136 6.75,18 L6.75,4.5 C6.75,3.69615241 6.32115244,2.9533666 5.62500001,2.5514428 C4.92884758,2.149519 4.07115242,2.149519 3.37499999,2.5514428 C2.67884756,2.9533666 2.25,3.69615241 2.25,4.5 L2.25,18 C2.25,20.0710678 3.92893219,21.75 6,21.75 C8.07106781,21.75 9.75,20.0710678 9.75,18 L9.75,7.5 C9.75,7.08578644 10.0857864,6.75 10.5,6.75 C10.9142136,6.75 11.25,7.08578644 11.25,7.5 L11.25,18 C11.25,20.8994949 8.89949494,23.25 6,23.25 C3.10050506,23.25 0.75,20.8994949 0.75,18 L0.75,4.5 Z"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

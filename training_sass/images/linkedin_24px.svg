@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>A1DB8C10-85E4-4646-8EAA-69B0B932C29D</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+    </defs>
+    <g id="symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu/desktop/footer/default" transform="translate(-350.000000, -401.000000)">
+            <rect id="bg" fill="none" x="0.035" y="184" width="1920" height="456"></rect>
+            <g id="Block---Links" transform="translate(311.000000, 225.000000)">
+                <g id="brand-/-LinkedIn" transform="translate(39.000000, 176.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Background/Mask"></g>
+                    <path d="M17,21 L17,14.25 C17,13.1914001 15.8121095,12.3058004 14.7535095,12.3058004 C13.6949096,12.3058004 13,13.1914001 13,14.25 L13,21 L9.00001001,21 L9.00001001,9 L13,9 L13,11 C13.6623095,9.92857003 15.3564092,9.23727036 16.5250092,9.23727036 C18.9965091,9.23727036 21,11.2786 21,13.75 L21,21 L17,21 Z M3,21 L3,9 L7,9 L7,21 L3,21 Z M7.00001001,5 C7.00001001,6.10457003 6.10458004,7 5.00001001,7 C3.89543998,7 3,6.10457003 3,5 C3,3.89542997 3.89543998,3 5.00001001,3 C6.10458004,3 7.00001001,3.89542997 7.00001001,5 Z" fill="#495057" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

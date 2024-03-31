@@ -1,0 +1,41 @@
+
+{{ attach_library('bootstrap_barrio/node') }}
+
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'row') }}>
+    <div class="row">
+      <div class="col-3 testimonial-profile-pic">
+        {{ content.field_testmonial_image }}
+      </div>
+      <div class="col-9 testimonial-info d-flex">
+        <div class="align-self-center">
+        <div class="testimonial-name">{{ label }}</div>
+        <div class="testimonial-desig-org">
+          {% if content.field_organization|render %}
+            {{ content.field_designation }}<span class="comma">,</span>{{ content.field_organization }}
+          {% else %}
+            {{ content.field_designation }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="testimonial-row-desc">
+         {{ content.body }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

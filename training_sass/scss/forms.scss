@@ -1,0 +1,502 @@
+form {
+	.form-group {
+
+	}
+	.form-control {
+		border: 1px solid #D3D5D8;
+		border-radius: 3px;
+		background-color: #FFFFFF;
+		height: 48px;
+		margin-bottom: 10px;
+	}
+
+	&.user-login {
+
+	}
+
+	&.user-password {
+		
+	}
+
+	&#mailchimp-signup-subscribe-block-subscribe-to-newsletter-form {
+		margin-bottom: 50px;
+
+		input#edit-mergevars-email {
+			margin-top: 30px;
+		}
+
+		label {
+			display: none;
+		}
+
+		.form-control {
+			margin-bottom: 15px;
+		}
+	}
+
+	.custom-checkbox {
+
+		.checkmark {
+			border: 2px solid green;
+		  position: absolute;
+		  top: 3px;
+		  left: 0;
+		  height: 20px;
+		  width: 20px;
+		  background-color: transparent;
+		  border: 2px solid #999;
+		  border-radius: 3px;
+
+		  &:after {
+		  	content: "";
+				position: absolute;
+				display: none;
+				left: 4px;
+				width: 8px;
+				height: 12px;
+				border: solid white;
+				border-width: 0 2px 2px 0;
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
+				transform: rotate(45deg);
+		  }
+		}
+	}
+
+	.invalid-feedback {
+		display: block;
+		color: #C22E2E;
+		line-height: 24px;
+		min-height: 34px;
+		border-radius: 2px;
+		background: rgba(194, 46, 46, 0.15);
+		padding-left: 1rem;
+		padding-right: 1rem;
+		padding-top: 5px;
+		margin-top: 14px;
+		width: 100%;
+		font-size: .875em;
+
+		&:before {
+			content: '';
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 5px solid rgba(194, 46, 46, 0.15);
+			margin-top: -10px;
+			position: absolute;
+		}
+	}
+}
+.page-node-1157 {
+
+	.main-content {
+		text-align: center;
+
+		@include media-breakpoint-up(lg) {
+        padding: 0 200px;
+      }
+	}
+}
+
+.user-register-form {
+
+	
+	.name-wrapper {
+	}
+
+	small {
+	}
+
+	.form-type-password-confirm {
+
+		.password-strength {
+			margin-bottom: 10px;
+			
+			.password-strength__title, 
+			.password-strength__text {
+			  display: inline;
+			  font-size: 13px;
+			}
+		}
+
+		.password-confirm-message {
+			font-size: 13px;
+
+			span {
+				font-weight: bold;
+
+				&.ok {
+				color: #a1c03a;
+				}
+
+				&.error {
+					color: #dc3545;
+				}
+
+			}
+		}
+
+		.password-suggestions,
+		.description {
+			display: none;
+			font-size: 13px;
+		}
+	}
+}
+
+#views-exposed-form-main-search-block-1 {
+	
+
+	.form-row {
+		display: flex;
+
+		.form-item-search-api-fulltext {
+			width: 100%;
+
+			.form-control {
+				color: #fff;
+			}
+		}
+
+		.form-actions {
+			
+			button {
+
+				&:hover {
+					background-color: transparent;
+					border-color: transparent;
+				}
+			}
+		}
+	}
+}
+
+.form-item-mail.has-error {margin-bottom: 15px;}
+
+// Checkout
+
+.layout-checkout-form {
+
+	.checkout-center-wrapper {
+		
+
+		@include media-breakpoint-up(lg) {
+      padding-right: 100px;
+    }
+
+		legend {
+			font-size: 24px;
+			letter-spacing: 0;
+			line-height: 32px;
+			font-weight: 600;
+			margin-bottom: 1.5rem;
+			margin-top: 2rem;
+		}
+
+		label {
+			margin-bottom: 6px;
+		}
+
+		.checkout-pane-contact-information {
+
+			> legend {
+				font-size: 36px;
+				font-weight: 600;
+				letter-spacing: 0;
+				line-height: 48px;
+				margin-bottom: 2rem;
+				margin-top: 0;
+			}
+
+			.fieldset-wrapper {
+
+				div[id^="edit-contact-information-customer-type"] {
+					display: flex;
+					font-weight: 600;
+
+					> div {
+
+						&:first-child {
+							margin-right: 100px;
+						}
+					}
+				}
+
+				fieldset[id^="edit-contact-information-name"] {
+
+					.fieldset-wrapper {
+						display: flex;
+						gap: 30px;
+					}
+				}
+			}
+		}
+
+		.checkout-pane-payment-information {
+
+			.fieldset-wrapper {
+
+				#edit-payment-information-billing-information-address-0-address {
+
+					> * {
+
+						label {
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+		}
+
+
+
+		.form-type-email {
+			padding-top: 20px;
+		}
+
+		.form-item-contact-information-country {
+			padding-top: 20px;
+		}
+
+		#edit-purchase-terms {
+
+				legend {
+					display: none;
+			}
+		}
+
+		#edit-payment-information-payment-method {
+			display: flex;
+			gap: 30px;
+		}
+
+		#edit-payment-information-add-payment-method-payment-details {
+			display: flex;
+			flex-wrap: wrap;
+
+			.form-item-payment-information-add-payment-method-payment-details-card-number {
+				flex: 0 0 100%;
+
+				#card-number-element {
+					width: 100%;
+
+					&.form-text {
+						height: 20px;
+						border-radius: 3px;
+						padding-top: 16px;
+						padding-bottom: 30px;
+					}
+				}
+			}
+
+			.form-item-payment-information-add-payment-method-payment-details-expiration,
+			.form-item-payment-information-add-payment-method-payment-details-security-code {
+				flex: 0 0 50%;
+			}
+		}
+	}
+
+	.checkout-sidebar-order-summary-wrapper {
+		background-color: #F6F6F6;
+		padding: 2rem;
+
+		.checkout-pane-order-summary {
+
+			.view-id-commerce_checkout_order_summary {
+				margin-top: 50px;
+
+				.view-content {
+
+					.views-row {
+						display: flex;
+						margin-bottom: 1.5rem;
+
+						.views-field-purchased-entity {
+							padding-left: 5px;
+
+							.field-content {
+								display: flex;
+
+								.remove-order-item-icon {
+								  cursor: pointer;
+
+								  &:before {
+								  	margin: 5px 5px 0 -10px;
+								  	position: relative;
+										width: 16px;
+										height: 16px;
+										display: inline-block;
+										background-color: #495057;
+										mask-size: cover;
+										-webkit-mask-size: cover;
+										content: '';
+										-webkit-mask: url('/themes/custom/training_aid/images/close_24px.svg') no-repeat center / contain;
+										mask: url('/themes/custom/training_aid/images/close_24px.svg') no-repeat center / contain;
+								  }
+								}
+							}
+						}
+
+						.views-field-total-price__number {
+							text-align: right;
+							padding-right: 0;
+						}
+					}
+				}
+
+				.view-footer {
+
+					.field--name-total-price {
+
+						.order-total-line__subtotal {
+							display: flex;
+							border-top: 1px solid #ebebeb;
+							padding-top: 12px;
+							padding-bottom: 12px;
+							padding-left: 0;
+							padding-right: 0;
+
+							.order-total-line-label {
+								flex: 0 0 75%;
+								max-width: 75%;
+								text-align: left;
+								padding-right: 1rem;
+							}
+
+							.order-total-line-value {
+								flex: 0 0 25%;
+								max-width: 25%;
+							}
+						}
+
+						.order-total-line__adjustment {
+							display: flex;
+							border-top: 1px solid #ebebeb;
+							padding-top: 12px;
+							padding-bottom: 12px;
+							padding-left: 0;
+							padding-right: 0;
+
+							.order-total-line-label {
+								flex: 0 0 75%;
+								max-width: 75%;
+								text-align: left;
+								padding-right: 1rem;
+							}
+
+							.order-total-line-value {
+								flex: 0 0 25%;
+								max-width: 25%;
+							}
+						}
+
+						.order-total-line__total {
+							display: flex;
+							font-size: 1.125rem;
+							font-weight: bold;
+							letter-spacing: 0;
+							line-height: 1.5rem;
+							padding-top: 1rem;
+							border-top: 1px solid #ebebeb;
+							border-bottom: 1px solid #ebebeb;
+							padding-bottom: 2.5rem;
+							margin-top: 0.5rem;
+							padding-left: 0;
+							padding-right: 0;
+
+							.order-total-line-label {
+								flex: 0 0 75%;
+								max-width: 75%;
+								text-align: left;
+								padding-right: 1rem;
+							}
+							.order-total-line-value {
+								-ms-flex: 0 0 25%;
+								flex: 0 0 25%;
+								max-width: 25%;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.checkout-pane-coupon-redemption {
+
+			> div {
+				display: flex;
+				align-items: center;
+
+				.form-item-sidebar-coupon-redemption-form-code {
+					padding-top: 8px;
+					padding-right: 30px;
+
+					label {
+						margin-bottom: 5px;
+					}
+				}
+
+				.form-submit {
+					padding: 22px 20px;
+					margin-top: 22px;
+					line-height: 0;
+					background: transparent;
+					color: #666;
+					border-color: #BBB;
+				}
+			}
+		}
+	}
+
+	.layout-region-checkout-footer {
+		padding-top: 15px;
+
+		.form-actions {
+
+			.form-submit {
+				width: 100%;
+
+				&:hover {
+					color: $ta-blue;
+				}
+			}
+		}
+	}
+}
+
+#edit-payment-information-billing-information-address-0-address-container1 {
+	margin-bottom: 0!important;
+}
+
+.path-checkout #block-training-sass-breadcrumbs nav {
+	display: none;
+}
+
+.coupon-redemption-form__coupons {
+
+	table {
+
+		tbody {
+
+			td {
+				display: flex;
+    			align-items: center;
+
+				button {
+					margin:0;
+				}
+			}
+		}
+	}
+}
+
+.custom-tooltip {
+  // background-color: red;
+}
+
+#edit-field-partner-group-wrapper,
+#edit-field-hkey-wrapper {
+	display: none;
+}

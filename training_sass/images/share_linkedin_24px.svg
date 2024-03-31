@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>E678EA8C-00AA-4240-84EF-F65994C3E28D</title>
+    <defs>
+        <rect id="path-1" x="660" y="360" width="600" height="224" rx="4"></rect>
+        <filter x="-2.8%" y="-6.0%" width="105.5%" height="114.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="32" height="32"></rect>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course-Information-Page---Overlay---Share" transform="translate(-844.000000, -512.000000)">
+            <g id="Header-Section" fill="#3F6183" transform="translate(0.000000, 56.000000)">
+                <rect id="bg" x="0" y="0" width="1920" height="552"></rect>
+            </g>
+            <rect id="overlay" fill-opacity="0.8" fill="#1C1D1F" x="0" y="0" width="1920" height="1024"></rect>
+            <g id="bg_pop_up_window">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <rect stroke="#D3D5D8" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="660.5" y="360.5" width="599" height="223" rx="4"></rect>
+            </g>
+            <g id="icon/social-media/facebook_24px" transform="translate(844.000000, 512.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Background/Mask"></g>
+                <path d="M22.6666794,28 L22.6666794,19 C22.6666794,17.5885334 21.0828126,16.4077339 19.671346,16.4077339 C18.2598794,16.4077339 17.333346,17.5885334 17.333346,19 L17.333346,28 L12.0000134,28 L12.0000134,12 L17.333346,12 L17.333346,14.6666667 C18.2164127,13.2380934 20.4752123,12.3163605 22.0333455,12.3163605 C25.3286788,12.3163605 28.0000127,15.0381333 28.0000127,18.3333333 L28.0000127,28 L22.6666794,28 Z M4,28 L4,12 L9.33333333,12 L9.33333333,28 L4,28 Z M9.33334668,6.66666667 C9.33334668,8.13942671 8.13944006,9.33333333 6.66668002,9.33333333 C5.19391998,9.33333333 4,8.13942671 4,6.66666667 C4,5.19390663 5.19391998,4 6.66668002,4 C8.13944006,4 9.33334668,5.19390663 9.33334668,6.66666667 Z" id="brand-/-LinkedIn" fill="#0096D7" mask="url(#mask-4)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

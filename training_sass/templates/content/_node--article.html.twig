@@ -1,0 +1,54 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    <h2>{{ content.field_title_h2 }}</h2>
+    <div class="summary">
+      {{ node.body.summary }}
+    </div>
+    {{ drupal_view('articles', 'article_contributors') }}
+    <div class="published-share-wrapper">
+      <div class="row mb-5 mt-5">
+        <div class="col-md-6 d-flex align-items-center">
+          <div class="published-date"><label>{{ "Published:"|t }}</label>{{ content.field_published_date }}</div>
+        </div>
+        <div class="col-md-6">
+          <div class="share top text-end">{{ content.addtoany }} {{ bookmark_content_flag_link }}</div>
+        </div>
+      </div>
+    </div>
+    {% set category_name = content.field_category|render|striptags|trim|lower %}
+    <div class="tags top mb-5">
+      {{ drupal_view('articles', 'tags') }}
+      {# <a href="{{ url('view.articles.page_1', {'type' : category_name }) }}">{{ content.field_category }}</a>
+      {{ content.field_sector }}
+      {{ content.field_interests }}
+      <a href="{{ url('view.related_articles.page_1', {'arg_0' : node.field_theme.0.target_id }) }}">{{ content.field_theme }}</a>
+      {{ content.field_country }} #}
+    </div>
+    <div class="mt-5 mb-5">
+      {{ content.body }}
+    </div>
+    <div class="tags-share-wrapper bottom">
+      <div class="tags">
+        {{ drupal_view('articles', 'tags') }}
+       {#  <a href="{{ url('view.articles.page_1', {'type' : category_name }) }}">{{ content.field_category }}</a>
+        {{ content.field_sector }}
+        {{ content.field_interests }}
+        <a href="{{ url('view.related_articles.page_1', {'arg_0' : node.field_theme.0.target_id }) }}">{{ content.field_theme }}</a>
+        {{ content.field_country }} #}
+      </div>
+      <div class="share"><label>{{ "Share this"|t }}</label>{{ content.addtoany }}{{ bookmark_content_flag_link }}</div>
+    </div>
+  </div>
+</article>

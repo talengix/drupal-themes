@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>4B07347D-F1B8-4977-AC36-BADFE01A475A</title>
+    <defs>
+        <path d="M0,0 L240,0 L240,316 C240,318.209139 238.209139,320 236,320 L4,320 C1.790861,320 2.705415e-16,318.209139 0,316 L0,0 L0,0 Z" id="path-1"></path>
+        <filter x="-7.5%" y="-3.8%" width="115.0%" height="111.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.07 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="16" height="16"></rect>
+        <filter id="filter-5">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.286275 0 0 0 0 0.313725 0 0 0 0 0.341176 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu/desktop/main/user/drop_down" transform="translate(-16.000000, -176.000000)">
+            <g id="bg">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <path stroke="#EBEBEB" stroke-width="0.5" d="M239.75,0.25 L239.75,316 C239.75,317.035534 239.330267,317.973034 238.65165,318.65165 C237.973034,319.330267 237.035534,319.75 236,319.75 L236,319.75 L4,319.75 C2.96446609,319.75 2.02696609,319.330267 1.34834957,318.65165 C0.669733047,317.973034 0.25,317.035534 0.25,316 L0.25,316 L0.25,0.25 L239.75,0.25 Z" stroke-linejoin="square" fill="none" fill-rule="evenodd"></path>
+            </g>
+            <g id="icon/content/_24px" transform="translate(16.000000, 176.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Background/Mask"></g>
+                <g filter="url(#filter-5)" id="sticky">
+                    <g mask="url(#mask-4)">
+                        <g transform="translate(2.000000, 2.000000)" fill="#495057" fill-rule="nonzero" id="Shape">
+                            <path d="M1.28571429,-1.90323947e-16 C0.575633893,-1.90323947e-16 -1.90323947e-16,0.575633893 -1.90323947e-16,1.28571429 L-1.90323947e-16,10.7142857 C-1.90323947e-16,11.4243661 0.575633893,12 1.28571429,12 L6.50228571,12 C6.84316346,11.9996999 7.16997024,11.8640443 7.41085714,11.6228571 L11.6237143,7.41085714 C11.8645871,7.16982995 12,6.84304046 12,6.50228571 L12,1.28571429 C12,0.575633893 11.4243661,-1.90323947e-16 10.7142857,-1.90323947e-16 L1.28571429,-1.90323947e-16 Z M0.857142857,1.28571429 C0.857142857,1.04902082 1.04902082,0.857142857 1.28571429,0.857142857 L10.7142857,0.857142857 C10.9509792,0.857142857 11.1428571,1.04902082 11.1428571,1.28571429 L11.1428571,6 L7.28571429,6 C6.57563389,6 6,6.57563389 6,7.28571429 L6,11.1428571 L1.28571429,11.1428571 C1.04902082,11.1428571 0.857142857,10.9509792 0.857142857,10.7142857 L0.857142857,1.28571429 Z M6.85714286,10.9654286 L6.85714286,7.28571429 C6.85714286,7.04902082 7.04902082,6.85714286 7.28571429,6.85714286 L10.9654286,6.85714286 L6.85714286,10.9654286 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

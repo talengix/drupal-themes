@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>78DF2F9F-113D-47D5-9BFA-BBB5FA3E6224</title>
+    <defs>
+        <rect id="path-1" x="0" y="64" width="304" height="793" rx="4"></rect>
+        <filter x="-6.6%" y="-2.0%" width="113.2%" height="105.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="24" height="24"></rect>
+        <filter id="filter-5">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.286275 0 0 0 0 0.313725 0 0 0 0 0.341176 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course-Information-Page" transform="translate(-1336.000000, -664.000000)">
+            <g id="Sidebar" transform="translate(1312.000000, 448.000000)">
+                <g id="bg">
+                    <use fill="none" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#EBEBEB" stroke-width="0.5" stroke-linejoin="square" fill="none" fill-rule="evenodd" x="0.25" y="64.25" width="303.5" height="792.5" rx="4"></rect>
+                </g>
+                <g id="Course-details" transform="translate(24.000000, 80.000000)">
+                    <g id="icon/course/menu/discussions_24px" transform="translate(0.000000, 136.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Background/Mask"></g>
+                        <g filter="url(#filter-5)" id="phone">
+                            <g mask="url(#mask-4)">
+                                <g transform="translate(6.000000, 3.000000)" fill="#000000" fill-rule="nonzero">
+                                    <path d="M9,1.125 C9.62132034,1.125 10.125,1.62867966 10.125,2.25 L10.125,15.75 C10.125,16.3713203 9.62132034,16.875 9,16.875 L2.25,16.875 C1.62867966,16.875 1.125,16.3713203 1.125,15.75 L1.125,2.25 C1.125,1.62867966 1.62867966,1.125 2.25,1.125 L9,1.125 Z M2.25,0 C1.00735931,0 0,1.00735931 0,2.25 L0,15.75 C0,16.9926407 1.00735931,18 2.25,18 L9,18 C10.2426407,18 11.25,16.9926407 11.25,15.75 L11.25,2.25 C11.25,1.00735931 10.2426407,0 9,0 L2.25,0 Z" id="Shape"></path>
+                                    <path d="M5.625,15.75 C6.24632034,15.75 6.75,15.2463203 6.75,14.625 C6.75,14.0036797 6.24632034,13.5 5.625,13.5 C5.00367966,13.5 4.5,14.0036797 4.5,14.625 C4.5,15.2463203 5.00367966,15.75 5.625,15.75 Z" id="Path"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

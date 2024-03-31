@@ -1,0 +1,21 @@
+global-styling:
+  version: VERSION
+  js: 
+    js/bootstrap.min.js: { weight: -48 }
+    js/popper.min.js: { weight: -50 }
+    js/owl.carousel.min.js: {}
+    # /libraries/chosen_v1.8.7/chosen.jquery.js: {}
+    # /libraries/chosen_v1.8.7/docsupport/prism.js: {}
+    # /libraries/chosen_v1.8.7/docsupport/init.js: {}
+    js/barrio.js: {}
+    js/azri.js: {}
+    js/custom.js: {}
+  css:
+    component:
+      css/owl.carousel.min.css: {}
+      css/owl.theme.default.min.css: {}
+      css/header-footer-menu.css: {}
+      css/style.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal

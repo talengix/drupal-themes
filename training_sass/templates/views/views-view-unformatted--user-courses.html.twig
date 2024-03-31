@@ -1,0 +1,86 @@
+{#
+/**
+* @file
+* Theme override to display a view of unformatted rows.
+*
+* Available variables:
+* - title: The title of this group of rows. May be empty.
+* - rows: A list of the view's row items.
+*   - attributes: The row's HTML attributes.
+*   - content: The row's content.
+* - view: The view object.
+* - default_row_class: A flag indicating whether default classes should be
+*   used on rows.
+*
+* @see template_preprocess_views_view_unformatted()
+*/
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+  set row_classes = [
+  default_row_class ? 'course-item',
+  ]
+  %}
+  <div{{ row.attributes.addClass(row_classes) }}>
+    <div class="row row-wrap">
+      <div class="course-theme-title-wrapper col-md-5">
+        {% if row.course_theme is not null %}
+          <div class="course-theme">{{ row.course_theme }}</div>
+        {% endif %}
+        {{ row.content }}
+        <div class="course-format-dates-wrapper">
+          <div class="views-field views-field-field-course-format"> {{ row.course_format }} </div>
+          {% if row.course_dates %}
+            <div class="course-dates">{{ 'Course Dates: '|t }} {{ row.course_dates }}</div>
+          {% elseif row.course_completion_date is not null %}
+            <div class="course-dates course-completion-date">{{ 'Complete course by'|t }} {{ row.course_completion_date }}</div>
+          {% elseif not row.course_access_expired %}
+            <div class="course-dates course-access-date">{{ row.course_access_expires }}</div>
+          {% endif %}
+        </div>
+        <div class="course-access-date-wrapper">
+          {% if row.course_access_date is not null %}
+            <div class="course-access-date">{{ row.course_access_date }}</div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="course-completion-percentage col-md-3">
+        <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="--value:{{ row.course_completion_percentage }}"></div>
+      </div>
+      <div class="current-unit-wrapper col-md-4">
+        {% if not row.course_completion_expired and row.course_completion_percentage != 100 %}
+          {% if row.current_unit is not null %}
+            <div class="current_unit"><div class="current-unit-label">{{ 'Current Unit'|t }}</div><div class="current-unit-name"> {{ row.current_unit }}</div></div>
+            {% if row.current_unit_url is not null %}
+              <div class="course-unit-link resume"><a href="{{ row.current_unit_url }}" class="btn btn-primary">{{ "Resume"|t }}</a></div>
+            {% endif %}
+          {% elseif row.current_unit_url is not null %}
+            <div class="course-unit-link start"><a href="{{ row.current_unit_url }}" class="btn btn-primary">{{ "Start"|t }}</a></div>
+          {% endif %}
+        {% elseif (not row.course_completion_expired or row.course_completion_percentage == 100) and (row.user_notes or row.course_certificate) %}
+          <div class="course-details">
+            <div class="course-details-label">{{ "Course Details"|t }}</div>
+            <div class="course-details-links">
+              {% if row.user_notes %}
+                <div class="user-notes"><a href="{{ row.user_notes }}" target="_blank">{{ "My Notes"|t }}</a></div>
+              {% endif %}
+              {% if row.course_certificate is not null %}
+                <div class="course_certificate"><a href="{{ row.course_certificate_url }}" target="_blank">{{ "Certificate of Completion"|t }}</a></div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {#     <div class="course-details-wrapper">
+      </div> #}
+    </div>
+  </div>
+{% endfor %}
+{% if rows is empty %}
+  {% set title = view.build_info.title %}
+  <div class="no-result-text">You don’t have any {{title | lower}}.</div>
+  <div class="search-courses-wrapper"><a href="/courses">Search for courses</a></div>
+{% endif %}

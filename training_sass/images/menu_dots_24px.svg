@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>F0CA73C0-07DC-4269-BFFC-7F08E475981D</title>
+    <defs>
+        <path d="M4,224 L860,224 C862.209139,224 864,222.209139 864,220 L864,4 C864,1.790861 862.209139,-4.05812251e-16 860,0 L4,0 C1.790861,4.05812251e-16 -2.705415e-16,1.790861 0,4 L0,220 C2.705415e-16,222.209139 1.790861,224 4,224 Z" id="path-1"></path>
+        <filter x="-2.3%" y="-7.1%" width="104.6%" height="117.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="32" height="32"></rect>
+        <filter color-interpolation-filters="auto" id="filter-5">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.600000 0 0 0 0 0.600000 0 0 0 0 0.600000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="course-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="course-tab/quiz/question-2/success" transform="translate(-1577.000000, -1521.000000)">
+            <polygon id="bg" fill="none" points="0 2419 1920 2419 1920 216 0 216"></polygon>
+            <g id="Area---Discussions" transform="translate(753.000000, 1457.000000)">
+                <g id="course/discussion/post/default" transform="translate(0.000000, 56.000000)">
+                    <g id="bg">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <path stroke="#EBEBEB" stroke-width="0.5" d="M4,0.25 L860,0.25 C861.035534,0.25 861.973034,0.669733047 862.65165,1.34834957 C863.330267,2.02696609 863.75,2.96446609 863.75,4 L863.75,4 L863.75,220 C863.75,221.035534 863.330267,221.973034 862.65165,222.65165 C861.973034,223.330267 861.035534,223.75 860,223.75 L860,223.75 L4,223.75 C2.96446609,223.75 2.02696609,223.330267 1.34834957,222.65165 C0.669733047,221.973034 0.25,221.035534 0.25,220 L0.25,220 L0.25,4 C0.25,2.96446609 0.669733047,2.02696609 1.34834957,1.34834957 C2.02696609,0.669733047 2.96446609,0.25 4,0.25 L4,0.25 L4,0.25 Z" stroke-linejoin="square" fill="none" fill-rule="evenodd"></path>
+                    </g>
+                    <g id="icon/navigation/expand_more_24px" transform="translate(824.000000, 8.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Background/Mask"></g>
+                        <g filter="url(#filter-5)" id="three-dots">
+                            <g mask="url(#mask-4)">
+                                <g transform="translate(6.666667, 13.333333)" fill="#495057" fill-rule="nonzero" id="Shape">
+                                    <path d="M2.66666667,4.66666667 C1.56209717,4.66666667 0.666666667,3.77123617 0.666666667,2.66666667 C0.666666667,1.56209717 1.56209717,0.666666667 2.66666667,0.666666667 C3.77123617,0.666666667 4.66666667,1.56209717 4.66666667,2.66666667 C4.66666667,3.77123617 3.77123617,4.66666667 2.66666667,4.66666667 L2.66666667,4.66666667 Z M9.33333333,4.66666667 C8.22876383,4.66666667 7.33333333,3.77123617 7.33333333,2.66666667 C7.33333333,1.56209717 8.22876383,0.666666667 9.33333333,0.666666667 C10.4379028,0.666666667 11.3333333,1.56209717 11.3333333,2.66666667 C11.3333333,3.77123617 10.4379028,4.66666667 9.33333333,4.66666667 Z M16,4.66666667 C14.8954305,4.66666667 14,3.77123617 14,2.66666667 C14,1.56209717 14.8954305,0.666666667 16,0.666666667 C17.1045695,0.666666667 18,1.56209717 18,2.66666667 C18,3.77123617 17.1045695,4.66666667 16,4.66666667 Z"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

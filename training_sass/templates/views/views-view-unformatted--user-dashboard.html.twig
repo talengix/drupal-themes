@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+<div class="owl-carousel owl-theme training-user-resources">
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+{% for row in rows %}
+  {%
+    set row_classes = [
+      default_row_class ? 'views-row',
+    ]
+  %}
+
+<div{{ row.attributes.addClass(row_classes) }}>
+  <div class="row-wrap">
+    {% if row.course_theme is not null %}
+      <div class="course-theme">{{ row.course_theme }}</div>
+    {% endif %}
+    {{ row.content }}
+    <div class="course-completion-percentage">
+        <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="--value:{{ row.course_completion_percentage }}"></div>
+    </div>
+    <div class="units-wrap">
+    {% if row.units_completed is not null %}
+      <div class="units-completed"><span class="txt-green">{{ row.units_completed }} </span> <br> <span class="txt-grey"> {{ 'Units'|t }}</span> <br> <span class="txt-grey">{{ 'Completed'|t }}</span></div>
+    {% endif %}
+    {% if row.total_units is not null %}
+      <div class="total-units"><span class="txt-orng">{{ row.total_units - row.units_completed }}</span> <br> <span class="txt-grey">{{ 'Units'|t }}</span> <br> <span class="txt-grey">{{ 'Left'|t }}</span></div>
+    {% endif %}
+    </div>
+    {#{% if row.course_completion_date is not null %}
+      <div class="course-completion-date">{{ 'Complete course by'|t }} {{ row.course_completion_date }}</div>
+    {% endif %}
+    {% if row.current_unit is not null %}
+      <div class="current_unit"><span>{{ 'Current Unit'|t }}</span> {{ row.current_unit }}</div>
+    {% endif %}
+    {% if row.current_unit_url is not null %}
+      <div class="resume"><a href="{{ row.current_unit_url }}" class="btn btn-primary">{{ "Resume"|t }}</a></div>
+    {% endif %}
+    {% if row.course_access_date is not null %}
+      <div class="course-access-date">{{ row.course_access_date }}</div>
+    {% endif %}
+    {% if row.user_notes or row.course_certificate %}
+      <div class="course-details">
+      <div clas="course-details-label">{{ "Course Details"|t }}</div>
+      {% if row.user_notes %}
+        <div class="user-notes"><a href="#">{{ "My Notes"|t }}</a></div>
+      {% endif %}
+      {% if row.course_certificate is not null %}
+        <div class="course_certificate"><a href="#">{{ "Certificate of Completion"|t }}</a></div>
+      {% endif %}
+      </div>
+    {% endif %}#}
+  </div>
+
+</div>
+
+{% endfor %}
+<div class="views-row all-courses">
+  <div class="row-wrap">
+    <div class="wrap">
+      <div class="text">See all your</br>courses</div>
+      <a href="my-courses/all" class="angle"></a>
+    </div>
+  </div>
+</div>
+</div>

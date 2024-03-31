@@ -1,0 +1,59 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    <div class="col-medium">
+      <h2>{{ content.field_title_h2 }}</h2>
+      <p class="lead">{{ node.body.summary }}</p>
+      {{ drupal_view('articles', 'article_contributors') }}
+      <div class="published-share-wrapper">
+        <div class="row mb-5 mt-5">
+          <div class="col-md-6 d-flex align-items-center">
+            <div class="published-date"><label>{{ "Published:"|t }}</label>{{ content.field_published_date }}</div>
+          </div>
+          <div class="col-md-6">
+            <div class="share top text-end">{{ content.addtoany }} {{ bookmark_content_flag_link }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="tags top mb-5">
+        {{ drupal_view('articles', 'tags') }}
+      </div>
+    </div>
+    <div class="col-narrow">
+      {{ content.field_how_to_guide_text_boxes }}
+      <div class="questions">
+        <h3>{{ node.field_questions.entity.field_title.value }}</h3>
+        <div class="questions-list mb-5">
+          {% for key, question in node.field_questions.entity.field_questions %}
+            <div class="question"><span class="question-number">{{ key+1 }})</span><a href="#question-text-{{ key+1 }}">{{ question.entity.field_heading.value }}</a></div>
+          {% endfor %}
+        </div>
+        <div class="questions-summary">{{ node.field_questions.entity.field_content.value|raw }}</div>
+        <div class="questions-with-text">
+          {% for key, question in node.field_questions.entity.field_questions %}
+            <div class="question-text-wrapper" id="question-text-{{ key+1 }}">
+              <div class="question"><h3><span class="question-number">{{ key+1 }}</span>{{ question.entity.field_heading.value }}</h3></div>
+              <div class="question-text">{{ question.entity.field_content.value|raw }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="tags-share-wrapper bottom col-narrow">
+      <div class="tags">
+        {{ drupal_view('articles', 'tags') }}
+      </div>
+      <div class="share"><label>{{ "Share this"|t }}</label>{{ content.addtoany }}{# {{ bookmark_content_flag_link }} #}</div>
+    </div>
+  </article>

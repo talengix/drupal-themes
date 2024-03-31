@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>0914E74E-1056-4458-A81B-E44C84A425C0</title>
+    <defs>
+        <path d="M0,0 L240,0 L240,316 C240,318.209139 238.209139,320 236,320 L4,320 C1.790861,320 2.705415e-16,318.209139 0,316 L0,0 L0,0 Z" id="path-1"></path>
+        <filter x="-7.5%" y="-3.8%" width="115.0%" height="111.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.07 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="16" height="16"></rect>
+    </defs>
+    <g id="symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu/desktop/main/user/drop_down" transform="translate(-16.000000, -208.000000)">
+            <g id="bg">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <path stroke="#EBEBEB" stroke-width="0.5" d="M239.75,0.25 L239.75,316 C239.75,317.035534 239.330267,317.973034 238.65165,318.65165 C237.973034,319.330267 237.035534,319.75 236,319.75 L236,319.75 L4,319.75 C2.96446609,319.75 2.02696609,319.330267 1.34834957,318.65165 C0.669733047,317.973034 0.25,317.035534 0.25,316 L0.25,316 L0.25,0.25 L239.75,0.25 Z" stroke-linejoin="square" fill="none" fill-rule="evenodd"></path>
+            </g>
+            <rect id="bg_menu" fill="none" x="0" y="200" width="240" height="32"></rect>
+            <g id="icon/content/_24px" transform="translate(16.000000, 208.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Background/Mask"></g>
+                <path d="M12.1666667,14 C12.1666667,14 13.1666667,14 13.1666667,13 C13.1666667,12 12.1666667,9 8.16666667,9 C4.16666667,9 3.16666667,12 3.16666667,13 C3.16666667,14 4.16666667,14 4.16666667,14 L12.1666667,14 Z M4.18866667,13 C4.18127956,12.9989816 4.17393949,12.997647 4.16666667,12.996 C4.16766667,12.732 4.33366667,11.966 4.92666667,11.276 C5.47866667,10.629 6.44866667,10 8.16666667,10 C9.88366667,10 10.8536667,10.63 11.4066667,11.276 C11.9996667,11.966 12.1646667,12.733 12.1666667,12.996 L12.1586667,12.998 C12.154018,12.998787 12.1493498,12.9994539 12.1446667,13 L4.18866667,13 Z M8.16666667,7 C9.27123617,7 10.1666667,6.1045695 10.1666667,5 C10.1666667,3.8954305 9.27123617,3 8.16666667,3 C7.06209717,3 6.16666667,3.8954305 6.16666667,5 C6.16666667,6.1045695 7.06209717,7 8.16666667,7 Z M11.1666667,5 C11.1666667,6.07179678 10.5948699,7.06217787 9.66666667,7.59807626 C8.73846345,8.13397466 7.59486989,8.13397466 6.66666667,7.59807626 C5.73846341,7.06217787 5.16666667,6.07179678 5.16666667,5 C5.16666667,3.34314575 6.50981242,2 8.16666667,2 C9.82352092,2 11.1666667,3.34314575 11.1666667,5 L11.1666667,5 Z" id="Shape" fill="#495057" mask="url(#mask-4)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

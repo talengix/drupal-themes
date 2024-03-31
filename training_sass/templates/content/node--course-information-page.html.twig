@@ -1,0 +1,73 @@
+
+{{ attach_library('bootstrap_barrio/node') }}
+
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <header>
+    {{ title_prefix }}
+    {% if label and not page %}
+      <h2{{ title_attributes.addClass('node__title') }}>
+        <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+      </h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% if display_submitted %}
+      <div class="node__meta">
+        {{ author_picture }}
+        {% block submitted %}
+          <em{{ author_attributes }}>
+            {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
+          </em>
+        {% endblock %}
+        {{ metadata }}
+      </div>
+    {% endif %}
+    <ul class="course-information-nav-pills nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link active course-overview" href="#field_ci_overview">Overview</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link course-schedule" href="#field_ci_schedule">Schedule</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link course-syllabus" href="#field_ci_syllabus">Syllabus</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link course-contributors" href="#field_ci_contributors">Contributors</a>
+      </li>
+    </ul>
+  </header>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+    {{ content|without('addtoany') }}
+  </div>
+</article>
+
+<!-- Share Modal Dialog -->
+<div class="modal fade" id="share-modal-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="modal-title" id="myModalLabel">Share this course</div>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true"></span>
+        </button>
+			</div>
+			<div class="modal-body">
+        <input name='course-url' type='text' id='course-url' value='{{ url("<current>") }}'/><button class='copy-course-url'>Copy</button>
+      </div>
+			<div class="modal-footer">
+				{{ content.addtoany }}
+			</div>
+		</div>
+	</div>
+</div>

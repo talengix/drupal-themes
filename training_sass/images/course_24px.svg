@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>24E359CC-D4B0-45FD-B321-C161256D1745</title>
+    <defs>
+        <path d="M0,0 L240,0 L240,316 C240,318.209139 238.209139,320 236,320 L4,320 C1.790861,320 2.705415e-16,318.209139 0,316 L0,0 L0,0 Z" id="path-1"></path>
+        <filter x="-7.5%" y="-3.8%" width="115.0%" height="111.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.07 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="16" height="16"></rect>
+        <filter id="filter-5">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.286275 0 0 0 0 0.313725 0 0 0 0 0.341176 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu/desktop/main/user/drop_down" transform="translate(-16.000000, -112.000000)">
+            <g id="bg">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <path stroke="#EBEBEB" stroke-width="0.5" d="M239.75,0.25 L239.75,316 C239.75,317.035534 239.330267,317.973034 238.65165,318.65165 C237.973034,319.330267 237.035534,319.75 236,319.75 L236,319.75 L4,319.75 C2.96446609,319.75 2.02696609,319.330267 1.34834957,318.65165 C0.669733047,317.973034 0.25,317.035534 0.25,316 L0.25,316 L0.25,0.25 L239.75,0.25 Z" stroke-linejoin="square" fill="none" fill-rule="evenodd"></path>
+            </g>
+            <g id="icon/content/_24px" transform="translate(16.000000, 112.000000)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="Background/Mask"></g>
+                <g filter="url(#filter-5)" id="columns-gap">
+                    <g mask="url(#mask-4)">
+                        <g transform="translate(2.000000, 2.000000)" fill="#495057" fill-rule="nonzero" id="Shape">
+                            <path d="M4.5,0.75 L4.5,3 L0.75,3 L0.75,0.75 L4.5,0.75 Z M0.75,0 C0.335786438,0 0,0.335786438 0,0.75 L0,3 C0,3.41421356 0.335786438,3.75 0.75,3.75 L4.5,3.75 C4.91421356,3.75 5.25,3.41421356 5.25,3 L5.25,0.75 C5.25,0.335786438 4.91421356,0 4.5,0 L0.75,0 Z M11.25,9 L11.25,11.25 L7.5,11.25 L7.5,9 L11.25,9 Z M7.5,8.25 C7.08578644,8.25 6.75,8.58578644 6.75,9 L6.75,11.25 C6.75,11.6642136 7.08578644,12 7.5,12 L11.25,12 C11.6642136,12 12,11.6642136 12,11.25 L12,9 C12,8.58578644 11.6642136,8.25 11.25,8.25 L7.5,8.25 Z M4.5,6 L4.5,11.25 L0.75,11.25 L0.75,6 L4.5,6 Z M0.75,5.25 C0.335786438,5.25 0,5.58578644 0,6 L0,11.25 C0,11.6642136 0.335786438,12 0.75,12 L4.5,12 C4.91421356,12 5.25,11.6642136 5.25,11.25 L5.25,6 C5.25,5.58578644 4.91421356,5.25 4.5,5.25 L0.75,5.25 Z M11.25,0.75 L11.25,6 L7.5,6 L7.5,0.75 L11.25,0.75 Z M7.5,0 C7.08578644,0 6.75,0.335786438 6.75,0.75 L6.75,6 C6.75,6.41421356 7.08578644,6.75 7.5,6.75 L11.25,6.75 C11.6642136,6.75 12,6.41421356 12,6 L12,0.75 C12,0.335786438 11.6642136,0 11.25,0 L7.5,0 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

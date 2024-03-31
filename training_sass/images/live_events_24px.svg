@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>665C7B44-5F31-4575-95E0-918A5284C79B</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <filter color-interpolation-filters="auto" id="filter-3">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 0.999619 0 0 0 0 0.999619 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="course-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course---Main" transform="translate(-456.000000, -185.000000)">
+            <g id="course/menu/main" transform="translate(0.000000, 176.000000)">
+                <polygon id="bg" fill="none" points="0 40 1920 40 1920 0 0 0"></polygon>
+                <g id="Menu" transform="translate(323.000000, 8.000000)">
+                    <g id="Menu-2" transform="translate(133.000000, 0.000000)">
+                        <g id="icon/course/live_events_24px" transform="translate(0.000000, 1.000000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Background/Mask"></g>
+                            <g filter="url(#filter-3)" id="play-btn">
+                                <g mask="url(#mask-2)">
+                                    <g transform="translate(3.000000, 5.000000)" fill="#495057" fill-rule="nonzero">
+                                        <path d="M7.63875,3.479625 C7.46728195,3.35754115 7.24200089,3.34140566 7.05488415,3.43780631 C6.86776741,3.53420696 6.75012973,3.72701071 6.75,3.9375 L6.75,9.5625 C6.75012973,9.77298929 6.86776741,9.96579304 7.05488415,10.0621937 C7.24200089,10.1585943 7.46728195,10.1424589 7.63875,10.020375 L11.57625,7.207875 C11.7241954,7.1023022 11.8120135,6.93175105 11.8120135,6.75 C11.8120135,6.56824895 11.7241954,6.3976978 11.57625,6.292125 L7.63875,3.479625 Z" id="Path"></path>
+                                        <path d="M0,2.25 C0,1.00735931 1.00735931,0 2.25,0 L15.75,0 C16.9926407,0 18,1.00735931 18,2.25 L18,11.25 C18,12.4926407 16.9926407,13.5 15.75,13.5 L2.25,13.5 C1.00735931,13.5 0,12.4926407 0,11.25 L0,2.25 Z M16.875,2.25 C16.875,1.62867966 16.3713203,1.125 15.75,1.125 L2.25,1.125 C1.62867966,1.125 1.125,1.62867966 1.125,2.25 L1.125,11.25 C1.125,11.8713203 1.62867966,12.375 2.25,12.375 L15.75,12.375 C16.3713203,12.375 16.875,11.8713203 16.875,11.25 L16.875,2.25 Z" id="Shape"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,41 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+{{ content.field_contributor_image[0] }}
+{# <div class="contributor-profile_pic clearfix">{{ content.field_contributor_image }}</div> #}
+<div class="card-body">
+  <h5 class="card-title">
+  <a href="{{ url }}" class="title" rel="bookmark">{{ label }}</a>
+  </h5>
+  {% if content.field_designation|render or content.field_organization|render  %}
+    <p class="designation">{{ content.field_designation }}
+      {% if content.field_organization|render|striptags|trim and content.field_designation|render|striptags|trim %}
+        <div>at</div>
+      {% endif %}
+      {% if content.field_organization|render|striptags|trim %}
+        {{ content.field_organization }}
+      {% endif %}
+    </p>
+  {% endif %}
+</div>
+<div class="card-footer">
+  {% if content.field_country_state_city|render %}
+    <p>
+      {% if content.field_country_state_city.0.locality['#value'] %}
+        {{ content.field_country_state_city.0.locality['#value'] }},&nbsp;
+      {% endif %}
+      {{ content.field_country_state_city.0.country['#value'] }}
+    </p>
+  {% else %}
+    &nbsp;
+  {% endif %}
+</div>

@@ -1,0 +1,86 @@
+
+{#
+/**
+ * @file
+ * Theme override to display a book tree.
+ *
+ * Returns HTML for a wrapper for a book sub-tree.
+ *
+ * Available variables:
+ * - items: A nested list of book items. Each book item contains:
+ *   - attributes: HTML attributes for the book item.
+ *   - below: The book item child items.
+ *   - title: The book link title.
+ *   - url: The book link URL, instance of \Drupal\Core\Url.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     book tree.
+ *   - is_collapsed: TRUE if the link has children within the current book tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as book_tree %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+{{ book_tree.book_links(items, attributes, 0, 0, 'show') }}
+
+{% macro book_links(items, attributes, menu_level, parent_id, child_ul_class) %}
+  {% import _self as book_tree %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      <!--<ul{{ attributes.addClass('menu') }}>-->
+    {% else %}
+      {% if menu_level == 1 %}
+        <ul class="accordion menu depth-{{ menu_level }} {{ child_ul_class }}" id = "book-menu-block">
+      {% else %}
+        <ul class="menu depth-{{ menu_level }} {{ child_ul_class }}" id="parent-{{ parent_id }}" data-bs-parent="#book-menu-block">
+      {% endif %}
+    {% endif %}
+    {% for item_key,item in items %}
+      {%
+        set classes = [
+          'menu-item',
+          item.is_expanded ? 'menu-item--expanded',
+          item.is_collapsed ? 'menu-item--collapsed',
+          item.in_active_trail ? 'menu-item--active-trail',
+        ]
+      %}
+      {% if menu_level != 0 %}
+        {% if item.is_expanded %}
+          {% set child_ul_class = "accordion-collapse collapse show" %}
+          {#<li{{ item.attributes.addClass(classes) }} data-bs-toggle = "collapse" aria-expanded="true">#}
+        {% else %}
+          {% set child_ul_class = "accordion-collapse collapse" %}
+          {#<li{{ item.attributes.addClass(classes) }} data-bs-toggle = "collapse" aria-expanded="false">#}
+        {% endif %}
+        <li{{ item.attributes.addClass(classes) }}>
+      {% endif %}
+        {% if menu_level != 0 %}
+          {% if menu_level == 2 %}
+            <span class="course-unit-icon"></span>
+          {% endif %}
+          {% if item.url %}
+            {% if menu_level == 2 %}
+              {{ link(item.title, item.url) }}
+            {% else %}
+              {% if item.is_expanded %}
+                <a href="{{ item.url }}" data-bs-toggle = "collapse" aria-expanded="true" data-bs-target="{{ item.target_id }}">{{ item.title }}</a>
+              {% else %}
+                <a class="collapsed" href="{{ item.url }}" data-bs-toggle = "collapse" aria-expanded="true" data-bs-target="{{ item.target_id }}">{{ item.title }}</a>
+              {% endif %}
+            {% endif %}
+          {% else %}
+            <div class="coming-soon-unit" data-bs-toggle="tooltip" title="Coming Soon">{{ item.title }}</div>
+          {% endif %}
+        {% endif %}
+        {% if item.below %}
+          {{ book_tree.book_links(item.below, attributes, menu_level + 1, item_key, child_ul_class) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

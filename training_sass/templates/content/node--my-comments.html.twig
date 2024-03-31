@@ -1,0 +1,76 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'discussion-topic',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }} id="forum-topic-wrapper-{{ node.id }}">
+    <div class="card card-comment">
+      <div class="col-12 content-actions">
+        <div class="menu-dots-icon">&nbsp;</div>
+        <div class="action-links">
+          <ul class="actions">
+            <li class="link edit-link">
+              <a href="{{ path('entity.node.edit_form', {'node': node.id}) }}">{{ 'Edit'|t }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2 topic-author-pic">{{ author_picture }}</div>
+        <div class="topic-title d-lg-none"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
+        <div class="col-12 topic-comment d-lg-none">{{ content.field_forum_topic_comment }}</div>
+        <div class="col-12 topic-author-wrapper d-lg-none">
+          {% set created_date = node.getCreatedTime|date('F j, Y') %}
+          <span class="submitted_by">By <a href="{{ url('entity.user.canonical', {'user': node.getOwnerId}) }}">{{ author_name }}</a></span>
+          <span class="submitted_date"> {{ created_date }} </span>
+          <span class="forum_topic_unit"><a href="{{url('entity.node.canonical', {'node' : forum_topic_unit.id})}}">{{ forum_topic_unit.getTitle() }}</a></span>
+          <span class="forum-topic-comments-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}"></span>
+        </div>
+        <div class="col-12 topic-comment-count-like-wrapper d-lg-none">
+          <div class="comment-count icon" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}">{{ comment_count }}</div>
+          <div class="like-comment icon">{{ content.rate_forum_topic }}</div>
+        </div>
+        <div class="col topic-info d-none d-lg-block">
+          <div class="topic-title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
+          {% set text = content.field_forum_topic_comment|render|striptags|trim %}
+          {% if text|length < 150 %}
+            <div class="comment-short">{{ content.field_forum_topic_comment }} </div>
+          {% else %}
+            <div class="comment-long">
+              <div class="topic-comment" data-bs-toggle="collapse" href="#collapse{{ node.id }}" role="button" aria-expanded="false" aria-controls="collapse{{ node.id }}">
+                <div class="above-fold">
+                  {{ (text|length > 200 ? text|slice(0, 201)|split(' ')|slice(0, -1)|join(' ') ~ '&hellip;' : text)|raw }} <a class="comment-view-more">View more</a>
+                </div>
+              </div>
+              <div class="topic-comment below-fold" data-bs-toggle="collapse" href="#collapse{{ node.id }}" role="button" aria-expanded="false" aria-controls="collapse{{ node.id }}">
+              </div>
+            </div>
+          {% endif %}
+          <div class="topic-comment collapse" id="collapse{{ node.id }}">{{ content.field_forum_topic_comment }}<a href="#collapse{{ node.id }}" data-bs-toggle="collapse" class="comment-view-less">View less</a></div>
+          <div class="topic-author-wrapper">
+            {% set created_date = node.getCreatedTime|date('F j, Y') %}
+            <span class="submitted_by">By <a href="{{ url('entity.user.canonical', {'user': node.getOwnerId}) }}">{{ author_name }}</a></span>
+            <span class="submitted_date"> {{ created_date }} </span>
+            <span class="forum_topic_unit"><a href="{{url('entity.node.canonical', {'node' : forum_topic_unit.id})}}">{{ forum_topic_unit.getTitle() }}</a></span>
+            <span class="forum-topic-comments-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}"></span>
+          </div>
+          <div class="topic-comment-count-like-wrapper">
+            <div class="comment-count icon" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}">{{ comment_count }}</div>
+            <div class="like-comment icon">{{ content.rate_forum_topic }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="see-comments-wrapper d-lg-none collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}"><button type="button" class="btn btn-secondary">{{ 'See comments and reply'|t }}</button></div>
+    <div id="collapse-{{ node.id }}" class="message collapse" aria-labelledby="notif-msg-1" data-parent="#course_notif_msgs" style="">{{ content|without('field_forum_topic_comment', 'rate_forum_topic') }}</div>
+  </div>
+</article>

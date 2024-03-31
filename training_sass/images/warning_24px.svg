@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>C681C15C-9898-4779-AC09-A092CBF4F27D</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <filter color-interpolation-filters="auto" id="filter-3">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1.000000 0 0 0 0 0.999619 0 0 0 0 0.999619 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Checkout-1---Mobile" transform="translate(-28.000000, -43.000000)">
+            <g id="System-Message" transform="translate(16.000000, 31.000000)">
+                <rect id="bg" fill="#F79420" x="0" y="0" width="416" height="72" rx="4"></rect>
+                <g id="icon/course/content/checkmark_24px-" transform="translate(12.000000, 12.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Background/Mask"></g>
+                    <g filter="url(#filter-3)" id="warning">
+                        <g mask="url(#mask-2)">
+                            <g transform="translate(3.000000, 3.000000)" fill-rule="nonzero" id="Shape">
+                                <path d="M9.5,17.8125 C4.90913302,17.8125 1.1875,14.090867 1.1875,9.5 C1.1875,4.90913302 4.90913302,1.1875 9.5,1.1875 C14.090867,1.1875 17.8125,4.90913302 17.8125,9.5 C17.8125,14.090867 14.090867,17.8125 9.5,17.8125 Z M9.5,19 C14.7467051,19 19,14.7467051 19,9.5 C19,4.25329488 14.7467051,0 9.5,0 C4.25329488,0 0,4.25329488 0,9.5 C0,14.7467051 4.25329488,19 9.5,19 Z" fill="#495057"></path>
+                                <path d="M8.314875,13.0625 C8.314875,12.6382471 8.54121121,12.2462213 8.90862499,12.0340948 C9.27603877,11.8219684 9.72871123,11.8219684 10.096125,12.0340948 C10.4635388,12.2462213 10.689875,12.6382471 10.689875,13.0625 C10.689875,13.7183381 10.1582131,14.25 9.502375,14.25 C8.84653686,14.25 8.314875,13.7183381 8.314875,13.0625 L8.314875,13.0625 Z M8.43125,5.9315625 C8.3881066,5.52283559 8.58185346,5.12529547 8.93036679,4.90744806 C9.27888012,4.68960065 9.72111988,4.68960065 10.0696332,4.90744806 C10.4181465,5.12529547 10.6118934,5.52283559 10.56875,5.9315625 L10.153125,10.096125 C10.1241735,10.4353038 9.84041216,10.6958757 9.5,10.6958757 C9.15958784,10.6958757 8.87582655,10.4353038 8.846875,10.096125 L8.43125,5.9315625 Z" fill="#000000"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>7CF1C147-161F-4704-988A-FC26212F2DB4</title>
+    <defs>
+        <rect id="path-1" x="660" y="360" width="600" height="224" rx="4"></rect>
+        <filter x="-2.8%" y="-6.0%" width="105.5%" height="114.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="32" height="32"></rect>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course-Information-Page---Overlay---Share" transform="translate(-911.000000, -512.000000)">
+            <g id="Header-Section" fill="#3F6183" transform="translate(0.000000, 56.000000)">
+                <rect id="bg" x="0" y="0" width="1920" height="552"></rect>
+            </g>
+            <rect id="overlay" fill-opacity="0.8" fill="#1C1D1F" x="0" y="0" width="1920" height="1024"></rect>
+            <g id="bg_pop_up_window">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <rect stroke="#D3D5D8" stroke-width="1" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="660.5" y="360.5" width="599" height="223" rx="4"></rect>
+            </g>
+            <g id="Social-Media-Buttons" transform="translate(844.000000, 512.000000)">
+                <g id="icon/social-media/facebook_24px" transform="translate(67.000000, 0.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Background/Mask"></g>
+                    <path d="M2.66927083,16.0012716 C2.66927083,22.6546046 7.54393768,28.1692708 13.9186045,29.1732686 L13.9186045,19.855938 L10.5319379,19.855938 L10.5319379,16.0012716 L13.9186045,16.0012716 L13.9186045,13.0639381 C13.9186045,9.71993828 15.9092712,7.87593746 18.9532712,7.87593746 C19.9257157,7.87593746 20.9212711,7.96260431 21.9399376,8.13593801 L21.9399376,11.4146042 L20.2546043,11.4146042 C18.601271,11.4146042 18.0839373,12.4439371 18.0839373,13.4986038 L18.0839373,15.9986038 L21.7786039,15.9986038 L21.1879374,19.8532715 L18.0839373,19.8532715 L18.0839373,29.1706034 C24.4586042,28.1719368 29.3332698,22.6559385 29.3332698,16.0012716 C29.3332698,8.63860512 23.363938,2.66927083 16.0012716,2.66927083 C8.63860512,2.66927083 2.66927083,8.63860512 2.66927083,16.0012716 Z" id="brand-/-facebook" fill="#0096D7" mask="url(#mask-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

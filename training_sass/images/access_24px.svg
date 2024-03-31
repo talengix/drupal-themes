@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>4453B4C7-4DEC-4CCD-9385-BABFA5C3A8EE</title>
+    <defs>
+        <rect id="path-1" x="0" y="64" width="304" height="793" rx="4"></rect>
+        <filter x="-6.6%" y="-2.0%" width="113.2%" height="105.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="6" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.28627451   0 0 0 0 0.31372549   0 0 0 0 0.341176471  0 0 0 0.04 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-3" x="0" y="0" width="24" height="24"></rect>
+        <filter id="filter-5">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.286275 0 0 0 0 0.313725 0 0 0 0 0.341176 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="public-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Course-Information-Page" transform="translate(-1336.000000, -632.000000)">
+            <g id="Sidebar" transform="translate(1312.000000, 448.000000)">
+                <g id="bg">
+                    <use fill="none" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <rect stroke="#EBEBEB" stroke-width="0.5" stroke-linejoin="square" fill="none" fill-rule="evenodd" x="0.25" y="64.25" width="303.5" height="792.5" rx="4"></rect>
+                </g>
+                <g id="Course-details" transform="translate(24.000000, 80.000000)">
+                    <g id="icon/course/menu/discussions_24px" transform="translate(0.000000, 104.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Background/Mask"></g>
+                        <g filter="url(#filter-5)" id="course_access">
+                            <g mask="url(#mask-4)">
+                                <g transform="translate(5.000000, 4.000000)" fill="#000000" fill-rule="nonzero" id="Shape">
+                                    <path d="M0.000893783685,11.5006316 C0.000893783685,11.776774 0.224751409,12.0006316 0.500893784,12.0006316 L12.2938938,12.0006316 L9.14689378,15.1466316 C8.951385,15.3421404 8.95138501,15.6591228 9.14689381,15.8546316 C9.3424026,16.0501404 9.65938498,16.0501404 9.85489378,15.8546316 L13.8548938,11.8546316 C13.9489355,11.7608273 14.0017876,11.6334589 14.0017876,11.5006316 C14.0017876,11.3678043 13.9489355,11.2404359 13.8548938,11.1466316 L9.85489378,7.1466316 C9.65938498,6.95112281 9.34240259,6.95112282 9.1468938,7.14663162 C8.951385,7.34214041 8.951385,7.6591228 9.14689378,7.8546316 L12.2938938,11.0006316 L0.500893784,11.0006316 C0.224751409,11.0006316 0.000893783685,11.2244892 0.000893783685,11.5006316 Z M14.0008938,4.5006316 C14.0008938,4.77677398 13.7770362,5.0006316 13.5008938,5.0006316 L1.70789378,5.0006316 L4.85489378,8.1466316 C4.9813658,8.27310362 5.03075875,8.4574406 4.98446678,8.63020459 C4.9381748,8.80296858 4.80323077,8.93791262 4.63046678,8.98420459 C4.45770279,9.03049657 4.2733658,8.98110362 4.14689378,8.8546316 L0.146893784,4.8546316 C0.052852083,4.76082734 0,4.63345886 0,4.5006316 C0,4.36780434 0.052852083,4.24043586 0.146893784,4.1466316 L4.14689378,0.146631601 C4.34240259,-0.0488772004 4.65938498,-0.0488772004 4.85489378,0.146631601 C5.05040259,0.342140403 5.05040259,0.6591228 4.85489378,0.854631601 L1.70789378,4.0006316 L13.5008938,4.0006316 C13.7770362,4.0006316 14.0008938,4.22448923 14.0008938,4.5006316 Z"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

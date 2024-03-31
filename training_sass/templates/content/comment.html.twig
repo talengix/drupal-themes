@@ -1,0 +1,89 @@
+{% if threaded %}
+  {{ attach_library('classy/drupal.comment.threaded') }}
+{% endif %}
+{%
+set classes = [
+'comment',
+'discussion-reply',
+'js-comment',
+status != 'published' ? 'comment--' ~ status,
+comment.owner.anonymous ? 'by-anonymous',
+author_id and author_id == commented_entity.getOwnerId() ? 'by-' ~ commented_entity.getEntityTypeId() ~ '-author',
+'clearfix',
+forum_topic_unit.field_unit_discussions_enable.0.value == 0 ? 'discussions-disabled'
+]
+%}
+<article role="article" {{ attributes.addClass(classes)|without('role') }}>
+  <div class="card card-comment">
+    <div class="row">
+      <div class="col-12 content-actions">
+        {% if forum_topic_unit.field_unit_discussions_enable.0.value and (user.id == comment.getOwnerId or is_admin) %}
+          <div class="menu-dots-icon">&nbsp;</div>
+          <div class="action-links">
+            <ul class="actions">
+              <li class="link edit-link">
+                <a href="{{ path('ajax_comments.edit', {'comment': comment.id}) }}" class="use-ajax js-use-ajax-comments js-ajax-comments-reply" data-wrapper-html-id="node-forum-comment-forum">{{ 'Edit'|t }}</a>
+              </li>
+              <li class="link report-link">
+                {{ content.flag_forum_comment_report }}
+              </li>
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="comment__meta col-2">
+        {{ user_picture }}
+        {% if parent %}
+          <p class="sr-only"> {{ parent }}</p>
+        {% endif %}
+      </div>
+      <div{{content_attributes.addClass(['comment__content','col-10'])}}>
+        {% set created_date = comment.getCreatedTime|date('F j, Y') %}
+        <div{{title_attributes.addClass('card-title')}}>
+          {#{% if profile_privacy == 'private' %}
+            <span class="author-name">{{ author }}</span>
+          {% else %}#}
+            <a href="{{ url('trainingaid.user_profile.info', {'user': comment.getOwnerId}) }}">{{ author }}</a>
+          {#{% endif %}#}
+          <span class="comment-date"> on {{ created_date }} at {{ comment.getCreatedTime|date('H:i') }}</span>
+        </div>
+        <div class="d-none d-lg-block">{{ content|without('links', 'rate_comment_forum_comments', 'flag_forum_comment_report') }}</div>
+        {# {% if content.links %} #}
+          <div class="comment-links-wrapper d-none d-lg-flex">
+            {# {% if ".0" not in comment.thread.0.value %} #}
+              <div class="comment-count icon">{{ comment_count }}</div>
+            {#                   {% endif %}
+            {% if forum_topic_unit.field_unit_discussions_enable.0.value and (".0" not in comment.thread.0.value) and is_course_in_complete_period %} #}
+              <div class="reply-link"><a href="{{ path('ajax_comments.reply', {'entity_type': 'node', 'entity': comment.entity_id.0.target_id, 'field_name': 'comment_forum', 'pid': comment.id}) }}" class="use-ajax js-use-ajax-comments js-ajax-comments-reply" data-wrapper-html-id="node-forum-comment-forum">{{ 'Reply'|t }}</a></div>
+            {# {% endif %} #}
+            <div class="like-comment icon">{{ content.rate_comment_forum_comments }}</div>
+            <div class="likes-dropdown collapse" id="likesDrop">
+            {% if not is_course_discussions %}
+              {{ drupal_view('votingapi_votes', 'likes_dropdown', comment.cid.value) }}
+            {% endif %}
+            </div>
+          </div>
+        {# {% endif %} #}
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-lg-none col-12 comment-text">{{ content|without('links', 'rate_comment_forum_comments', 'flag_forum_comment_report') }}</div>
+      {% if content.links %}
+        <div class="comment-links-wrapper col-12 d-lg-none">
+          {% if ".0" not in comment.thread.0.value %}
+            <div class="comment-count icon">{{ comment_count }}</div>
+          {% endif %}
+          {% if forum_topic_unit.field_unit_discussions_enable.0.value and (".0" not in comment.thread.0.value) and is_course_in_complete_period %}
+            {# <div class="comment-count">{{ comment_count }}</div> #}
+            <div class="reply-link"><a href="{{ path('ajax_comments.reply', {'entity_type': 'node', 'entity': comment.entity_id.0.target_id, 'field_name': 'comment_forum', 'pid': comment.id}) }}" class="use-ajax js-use-ajax-comments js-ajax-comments-reply" data-wrapper-html-id="node-forum-comment-forum">{{ 'Reply'|t }}</a></div>
+          {% else %}
+            <div class="comment-count icon">{{ comment_count }}</div>
+          {% endif %}
+          <div class="like-comment icon">{{ content.rate_comment_forum_comments }}</div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</article>

@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *
+ * @ingroup themeable
+ */
+#}
+{#<article{{ attributes }}>
+  {{- product|without('variation_attributes') -}}
+</article>#}
+
+{% set product_row = "product-" ~ product_entity.product_id.value %}
+
+<div class="row no-gutters schedule-course-row">
+  <div class="card-header" id="{{ product_row }}">
+    <div class="schedule-course-row-data collapsed d-flex align-items-center" data-bs-toggle="collapse" data-bs-target="{{ '#' ~ 'collapse-' ~ product_row }}" aria-expanded="false" aria-controls="{{ 'collapse-' ~ product_row }}">
+      <div class="row no-gutters schedule-course-data-wrapper">
+        <div class="schedule-course-dates d-flex align-items-center"><span class="{{ course_registration_status }}-dot register-status-icon"></span><span class="course-dates-label d-flex align-items-center d-xl-none">{{ 'Dates:'|t }}</span>{{ product.field_course_dates }}</div>
+        <div class="schedule-course-length d-none d-xl-flex align-items-center">{{ product.field_course_length }}</div>
+        <div class="schedule-course-type d-none d-xl-flex align-items-center">{{ product.field_course_type[0]['#plain_text'] }}</div>
+        {#{% if product.field_course_type[0]['#plain_text'] == 'In-Person' %}
+          <div class="schedule-course-location d-none d-xl-block">{{ product.field_country_state_city}}</div>
+        {% else %}#}
+          <div class="schedule-course-style d-none d-xl-flex align-items-center">{{ product.field_course_format }}</div>
+        {#{% endif %}#}
+        <div class="schedule-course-language d-none d-xl-flex align-items-center">{{ product.field_course_language }}</div>
+        <div class="schedule-course-price d-none d-xl-flex align-items-center">{{ price|commerce_price_format }}</div>
+      </div>
+    </div>
+  </div>
+  {% if course_registration_status == 'red' %}
+    <div class="schedule-course-register no-link d-none d-xl-block">{{ 'Sold Out'|t }}</div>
+  {% else %}
+    {% if price == "0 EUR" %}
+    <div class="schedule-course-register d-none d-xl-flex align-items-center">N/A</div>
+    {% elseif course_registration_type == 'internal' %}
+      <div class="schedule-course-register d-none d-xl-block">{{ product.variations }}</div>
+    {% elseif course_registration_type == 'coming_soon' %}
+      <div class="schedule-course-register no-link d-none d-xl-block"><div class="coming-soon">{{ 'Coming Soon'|t }}</div></div>
+    {% else %}
+      {% if course_register_has_link == true %}
+        <div class="schedule-course-register d-none d-xl-flex align-items-center">{{ product.field_course_register_url }}</div>
+      {% else %}
+        <div class="schedule-course-register no-link d-none d-xl-block">{{ product.field_course_register_status }}</div>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+</div>
+<div id="{{ 'collapse-' ~ product_row }}" class="collapse row no-gutters" aria-labelledby="{{ product_row }}" data-parent="#course-schedule-data">
+  <div class="course-schedule-card-body card-body">
+    <div class="schedule-course-id"><span class="label">{{ 'Course ID:'|t }}</span>&nbsp;{{ product_id }}</div>
+    <div class="schedule-course-length d-xl-none"><span class="label">{{ 'Length:'|t }}</span>{{ product.field_course_length }}</div>
+    <div class="schedule-course-type d-xl-none"><span class="label">{{ 'Type:'|t }}</span>{{ product.field_course_type[0]['#plain_text'] }}</div>
+    {% if product.field_course_type[0]['#plain_text'] == 'In-Person' %}
+      <div class="schedule-course-location"><span class="label">{{ 'Location:'|t }}</span>{{ product.field_country_state_city }}</div>
+    {% endif %}
+      <div class="schedule-course-style d-xl-none"><span class="label">{{ 'Format:'|t }}</span>{{ product.field_course_format }}</div>
+    {#{% endif %}#}
+    <div class="course-trainers">{{ product.field_course_trainer }}</div>
+    <div class="schedule-course-language d-xl-none"><span class="label">{{ 'Language:'|t }}</span>{{ product.field_course_language }}</div>
+    <div class="schedule-course-price d-xl-none"><span class="label">{{ 'Price:'|t }}</span>{{ price|commerce_price_format }}</div>
+    <div class="course-desc">{{ product.body }}</div>
+    {% if course_registration_status != 'red' %}
+      <div class="course-buttons row no-gutters">
+        {% if price == "0 EUR" %}
+          <div class="course-register no-link col-12 col-lg-3">N/A</div>
+        {% elseif course_registration_type == 'internal' %}
+          <div class="course-register col-12 col-lg-3">{{ product.variations }}</div>
+        {% elseif course_registration_type == 'coming_soon'%}
+          <div class="course-register no-link col-12 col-lg-3"><div class="coming-soon btn btn-secondary disabled">{{ 'Coming Soon'|t }}</div></div>
+        {% else %}
+          {% if course_register_has_link == true %}
+            <div class="course-register col-12 col-lg-3">{{ product.field_course_register_url }}</div>
+          {% else %}
+            <div class="course-register no-link col-12 col-lg-3">{{ product.field_course_register_status }}</div>
+          {% endif %}
+        {% endif %}
+        {# <div class="course-save-link col-12 col-lg-6">{{ save_course_flag }}</div> #}
+      </div>
+    {% endif %}
+  </div>
+</div>

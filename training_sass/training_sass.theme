@@ -1,0 +1,659 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the SASS Starterkit subtheme.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Url;
+use Drupal\commerce_product\Entity\Product;
+use Drupal\Core\Cache\Cache;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\TermInterface;
+
+/**
+ * Implements hook_form_system_theme_settings_alter() for settings form.
+ *
+ * Replace Barrio setting options with subtheme ones.
+ *
+ * Example on how to alter theme settings form
+ */
+function training_sass_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = [
+    'bg-primary' => t('Primary'),
+    'bg-secondary' => t('Secondary'),
+    'bg-light' => t('Light'),
+    'bg-dark' => t('Dark'),
+    'bg-white' => t('White'),
+    'bg-transparent' => t('Transparent'),
+  ];
+  $form['components']['navbar']['bootstrap_barrio_navbar_background']['#options'] = [
+    'bg-primary' => t('Primary'),
+    'bg-secondary' => t('Secondary'),
+    'bg-light' => t('Light'),
+    'bg-dark' => t('Dark'),
+    'bg-white' => t('White'),
+    'bg-transparent' => t('Transparent'),
+  ];
+
+
+  $form['fonts']['fonts']['bootstrap_barrio_google_fonts']['#options']['open_sans'] = 'Open Sans';
+}
+
+
+function training_sass_preprocess_page(&$variables) {
+  $fonts = theme_get_setting('bootstrap_barrio_google_fonts');
+  if ($fonts) {
+    $variables['#attached']['library'][] = (in_array($fonts, ['open_sans']) ? 'training_sass' : 'bootstrap_barrio' ) . '/' . $fonts;
+  }
+  $current_route_name = \Drupal::routeMatch()->getRouteName();
+  $par = \Drupal::routeMatch()->getParameters();
+
+  $variables['checkout_login'] = '';
+  $checkoutCookie = \Drupal::request()->cookies->get('Drupal_visitor_commerce_checkout_redirect_anonymous');
+
+  if($current_route_name === 'user.login' && $checkoutCookie === null) {
+    $variables['checkout_login'] = 'hidden';
+  }
+
+  if($current_route_name == 'commerce_checkout.form') {
+    $order = \Drupal::routeMatch()->getParameter('commerce_order');
+    // Get order items
+    $order_items = $order->getItems();
+
+    // get order id
+    $order_id = $order->id();
+
+    // get total price and currency
+    $total_price = $order->getTotalPrice();
+    
+    // Get only title and price in order items put it into array
+    $order_items = array_map(function($order_item) {
+      return [
+        'title' => $order_item->getTitle(),
+        'price' => $order_item->getUnitPrice()->getNumber(),
+        'quantity' => $order_item->getQuantity(), // Add quantity information
+        // add product id
+        'product_id' => $order_item->getPurchasedEntity()->id(),
+
+      ];
+    }, $order_items);
+    
+    // add order items to drupalSettings
+    $variables['#attached']['drupalSettings']['totalPrice'] = $total_price->getNumber();
+    $variables['#attached']['drupalSettings']['currency'] = $total_price->getCurrencyCode();
+    $variables['#attached']['drupalSettings']['orderItems'] = $order_items;
+    $variables['#attached']['drupalSettings']['orderId'] = $order_id;
+
+  }
+
+  if (isset($variables['node']) && is_object($variables['node'])) {
+    $type = $variables['node']->getType();
+    if ($type && in_array($type, ['course_unit', 'quiz'])) {
+      // Disable Breadcrumb
+      unset($variables['page']['breadcrumb']);
+      $variables['is_course_content_page'] = TRUE;
+    }
+  } else if(in_array($current_route_name, ['view.course_live_sessions.page_1', 'view.course_discussions.page_1', 'view.course_discussions.page_2', 'view.course_discussions.page_3', 'view.course_announcements.page_1', 'view.course_certificate.page_1', 'view.course_resources.page_1', 'view.course_facilitators_and_contributors.page_1'])) {
+    $course_related_pages = ['view.course_live_sessions.page_1' => 'live-sessions',
+      'view.course_discussions.page_1' => 'discussions',
+      'view.course_discussions.page_2' => 'my-posts',
+      'view.course_discussions.page_3' => 'likes',
+      'view.course_announcements.page_1' => 'course-announcements',
+      'view.course_certificate.page_1' => 'course-certificate',
+      'view.course_resources.page_1' => 'course-resources',
+      'view.course_facilitators_and_contributors.page_1' => 'course-members'];
+    unset($variables['page']['breadcrumb']);
+    $variables['is_course_related_page'] = TRUE;
+    $variables['course_related_page'] = $course_related_pages[$current_route_name];
+  }
+  if((isset($variables['is_course_content_page']) && $variables['is_course_content_page']) || (isset($variables['is_course_related_page']) && $variables['is_course_related_page'])) {
+      if(isset($variables['node'])) {
+        $book_id = $variables['node']->book['bid'];
+        $database = \Drupal::database();
+        $query = $database->query("SELECT course_ref.field_course_product_target_id FROM node__field_course_product course_ref WHERE course_ref.entity_id = :nid", [':nid' => $book_id]);
+        $course_id = $query->fetchField();
+      } else {
+        $course_id = \Drupal::routeMatch()->getParameter('arg_0');
+      }
+      $course = Product::load($course_id);
+      $variables['is_course_in_complete_period'] = is_course_in_complete_period($course);
+      $variables['is_course_in_access_period'] = is_course_in_access_period($course);
+      set_course_access_temp_storage($course_id, $variables['is_course_in_complete_period'], $variables['is_course_in_access_period']);
+      $variables['course_id'] = $course_id;
+      $course_data = get_course_data($course);
+      if (isset($course_data['course_partner_details'])) {
+        $variables['course_partner_details'] = $course_data['course_partner_details'];
+      }
+      if (isset($course_data['course_menu_tabs'])) {
+        $variables['course_menu_tabs'] = $course_data['course_menu_tabs'];
+      }
+      if (isset($course_data['course_notification_messages'])) {
+        $variables['course_notification_messages'] =  $course_data['course_notification_messages'];
+      }
+      if (isset($course_data['course_unit_completion_flag'])) {
+        $variables['course_unit_completion_flag'] =  $course_data['course_unit_completion_flag'];
+      }
+    //dump($variables);
+  }
+}
+
+
+function training_sass_preprocess_comment__comment_forum__forum(&$variables) {
+  $routeName = \Drupal::routeMatch()->getRouteName();
+  $variables['is_course_discussions'] = $routeName == 'view.course_discussions.page_1' || $routeName == 'views.ajax';
+}
+
+/**
+ * Preprocess Field Hook
+ */
+function training_sass_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+
+  if ($element['#field_type'] == 'comment') {
+    if ($element[0]['#comment_type'] == "comment_forum") {
+      if (get_course_access_temp_storage("is_course_in_complete_period")) {
+        //$variables['comment_form'] = TRUE;
+      } else {
+        $variables['comment_form'] = FALSE;
+      }
+    }
+  }
+
+  // Changing the Course Information Page "field_ci_overview" field label to "Overview".
+  if ($element['#field_name'] == 'field_ci_overview') {
+    $variables['label'] = 'Overview';
+  }
+
+  // Changing the Course Information Page "field_ci_schedule" field label to "Schedule".
+  if ($element['#field_name'] == 'field_ci_schedule') {
+    $course_format = '';
+    $schedule_id = $variables['element']['#object']->field_ci_schedule[0] ? $variables['element']['#object']->field_ci_schedule[0]->target_id : null;
+
+    if(isset($schedule_id)) {
+      $scheduleObj = Paragraph::load($schedule_id);
+
+      $courseId = $scheduleObj->field_course_schedule[0] ? $scheduleObj->field_course_schedule[0]->target_id: null;
+
+      if(isset($courseId)) {
+        $courseObject = Product::load($courseId);
+
+        $courseFormatId = $courseObject->field_course_format[0] ? $courseObject->field_course_format[0]->target_id : null;
+        
+        if(isset($courseFormatId)) {
+          $courseFormat = Term::load($courseFormatId);
+          if($courseFormat instanceof TermInterface) {
+            $course_format = strtolower($courseFormat->name->value);
+          }
+        }
+
+      }
+
+    }
+    $variables['course_format'] = $course_format;
+    $variables['label'] = 'Schedule';
+  }
+
+  // Changing the Course Information Page "field_ci_syllabus" field label to "Syllabus".
+  if ($element['#field_name'] == 'field_ci_syllabus') {
+    $variables['label'] = 'Syllabus';
+  }
+
+  // Changing the Paragrapg "Course Schedule" field "field_course_schedule_custom" field label to "Custom Training".
+  if ($element['#field_name'] == 'field_course_schedule_custom') {
+    $variables['label'] = 'Custom Training';
+  }
+
+  // Changing the Course Information Page field "field_course_trainer" field label to "Trainers and Contributors".
+  if ($element['#field_name'] == 'field_course_trainer') {
+    $variables['label'] = 'Trainers and Contributors:';
+  }
+
+  if ($element['#field_name'] == 'field_ci_contributors') {
+    $variables['label'] = 'Facilitators and Contributors';
+  }
+
+  if ($element['#field_name'] == 'field_ci_testimonials') {
+    $variables['label'] = 'What are others saying about this training';
+  }
+  if ($element['#field_name'] == 'field_course_schedule') {
+    $vid = 'course_type';
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+      $course_types[$term->tid] = $term->name;
+    }
+    $variables['course_types'] = $course_types;
+  }
+}
+
+/**
+ * @param $suggestions
+ * @param array $variables
+ */
+function training_sass_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element_classes = isset($variables['element']['#attributes']['class']) ? $variables['element']['#attributes']['class'] : [];
+
+  if ($element_classes && in_array('button--add-to-cart', $element_classes)) {
+    $suggestions[] = 'input__button_add_to_cart' ;
+  }
+}
+
+/**
+ * Implements hook_preprocess.
+ */
+function training_sass_preprocess(&$variables, $hook) {
+  $variables['base_path'] = base_path();
+}
+
+function training_sass_preprocess_book_all_books_block(&$variables) {
+  $menu_key = 0;
+  $current_node = \Drupal::routeMatch()->getParameter('node');
+  if ($current_node instanceof \Drupal\node\NodeInterface) {
+    // You can get nid and anything else you need from the node object.
+    $current_nid = $current_node->id();
+    $book_id = $current_node->book['bid'];
+    foreach ($variables['book_menus'] as $key => $book_menu) {
+      if ($book_menu['id'] == $book_id) {
+        $menu_key = $key;
+        break;
+      }
+    }
+  }
+
+  $first_key = key($variables['book_menus'][$menu_key]['menu']['#items']);
+  foreach($variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'] as $in_key => $values) {
+    if (!array_key_exists($current_nid, $values['below'])) {
+      $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['is_expanded'] = FALSE;
+      $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['is_collapsed'] = TRUE;
+    }
+    $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['attributes']['class'] = ['course-module'];
+    $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['attributes']['id'] = 'course-module-' . $in_key;
+    $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['target_id'] = '#parent-' . $in_key;
+    if (isset($values['below']) && $values['below']) {
+      foreach ($values['below'] as $unit_id => $unit) {
+        if (isset($variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'])) {
+          $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'] = ['course-unit'];
+          $node = Node::load($unit_id);
+          $node_type = $node->getType();
+          if ($node_type == 'quiz') {
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'type-' . $node_type;
+            //$quiz_id = $node->get('field_quiz')->get(0)->getValue()['target_id'];
+            //$variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['url'] = Url::fromRoute('entity.quiz.take', ['quiz' => $quiz_id]);
+
+          } else if ($node_type == 'course_unit') {
+            $unit_category = $node->get('field_unit_category')->entity->getName();
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'type-' . strtolower($unit_category);
+          }
+          if (!is_course_unit_accessible($node)) {
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'coming-soon';
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['url'] = '';
+          } else {
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'unit-accessible';
+          }
+          if (is_course_unit_completed($node)) {
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'course-unit-completed';
+          } elseif (is_course_unit_visited($node)) {
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'course-unit-visited';
+          }
+          if ($current_nid == $unit_id) {
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['is_expanded'] = TRUE;
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['attributes']['class'][] = 'menu-item--expanded';
+            $variables['book_menus'][$menu_key]['menu']['#items'][$first_key]['below'][$in_key]['below'][$unit_id]['attributes']['class'][] = 'active-course-unit';
+          }
+        }
+      }
+    }
+  }
+}
+function training_sass_form_alter(&$form, &$form_state, $form_id){
+    if ($form_id == 'mailchimp_signup_subscribe_block_subscribe_to_newsletter_form') {
+        unset( $form['mergevars']['EMAIL']['#title']);
+        $form['mergevars']['EMAIL']['#attributes'] = array('placeholder'=> t('Email'),);
+        $form['mergevars']['FNAME']['#attributes'] = array('placeholder'=> t('First Name'),);
+        $form['mergevars']['LNAME']['#attributes'] = array('placeholder'=> t('Last Name'),);
+        $form['mergevars']['ORG']['#attributes'] = array('placeholder'=> t('Organization'),);
+        $form['mailchimp_lists']['#weight'] = 9999;
+        $html = '<p>By clicking "Subscribe", you agree to our <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>, and give TrainingAid the permission to use the data provided by you for the purpose of sending the newsletter. You will be able to unsubscribe using the links at the bottom of every newsletter.</p>';
+
+        $form['mymarkup'] = array(
+          '#type' => 'markup',
+          '#markup' => $html,
+        );
+            }
+}
+/**
+ * Implements hook_preprocess_node.
+ */
+function training_sass_preprocess_node(&$variables) {
+  if ($variables['node']->getType() == 'course_unit'|| $variables['node']->getType() == 'quiz') {
+    $variables['is_course_in_complete_period'] = get_course_access_temp_storage("is_course_in_complete_period");
+    if (is_null($variables['is_course_in_complete_period'])) {
+      $node = $variables['node'];
+      $course_content = Node::load($node->book['p1']);
+      if (!$course_content->get('field_course_product')->isEmpty()) {
+        $course = Product::load($course_content->get('field_course_product')->getValue()[0]['target_id']);
+        $variables['is_course_in_complete_period'] = is_course_in_complete_period($course);
+      }
+    }
+    Cache::invalidateTags(['node:' . $variables['node']->id()]);
+
+    if ($variables['node']->getType() == 'quiz') {
+      $variables['quiz_completed'] = FALSE;
+      if ($qid = $variables['node']->get('field_quiz')->getValue()[0]['target_id']) {
+        $database = \Drupal::database();
+        $query = "SELECT result_id FROM quiz_result WHERE qid = :qid AND score = 100";
+        if ($database->query($query,[':qid' => $qid])->fetchField()) {
+          $variables['quiz_completed'] = TRUE;
+        }
+      }
+    }
+  }
+  if ($variables['node']->getType() == 'forum') {
+    $variables['comment_count'] = $variables['node']->get('comment_forum')->comment_count;
+    $taxonomy_forum_id = $variables['node']->get('taxonomy_forums')->get(0)->getValue()['target_id'];
+    $taxonomy_forum = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($taxonomy_forum_id);
+    $variables['course_id'] = $taxonomy_forum->get('field_course_product')[0]->getValue()['target_id'];
+    $course = Product::load($variables['course_id']);
+    $variables['is_course_in_complete_period'] = is_course_in_complete_period($course);
+    $variables['forum_topic_unit'] = get_unit_by_forum($taxonomy_forum);
+    $variables['created_date'] = date('F j, Y', $variables['node']->getCreatedTime());
+    $diff = date('U') - $variables['node']->getCreatedTime();
+    if ($diff) {
+      $days = $diff / 60/ 60/ 24;
+      if ($days < 1) {
+        $interval = date('U') - $variables['node']->get('created')[0]->getValue()['value'];
+        $variables['created_date'] = calculate_time_ago_interval($interval);
+        $variables['created_date'] = str_replace('ago', '', $variables['created_date']);
+      }
+    }
+    $variables['author_name'] = get_author_name($variables['author_picture']['#user']);
+    $variables['profile_privacy'] = get_user_profile_privacy($variables['author_picture']['#user']);
+    //if ($variables['profile_privacy'] == 'private') {
+    $variables['author_picture']['#view_mode'] = 'private_profile_picture';
+    //}
+  }
+  if ($variables['node']->getType() == 'article' || $variables['node']->getType() == 'resource') {
+    $bookmark_content_flag_link = [
+      '#lazy_builder' => ['flag.link_builder:build', [
+        'node',
+        $variables['node']->id(),
+        'bookmark_content',
+        ]],
+      '#create_placeholder' => TRUE,
+    ];
+    $variables['bookmark_content_flag_link'] = $bookmark_content_flag_link;
+  }
+}
+
+/**
+ * Implements hook_preprocess_comment.
+ */
+function training_sass_preprocess_comment(&$variables) {
+  $thread = $variables['comment']->get('thread')->get(0)->getValue()['value'];
+  $entity_id = $variables['comment']->get('entity_id')->get(0)->getValue()['target_id'];
+  $forum = Node::load($entity_id);
+  $taxonomy_forum_id = $forum->get('taxonomy_forums')->get(0)->getValue()['target_id'];
+  $taxonomy_forum = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($taxonomy_forum_id);
+  if ($taxonomy_forum) {
+    $variables['forum_topic_unit'] = get_unit_by_forum($taxonomy_forum);
+  }
+  $thread = trim($thread, "/");
+  $database = \Drupal::database();
+  $query = $database->query("SELECT count(*) AS comment_count FROM comment_field_data WHERE entity_id = $entity_id AND thread like '". ($thread.".") ."%'");
+  $comment_count = $query->fetchField();
+  //$comment_count = $comment_count - 1;
+  if ($comment_count > 0) {
+    $variables['comment_count'] = $comment_count;
+  }
+  $variables['author'] = get_author_name($variables['user_picture']['#user']);
+  $variables['profile_privacy'] = get_user_profile_privacy($variables['user_picture']['#user']);
+  //if ($variables['profile_privacy'] == 'private') {
+  $variables['user_picture']['#view_mode'] = 'private_profile_picture';
+  $variables['is_course_in_complete_period'] = get_course_access_temp_storage('is_course_in_complete_period');
+  //}
+}
+
+/**
+ * Get User Profile Privacy
+ */
+function get_user_profile_privacy($user) {
+  if (!$user->get('field_user_profile_privacy')->isEmpty() && $user->get('field_user_profile_privacy')[0]->getValue()['value'] == 'Only Me') {
+    return 'private';
+  } else {
+    return 'public';
+  }
+}
+
+/**
+ * Get Author Name
+ */
+function get_author_name($user) {
+  if (!$user->get('field_user_first_name')->isEmpty()) {
+    $author_name = $user->get('field_user_first_name')[0]->getValue()['value'];
+    if (!$user->get('field_user_last_name')->isEmpty()) {
+      $author_name .= ' ' . $user->get('field_user_last_name')[0]->getValue()['value'];
+    }
+    return $author_name;
+  }
+}
+
+function get_unit_by_forum($forum) {
+  if ($forum) {
+    $unit_id = $forum->get('field_course_unit')->get(0)->getValue()['target_id'];
+    return \Drupal::entityTypeManager()->getStorage('node')->load($unit_id);
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_preprocess_paragraph.
+ */
+function training_sass_preprocess_paragraph(&$variables) {
+  if ($variables['paragraph']->getType() == 'icon_text' && isset($variables['elements']['field_icon_image_type']['#object'])) {
+    $image = $variables['elements']['field_icon_image_type']['#object']->get('field_icon_image_type')->get(0)->getValue()['value'];
+    $variables['attributes']['class'][] = 'icon-image-' . $image;
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_book_navigation.
+ */
+function training_sass_preprocess_book_navigation(&$variables) {
+  $variables['next_unit_coming_soon'] = $variables['prev_unit_coming_soon'] = FALSE;
+
+  if ($variables['base_path'] !== '/') {
+    $next_url_alias = str_replace($variables['base_path'], '', $variables['next_url']);
+    $prev_url_alias = str_replace($variables['base_path'], '', $variables['prev_url']);
+  } else {
+    $next_url_alias = $variables['next_url'];
+    $prev_url_alias = $variables['prev_url'];
+  }
+
+
+  if ($url_object = \Drupal::service('path.validator')->getUrlIfValid('/' . $next_url_alias)) {
+    $route_name = $url_object->getRouteName();
+    $next_nid = $url_object->getrouteParameters()['node'];
+  } else {
+    $pieces = explode('/', $next_url_alias);
+    $next_nid = end($pieces);
+  }
+
+  if ($url_object = \Drupal::service('path.validator')->getUrlIfValid('/' . $prev_url_alias)) {
+    $route_name = $url_object->getRouteName();
+    $prev_nid = $url_object->getrouteParameters()['node'];
+  } else {
+    $pieces = explode('/', $prev_url_alias);
+    $prev_nid = end($pieces);
+  }
+  if ($prev_nid) {
+    $prev_node = Node::load($prev_nid);
+    if ($prev_node) {
+      if ($prev_node->getType() == 'course_module') {
+        $book_tree = \Drupal::service('book.manager')->bookTreeAllData($variables['book_id']);
+        $book_tree = reset($book_tree);
+        if ($book_tree['below']) {
+          foreach($book_tree['below'] as $each) {
+            if ($each['link']['nid'] == $prev_node->id()) {
+              break;
+            } else {
+              $prev_modules[] = $each;
+            }
+          }
+        }
+        if (isset($prev_modules) && $prev_modules) {
+          $prev_modules = array_reverse($prev_modules);
+          foreach ($prev_modules as $module) {
+            if ($module['below']) {
+              $prev_unit = array_reverse($module['below']);
+              $prev_unit = reset($prev_unit);
+              $prev_unit_node = Node::load($prev_unit['link']['nid']);
+              $variables['prev_title'] = $prev_unit_node->getTitle();
+              $variables['prev_url'] = $prev_unit_node->toUrl()->toString();
+              if (!$prev_unit_node->get('field_unit_accces_enable')->isEmpty()) {
+                if (!$prev_unit_node->get('field_unit_accces_enable')->getValue()[0]['value']) {
+                  $variables['prev_unit_coming_soon'] = TRUE;
+                }
+              } else {
+                $variables['prev_unit_coming_soon'] = TRUE;
+              }
+              break;
+            }
+          }
+        } else {
+          $variables['prev_title'] = '';
+          $variables['prev_url'] = '';
+        }
+      } else if ($prev_node->getType() == 'course_unit' || $prev_node->getType() == 'quiz') {
+        if (!$prev_node->get('field_unit_accces_enable')->isEmpty()) {
+          if (!$prev_node->get('field_unit_accces_enable')->getValue()[0]['value']) {
+            $variables['prev_unit_coming_soon'] = TRUE;
+          }
+        } else {
+          $variables['prev_unit_coming_soon'] = TRUE;
+        }
+      }
+    }
+  }
+  $node = Node::load($next_nid);
+  if (!$node) {
+    return;
+  }
+  if ($node->getType() == 'course_module') {
+    if (!isset($book_tree)) {
+      $book_tree = \Drupal::service('book.manager')->bookTreeAllData($variables['book_id']);
+    }
+    $book_tree = reset($book_tree);
+    $pick = $next_not_exists = FALSE;
+    if ($book_tree['below']) {
+      foreach($book_tree['below'] as $each) {
+        if ($each['link']['nid'] == $node->id()) {
+          $pick = TRUE;
+        }
+        if ($pick) {
+          if ($each['below']) {
+            $next_not_exists = TRUE;
+            $next = reset($each['below']);
+            $node = Node::load($next['link']['nid']);
+            $variables['next_title'] = $node->getTitle();
+            $variables['next_url'] = $node->toUrl()->toString();
+            if (!$node->get('field_unit_accces_enable')->isEmpty()) {
+              if (!$node->get('field_unit_accces_enable')->getValue()[0]['value']) {
+                $variables['next_unit_coming_soon'] = TRUE;
+              }
+            } else {
+              $variables['next_unit_coming_soon'] = TRUE;
+            }
+            break;
+          }
+        }
+      }
+    }
+    if (!$next_not_exists) {
+      $variables['next_title'] = '';
+      $variables['next_url'] = '';
+    }
+  }
+  if ($node->getType() == 'course_unit' || $node->getType() == 'quiz') {
+    if (!$node->get('field_unit_accces_enable')->isEmpty()) {
+      if (!$node->get('field_unit_accces_enable')->getValue()[0]['value']) {
+        $variables['next_unit_coming_soon'] = TRUE;
+      }
+    } else {
+      $variables['next_unit_coming_soon'] = TRUE;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function training_sass_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route_names = ['user.pass', 'user.login', 'user.register', 'trainingaid.confirm_user_registration', 'legal.legal_login'];
+
+  if (in_array(\Drupal::routeMatch()->getRouteName(), $route_names)) {
+    $suggestions[] = 'page__without_menu';
+  }
+
+  // if (\Drupal::routeMatch()->getRouteName() == "entity.node.canonical") {
+  //   $node = \Drupal::routeMatch()->getParameter('node');
+  //   $content_types = ['course_information_page'];
+  //   if (in_array($node->getType(), $content_types)) {
+  //     $suggestions[] = 'page__advanced_footer';
+  //   }
+  // }
+
+  // $advanced_footer_routes = ['view.articles.page_1', 'view.resources.page_1'];
+  // if (in_array(\Drupal::routeMatch()->getRouteName(), $advanced_footer_routes)) {
+  //   $suggestions[] = 'page__advanced_footer';
+  // }
+
+  if (!is_null(Drupal::requestStack()->getCurrentRequest()->attributes->get('exception'))) {
+    $status_code = Drupal::requestStack()->getCurrentRequest()->attributes->get('exception')->getStatusCode();
+    switch ($status_code) {
+      case 404: {
+        $suggestions[] = 'page__' . (string) $status_code;
+        break;
+      }
+      default:
+        break;
+    }
+  }
+}
+
+
+function training_sass_preprocess_html(&$variables) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  $variables['current_path'] = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+}
+
+function set_course_access_temp_storage($course_id, $is_course_in_complete_period, $is_course_in_access_period) {
+  $tempstore = \Drupal::service('tempstore.private')->get('course_content');
+  $tempstore->set('current_course', $course_id);
+  $data = ['is_course_in_complete_period' => $is_course_in_complete_period, 'is_course_in_access_period' => $is_course_in_access_period];
+  $tempstore->set($course_id, $data);
+}
+
+function get_course_access_temp_storage($key) {
+  $tempstore = \Drupal::service('tempstore.private')->get('course_content');
+  $course_id = $tempstore->get('current_course');
+  if ($data = $tempstore->get($course_id)) {
+    if (isset($data[$key])) {
+      return $data[$key];
+    }
+  }
+
+  return null;
+}
+
+function training_sass_form_views_exposed_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $view_ids = ['main_search'];
+  if ($form_id == 'views_exposed_form' && in_array($form_state->get('view')->id(), $view_ids)) {
+    $form['#attributes']['class'][] = '';
+    $form['search_api_fulltext']['#attributes']['class'][] = 'form-search';
+  }
+}
+

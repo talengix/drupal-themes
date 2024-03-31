@@ -1,0 +1,23 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'clearfix', 'row') }}>
+    <div class="col-2 contributor-profile-pic d-flex align-items-center">{{ content|without('field_email') }}</div>
+    <div class="col-10 d-flex">
+      <div class="align-self-center">
+        <div class="support-text">Questions? We Are Here To Help</div>
+        <div class="support-email-info">Email <a href="mailto:{{ content.field_email.0 }}">{{ label }}</a> with your questions or to schedule a call.</div>
+      </div>
+    </div>
+  </div>
+</article>

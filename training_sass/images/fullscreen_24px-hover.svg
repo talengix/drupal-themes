@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>3A5C240B-7B00-42EA-8DF5-312BB8F8413D</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <path d="M7,14 L5,14 L5,19 L10,19 L10,17 L7,17 L7,14 Z M5,10 L7,10 L7,7 L10,7 L10,5 L5,5 L5,10 Z M17,17 L14,17 L14,19 L19,19 L19,14 L17,14 L17,17 Z M14,5 L14,7 L17,7 L17,10 L19,10 L19,5 L14,5 Z" id="path-3"></path>
+    </defs>
+    <g id="user-account-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Settings----Edit-Profile" transform="translate(-312.000000, -456.000000)">
+            <rect id="bg" fill="#F6F6F7" x="0" y="56" width="1920" height="2573"></rect>
+            <g id="menu/desktop/acount/settings" transform="translate(304.000000, 208.000000)">
+                <g id="icon/action/settings" transform="translate(8.000000, 248.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Background/Mask"></g>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="-↳Color" fill="#0096D7" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

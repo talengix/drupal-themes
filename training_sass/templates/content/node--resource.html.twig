@@ -1,0 +1,46 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content lg-skinny', 'clearfix') }}>
+    <div class="col-medium">
+      <h2>{{ content.field_title_h2 }}</h2>
+      <div class="summary">
+        {{ node.body.summary }}
+      </div>
+      {{ drupal_view('articles', 'resource_contributors') }}
+      <div class="published-share-wrapper">
+        <div class="row mb-5 mt-5">
+          <div class="col-md-6 d-flex align-items-center">
+            <div class="published-date"><label>{{ "Published:"|t }}</label>{{ content.field_published_date }}</div>
+          </div>
+          <div class="col-md-6">
+            <div class="share top text-end d-flex justify-content-end">{{ content.addtoany }} {{ bookmark_content_flag_link }}</div>
+          </div>
+        </div>
+      </div>
+      {% set category_name = content.field_category|render|striptags|trim|lower %}
+      <div class="tags top mb-5">
+        {{ drupal_view('articles', 'tags') }}
+      </div>
+    </div>
+    <div class="mt-5 mb-5 col-narrow">
+      {{ content.body }}
+    </div>
+    <div class="tags-share-wrapper bottom col-narrow">
+      <div class="tags">
+        {{ drupal_view('articles', 'tags') }}
+      </div>
+      <div class="share"><label>{{ "Share this"|t }}</label>{{ content.addtoany }}{# {{ bookmark_content_flag_link }} #}</div>
+    </div>
+  </div>
+</article>

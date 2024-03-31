@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>A246B9BC-9A0D-4626-83DA-23ED68B4B3A3</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="24" height="24"></rect>
+        <polygon id="path-3" points="9 16.2 4.8 12 3.4 13.4 9 19 21 7 19.6 5.6"></polygon>
+    </defs>
+    <g id="profile-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Settings----Edit-Profile" transform="translate(-652.000000, -220.000000)">
+            <rect id="bg" fill="none" x="0" y="56" width="1920" height="2431"></rect>
+            <g id="System-Message" transform="translate(640.000000, 208.000000)">
+                <rect id="bg" fill="none" x="0" y="0" width="976" height="48" rx="4"></rect>
+                <g id="icon/course/content/checkmark_24px-" transform="translate(12.000000, 12.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Background/Mask"></g>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="-↳Color" fill="#FFFFFF" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,44 @@
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    'carousel',
+    'slide'
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+<div{{ attributes.addClass(classes, 'field__items') }} id={{field_name}} data-interval="false">
+  {% if not label_hidden %}
+    <h2{{ title_attributes.addClass(title_classes) }}>What are others saying about this training</h2>
+  {% endif %}
+  <div class="carousel ci-testimonials-wrapper slide mt-3" data-bs-touch="false" data-bs-interval="false">
+    <a class="carousel-control-prev" data-bs-target="#field_ci_testimonials" role="button" data-bs-slide="prev">
+     <span aria-hidden="true"><i class="fa-regular fa-angle-left"></i></span>
+     <span class="visually-hidden">Previous</span>
+    </a>
+
+    <div class="carousel-inner testimonial-row">
+      {% set carousel_item_index = 0 %}
+      {% for item in items %}
+        {% if carousel_item_index == 0%}
+          <div{{ item.attributes.addClass('field__item', 'carousel-item', 'active') }}>{{ item.content }}</div>
+        {% else %}
+          <div{{ item.attributes.addClass('field__item', 'carousel-item') }}>{{ item.content }}</div>
+        {% endif %}
+        {% set carousel_item_index = carousel_item_index + 1 %}
+      {% endfor %}
+    </div>
+    <a class="carousel-control-next" data-bs-target="#field_ci_testimonials" role="button" data-bs-slide="next">
+      <span><i class="fa-regular fa-angle-right"></i></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+</div>

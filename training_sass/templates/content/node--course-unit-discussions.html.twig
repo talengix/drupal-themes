@@ -1,0 +1,118 @@
+{{ attach_library('bootstrap_barrio/node') }}
+{%
+set classes = [
+'node',
+'discussion-topic',
+'node--type-' ~ node.bundle|clean_class,
+node.isPromoted() ? 'node--promoted',
+node.isSticky() ? 'node--sticky',
+not node.isPublished() ? 'node--unpublished',
+view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+'clearfix',
+]
+%}
+<article{{ attributes.addClass(classes) }}>
+  <div{{ content_attributes.addClass('node__content', 'clearfix') }} id="forum-topic-wrapper-{{ node.id }}">
+    <div class="card card-comment">
+      {% if forum_topic_unit.field_unit_discussions_enable.0.value and (user.id == node.getOwnerId or is_admin) and is_course_in_complete_period %}
+        <div class="row">
+          <div class="col-12 content-actions">
+            <div class="menu-dots-icon">&nbsp;</div>
+            <div class="action-links">
+              <ul class="actions">
+                <li class="link edit-link">
+                  <a href="{{ path('entity.node.edit_form', {'node': node.id}) }}">{{ 'Edit'|t }}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div class="row">
+        <div class="col-lg-2 topic-author-pic">{{ author_picture }}</div>
+        <div class="col-10 topic-info d-none d-lg-block">
+          <div class="topic-title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
+          {% set text = content.field_forum_topic_comment|render|striptags|trim %}
+          {% if text|length < 150 %}
+            <div class="comment-short">{{ content.field_forum_topic_comment }} </div>
+          {% else %}
+            <div class="comment-long">
+              <div class="topic-comment" data-bs-toggle="collapse" href="#collapse{{ node.id }}" role="button" aria-expanded="false" aria-controls="collapse{{ node.id }}">
+                <div class="above-fold">
+                  {{ (text|length > 200 ? text|slice(0, 201)|split(' ')|slice(0, -1)|join(' ') ~ '&hellip;' : text)|raw }} <a class="comment-view-more">View more</a>
+                </div>
+              </div>
+              <div class="topic-comment below-fold" data-bs-toggle="collapse" href="#collapse{{ node.id }}" role="button" aria-expanded="false" aria-controls="collapse{{ node.id }}">
+              </div>
+            </div>
+          {% endif %}
+          <div class="topic-comment collapse" id="collapse{{ node.id }}">{{ content.field_forum_topic_comment }}<a href="#collapse{{ node.id }}" data-bs-toggle="collapse" class="comment-view-less">View less</a></div>
+          <div class="topic-author-wrapper">
+            <div>
+              <span class="submitted_by">By
+                {#{% if profile_privacy == 'private' %}
+                  <span class="author-name" title="The user has set their profile to private">{{ author_name }}</span>
+                {% else %}#}
+                  <a href="{{ url('trainingaid.user_profile.info', {'user': node.getOwnerId}) }}">{{ author_name }}</a>
+                {#{% endif %}#}
+              </span>
+              <span class="submitted_date"> {{ created_date }} </span>
+              <span class="forum_topic_unit"><a href="{{url('view.course_discussions.page_1', {'arg_0' : course_id, 'field_course_unit_target_id' : forum_topic_unit.id})}}">{{ forum_topic_unit.getTitle() }}</a></span>
+            </div>
+            <span class="forum-topic-comments-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row d-lg-none">
+        <div class="topic-title col-8"><a href="{{ url }}" rel="bookmark">{{ label }}</a></div>
+      </div>
+      <div class="row d-lg-none">
+        <div class="col-12 topic-comment">{{ content.field_forum_topic_comment }}</div>
+      </div>
+      <div class="row d-lg-none">
+        <div class="col-12 topic-author-wrapper">
+          <div>
+            <span class="submitted_by">By
+              {#{% if profile_privacy == 'private' %}
+                <span class="author-name" title="The user has set their profile to private">{{ author_name }}</span>
+              {% else %}#}
+                <a href="{{ url('trainingaid.user_profile.info', {'user': node.getOwnerId}) }}">{{ author_name }}</a>
+              {#{% endif %}#}
+            </span>
+            <span class="submitted_date"> {{ created_date }} </span>
+            <span class="forum_topic_unit last-item"><a href="{{url('view.course_discussions.page_1', {'arg_0' : course_id, 'field_course_unit_target_id' : forum_topic_unit.id})}}">{{ forum_topic_unit.getTitle() }}</a></span>
+            <span class="forum-topic-comments-toggle collapsed last-item" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}"></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-2 col-custom-10"></div>
+        <div class="col-lg-10 topic-comment-count-like-wrapper">
+          <div class="comment-count icon" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}" data-parent="#forum-topic-wrapper-{{ node.id }}">{{ comment_count }}</div>
+          <div class="like-comment icon" data-bs-toggle="collapse" href="#likes-dropdown-{{ node.id }}">{{ content.rate_forum_topic }}</div>
+          <div class="likes-dropdown collapse" id="likes-dropdown-{{ node.id }}">
+            {{ drupal_view('votingapi_votes', 'likes_dropdown_unit', node.id) }}
+          </div>
+        </div>
+      </div>
+      <div class="see-comments-wrapper d-lg-none collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-{{ node.id }}" aria-expanded="true" aria-controls="collapse-{{ node.id }}"><button type="button" class="btn btn-secondary">{{ 'See comments and reply'|t }}</button>
+      </div>
+    </div>
+    {% if forum_topic_unit.field_unit_discussions_enable.0.value %}
+      <div id="collapse-{{ node.id }}" class="message collapse" aria-labelledby="notif-msg-1" data-parent="#course_notif_msgs">
+        <div class="row">
+          <div class="col">
+            {{ content|without('field_forum_topic_comment', 'rate_forum_topic') }}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="row">
+        <div class="col">
+          <div id="collapse-{{ node.id }}" class="message collapse discussions-disabled" aria-labelledby="notif-msg-1" data-parent="#course_notif_msgs">
+            {{ content|without('field_forum_topic_comment', 'rate_forum_topic') }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </article>

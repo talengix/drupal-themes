@@ -1,0 +1,66 @@
+{#
+/**
+* @file
+* Theme override to present all user data.
+*
+* This template is used when viewing a registered user's page,
+* e.g., example.com/user/123. 123 being the user's ID.
+*
+* Available variables:
+* - content: A list of content items. Use 'content' to print all content, or
+*   print a subset such as 'content.field_example'. Fields attached to a user
+*   such as 'user_picture' are available as '/account-settings'.
+* - attributes: HTML attributes for the container element.
+* - user: A Drupal User entity.
+*
+* @see template_preprocess_user()
+*/
+#}
+<article{{ attributes.addClass('profile') }}>
+  {% if content %}
+    <div class="row">
+      <div class="col-md-3">{{ content.user_picture }}</div>
+      <div class="col-md-9">
+        <div class="save-contact">{{ content.flag_user_network }}</div>
+        <h1 class="name mb-4">{{ content.field_user_first_name }} {{ content.field_user_last_name }} 
+          {{ drupal_view('user_account', 'people_category') }}</h1>
+        
+        <div class="designation-organisation">
+          {% if content.field_user_title|render|striptags|trim and content.field_user_organization|render|striptags|trim %}
+            {{ content.field_user_title }} <span>{{ "at" }}</span> {{ content.field_user_organization }}
+          {% else %}
+            {{ content.field_user_title }}
+            {{ content.field_user_organization }}
+          {% endif %}
+        </div>
+{#         {{ drupal_view('user_account', 'block_address') }} #}
+        {{ content.field_user_country }}
+        {{ content.field_user_website }}
+        {{ content.field_user_social_links }}
+      </div>
+    </div>
+    <div class="row">
+      {% if content.field_user_professional_summary|render|striptags|trim %}
+        <div class="professional-summary col-12 mt-5">
+          <h2 class="mb-3">{{ "About me"|t }}</h2>
+          {{ content.field_user_professional_summary }}
+        </div>
+      {% endif %}
+      {% if content.field_user_expertise|render|striptags|trim %}
+        <div class="user-interests col-12 mt-5">
+          <h2 class="mb-3">{{ "My interest(s)"|t }}</h2>
+          {{ content.field_user_expertise }}
+        </div>
+      {% endif %}
+      {% if content.field_user_looking_for|render|striptags|trim %}
+        <div class="user-industry-sector col-12 mt-5">
+          <h2 class="mb-3">{{ "My industry sector"|t }}</h2>
+          {{ content.field_user_looking_for }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+  {# <a href="/user/{{ user.id }}/account-settings" class="btn btn-primary edit-profile">Edit Profile</a> #}
+ {#  {{ user_picture }} #}
+</article>
+
