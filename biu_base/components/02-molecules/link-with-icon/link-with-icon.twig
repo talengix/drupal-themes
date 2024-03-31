@@ -1,0 +1,21 @@
+<div {{ bem(link_icon__base_class, link_icon__modifiers, link_icon__blockname, link_icon__extra_classes) }} data-src="{{ arrow_json_name }}">
+  {% embed "@atoms/links/link/link.twig" with {
+    link_url: link_icon__url,
+    link_base_class: '',
+    link_modifiers: [],
+    link_attributes: link_icon__link_title
+  } %}
+    {% block link_content %}
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: item__name,
+        icon_url: icon_url,
+        icon_modifiers: []
+      } %}
+      {% if link_icon_text %}
+        <span>
+          {{ link_icon_text }}
+        </span>
+      {% endif %}
+    {% endblock %}
+  {% endembed %}
+</div>

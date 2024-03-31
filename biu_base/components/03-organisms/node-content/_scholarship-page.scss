@@ -1,0 +1,195 @@
+.page-node-type-scholarship {
+  .node--scholarship-full {
+    max-width: 1366px;
+    @include push--auto;
+
+    .node--scholarship-content {
+      @include container;
+
+      .scholarship-title {
+        font-size: 32px;
+        line-height: 1.13;
+        font-weight: 500;
+        color: $bar-ilan-green;
+        padding: 23px 0 18px;
+        margin: 0;
+      }
+
+      .scholarship-summary {
+        background-color: $pale-green;
+        width: 100vw;
+        position: relative;
+        right: -28px;
+        padding: 28px;
+
+        body[dir="ltr"] & {
+          right: auto;
+          left: -28px;
+        }
+
+        .scholarship-dates .label, .field--name-field-scholarship-degree .field__label, .field--name-field-scholarship-type .field__label, .field--name-field-scholarship-calc-units .field__label {
+          display: block;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 1.6;
+          color: $bar-ilan-green;
+        }
+
+        .scholarship-dates .content, .field--name-field-scholarship-degree .field__item, .field--name-field-scholarship-type .field__item, .field--name-field-scholarship-calc-units .field__item {
+          display: inline-block;
+          font-size: 15px;
+          font-weight: normal;
+          margin-bottom: 30px;
+          color: $bar-ilan-green;
+        }
+      }
+
+      .expand-collapse {
+        margin: 0;
+      }
+
+      .animation-container.submission-link {
+        position: relative;
+        background-color: $light-blue;
+
+        &.scholarship-action-button {
+          margin-top: 30px;
+        }
+
+        a {
+          font-size: 16px;
+          font-weight: 500;
+          color: $bar-ilan-green;
+          display: block;
+          padding: 10px 24px;
+        }
+
+        svg {
+          width: 43px !important;
+          height: 13px !important;
+          position: absolute;
+          left: 24px;
+          top: calc(50% - 6px);
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 24px;
+            transform: rotate(180deg) !important;
+          }
+        }
+      }
+
+      .field--name-field-media-content {
+        margin-top: 30px;
+      }
+
+      margin-bottom: 57px;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    #block-breadcrumbs {
+      padding-top: 16px;
+      @include container;
+    }
+    .node--scholarship-full {
+      padding-right: 200px;
+      padding-left: 200px;
+
+      .node--scholarship-content {
+        .scholarship-summary {
+          width: 100%;
+          right: auto;
+
+          body[dir="ltr"] & {
+            left: auto;
+          }
+
+          .scholarship-dates, .field--name-field-scholarship-degree, .field--name-field-scholarship-type, .field--name-field-scholarship-calc-units {
+            width: 50%;
+            float: right;
+          }
+
+        }
+
+        .animation-container.submission-link {
+          clear: both;
+          width: 246px;
+          margin-right: 50%;
+
+          &.scholarship-action-button {
+            margin-top: 10px;
+          }
+        }
+
+        .scholarship-title {
+          font-size: 40px;
+          font-weight: 500;
+          padding: 19px 0 34px;
+        }
+
+        .expand-collapse {
+          .expand-collapse-item {
+            border: 0;
+
+            .accordion {
+              cursor: auto;
+              border: 0;
+              padding: 30px 0 0;
+              font-weight: 500;
+              color: $bar-ilan-green;
+
+              &.active {
+                //     color: #006937;
+                //    font-weight: 500;
+                .arrow.minus {
+                  display: none;
+                }
+              }
+
+              .accordion-title {
+                width: 100%;
+              }
+
+              .arrow.plus {
+                display: none;
+              }
+            }
+
+            .panel {
+              max-height: none;
+
+              .panel-content {
+                border: 0;
+                padding: 0;
+                color: $bar-ilan-green;
+                div {
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-desk-wide, desk-wide) {
+    #block-breadcrumbs {
+      margin: 0 auto;
+    }
+  }
+  .main-content {
+    background-image: url(/themes/custom/biu_base/assets/images/backgrounds/track-left.png);
+    background-repeat: no-repeat;
+    background-position: left top 70px;
+  }
+  .scholarship-dates-content {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: $lime-green;
+    color: $bar-ilan-green;
+    padding: 3px;
+
+  }
+}

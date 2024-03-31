@@ -1,0 +1,138 @@
+///**
+// * @file
+// *
+// * elements.css is the place for us to override or add style rules for
+// * plain HTML elements. To override core's normalize.css
+// */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-body;
+  font-size: 16px;
+  color: var(--body-text);
+  line-height: 1.33;
+}
+
+body {
+  background: #fff no-repeat;
+}
+
+p, blockquote, li, td, th, dd, dt {
+  line-height: 1.5;
+}
+
+p {
+  margin-top: 0;
+}
+
+blockquote {
+  margin: 1em 40px;
+}
+
+pre {
+  margin: 0 1em 1em;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--jungle-green);
+}
+
+a:active,
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
+input {
+  font-size: inherit;
+}
+
+// BIU: 2015-05-07
+select,
+textarea,
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="number"] {
+  border: solid 1px var(--body-text);
+  max-width: 100%;
+  border-radius: 19px;
+  padding-left: 19px;
+  padding-right: 19px;
+  line-height: 2.2;
+}
+
+textarea {
+  border-radius: 3px;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  line-height: 1.5;
+}
+
+
+// For numbers and email fields we want ltr even on hebrewwe allways want direction and num
+[dir=rtl] {
+  input[type=number],
+  input[type=email] {
+    direction: ltr;
+    text-align: right;
+  }
+}
+
+::placeholder,
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder {
+  opacity: 0.4;
+}
+
+///* ==========================================================================
+//   Tables
+//   ========================================================================== */
+table {
+  max-width: 100% !important;
+  border-collapse: collapse;
+}
+
+// Handles tables imported from D5 with "align" prpperty
+// @TODO: find if still needed to stop table floating.
+table[align] {
+  float: none
+}
+
+td {
+  border-collapse: collapse;
+  padding: 0.5em;
+  vertical-align: top;
+}
+
+// Stop user agent, crome, from setting text-align: center for TH.
+th {
+  padding: 0 0.5em;
+  text-align: inherit;
+}
+
+// ***** End BIU custom *****
+select, input {
+  max-width: 100%;
+}
+
+:focus {
+  outline-color: #ccc;
+}
+
+
+fieldset {
+  border: 1px solid #c0c0c0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

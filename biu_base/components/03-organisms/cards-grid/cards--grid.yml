@@ -1,0 +1,103 @@
+grid_label: "Faculty Grid"
+card_grid_base_class: "cards-grid"
+card_grid_extra_classes: ["sg-container"]
+card_grid_feature_text_title: "לורם איפסום הוא כינוי לטקסט חסר משמעות"
+card_grid_feature_text_body: "לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג'יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי."
+card_grid_styles: "faculty"
+items:
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 1"
+    card_heading: "Card 1"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 2"
+    card_heading: "Card 2"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 3"
+    card_heading: "Card 3"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 4"
+    card_heading: "Card 4"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 5"
+    card_heading: "Card 5"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 6"
+    card_heading: "Card 6"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 7"
+    card_heading: "Card 7"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]
+  - img_src: 'https://placeimg.com/274/260/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+    card_modifier: ["faculty"]

@@ -1,0 +1,203 @@
+.card {
+  padding: 25px;
+  border: none;
+  border-radius: 11px;
+  background-color: $white;
+  box-shadow: 0 4px 54px rgba(0, 0, 0, 0.04);
+
+  &:hover {
+    box-shadow: 0 4px 54px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-body {
+    padding: 30px 0 15px 0;
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 24px;
+      letter-spacing: -0.03rem;
+      color: $primary-blue-black;
+    }
+
+    .card-text {
+      font-size: 20px;
+      line-height: 24px;
+      color: $primary-blue-black;
+      opacity: 0.7;
+    }
+
+    .btn {
+      margin-top: 50px;
+      font-size: 14px;
+    }
+  }
+
+  .card-img-top {
+    border-radius: 11px;
+  }
+
+  &.card-resource .btn,
+  &.card-product .btn {
+    display: block;
+  }
+
+  &.card-resource {
+    .card-image {
+      position: relative;
+      border-radius: 11px;
+      background: linear-gradient(360deg, #03154a 8.33%, rgba(3, 21, 74, 0) 89.1%);
+    }
+
+    .card-img-overlay {
+      top: auto;
+      color: $white;
+
+      span.type {
+        padding: 5px 20px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 13px;
+        letter-spacing: 0.02em;
+        border: 1px solid $white;
+      }
+
+      span.date {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &.card-collaboration .card-body {
+    padding-right: 100px;
+
+    .card-text {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0.02em;
+      color: rgba(3, 21, 74, 0.7);
+    }
+  }
+
+  &.card-horizontal {
+    margin: 80px 0;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .card-body {
+      padding-right: 120px;
+      letter-spacing: 0.02em;
+      color: $primary-blue-dark;
+
+      .card-title {
+        font-size: 50px;
+        font-weight: 700;
+        line-height: 63px;
+      }
+
+      .card-subtitle {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 63px;
+      }
+
+      .card-text {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+      }
+    }
+  }
+
+  &.card-home {
+    margin: 20px 0 80px 0;
+  }
+
+  &.card-home img,
+  &.card-tech img {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  &.card-home .card-body .card-title,
+  &.card-tech .card-body .card-title,
+  &.card-product .card-body .card-title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 84px;
+    color: $primary-blue-bright;
+  }
+
+  &.card-home .card-body .card-text {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    color: rgba(30, 45, 100, 0.7);
+  }
+
+  &.card-tech {
+    height: 632px;
+
+    .card-body .card-text {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      color: rgba(30, 45, 100, 0.7);
+
+      &.note {
+        font-size: 16px;
+      }
+    }
+
+    text-align: center;
+  }
+
+  &.card-product {
+    background-color: transparent;
+    box-shadow: none;
+
+    &:hover {
+      background: $white;
+      box-shadow: 0 4px 55px rgba(0, 0, 0, 0.09);
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .card-body {
+      ul {
+        margin: 0 0 50px 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          padding: 30px 0 30px 20px;
+
+          &:before {
+            position: absolute;
+            left: 45px;
+            display: block;
+            content: "\2022";
+            color: $primary-blue-bright;
+          }
+        }
+      }
+
+      .btn {
+        font-size: 16px;
+      }
+    }
+  }
+}

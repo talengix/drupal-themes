@@ -1,0 +1,222 @@
+.featured-card {
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  & > .animation-container {
+    transition: all 0.3s;
+    position: relative;
+    top: 0;
+    box-shadow: 0 0 24px 3px rgba(0, 0, 0, 0.15);
+  }
+
+  svg {
+    width: 43px !important;
+    height: 13px !important;
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    transform: none !important;
+
+    body[dir="ltr"] & {
+      transform: rotate(180deg) !important;
+      left: auto;
+      right: 14px;
+    }
+  }
+
+  .header-content {
+    position: relative;
+
+    img {
+      border-radius: 3px 3px 0 0;
+    }
+  }
+
+  .category {
+    display: none; // for first version hide the category since we use only articles.
+    position: absolute;
+    bottom: 0;
+    padding: 3px 13px;
+    background-color: $white;
+    margin-right: 15px;
+    font-size: 10px;
+    font-weight: 500;
+    color: $bar-ilan-green;
+  }
+
+  .content {
+    padding: 18px 18px 16px;
+    background-color: $white;
+    font-size: 12px;
+    color: $color-heading;
+    border-radius: 0 0 3px 3px;
+    line-height: 14px;
+
+    .heading {
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-top: 0;
+      margin-bottom: 8px;
+      height: 48px;
+      overflow: hidden;
+    }
+
+    .body {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.43;
+      margin-bottom: 22px;
+      height: 60px;
+      overflow: hidden;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  body[dir='ltr'] & {
+    .category {
+      margin-left: 15px;
+    }
+
+    .content {
+      padding-left: 14px;
+    }
+  }
+}
+
+.featured-card.featured-card--event {
+  .content {
+    .card-event-date {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1;
+      color: $light-blue;
+      margin-bottom: 6px;
+    }
+
+    .body {
+      height: 40px;
+    }
+
+    .date {
+      // to keep same height as other cards
+      height: 6px;
+    }
+  }
+
+  .calendar-links {
+    position: absolute;
+    bottom: 16px;
+    width: 100%;
+    padding-right: 18px;
+    padding-left: 18px;
+    line-height: normal;
+
+    .calendar-links-toggle {
+      text-transform: uppercase;
+      margin: 0;
+      padding: 0;
+      position: relative;
+
+      a {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: normal;
+        color: $dark-green;
+
+        svg {
+          position: relative;
+          width: 24px !important;
+          height: 24px !important;
+          top: 6px;
+          left: 0;
+          right: 0;
+          margin: 0 5px;
+          display: inline-block;
+        }
+      }
+    }
+
+    .calendar-links-dropdown {
+      display: none;
+      position: absolute;
+      left: 0;
+      padding: 0;
+      margin: 6px 0 0;
+      width: 100%;
+      text-align: left;
+      direction: ltr;
+      border: solid 1px rgba(0, 40, 15, 0.2);
+
+      li {
+        list-style: none;
+        background-color: $white;
+        z-index: 1;
+        position: relative;
+
+        &:nth-child(2n) {
+          background-color: $pale-green;
+        }
+
+        a {
+          display: block;
+          padding: 10px 20px;
+          text-decoration: none;
+          color: $dark-green;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.featured-card.featured-card--large {
+  .content {
+    .body, .heading {
+      height: auto;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+
+    .category {
+      margin-right: 22px;
+    }
+
+    .content {
+      padding: 0 20px 20px 81px;
+      body[dir="ltr"] & {
+        padding: 0 81px 20px 20px;
+      }
+
+      .card-event-date {
+        font-size: 40px;
+        margin-top: 45px;
+        margin-bottom: 0;
+      }
+
+      .heading {
+        font-size: 42px;
+        margin-bottom: 16px;
+        line-height: 1.11;
+        padding-top:15px;
+      }
+
+      .body {
+        display: block;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+    }
+  }
+}

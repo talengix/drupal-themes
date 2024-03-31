@@ -1,0 +1,117 @@
+<div {{ bem(social_media__base_class, social_media__modifiers, social_media__blockname, social_media__additional_classes) }}>
+  <div class="social-media-heading">
+    {% if instagram_icon_link or facebook_icon_link or twitter_icon_link or linkedin_icon_link or flickr_icon_link or youtube_icon_link or whatsapp_icon_link or external_site_link %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      heading_level: 4,
+      heading: social_block_heading,
+    } %}
+    {% endif %}
+  </div>
+  <div class="social-icons">
+    {% if instagram_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: instagram_icon_link,
+          social__link_title: { title: "Instagram" , target: "_blank"},
+          item__name: "instagram",
+          icon_url: icon__url,
+          link__alt: "instagram"
+        } %}
+      </div>
+    {% endif %}
+    {% if facebook_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: facebook_icon_link,
+          social__link_title: { title: "Facebook" , target: "_blank"},
+          item__name: "facebook",
+          icon_url: icon__url,
+          link__alt: "facebook"
+        } %}
+      </div>
+    {% endif %}
+    {% if linkedin_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: linkedin_icon_link,
+          social__link_title: { title: "LinkedIn" , target: "_blank"},
+          item__name: "linkedin",
+          icon_url: icon__url,
+          link__alt: "linkedin"
+        } %}
+      </div>
+    {% endif %}
+    {% if twitter_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: twitter_icon_link,
+          social__link_title: { title: "Twitter", target: "_blank"},
+          item__name: "twitter",
+          icon_url: icon__url,
+          link__alt: "twitter"
+        } %}
+      </div>
+    {% endif %}
+    {% if flickr_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: flickr_icon_link,
+          social__link_title: { title: "Flickr", target: "_blank"},
+          item__name: "flickr",
+          icon_url: icon__url,
+          link__alt: "flickr"
+        } %}
+      </div>
+    {% endif %}
+    {% if youtube_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: youtube_icon_link,
+          social__link_title: { title: "Youtube", target: "_blank"},
+          item__name: "youtube",
+          icon_url: icon__url,
+          link__alt: "youtube"
+        } %}
+      </div>
+    {% endif %}
+    {% if external_site_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: external_site_link,
+          social__link_title: { title: "Website", target: "_blank"},
+          item__name: "website",
+          icon_url: icon__url,
+          link__alt: "website"
+        } %}
+      </div>
+    {% endif %}
+    {% if whatsapp_icon_link %}
+      <div class="social-icon">
+        {% include "@molecules/footer-social/footer-social.twig" with {
+          footer_social__base_class: social_base_class,
+          footer_social__modifiers: social_modifier_class,
+          social__url: whatsapp_icon_link,
+          social__link_title: { title: "Whatsapp", target: "_blank"},
+          item__name: "whatsapp",
+          icon_url: icon__url,
+          link__alt: "whatsapp"
+        } %}
+      </div>
+    {% endif %}
+
+  </div>
+</div>

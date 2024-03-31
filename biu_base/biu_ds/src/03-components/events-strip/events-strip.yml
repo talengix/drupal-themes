@@ -1,0 +1,55 @@
+component_base_class: 'events-strip'
+component_modifiers: []
+component_blockname: ''
+additional_classes: ['swiper-container']
+download_icon_full_url: 'https://www.biu.ac.il/themes/custom/biu_base/assets/images/icons/download.svg'
+arrow_icon_full_url: 'https://www.biu.ac.il/themes/custom/biu_base/assets/images/icons/regular-arrow.svg'
+items:
+  - component_base_class: 'event-horizontal-card'
+    component_modifiers: []
+    component_blockname: ''
+    additional_classes: []
+    item_url: 'https://google.co.il'
+    event_start_date_day: '20'
+    event_start_date_month: 'ינואר'
+    event_mode: 'אירוע פיזי'
+    image_src: https://placeimg.com/780/440/event
+    image_alt: 'דוגמא'
+    invite: 'מוזמנים בלבד'
+    cost: 'ללא עלות'
+    type: 'הרצאה'
+    label: 'אירוע 1'
+    sub_title: 'כותרת משנה'
+    event_date_display_one: '20.10.2021 - 21.12.2022'
+    event_date_display_two: ''
+    event_time_display: ''
+    calendar__links:
+      - url: https://google.co.il
+        type_name: 'Google'
+      - url: https://bing.com
+        type_name: 'Bing'
+  - component_base_class: 'event-horizontal-card'
+    component_modifiers: []
+    component_blockname: ''
+    additional_classes: []
+    item_url: 'https://google.co.il'
+    event_start_date_day: '15'
+    event_start_date_month: 'nr.'
+    event_mode: 'אירוע פיזי'
+    image_src: https://placeimg.com/780/440/event
+    image_alt: 'דוגמא'
+    invite: 'מוזמנים בלבד'
+    cost: 'ללא עלות'
+    type: 'כנס'
+    label: 'אירוע 2'
+    sub_title: 'כותרת משנה2'
+    event_date_display_one: '20.10.2021'
+    event_date_display_two: 'יום שלישי'
+    event_time_display: '9:00'
+    calendar__links:
+      - url: https://google.co.il
+        type_name: 'Google'
+      - url: https://bing.com
+        type_name: 'Bing'
+
+

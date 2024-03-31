@@ -1,0 +1,685 @@
+/* @todo for some reason the articles view goes to a new page without ajax without the view class so adding here the path class to */
+.page-articles-list, .page-publications-list, .path-articles, .path-news, .page-research-list, .page-highlight-list, .path-highlights, .path-research, .page-campus-news, .page-students-list, .path-students-lobby, .page-researchers-list, .path-researchers-lobby, .page-podcasts-list, .path-podcasts {
+  background: $light-grey;
+
+  @include grid-breakpoint($mq-desk, desk) {
+    background-position: left 331px;
+    background-image: url('/themes/custom/biu_base/assets/images/backgrounds/artboard-12-copy-8.png');
+    background-repeat: no-repeat;
+  }
+
+  .breadcrumb {
+    padding-top: 23px;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: $dark-green;
+    padding-right: 30px;
+    float: right;
+    position: relative;
+    z-index: 9;
+
+    body[dir="ltr"] & {
+      float: left;
+      padding-left: 27px;
+    }
+  }
+}
+
+.articles-list-page, .publications-list-page, .research-list-page, .highlight-list-page, .students-list-page, .researchers-list-page, .podcasts-list-page {
+  header {
+    padding-top: 50px;
+    padding-right: 28px;
+    padding-left: 28px;
+    width: 100%;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: $dark-green;
+
+    body[dir="ltr"] & {
+      padding-left: 28px;
+    }
+  }
+
+  form {
+    .search-title {
+      display: block;
+      width: 100%;
+      height: 48px;
+      border-radius: 24px;
+      border: 1px solid $dark-green;
+      margin: 27px 0 0;
+      background: $light-grey;
+      padding: 0 24px 0 20px;
+
+      body[dir="ltr"] & {
+        padding: 0 20px 0 24px;
+      }
+    }
+
+    .submit-button {
+      width: 100%;
+      margin-top: 24px;
+      margin-bottom: 65px;
+      height: 48px;
+      background: $jungle-green;
+      text-align: right;
+      text-transform: unset;
+      padding: 0 24px 0 20px;
+
+      body[dir="ltr"] & {
+        text-align: left;
+        padding: 0 20px 0 24px;
+      }
+    }
+
+    .wrapper_month {
+      float: right;
+      width: calc((100% - 28px - 28px - 23px) / 2);
+      margin-right: 28px;
+      margin-top: 54px;
+
+      .js-form-item.form-item {
+        margin-bottom: 0;
+        max-width: 100%;
+      }
+
+      label {
+        display: none;
+      }
+
+      .form-item__dropdown {
+        border: none;
+
+        .month_input {
+          border: 1px solid $dark-green !important;
+          border-radius: 24px;
+        }
+
+        select {
+          height: 48px !important;
+          padding: 0 24px 0 20px;
+
+          body[dir="ltr"] & {
+            padding: 0 20px 0 24px;
+          }
+        }
+
+        &::after {
+          left: 20px;
+          right: auto;
+          top: 13px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 20px;
+          }
+        }
+      }
+    }
+
+    .wrapper_year {
+      float: left;
+      width: calc((100% - 28px - 28px - 23px) / 2);
+      margin-left: 28px;
+      margin-top: 54px;
+
+      label {
+        display: none;
+      }
+
+      .js-form-item.form-item {
+        margin-bottom: 0;
+        max-width: 100%;
+      }
+
+      .form-item__dropdown {
+        border: 0;
+
+        .year_input {
+          border: 1px solid $dark-green !important;
+          border-radius: 24px;
+          height: 48px !important;
+          padding: 0 24px 0 20px;
+
+          body[dir="ltr"] & {
+            padding: 0 20px 0 24px;
+          }
+        }
+
+        &::after {
+          left: 20px;
+          right: auto;
+          top: 13px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 20px;
+          }
+        }
+      }
+    }
+
+    .wrapper_title {
+      position: relative;
+      float: left;
+      width: 100%;
+      text-align: left;
+      padding: 0 28px;
+
+      img {
+        position: absolute;
+        left: 40px;
+        top: 38px;
+
+        body[dir="ltr"] & {
+          left: auto;
+          right: 50px;
+        }
+      }
+
+      body[dir="ltr"] & {
+        left: 0;
+      }
+
+      .js-form-item.form-item {
+        margin-bottom: 0;
+        max-width: 100%;
+      }
+    }
+
+    .wrapper-category {
+      float: right;
+      width: 100%;
+      margin-top: 54px;
+      padding: 0 28px;
+
+      .js-form-item.form-item {
+        margin-bottom: 0;
+        max-width: 100%;
+      }
+
+      label {
+        display: none;
+      }
+
+      .form-item__dropdown {
+        border: none;
+
+        .form-select[data-drupal-selector="edit-category"] {
+          border: 1px solid $dark-green !important;
+          border-radius: 24px;
+        }
+
+        select {
+          height: 48px !important;
+          padding: 0 24px 0 20px;
+
+          body[dir="ltr"] & {
+            padding: 0 20px 0 24px;
+          }
+        }
+
+        &::after {
+          left: 20px;
+          right: auto;
+          top: 13px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 20px;
+          }
+        }
+      }
+    }
+
+    .animation-container {
+      position: relative;
+      clear: both;
+      text-align: left;
+      padding: 0 28px;
+
+      svg {
+        position: absolute;
+        left: 41px;
+        width: unset !important;
+        height: unset !important;
+        top: 40px;
+
+        body[dir="ltr"] & {
+          transform: rotate(180deg) !important;
+          left: auto;
+          right: 15%;
+        }
+      }
+    }
+
+  }
+
+  .result-message {
+    text-align: center;
+    margin-top: 58px;
+    padding-bottom: 68px;
+
+    h3 {
+      line-height: 48px;
+      color: $dark-green;
+      margin-bottom: 0;
+      font-size: 24px;
+      margin-top: 2px;
+    }
+
+    svg {
+      padding: 0;
+      width: 56px;
+      height: 56px;
+    }
+
+    img {
+      display: inline-block;
+    }
+  }
+
+  .views-col {
+    width: 100% !important;
+    padding-right: 28px;
+    padding-left: 28px;
+    height: auto;
+    margin-bottom: 25px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  ul {
+    padding: 0 28px;
+    width: 100%;
+    margin: 0;
+
+    li {
+      width: 100%;
+      margin: 0;
+
+      .button {
+        background-color: #78cde677 !important;
+        border: none;
+        color: $dark-green;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        padding: 18px 20px 14px;
+        width: auto;
+        margin: 26px auto 0;
+        display: block;
+      }
+
+      .pageer {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.podcasts-list-page header {
+  text-align: center;
+  span {
+    font-size: 20px;
+    display: block;
+    font-weight: normal;
+    margin-top: 16px;
+  }
+}
+
+@include grid-breakpoint($mq-tab-wide, tab-wide) {
+  .articles-list-page, .publications-list-page, .research-list-page, .highlight-list-page, .students-list-page, .researchers-list-page, .podcasts-list-page {
+    padding-top: 67px;
+    .views-col {
+      width: 50% !important;
+      padding-right: 11.5px;
+      padding-left: 11.5px;
+
+      .featured-card {
+        .animation-container {
+          svg {
+            left: 20px;
+
+            body[dir="ltr"] & {
+              left: unset;
+              right: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    header {
+      padding-top: 0;
+      padding-right: 22px;
+      padding-left: 22px !important;
+
+      body[dir="ltr"] {
+        padding-left: 22px;
+      }
+    }
+
+    form {
+      display: block;
+      margin-top: 50px;
+      margin-bottom: 63px;
+      width: 100%;
+
+      .wrapper_month {
+        width: span(2 of 12);
+        margin-top: 0;
+        margin-left: 22px;
+        margin-right: 22px;
+        float: right;
+
+        body[dir="ltr"] & {
+          float: left;
+          margin-left: 22px;
+          margin-right: 22px;
+        }
+      }
+
+      .wrapper_year {
+        width: span(2 of 12);
+        margin-left: span(2 of 12);
+        margin-top: 0;
+        float: right;
+
+        body[dir="ltr"] & {
+          float: left;
+          margin-right: span(2 of 12);
+          margin-left: 0;
+        }
+      }
+
+      .search-title {
+        margin-top: 0;
+        background: $light-grey;
+        padding-right: 22px;
+
+        body[dir="ltr"] & {
+          padding-left: 22px;
+        }
+      }
+
+      .submit-button {
+        margin-top: 0;
+        height: 36px;
+        position: relative;
+        top: 8px;
+        padding-right: 16px;
+        padding-top: 0;
+        margin-left: 0;
+
+        body[dir="ltr"] & {
+          text-align: left;
+          margin-top: 0;
+          padding-left: 16px;
+        }
+      }
+
+      .wrapper_title {
+        width: span(4 of 12);
+        float: right;
+        padding: 0;
+        margin-left: 23px;
+
+        body[dir="ltr"] & {
+          float: left;
+          margin-right: 23px;
+          margin-left: 0;
+        }
+
+        .js-form-item.form-item {
+          position: relative;
+        }
+
+        img {
+          position: absolute;
+          left: 10%;
+          top: 12px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 15%;
+          }
+        }
+      }
+
+      .wrapper-category {
+        width: span(4 of 12);
+        float: right;
+        margin-top: 0;
+        margin-left: 23px;
+        padding-right: 26.5px;
+
+        body[dir="ltr"] & {
+          float: left;
+          margin-right: 23px;
+          margin-left: 0;
+          padding-right: 28px;
+          padding-left: 26.5px;
+        }
+      }
+
+      .form-item__dropdown {
+        border: 0;
+
+        .year_input {
+          border: 1px solid $dark-green !important;
+          border-radius: 24px;
+          height: 48px !important;
+        }
+      }
+
+      .animation-container {
+        position: relative;
+        clear: unset;
+        float: right;
+        width: span(2 of 12);
+        padding: 0;
+
+        body[dir="ltr"] & {
+          float: left;
+        }
+
+        svg {
+          position: absolute;
+          left: 30px;
+          width: unset !important;
+          height: unset !important;
+          top: 18px;
+
+          body[dir="ltr"] & {
+            transform: rotate(180deg) !important;
+            left: auto;
+            right: 30px;
+          }
+        }
+      }
+
+    }
+
+    .result-message {
+      margin-top: 103px;
+    }
+
+    .views-view-grid.horizontal {
+      padding: 0 15px;
+    }
+
+    ul {
+      margin: 0 auto;
+      padding: 0;
+      width: 100%;
+      padding-left: 28px;
+      padding-right: 28px;
+
+      .button {
+        background: $jungle-green !important;
+        width: 884px;
+      }
+    }
+  }
+}
+
+@include grid-breakpoint($mq-desk, desk) {
+  .articles-list-page header, .publications-list-page header, .students-list-page header, .researchers-list-page header {
+    padding: 0 !important;
+  }
+  .page-articles-list, .page-publications-list, .path-articles, .path-news, .page-research-list, .page-highlight-list, .path-research, .path-highlights, .page-campus-news, .page-students-list, .path-students-lobby, .page-researchers-list, .path-researchers-lobby, .page-podcasts-list, .path-podcasts {
+    .breadcrumb {
+      padding-top: 23px;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: $dark-green;
+      padding-right: 120px;
+      float: right;
+
+      body[dir="ltr"] & {
+        float: left;
+        padding-left: 120px;
+      }
+    }
+  }
+  body[dir="ltr"] {
+    &.path-research, &.path-highlights, .path-podcasts {
+      .breadcrumb {
+        float: left;
+        padding-left: 120px;
+      }
+    }
+  }
+  .articles-list-page, .publications-list-page, .research-list-page, .highlight-list-page, .students-list-page, .researchers-list-page, .podcasts-list-page {
+    padding-left: 103px;
+    padding-right: 103px;
+    max-width: 1366px;
+    margin: 0 auto;
+    background-position: left 331px;
+
+    form {
+      .wrapper_month {
+        margin-right: 0;
+        padding-right: 9px;
+
+        body[dir="ltr"] & {
+          margin-left: 0;
+          padding-right: 0;
+          padding-left: 9px;
+        }
+
+        label {
+          display: none;
+        }
+      }
+
+      .wrapper_year {
+        label {
+          display: none;
+        }
+      }
+
+      .wrapper_title {
+        margin-left: 61px;
+
+        body[dir="ltr"] & {
+          margin-right: 61px;
+          margin-left: 0;
+        }
+      }
+
+      .wrapper-category {
+        margin-left: 26.5px;
+        padding-right: 9px;
+
+        body[dir="ltr"] & {
+          margin-right: 26.5px;
+          margin-left: 0;
+          padding-left: 9px
+        }
+
+        label {
+          display: none;
+        }
+      }
+    }
+
+    .result-message {
+      img {
+        margin: 0 auto;
+      }
+    }
+
+    .views-view-grid.horizontal {
+      padding: 0;
+    }
+
+    .views-row {
+      display: flex;
+
+      .views-col {
+        width: 25% !important;
+        padding-right: 9px;
+        padding-left: 9px;
+        height: auto;
+
+        img {
+          width: unset;
+        }
+
+        .featured-card {
+          .animation-container {
+            .content {
+              width: auto;
+              border-radius: 3px;
+            }
+
+            &:hover {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+
+    ul {
+      width: 100%;
+      padding-left: 9px;
+      padding-right: 9px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.highlight-list-page, .research-list-page, .podcasts-list-page {
+  header {
+    height: auto;
+    padding-bottom: 22px;
+  }
+
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    header {
+      padding-bottom: 50px;
+    }
+  }
+}

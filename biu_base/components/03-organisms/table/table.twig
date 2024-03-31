@@ -1,0 +1,20 @@
+{{ attach_library('biu_base/table') }}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  {% if table_title %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      "heading_level": 3,
+      "heading": table_title,
+      "heading_link_base_class": "large-media-heading",
+      "heading_modifiers": ['dark']
+    } %}
+  {% endif %}
+  {% if table_sub_title %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      "heading_level": 4,
+      "heading": table_sub_title,
+      "heading_link_base_class": "large-media-heading",
+      "heading_modifiers": ['dark']
+    } %}
+  {% endif %}
+  {{ table }}
+</div>

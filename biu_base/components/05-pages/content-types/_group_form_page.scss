@@ -1,0 +1,109 @@
+.page-node-type-forms {
+  .main {
+    padding: 60px 0;
+  }
+
+  #block-biu-base-page-title {
+    h1 {
+      color: $bar-ilan-green;
+      font-size: calc(40 / 16 * 1rem);
+      font-weight: 600;
+    }
+  }
+
+  .views-exposed-form {
+    &#views-exposed-form-group-forms-block-1 {
+      display: flex;
+
+      .form-item__dropdown {
+        select {
+          border: 1px solid $bar-ilan-green;
+          padding: 5px 70px;
+          display: block;
+          background-image: url("/themes/custom/biu_base/assets/images/icons/green.svg");
+          background-repeat: no-repeat;
+          background-position: left .75rem center;
+          background-size: 18px;
+
+          option {
+            padding: 10px 20px;
+          }
+
+          &:focus {
+            border-color: $bar-ilan-green;
+            border-radius: 19px;
+          }
+        }
+      }
+
+      .form-actions {
+        margin-right: 20px;
+
+        input[type="submit"] {
+          border-radius: 19px;
+          border: 1px solid $bar-ilan-green;
+          background-color: $bar-ilan-green;
+          color: $white;
+          padding: 9px 30px;
+        }
+      }
+    }
+  }
+
+  #block-views-block-group-forms-block-1 {
+    .title {
+      color: $bar-ilan-green;
+      font-size: calc(32 / 16 * 1rem);
+      font-weight: 600;
+      padding-right: 23px;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      margin-top: 50px;
+      border-bottom: 2px solid $bar-ilan-green;
+    }
+
+    .row {
+      color: $bar-ilan-green;
+      font-size: calc(20 / 16 * 1rem);
+      margin: 0;
+
+      & > div {
+        padding: 33px 23px 33px;
+        border-bottom: 1px solid rgba(0, 40, 15, 0.5);
+      }
+    }
+
+    a {
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      color: $bar-ilan-green;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 16px;
+        height: 1em;
+        background-repeat: no-repeat;
+        // This is what make each bg-image to stick to oposite sides while width expands.
+        background-position: 100% 50%, 0 50%;
+        background-image: url("/themes/custom/biu_base/assets/images/icons/download.svg"), url("/themes/custom/biu_base/assets/images/icons/download.svg");
+        margin-left: 1em;
+        position: absolute;
+        top: calc(50% - 14px);
+        right: -25px;
+        transition: width 0.3s ease-out;
+      }
+
+
+    }
+
+    .file--mime-application-link a::after {
+      // background-image: url("../images/icons/certificate.svg"), url("../images/icons/certificate.svg");
+    }
+  }
+}

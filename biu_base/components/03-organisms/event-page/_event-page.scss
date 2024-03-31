@@ -1,0 +1,404 @@
+.page-node-type-event {
+  background-color: $light-grey;
+
+  .main-contact {
+    .email-phone {
+      width: 100%;
+      svg.icon {
+        html[dir="ltr"] & {
+          float: none;
+          width: 100%;
+          @include grid-breakpoint($mq-desk, desk) {
+            float: left;
+            width: 20%;
+          }
+        }
+      }
+      ul {
+        > p {
+          display: none;
+        }
+      }
+    }
+
+    .location-link {
+      display: none;
+    }
+  }
+
+  .main {
+    max-width: 1174px;
+    margin: 0 auto;
+
+    .event-top-banner-wrapper {
+      display: block;
+      background-color: $white;
+      justify-content: stretch;
+      margin-bottom: 30px;
+      margin-top: 65px;
+      @include grid-breakpoint($mq-desk, desk) {
+        display: flex;
+        margin-bottom: 100px;
+      }
+
+      .left-column {
+        flex: 0 0 34%;
+      }
+
+      .field--name-field-event-date {
+        position: absolute;
+        top: 20px;
+        right: -10px;
+        background-color: $light-blue;
+        z-index: 1;
+        padding: 4px 22px;
+        color: $white;
+
+        html[dir="ltr"] & {
+          right: initial;
+          left:  -10px;
+        }
+
+        @include grid-breakpoint($mq-desk, desk) {
+          right: -10px;
+          html[dir="ltr"] & {
+            right: initial;
+            left: -10px;
+          }
+        }
+
+        .field__label {
+          display: none;
+        }
+
+        .day {
+          font-size: 40px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          letter-spacing: normal;
+          text-align: center;
+          color: #01280f;
+          margin-bottom: 5px;
+          line-height: 1;
+        }
+
+        .month {
+          font-size: 16px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          letter-spacing: normal;
+          text-align: center;
+          color: #01280f;
+          line-height: 1;
+        }
+      }
+
+      .banner-content-wrapper {
+        position: relative;
+        padding: 20px;
+        @include grid-breakpoint($mq-desk, desk) {
+          padding-top: 120px;
+        }
+
+        .title {
+          font-size: 1.5rem;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.17;
+          letter-spacing: normal;
+          color: #003535;
+
+          html[dir="ltr"] & {
+            text-align: left;
+          }
+        }
+
+        .subtitle {
+          font-size: 1rem;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          color: #003535;
+
+          html[dir="ltr"] & {
+            text-align: left;
+          }
+        }
+      }
+
+      .banner-image-wrapper {
+        position: relative;
+
+        .field--name-field-event-mode {
+          position: absolute;
+          top: 20px;
+          left: -10px;
+          background-color: $light-blue;
+          z-index: 1;
+          padding: 4px 22px;
+          color: $white;
+
+          html[dir="ltr"] & {
+            left: initial;
+            right: -10px;
+          }
+
+          .field__label {
+            display: none;
+          }
+
+          .field__item {
+            font-size: 14px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.57;
+            letter-spacing: normal;
+            text-align: center;
+            color: #012c12;
+          }
+        }
+      }
+    }
+
+    .event-content-wrapper {
+      display: block;
+      justify-content: stretch;
+      @include grid-breakpoint($mq-desk, desk) {
+        display: flex;
+      }
+
+      .left-column {
+        width: 100%;
+        margin-bottom: 30px;
+        @include grid-breakpoint($mq-desk, desk) {
+          flex: 0 0 34%;
+        }
+      }
+
+      .right-column {
+        padding: 0 30px;
+        margin-bottom: 30px;
+      }
+
+      .field--name-field-event-accessibility-data, .field--name-field-event-comments, .field--name-field-event-program{
+        .field__label {
+          line-height: 1;
+          font-size: 22px;
+          font-weight: normal;
+        }
+        .field__item {
+          margin-bottom: 23px;
+        }
+      }
+      .text-long, .field--name-field-event-accessibility-data, .field--name-field-event-comments, .field--name-field-event-program{
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: right;
+        color: #003535;
+
+        html[dir="ltr"] & {
+          text-align: left;
+        }
+
+        p {
+          font-size: 16px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          text-align: right;
+          color: #003535;
+
+          html[dir="ltr"] & {
+            text-align: left;
+          }
+        }
+      }
+
+      .table-style-content {
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        letter-spacing: normal;
+        text-align: right;
+        color: $bar-ilan-green;
+
+        html[dir="ltr"] & {
+          text-align: left;
+        }
+
+        .field {
+          background-color: $white;
+          padding: 10px;
+          margin-bottom: 5px;
+
+          .icon {
+            width: 16px;
+            height: 16px;
+            margin: 0 16px;
+            float: right;
+            html[dir="ltr"] & {
+              float: left;
+            }
+          }
+
+          .field__label {
+            width: calc((100% - 48px) * 0.4);
+            float: right;
+            html[dir="ltr"] & {
+              float: left;
+            }
+          }
+          .field__item {
+            width: calc((100% - 48px) * 0.6);
+            float: right;
+            html[dir="ltr"] & {
+              float: left;
+            }
+            .field--name-field-event-date-display-two {
+              display: inline;
+              width: auto;
+              float: none;
+              padding: 0;
+              margin: 0;
+              html[dir="ltr"] & {
+                float: none;
+              }
+            }
+          }
+          &.field-event-location {
+            padding: 12px 10px 0;
+            .icon {
+              width: 26px;
+              height: 26px;
+              margin: 0 11px;
+              top: -5px;
+              position: relative;
+            }
+          }
+
+          &.field-event-time {
+            .field__item {
+              direction: ltr;
+              text-align: right;
+              html[dir="ltr"] & {
+                text-align: left;
+              }
+            }
+          }
+        }
+
+        .field--name-field-event-audience {
+          .field__item {
+            display: inline-block;
+            padding: 0 10px;
+          }
+        }
+      }
+
+      .general_page-contact {
+        .main-contact {
+          .email-phone {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+
+  .social-icons {
+    margin-top: 20px;
+
+    .title {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 15px;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+    .social-icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 7px;
+
+      .icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+
+  .cta-link {
+    background-color: $light-blue;
+    position: relative;
+    width: auto;
+    margin: 20px 0 8px;
+
+    .animation-container {
+      width: 100%;
+      display: flex;
+    }
+
+    a {
+      color: #004128;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      text-decoration: none;
+      width: 100%;
+      padding: 16px 20px 16px 34px;
+      html[dir="ltr"] & {
+        padding: 16px 40px 16px 20px;
+      }
+    }
+
+    svg {
+      width: 43px !important;
+      height: 13px !important;
+      margin-right: auto;
+      position: absolute;
+      top: calc(50% - 6.5px);
+      left: 22px;
+
+      html[dir="ltr"] & {
+        transform: rotate(180deg) !important;
+        margin-left: auto;
+        margin-right: unset;
+        left: auto;
+        right: 5px;
+      }
+    }
+  }
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@include grid-breakpoint($mq-desk, desk) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+}

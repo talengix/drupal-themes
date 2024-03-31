@@ -1,0 +1,13 @@
+{% set cta__base_class = 'cta-link' %}
+{% set cta__modifiers = 'main' %}
+<div {{ bem(cta__base_class, cta__modifiers, cta__blockname, cta__extra_classes) }}>
+  {% include "@atoms/links/link/link.twig" with {
+    "link_content": cta_link_content,
+    "link_url": cta_link_url,
+  } %}
+</div>
+{#
+/**
+ * @todo Add the arrow.
+ */
+#}

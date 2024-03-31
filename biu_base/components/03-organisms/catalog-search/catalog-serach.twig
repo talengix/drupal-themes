@@ -1,0 +1,23 @@
+{% if label %}
+  <h2{{ title_attributes.addClass('h2') }}>{{ label }}</h2>
+{% endif %}
+<div class="search-wrapper">
+  <form id="catalog-search-form" action="{{ catalog_link }}" method="get">
+    <input type="text" id="catalog-search-input" name="search" class="form-control"
+           placeholder="{{ 'Education, Criminology, Jewish…'|t }}">
+  </form>
+  <span class="input-group-append">
+  <a href="javascript:void(0)" onclick="javascript:document.getElementById('catalog-search-form').submit()">
+     {% include "@atoms/images/icons/_icon.twig" with {
+       icon_name: 'search',
+       icon_url: '/themes/custom/biu_base/dist/icons.svg',
+       icon_modifiers: ['light'],
+     } %}
+    {% include "@atoms/images/icons/_icon.twig" with {
+      icon_name: 'search-dark',
+      icon_url: '/themes/custom/biu_base/dist/icons.svg',
+      icon_modifiers: ['dark'],
+    } %}
+  </a>
+</span>
+</div>

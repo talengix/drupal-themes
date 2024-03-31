@@ -1,0 +1,17 @@
+uuid: 655f5787-ccf8-40aa-94ab-e29a65337430
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: centered_card_mobile
+label: 'Centered card - mobile'
+effects:
+  7cad1197-19ce-4be1-a153-1fdbd0c56da5:
+    uuid: 7cad1197-19ce-4be1-a153-1fdbd0c56da5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 1233
+      crop_type: focal_point

@@ -1,0 +1,129 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+@import '../../02-patterns/message-one/message-one';
+
+.messages__wrap {
+  &--one {
+    padding: 140px 0 75px;
+    @include dark-section;
+
+    img {
+      @include dark-section-img;
+    }
+  }
+
+  .messages {
+    &__slides {
+
+      @include ds-breakpoint($bp-desk){
+        display: flex;
+      }
+
+
+      .swiper {
+        width: 100%;
+        overflow: hidden;
+
+        @include ds-breakpoint($bp-desk){
+          width: 80%;
+        }
+      }
+    }
+
+    &__title {
+      width: 100%;
+      margin-bottom: 40px;
+      align-self: center;
+      text-align: center;
+
+      @include ds-breakpoint($bp-desk){
+        width: 20%;
+        margin-bottom: 0;
+      }
+    }
+
+    &__control {
+      display: flex;
+      justify-content: center;
+
+      &--prev-button {
+        cursor: pointer;
+        img {
+          transform: rotate(180deg) !important;
+        }
+
+        body[dir="ltr"] & {
+          margin-right: 30px;
+          img {
+            transform: none !important;
+          }
+        }
+
+        &.swiper-button-disabled {
+          opacity: 0.35;
+        }
+      }
+
+      &--next-button {
+        cursor: pointer;
+        margin-right: 30px;
+
+        body[dir="ltr"] & {
+          margin-right: 0;
+          img {
+            transform: rotate(180deg) !important;
+          }
+        }
+
+        &.swiper-button-disabled {
+          opacity: 0.35;
+        }
+
+      }
+
+      img {
+        max-width: 46px;
+        height: auto;
+      }
+
+    }
+
+    &__footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 75px;
+
+      .link-container {
+        max-width: 180px;
+        padding: 0;
+        text-align: right;
+        position: relative;
+
+        body[dir="ltr"] &{
+          text-align: left;
+        }
+
+        a {
+          font-size: 1rem;
+        }
+
+        svg {
+          position: absolute;
+          top: calc(50% - 9px);
+          right: 95px;
+          height: 16px !important;
+          width: 43px !important;
+          padding: 4px;
+          vertical-align: middle;
+
+          body[dir="ltr"] &{
+            transform: rotate(180deg) !important;
+            right: auto;
+            left: 95px;
+          }
+        }
+      }
+    }
+
+  }
+}

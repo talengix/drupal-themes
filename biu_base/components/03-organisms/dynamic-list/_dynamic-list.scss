@@ -1,0 +1,188 @@
+.dynamic-list-content {
+  @include container;
+
+  @include grid-breakpoint($mq-desk-wide, desk-wide) {
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  h1 {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .field--name-field-list {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+
+      & > * {
+        flex-shrink: 0;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+      }
+    }
+
+    .d-flex {
+      display: flex !important;
+    }
+
+    .form-item__dropdown {
+      margin-bottom: 24px;
+
+      &::after {
+        top: 12px;
+      }
+
+      .form-select {
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        background-color: $white;
+        background-repeat: no-repeat;
+        background-position: right .75rem center;
+        background-size: 16px 12px;
+        height: 48px !important;
+        padding: 0 24px 0 20px;
+        border: 1px solid $dark-green !important;
+        border-radius: 24px;
+      }
+    }
+
+    .search-wrapper {
+      margin-bottom: 1rem;
+      position: relative;
+
+      .field-prefix {
+        img {
+          position: absolute;
+          top: 12px;
+          left: 25px;
+        }
+      }
+
+      .form-control {
+        display: block;
+        width: 100%;
+        padding: 0 24px 0 20px;
+        font-weight: 400;
+        background-color: $white;
+        border: 1px solid $dark-green;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 24px;
+        height: 48px;
+      }
+
+      body[dir="ltr"] & {
+        .field-prefix {
+          img {
+            left: auto;
+            right: 25px;
+          }
+        }
+      }
+    }
+
+    .tabulator {
+      .tabulator-header {
+        overflow: initial;
+        font-weight: 500;
+        margin-bottom: 16px;
+        border: 0;
+
+        .tabulator-col {
+          overflow: initial;
+          height: auto !important;
+
+          .tabulator-col-content {
+            padding: 8px;
+
+            .tabulator-col-title {
+              word-wrap: break-word;
+              white-space: initial !important;
+              overflow: initial !important;
+              text-overflow: initial !important;
+            }
+          }
+        }
+      }
+
+      .tabulator-tableHolder {
+        .tabulator-table {
+          .tabulator-row {
+            background-color: $light-grey;
+            border-bottom: 0;
+            margin-bottom: 16px;
+
+            .tabulator-cell {
+              word-wrap: break-word;
+              white-space: initial !important;
+              overflow: initial !important;
+              text-overflow: initial !important;
+            }
+          }
+        }
+      }
+
+
+      body[dir="rtl"] & {
+        text-align: right;
+
+        .tabulator-header {
+          .tabulator-col {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    #load-more {
+      background: transparent;
+      color: $dark-green;
+      line-height: 1;
+      border: 1px solid;
+      padding: 18px 20px 14px;
+      width: 100%;
+      margin: 26px 0 16px;
+      display: block;
+    }
+
+    @include grid-breakpoint($mq-desk, desk) {
+      .col-sm {
+        display: flex;
+
+        > * {
+          flex: 1 0 0;
+          max-width: 33.3%;
+          padding: 0 8px;
+        }
+
+        .form-item__dropdown:first-child, .search-wrapper {
+          body[dir="ltr"] & {
+            padding-left: 0;
+          }
+
+          body[dir="rtl"] & {
+            padding-right: 0;
+          }
+        }
+
+        .form-item__dropdown:last-child {
+          body[dir="rtl"] & {
+            padding-left: 0;
+          }
+
+          body[dir="ltr"] & {
+            padding-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{% set footer__base_class = 'footer' %}
+{% set footer__modifier_class = ['sub-site'] %}
+
+<footer {{ bem(footer__base_class) }}>
+  <div {{ bem('region', footer__modifier_class, footer__base_class) }}>
+  <div {{ bem('inner', footer__modifier_class, footer__base_class) }}>
+    {# address #}
+    <div {{ bem('first', footer__modifier_class, footer__base_class)}}>
+      <div {{ bem('address', footer__modifier_class, footer__base_class) }}>
+        {% block address_block %}
+          {{ address }}
+        {% endblock %}
+      </div>
+    </div>
+    {# contact #}
+    <div {{ bem('second', footer__modifier_class, footer__base_class)}}>
+      <div {{ bem('contact-info', footer__modifier_class, footer__base_class) }}>
+        {% block contact_info %}
+          <p>
+          {% if free_text is not null and free_text is not empty %}
+            {{ free_text }}<br>
+          {% endif %}
+          {% if phone is not null and phone is not empty %}
+            {{ 'Phone' | t}}: <a href="tel:{{ phone }}">{{ phone }}</a><br>
+          {% endif %}
+          {% if fax is not null and fax is not empty %}
+            {{ 'Fax' | t}}: {{ fax }}</br>
+          {% endif %}
+          {% if email is not null and email is not empty %}
+            {{ 'Email' | t }}: <a href="mailto:{{ email }}">{{ email }}</a>
+          {% endif %}
+          </p>
+        {% endblock %}
+      </div>
+    </div>
+    {# social #}
+    <div {{ bem('third', footer__modifier_class, footer__base_class)}}>
+      <div {{ bem('social-icons', footer__modifier_class, footer__base_class) }}>
+        {% block social__icons %}
+          {% include "@organisms/social-media/social-media.twig" with {
+            social_media__base_class: "social-media-component",
+            social_media__modifiers: [],
+            social_base_class: "footer-social-icon",
+            social_modifier_class: [],
+            social_block_heading: social_block_label,
+            instagram_icon_link: instagram_icon_link,
+            facebook_icon_link: facebook_icon_link,
+            linkedin_icon_link: linkedin_icon_link,
+            twitter_icon_link: twitter_icon_link,
+            youtube_icon_link: youtube_icon_link,
+            external_site_link: external_site_link,
+            icon__url: icon__url,
+          } %}
+        {% endblock %}
+      </div>
+    </div>
+{#    <div class="powered_by">#}
+{#      {{ 'Powered by'|t }} <a href="https://www.dofinity.com" target="_blank" rel="nofollow">{{ 'Dofinity'|t }}</a>,#}
+{#      {{ 'Digital Marketing by'|t }} <a href="https://www.angoramedia.com/he/" target="_blank" rel="nofollow">{{ 'Angora Media'|t }}</a>#}
+{#    </div>#}
+  </div>
+  </div>
+</footer>

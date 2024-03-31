@@ -1,0 +1,27 @@
+.confirmation-msg {
+  width: 100vw;
+  background-color: $pale-green;
+
+  .thankyou-form-sec {
+    padding-top: 150px;
+    padding-bottom: 200px;
+    text-align: center;
+    color: $dark-green;
+
+    svg {
+      width: 122px;
+      height: 121px;
+    }
+
+    .thankyou-msg {
+      font-weight: 500;
+      font-size: 24px;
+    }
+
+    .contact-msg {
+      font-weight: normal;
+      font-size: 20px;
+    }
+
+  }
+}

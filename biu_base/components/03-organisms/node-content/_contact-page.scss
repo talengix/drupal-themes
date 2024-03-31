@@ -1,0 +1,18 @@
+.form-item__dropdown {
+  border: none;
+
+  &::after {
+    top: 40px;
+    background-image: url('/themes/custom/biu_base/assets/images/icons/green.svg');
+    border: none;
+    width: 24px;
+    left: 25px;
+    height: 24px;
+    right: auto;
+
+    body[dir="ltr"] & {
+      left: auto;
+      right: 25px;
+    }
+  }
+}

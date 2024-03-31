@@ -1,0 +1,1 @@
+"use strict";Drupal.behaviors.peopleStrip={attach:function attach(){new Swiper(".people-strip-slider",{loop:!1,slidesPerView:"auto",breakpoints:{0:{pagination:{el:".swiper-pagination",clickable:!0}},1200:{pagination:{el:".swiper-pagination",clickable:!0,type:"fraction"}}},navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"}})}};

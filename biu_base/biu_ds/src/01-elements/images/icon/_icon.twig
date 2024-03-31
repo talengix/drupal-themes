@@ -1,0 +1,15 @@
+{#
+/**
+ * Available variables:
+ * - icon_base_class - base class name
+ * - icon_modifiers - modifiers for icons (array)
+ * - icon_blockname - blockname prepended to the base classname
+ * - icon_extra_class - extra classes for icon
+ * - icon_name - the name of the icon
+ * - icon_title - a11y title
+ * - icon_full_url - full path for story book
+ */
+#}
+{% set icon_full_url = biu_ds_path ? biu_ds_path ~ '/assets/images/icons/' ~ icon_name ~ '.svg' : icon_full_url%}
+
+<img {{ bem(icon_base_class, icon_modifiers, icon_blockname, icon_extra_class) }} src="{{ icon_full_url }}" alt="{{ icon_title }}"/>

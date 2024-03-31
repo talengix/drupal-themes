@@ -1,0 +1,39 @@
+@import "./event-horizontal-card";
+
+.events-strip.swiper-container {
+  width: calc(100% + 20px);
+  position: relative;
+  right: -10px;
+
+  [dir="ltr"] & {
+    left: -10px;
+    right: auto;
+  }
+
+  .event-horizontal-card {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .swiper-pagination {
+    bottom: auto;
+  }
+
+  .swiper-pagination-clickable {
+    position: relative;
+    margin-top: 24px;
+    margin-bottom: 32px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: var(--white);
+  }
+
+  .swiper-pagination-bullet {
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--pale-green);
+  }
+}

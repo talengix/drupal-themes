@@ -1,0 +1,106 @@
+.featured-article-card {
+  position: relative;
+
+  h3 {
+    font-weight: normal;
+  }
+
+  .card-featured {
+    margin-top: 36px;
+    margin-bottom: 11px;
+
+    .card-featured__content {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .animation-container {
+      .link {
+        text-decoration: none;
+        color: $dark-green;
+      }
+
+      svg {
+        width: 43px !important;
+        height: 13px !important;
+
+        body[dir="ltr"] & {
+          transform: rotate(180deg) !important;
+        }
+      }
+
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+
+    .card-featured {
+      margin: 0;
+      // @todo should be based on mixin.
+      max-width: 1366px;
+      margin-left: -96px;
+      margin-right: -96px;
+
+      picture.image {
+        width: span(6 of 12);
+        float: left;
+      }
+
+      .card-featured__content {
+        @include container;
+
+        display: block;
+        background-repeat: no-repeat !important;
+        body[dir='ltr'] & {
+          background-image: url(/themes/custom/biu_base/assets/images/backgrounds/featured-article-bg-en.png) !important;
+          background-position: 38% 0 !important;
+        }
+        body[dir='rtl'] & {
+          background-image: url(/themes/custom/biu_base/assets/images/backgrounds/featured-article-bg.png) !important;
+          background-position: 62% 0 !important;
+        }
+
+        .card-featured__heading, .card-featured__subheading {
+          width: span(4 of 12);
+        }
+
+        .card-featured__body {
+          width: span(4 wide of 12);
+        }
+      }
+
+      .featured-article {
+        .animation-container {
+          width: span(4 wide of 12);
+          display: block;
+          position: relative;
+
+          body[dir="ltr"] & {
+            left: auto;
+          }
+
+          svg {
+            position: absolute;
+            bottom: 8px;
+
+            body[dir="ltr"] & {
+              left: auto;
+            }
+          }
+        }
+      }
+
+      body[dir="ltr"] & {
+        picture.image {
+          float: right;
+        }
+      }
+    }
+    @include grid-breakpoint($mq-desk-wide, desk-wide) {
+      .card-featured__content {
+        margin-right: auto !important;
+        margin-left: auto !important;
+      }
+    }
+  }
+}

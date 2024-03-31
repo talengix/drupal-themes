@@ -1,0 +1,251 @@
+@import "../../00-base/base/global";
+
+.card-wrapper {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.card.card--is-link {
+  &:hover,
+  &:active,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+
+    .arrowed::after {
+      width: 33px;
+    }
+  }
+}
+
+.card--standard,
+.card--bigger {
+  background-color: #fff;
+  border-radius: 3px;
+
+  &:hover {
+    box-shadow: 0 2px 24px 3px rgba(0, 40, 15, 0.15);
+  }
+}
+
+.card--shadow {
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.12);
+}
+
+.card--bigger {
+  @media (min-width: 480px) {
+    border-radius: 6px;
+  }
+}
+
+.card--horizontal {
+  @media (min-width: 1036px) {
+    flex-direction: row;
+  }
+}
+
+.card--bg-pale {
+  background-color: var(--pale-green);
+}
+
+.card__image {
+  // relative position is needed for card type tage (card__tag)
+  position: relative;
+
+  a, img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.card__image--bigger {
+  max-height: 337px;
+  overflow: hidden;
+}
+
+// The content type tag, optionally reside inside card__image section
+.card__tag {
+  background-color: var(--white);
+  box-shadow: 1px -5px 6px rgba(0, 0, 0, 0.12);
+  //color: var(--body-text);
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0 16px;
+  position: absolute;
+  bottom: 0;
+  padding: 2px 10px;
+}
+
+.card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 0 1rem 1rem;
+}
+
+.card__body--standard {
+  padding-bottom: 13px;
+}
+
+.card__body--bigger {
+  padding: 0 2.5rem 2.5rem;
+}
+
+.card__body--standard-arrowed {
+  @media (min-width: 1036px) {
+    // Footer is absolute positioned. We need bottom space for it.
+    padding-bottom: 35px;
+  }
+  padding-right: 28px;
+
+  [dir=rtl] & {
+    padding-left: 28px;
+    padding-right: 1rem;
+  }
+}
+
+.card__body--bigger-arrowed {
+  @media (min-width: 1036px) {
+    // Footer is absolute positioned. We need bottom space for it.
+    padding-bottom: 4rem;
+    padding-right: 4rem;
+    [dir=rtl] & {
+      padding-left: 4rem;
+      padding-right: 2.5rem;
+    }
+  }
+}
+
+.card__heading {
+  margin-bottom: 5px;
+  margin-top: 18px;
+}
+
+.card__heading--horizontal {
+  margin-top: 0;
+}
+
+.card__heading--bigger.card__heading--bigger {
+  font-size: 35px;
+  @media (min-width: 320px) {
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+  @media (min-width: 1240px) {
+    font-size: 42px;
+  }
+}
+
+.card__content {
+  flex: 1;
+  position: relative;
+}
+
+.card__content--bigger {
+  font-size: 18px;
+  line-height: 1.41;
+  @media (min-width: 1036px) {
+    font-size: 22px;
+  }
+}
+
+.card__subheading--standard {
+  font-size: 14px;
+  margin-bottom: 6px;;
+}
+
+.card__content--standard {
+  font-size: 14px;
+  line-height: 1.43;
+  margin: 3px 0 0;
+}
+
+.card-body__field {
+  margin-bottom: 5px;
+}
+
+.card__edit-node {
+  position: absolute;
+  right: 0;
+  top: -5px;
+
+  [dir=rtl] {
+    right: auto;
+    left: 0;
+  }
+}
+
+.card__footer {
+  margin-top: 0.75rem;
+}
+
+.card__footer--bigger,
+.card__footer--standard {
+  @media (min-width: 1036px) {
+    background-color: var(--white);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-top: 0;
+    padding: 0 1rem 0.75rem;
+    right: 0;
+  }
+}
+
+.card__footer--bigger {
+  @media (min-width: 1036px) {
+    padding: 0 2.5rem 2rem;
+  }
+}
+
+.card__link {
+  color: var(--body-text);
+  display: block !important;
+}
+
+.card__link--standard {
+  font-size: 16px;
+}
+
+.card__link--bigger {
+  font-size: 16px;
+  @media (min-width: 1036px) {
+    font-size: 19px;
+  }
+}
+
+.card__link-text {
+  display: inline-block;
+  font-size: 12px;
+  // 30px design gap from card border
+  // + 16px arrow horizontal margin
+  // = 46px
+  width: calc(100% - 46px);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.card__link-text--bigger {
+  font-size: 18px;
+}
+
+.card__title--medium {
+  font-size: 18px;
+}
+
+.card-horiz {
+  background-color: var(--pale-green);
+}
+
+.card-horiz__body {
+  padding: 0 1em 1em;
+}

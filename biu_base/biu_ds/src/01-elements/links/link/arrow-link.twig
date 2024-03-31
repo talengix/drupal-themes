@@ -1,0 +1,24 @@
+<div {{ bem(link_container_base_class, link_container_modifiers, link_container_blockname) }}>
+  {# {% if is_external %}
+    <span class="external-icon">
+      {% include "@ds_elements/images/icon/_icon.twig" with {
+        icon_name: 'link-out-icon',
+        icon_url: item__icon_url,
+        icon_modifiers: []
+      } %}
+    </span>
+  {% endif %} #}
+  {% if not arrow_src %}
+    {% set arrow_src = '/themes/custom/biu_base/assets/animations/arrow.json' %}
+  {% endif %}
+  <div class="animation-container" data-src="{{ arrow_src }}">
+    {% include "@ds_elements/links/link/link.twig" with {
+      link_url: item__url,
+      link_attributes: (is_external) ? {'title': item__link_title , 'aria-label': item__link_title , 'target': '_blank'} :
+                        {'title': item__link_title , 'aria-label': item__link_title},
+      link_content: item__content,
+      link_base_class: link_base_class,
+      link_modifiers: link_modifiers
+    } %}
+  </div>
+</div>

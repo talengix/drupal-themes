@@ -1,0 +1,62 @@
+{% set card__modifiers = ['alumni', 'horizontal'] %}
+{% set card__image_src = card__image_src %}
+{% set card__heading__additional_classes = ['heading--secondary'] %}
+{% set card__heading = card__heading %}
+{% set card__heading_is_div = TRUE %}
+{% set card__content = card__content %}
+{% set card__link_url = card__link_url %}
+{% set card__heading__level = 3 %}
+{% set card__subheading = card__subheading %}
+{% set card__subheading__level = 4 %}
+{% set card__subheading_is_div = TRUE %}
+
+{% extends "@ds_patterns/card/card.twig" %}
+
+  {% block card_opening_element %}
+    <a href="{{ card__link_url }}" {{ bem(card__base_class, card__modifiers, card__blockname, card__additional_classes) }} >
+  {% endblock %}
+
+  {% block card_closing_element %}
+</a><!-- /a.card-alumni -->
+{% endblock %}
+
+  {% block card_header %}
+    {# Heading #}
+    <div class="card__header card__header--alumni">
+      {% if card__heading %}
+        {{ title_prefix }}
+        {% include "@ds_elements/text/headings/_heading.twig" with {
+          heading_base_class: card__heading__base_class|default('card__heading'),
+          heading_modifiers: card__modifiers,
+          heading_level: card__heading__level,
+          heading_is_div: card__heading_is_div,
+          heading: card__heading,
+          heading__additional_classes: card__heading__additional_classes|merge(['heading']),
+          heading_url: card__heading__link,
+          heading_link_base_class: card__heading__link_base_class|default('heading-link'),
+          heading_link_blockname: card__base_class,
+        } %}
+        {{ title_suffix }}
+      {% endif %}
+      {# Subheading #}
+      {% if card__subheading %}
+        {% if card__subheading_is_normal_text %}
+          {# When sub heading shouldnt wrapped with heading tag #}
+          <div {{ bem('subheading', card__modifiers, card__base_class, card__subheading__additional_classes) }}>
+            {{ card__subheading }}
+          </div>
+        {% else %}
+          {% include "@ds_elements/text/headings/_heading.twig" with {
+            heading_base_class: card__heading__base_class|default('card__subheading'),
+            heading_modifiers: card__modifiers,
+            heading__additional_classes: ['heading'],
+            heading_is_div: card__subheading_is_div,
+            heading_level: card__subheading__level,
+            heading: card__subheading,
+            heading_url: card__subheading__link,
+          } %}
+        {% endif %}
+      {% endif %}
+      <div {{ bem('small-border', card__modifiers, '', card__small_border__additional_classes) }}></div>
+    </div>
+  {% endblock %}

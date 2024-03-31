@@ -1,0 +1,56 @@
+@import "../../scss/init";
+
+.front-carousel {
+  margin-top: 50px;
+
+  .carousel-indicators {
+    button {
+      background-color: $primary-blue-bright;
+      opacity: 0.2;
+      border: 1px solid transparent;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  .carousel-inner {
+    .carousel-item {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center right;
+      height: 700px;
+      padding-top: 130px;
+
+      .text {
+        padding-right: 30px;
+
+        h1 {
+          font-weight: 700;
+          font-size: calc(60/16 * 1rem);
+          line-height: 63px;
+          color: $primary-blue-dark;
+        }
+
+        p {
+          line-height: 24px;
+          color: $primary-blue-dark;
+          margin-bottom: 48px;
+        }
+      }
+    }
+  }
+
+  .carousel-indicators {
+    right: auto;
+    margin: 0;
+    bottom: calc(50% - 120px);
+
+    button {
+      height: 15px;
+      width: 15px;
+      border-radius: 15px;
+    }
+  }
+}

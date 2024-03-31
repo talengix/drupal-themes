@@ -1,0 +1,82 @@
+.overflow-block__card-body {
+  position: relative;
+  border: solid 1px #004128; }
+  .dark-section .overflow-block__card-body {
+    color: var(--white);
+    border-color: var(--white); }
+  .overflow-block__card-body--two a {
+    font-size: 1.375rem;
+    line-height: 1.5;
+    color: #004128;
+    padding: 40px 25px;
+    display: block; }
+    .overflow-block__card-body--two a:hover {
+      text-decoration: none; }
+    .dark-section .overflow-block__card-body--two a {
+      color: var(--white);
+      border-color: var(--white); }
+  .overflow-block__card-body--two svg {
+    width: 43px !important;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    height: 13px !important; }
+    .dark-section .overflow-block__card-body--two svg {
+      filter: invert(99%) sepia(63%) saturate(119%) hue-rotate(216deg) brightness(116%) contrast(100%); }
+    body[dir="ltr"] .overflow-block__card-body--two svg {
+      right: 20px;
+      left: auto;
+      transform: rotate(180deg) translate3d(0, 0, 0) !important; }
+
+.overflow-block__card-title {
+  font-size: 2rem;
+  color: #fff;
+  position: absolute;
+  top: calc(50% - 24px);
+  margin-bottom: 0;
+  width: 100%;
+  text-align: center; }
+
+.overflow-block__card--two {
+  margin: 0; }
+
+.overflow-block__wrap--two {
+  padding: 30px 0 50px;
+  max-width: 1174px;
+  margin: 0 auto; }
+
+.overflow-block__title--two {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #004128;
+  text-align: center;
+  margin-bottom: 35px; }
+  .dark-section .overflow-block__title--two {
+    color: var(--white);
+    border-color: var(--white); }
+
+.overflow-block__sub-title--two {
+  font-size: 1.25rem;
+  color: #004128;
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+  margin-bottom: 20px; }
+  @media (min-width: 720px) {
+    .overflow-block__sub-title--two {
+      max-width: 50%; } }
+  .dark-section .overflow-block__sub-title--two {
+    color: var(--white);
+    border-color: var(--white); }
+
+.dark-section .overflow-block__content--two {
+  color: var(--white);
+  border-color: var(--white); }
+
+.overflow-block__content--two .col-md-4 {
+  margin-top: 25px; }
+
+.overflow-block__content--two .overflow-block__card-body--two {
+  height: 100%; }
+
+/*# sourceMappingURL=overflow-two.css.map */

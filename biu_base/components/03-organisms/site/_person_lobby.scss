@@ -1,0 +1,247 @@
+.students-list-page, .researchers-list-page {
+  .views-exposed-form {
+    margin: 20px 28px;
+    width: auto;
+
+    .form-item__dropdown {
+      &::after {
+        content: none;
+      }
+    }
+
+    .shs-field-container, .form-item {
+      margin-bottom: 0;
+      max-width: none;
+    }
+
+    .shs-widget-container {
+      width: 100%;
+      margin-bottom: 24px;
+      position: relative;
+
+      &[data-shs-level="1"] {
+        display: none;
+      }
+
+      &::after {
+        left: 20px;
+        right: auto;
+        top: 30px;
+        background-image: url(/themes/custom/biu_base/assets/images/icons/green.svg);
+        border: none;
+        width: 24px;
+        height: 24px;
+        content: ' ';
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+
+        body[dir="ltr"] & {
+          right: 20px;
+          left: auto;
+        }
+      }
+
+      label, select {
+        width: 100%;
+        color: $dark-green;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      label {
+        padding: 0 24px;
+      }
+
+      select {
+        border: 1px solid $dark-green !important;
+        border-radius: 24px;
+        height: 48px;
+        padding: 0 24px 0 20px;
+        background: none;
+        appearance: none;
+      }
+    }
+
+    .wrapper_title {
+      padding: 0;
+
+      .search-title {
+        margin: 0;
+      }
+
+      img {
+        left: 20px;
+        top: 12px;
+
+        body[dir="ltr"] & {
+          right: 20px;
+          left: auto;
+        }
+      }
+    }
+
+    .animation-container {
+      padding: 0;
+    }
+
+    @include grid-breakpoint($mq-tab-wide, tab-wide) {
+      .shs-widget-container {
+
+        &:first-child {
+          margin-left: 19px;
+
+          body[dir="ltr"] & {
+            margin-left: auto;
+            margin-right: 19px;
+          }
+        }
+      }
+      .wrapper_title, .animation-container {
+        width: 100%;
+      }
+    }
+
+    @include grid-breakpoint($mq-desk, desk) {
+      margin-right: 0;
+      margin-left: 0;
+      .js-form-item.form-item {
+        width: calc((100% - 19px) / 4);
+        float: right;
+
+        body[dir="ltr"] & {
+          float: left;
+        }
+      }
+      .wrapper_title, {
+        width: calc((100% - 19px) / 4);
+        float: right;
+        margin: 18px 19px 0;
+
+        body[dir="ltr"] & {
+          float: left;
+          margin: 16px 19px 0;
+        }
+
+        .js-form-item.form-item {
+          width: auto;
+        }
+      }
+      .animation-container {
+        width: calc((((100% - 19px) / 2) - 19px) / 2);
+        float: left;
+        margin-top: 16px;
+
+        body[dir="ltr"] & {
+          float: right;
+        }
+      }
+    }
+  }
+
+  .views-view-grid .views-row {
+    @include grid-breakpoint($mq-tab-wide, tab-wide) {
+      display: flex;
+    }
+
+    .views-col {
+      .card-people {
+        height: 100%;
+
+        .animation-container {
+          position: relative;
+          box-shadow: 0 3px 6px 0 rgba($black, 0.16);
+          height: 100%;
+
+          a {
+            height: 100%;
+            display: block;
+            background-color: $white;
+
+            .field--name-field-featured-media-image {
+              article {
+                height: 100%;
+
+                .field--name-field-media-image {
+                  height: 100%;
+
+                  picture {
+                    height: 100%;
+
+                    img {
+                      height: 100%;
+                      border-top-right-radius: 3px;
+                      border-top-left-radius: 3px;
+                    }
+                  }
+                }
+              }
+            }
+
+            .card-people__content {
+              background-color: $white;
+              border-bottom-right-radius: 3px;
+              border-bottom-left-radius: 3px;
+
+              .card-people__subheading {
+                font-size: 16px;
+              }
+            }
+          }
+
+          > svg {
+            width: unset !important;
+            height: unset !important;
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            transform: none !important;
+
+            body[dir="ltr"] & {
+              transform: rotate(180deg) !important;
+              left: auto;
+              right: 14px;
+            }
+          }
+        }
+      }
+    }
+
+    @include grid-breakpoint($mq-desk, desk) {
+      .views-col {
+        width: calc((100% - 19px) / 2) !important;
+        padding: 0;
+
+        &.col-1 {
+          margin-left: 19px;
+
+          body[dir="ltr"] & {
+            margin-left: 0;
+            margin-right: 19px;
+          }
+        }
+
+        .card-people {
+          .field--name-field-featured-media-image {
+            height: 100%;
+            float: right;
+
+            body[dir="ltr"] & {
+              float: left;
+            }
+
+            .field--name-field-media-image {
+              picture {
+                width: 276px;
+              }
+            }
+          }
+
+          .card-people__content {
+            width: calc(100% - 276px);
+          }
+        }
+      }
+    }
+  }
+}

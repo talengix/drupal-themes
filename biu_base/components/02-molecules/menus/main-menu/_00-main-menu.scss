@@ -1,0 +1,167 @@
+/* Nav */
+.main-nav {
+  display: none;
+
+  @include grid-breakpoint($mq-desk, desk) {
+    display: block;
+  }
+
+  &--open {
+    background-color: $white;
+    display: block;
+    left: 0;
+    overflow-y: scroll;
+    position: absolute;
+    top: 134px;
+    right: 0;
+    width: 100%;
+  }
+}
+
+/* UL */
+.main-menu {
+  @include list-reset;
+
+  border-bottom: 1px solid;
+  position: relative;
+  z-index: 10;
+
+  @include grid-breakpoint($mq-desk, desk) {
+    border-bottom: none;
+  }
+}
+
+/*
+ * Sub Navigation
+ */
+
+/* UL (Nested) */
+.main-menu--sub {
+  border-bottom: none;
+  height: 0;
+  overflow: hidden;
+  background-color: $near-white;
+  width: 100%;
+
+  @include grid-breakpoint($mq-desk, desk) {
+    background-color: $bar-ilan-green;
+    display: none;
+    height: auto;
+    left: 0;
+    overflow: visible;
+    padding: $space 0;
+    position: absolute;
+    top: 55px;
+    width: 315px;
+    z-index: 1;
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    @include grid-breakpoint($mq-desk, desk) {
+
+      .main-menu__link--sub {
+        color: $gray-light;
+
+        &.active,
+        &:active,
+        &:hover {
+          color: $white;
+          background-color: $black;
+        }
+      }
+    }
+  }
+
+  /* See main-menu.js */
+  &-open {
+    height: auto;
+  }
+}
+
+.header__menu {
+  @include grid-breakpoint($mq-desk, desk) {
+    .main-menu {
+      z-index: 11;
+    }
+    .main-nav > ul.main-menu {
+      position: static;
+
+      & > li.main-menu__item {
+        position: static;
+        margin-right: -4px;
+
+        & > ul.main-menu--sub {
+          position: absolute;
+          width: 100vw;
+          left: 0;
+          top: 106px;
+          padding: 43px 0;
+
+          body[dir="rtl"] & {
+            padding-right: 326px;
+          }
+
+          body[dir="ltr"] & {
+            padding-left: 326px;
+          }
+
+          border-top: 1px solid rgba($pale-green, 0.26);
+
+          &:hover .main-menu__link--sub {
+            color: #fff;
+          }
+
+          > li.main-menu__item--sub {
+            width: 168px;
+            display: inline-block;
+            margin-left: 23px;
+            border: 0;
+            vertical-align: top;
+
+            span {
+              font-size: 18px;
+              line-height: 24px;
+              padding: 0;
+              font-weight: 500;
+              margin-bottom: 8px;
+
+              &:hover {
+                background-color: transparent;
+                color: $white;
+              }
+            }
+
+            > ul.main-menu--sub-2 {
+              position: relative;
+              width: 100%;
+              top: 0;
+              padding: 0;
+
+              li {
+                a {
+                  font-size: 14px;
+                  font-weight: normal;
+                  font-stretch: normal;
+                  font-style: normal;
+                  line-height: 1.71;
+                  padding: 0;
+                  display: table;
+
+                  &:hover, &:focus {
+                    background-color: transparent;
+                    text-decoration: underline;
+                  }
+                }
+              }
+            }
+          }
+
+          .main-menu__item--sub:not(:first-child) {
+            border-top: 0;
+          }
+        }
+      }
+    }
+  }
+}

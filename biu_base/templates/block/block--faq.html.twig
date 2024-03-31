@@ -1,0 +1,8 @@
+<div {{ bem('block', [], '','faq-block') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% include "@ds_components/faq/faq.twig" with {
+    }%}
+  {% endblock %}
+</div>

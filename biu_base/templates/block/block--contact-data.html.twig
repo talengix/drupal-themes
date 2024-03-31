@@ -1,0 +1,47 @@
+<div {{ bem('block', [], '', 'general_page-contact') }}>
+  {{ title_prefix }}
+  {% if label %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      "heading_level": 2,
+      "heading": label,
+      "adiitional_classes": title_attributes,
+      "heading_modifiers": []
+    } %}
+  {% endif %}
+  {{ title_suffix }}
+  {% if content.field_contact_data['#items'].0.entity.hastranslation(language) %}
+    {% set entity = content.field_contact_data['#items'].0.entity.translation(language) %}
+  {% else %}
+    {% set entity = content.field_contact_data['#items'].0.entity %}
+  {% endif %}
+  {% if entity.field_fax is not empty %}
+    {% set fax_label = entity.field_fax.first %}
+  {% else %}
+    {% set fax_label = NULL %}
+  {% endif %}
+  {% if entity.field_phone is not empty %}
+    {% set phone_label = entity.field_phone.first %}
+  {% else %}
+    {% set phone_label = NULL %}
+  {% endif %}
+  {% include "@organisms/contact/contact.twig" with {
+    "title": entity.name.0.value,
+    "email": entity.field_email.0.value,
+    "email_label": entity.field_email.0.fielddefinition.label,
+    "contact_link_title": entity.field_contact_link.title,
+    "contact_link_url": entity.field_contact_link.0.url,
+    "phone" : entity.field_phone.second,
+    "phone_label": phone_label,
+    "phone2" : entity.field_fax.second,
+    "phone2_label": fax_label,
+    "link_title" : entity.field_link.title,
+    "link_url" : entity.field_link.0.url,
+    "location" : entity.field_location.value,
+    "general_text" : entity.field_general_text.value,
+    "component_base_class": 'class-contact',
+    "component_modifiers": [],
+    "component_blockname": '',
+    'campus_map_url': campus_map,
+    'campus_map_title': campus_map_title,
+  } %}
+</div>

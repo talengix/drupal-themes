@@ -1,0 +1,10 @@
+card__image__src: 'https://placeimg.com/577/284/tech'
+card__image__alt: "This is the card image's alt text"
+card__image__output_image_tag: true
+card__heading: 'מחקר פורץ דרך בבר-אילן'
+card__subheading: "במקום הטקסט האמיתי הסופ"
+card__body: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+card__link__text: 'קרא עוד'
+card__link__url: '#'
+card__dir: 'rtl'
+card__base_class: "card-featured"

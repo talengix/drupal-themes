@@ -1,0 +1,56 @@
+- heading_level: 1
+  heading: This is an H1 כותרת
+- heading_level: 2
+  heading: This is an H2 כותרת
+- heading_level: 3
+  heading: This is an H3 כותרת
+- heading_level: 4
+  heading: This is an H4 כותרת
+- heading_level: 5
+  heading: This is an H5 כותרת
+- heading_level: 6
+  heading: This is an H6 כותרת
+
+- heading_level: 1
+  heading: This is a div with role=heading  aria-level=1 כותרת
+  heading_is_div: true
+  heading__extra_classes: ['h1']
+- heading_level: 2
+  heading: This is a div with role=heading  aria-level=2 כותרת
+  heading_is_div: true
+  heading__extra_classes: ['h2']
+- heading_level: 3
+  heading: This is a div with role=heading  aria-level=3 כותרת
+  heading_is_div: true
+  heading__extra_classes: ['h3']
+- heading_level: 4
+  heading: This is a div with role=heading  aria-level=4 כותרת
+  heading_is_div: true
+  heading__extra_classes: ['h4']
+- heading_level: 5
+  heading: This is a div with role=heading  aria-level=5 כותרת
+  heading_is_div: true
+  heading__extra_classes: ['h5']
+- heading_level: 6
+  heading: This is a div with role=heading  aria-level=6 כותרת
+  heading_is_div: true
+  heading__extra_classes: ['h6']
+
+- heading_level: 1
+  heading:  H1 with a link כותרת עם קישור
+  heading_url: https://dolev21.info/
+- heading_level: 2
+  heading:  H2 with a link כותרת עם קישור
+  heading_url: https://dolev21.info/
+- heading_level: 3
+  heading:  H3 with a link כותרת עם קישור
+  heading_url: https://dolev21.info/
+- heading_level: 4
+  heading:  H4 with a link כותרת עם קישור
+  heading_url: https://dolev21.info/
+- heading_level: 5
+  heading:  H5 with a link כותרת עם קישור
+  heading_url: https://dolev21.info/
+- heading_level: 6
+  heading:  H6 with a link כותרת עם קישור
+  heading_url: https://dolev21.info/

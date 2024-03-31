@@ -1,0 +1,50 @@
+{#
+ # Available variables:
+ # - card__base_class - base classname of the wrapper.
+ # - card__modifiers - array of modifiers to add to the base classname of the wrapper.
+ # - card__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+ #
+ # - card__image__src - the actual image file location.
+ # - card__image__alt - (optional) the alt text for screen readers and when the image cannot load.
+ #
+ # - card__content__modifiers - array of modifiers to add to the base classname of the copy wrapper.
+ #
+ # - card__heading - the content of the title component.
+ # - card__heading__base_class - base classname of the title component. Defaults to "title".
+ #
+ # - card__link__text - the content of the link component.
+ # - card__link__url - the url the link should link to.
+ # - card__link__base_class - base classname of the link component. Defaults to "link".
+ # - card__link__attributes - array of attribute,value pairs for the link attribute.
+ #}
+<div {{ bem(card__base_class,card__modifiers,card__blockname,card__extra_classes) }}>
+  <div class="animation-container" data-src="/themes/custom/biu_base/assets/animations/white-arrow.json">
+    <a href="{{ card__link__url }}" title="{{ card__link__text }}">
+      {# Image #}
+      {% block card__img %}
+        {{ card__image }}
+      {% endblock %}
+      {# Content #}
+      <div {{ bem('content', card__content__modifiers, card__base_class) }}>
+        {# Icon circles #}
+        {% if item__icon_url %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: "circles",
+            icon_url: item__icon_url,
+            icon_modifiers: []
+          } %}
+        {% endif %}
+        {# Heading #}
+        {% if card__heading %}
+          {% include "@atoms/text/headings/_heading.twig" with {
+            heading_base_class: card__heading__base_class|default('heading'),
+            heading_modifiers: card__heading__modifiers,
+            heading_blockname: card__base_class,
+            heading_level: 5,
+            heading: card__heading,
+          } %}
+        {% endif %}
+      </div>
+    </a>
+  </div>
+</div>

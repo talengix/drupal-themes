@@ -1,0 +1,86 @@
+///* ==========================================================================
+//   Typography
+//   ========================================================================== */
+.heading,
+[role=heading] {
+  font-weight: bold;
+  line-height: 1.2;
+  margin-top: 0;
+
+  a {
+    color: inherit;
+  }
+}
+
+// Thin font
+.heading--elegant {
+  font-weight: normal;
+}
+
+.heading--white {
+  color: var(--white);
+}
+
+[aria-level="2"] {
+  font-size: 24px;
+}
+
+[aria-level="3"] {
+  font-size: 20px;
+}
+
+[aria-level="4"] {
+  font-size: 16px;
+}
+
+// Primary titles/headlines/headings
+.heading--primary {
+  font-size: 35px;
+  margin-bottom: 21px;
+  @include ds-breakpoint($bp-min-md) {
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+  &.heading--elegant {
+    font-size: 37px;
+    line-height: 1.1;
+    @include ds-breakpoint($bp-min-md) {
+      font-size: 42px;
+    }
+  }
+}
+
+// Primary Thin and Elegant titles/headlines/headings
+.heading--primary-elegant {
+  font-weight: normal;
+  font-size: 37px;
+  line-height: 1.1;
+  @include ds-breakpoint($bp-min-md) {
+    font-size: 42px;
+  }
+}
+
+.heading--secondary {
+  font-size: 28px;
+  @include ds-breakpoint($bp-min-md) {
+    font-size: 32px;
+  }
+}
+
+.heading--third-bigger {
+  font-size: 20px;
+}
+
+.heading--third {
+  font-size: 20px;
+}
+
+
+
+.heading--forth {
+  font-size: 18px;
+}
+
+.heading--fifth {
+  font-size: 16px;
+}

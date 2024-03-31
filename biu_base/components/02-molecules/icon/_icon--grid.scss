@@ -1,0 +1,49 @@
+.icon--grid {
+  transition: background-color 0.3s ;
+  body[dir="ltr"] & {
+    @include gallery(1 of 2);
+  }
+
+  body[dir="rtl"] & {
+    @include gallery(1 of 2, right);
+  }
+
+  text-decoration: none;
+  height: 174px;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px 0 rgba($dark-green, 0.1);
+  border: solid 1px $bar-ilan-green;
+  background-color: $pale-green;
+  text-align: center;
+  padding-top: 29px;
+  padding-bottom: 39px;
+  margin-bottom: $spacing-l;
+
+  h5 {
+    font-size: 19px;
+    font-weight: normal;
+    color: $color-heading;
+    margin: 0;
+  }
+
+  svg {
+    width: 74px;
+    height: 74px;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    body[dir="ltr"] & {
+      @include gallery(2 of 10);
+    }
+
+    body[dir="rtl"] & {
+      @include gallery(2 of 10, right);
+    }
+  }
+}
+
+a.icon--grid {
+  &:hover, &:focus {
+    background-color: $lime-green;
+  }
+}

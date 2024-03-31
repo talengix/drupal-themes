@@ -1,0 +1,44 @@
+featured__card_label: "Featured cards component"
+component_base_class: "featured-cards"
+additional_classes: ['sg-container']
+items:
+  - featured__card_img_src: 'https://placeimg.com/577/284/tech'
+    featured__card_img_alt: "Item alt 1"
+    featured__card_event_date: "20.07.2020"
+    featured__card_article_tag: "כתבה"
+    featured__card_heading: "Featured Card 1"
+    featured__card_body: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+    featured__card_link_url: "https://google.com"
+    featured__card_link_text: "Google link"
+  - featured__card_img_src: 'https://placeimg.com/577/284/tech'
+    featured__card_img_alt: "Item alt 2"
+    featured__card_event_date: "20.07.2020"
+    featured__card_article_tag: "אירוע"
+    featured__card_heading: "Featured Card 2"
+    featured__card_body: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+    featured__card_link_url: "https://google.com"
+    featured__card_link_text: "Google link"
+  - featured__card_img_src: 'https://placeimg.com/577/284/tech'
+    featured__card_img_alt: "Item alt 3"
+    featured__card_event_date: "20.07.2020"
+    featured__card_article_tag: "כתבה"
+    featured__card_heading: "Featured Card 3"
+    featured__card_body: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+    featured__card_link_url: "https://google.com"
+    featured__card_link_text: "Google link"
+  - featured__card_img_src: 'https://placeimg.com/577/284/tech'
+    featured__card_img_alt: "Item alt 4"
+    featured__card_event_date: "20.07.2020"
+    featured__card_article_tag: "אירוע"
+    featured__card_heading: "Featured Card 4"
+    featured__card_body: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+    featured__card_link_url: "https://google.com"
+    featured__card_link_text: "Google link"
+  - featured__card_img_src: 'https://placeimg.com/577/284/tech'
+    featured__card_img_alt: "Item alt 5"
+    featured__card_event_date: "20.07.2020"
+    featured__card_article_tag: "מחקר"
+    featured__card_heading: "Featured Card 5"
+    featured__card_body: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+    featured__card_link_url: "https://google.com"
+    featured__card_link_text: "Google link"

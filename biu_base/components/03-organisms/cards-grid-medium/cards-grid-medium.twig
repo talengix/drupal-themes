@@ -1,0 +1,32 @@
+<div {{ bem(card_grid_base_class, card_grid_modifiers, card_grid_blockname, card_grid_extra_classes) }}>
+  <div class="card-grid-medium-heading">
+    {% if grid_label %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": 3,
+        "heading": grid_label,
+        "heading_base_class": "grid-heading",
+        "heading_modifiers": [],
+      } %}
+    {% endif %}
+  </div>
+  {% block grid_content %}
+    <div class="medium-grid-cards">
+      {% for item in items %}
+        {% include "@molecules/card/card-grid-medium.twig" with {
+          card__base_class: "card-grid-medium",
+          card__modifiers: [],
+          card__image: item.img,
+          card__heading: item.card_heading,
+          card__link__url: item.card_link_url,
+          card__link__attributes: {"title" : item.card_link_title},
+          card__link__text: item.card_link_title,
+          card__body: item.card_body,
+          card__content__modifiers: [],
+          card__heading__modifiers: [],
+          card__body__modifiers: [],
+        } %}
+      {% endfor %}
+    </div>
+  {% endblock %}
+  <div style="clear: both;"></div>
+</div>

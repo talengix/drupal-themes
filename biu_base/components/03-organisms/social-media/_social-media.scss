@@ -1,0 +1,41 @@
+// Story book styling
+.social-media-component {
+  text-align: center;
+  .social-media-heading {
+    margin-bottom: 14px;
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .social-icons {
+    .social-icon {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .social-icon:first-child {
+      margin-right: 0;
+    }
+  }
+
+  body[dir="ltr"] & {
+    .social-media-heading {
+      h4 {
+        line-height: 1.33;
+      }
+    }
+
+    .social-icons {
+      .social-icon {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+      .social-icon:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+}

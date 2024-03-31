@@ -1,0 +1,29 @@
+{{ attach_library('biu_base/social-feed') }}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  <div class="social-feed-header">
+    <div class="social-feed-nav">
+      <div class="swiper-button-prev">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'large-arrow-white',
+          icon_url: icon_url
+        } %}
+      </div>
+      <div class="swiper-button-next">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'large-arrow-white',
+          icon_url: icon_url
+        } %}
+      </div>
+    </div>
+    {{ sub_title }}
+    {% if label %}
+      <h2{{ title_attributes.addClass('h2') }}>{{ label }}</h2>
+    {% endif %}
+    {{ hashtag_text }}
+  </div>
+  {% block content %}
+    <div class="swiper-wrapper swiper-social-feed">
+      {{ social_media|raw }}
+    </div>
+  {% endblock %}
+</div>

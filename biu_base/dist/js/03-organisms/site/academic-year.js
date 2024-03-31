@@ -1,0 +1,1 @@
+"use strict";(function(a,b){"use strict";b.behaviors.academicYear={attach:function(){a(".academic-year #edit-title").change(function(){a("#views-exposed-form-academic-year-page-1").submit()})}}})(jQuery,Drupal);

@@ -1,0 +1,38 @@
+@import "../../scss/init";
+
+.accordion {
+  padding: 0 50px;
+
+  .accordion-item {
+    background-color: transparent;
+    border: none;
+
+    .accordion-header {
+      margin: 15px 0;
+      font-size: 18px;
+      line-height: 23px;
+      color: $primary-blue-dark;
+
+      .accordion-button {
+        background: $bg-flash-white;
+        border-radius: 19.21px;
+
+        &:focus {
+          border: none;
+        }
+      }
+    }
+
+    .accordion-collapse {
+      margin: 30px 0;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.02em;
+      background-color: $white;
+      color: rgba(3, 21, 74, 0.7);
+      padding: 15px;
+      border: 1px solid $primary-blue-dark;
+      border-radius: 12.21px;
+    }
+  }
+}

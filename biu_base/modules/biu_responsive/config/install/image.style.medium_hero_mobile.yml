@@ -1,0 +1,17 @@
+uuid: 4cdf5aa1-adb6-4758-b0de-810bd8097139
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: medium_hero_mobile
+label: 'Medium hero - mobile'
+effects:
+  179492cd-a0a7-43c7-8699-f33eb9d20d76:
+    uuid: 179492cd-a0a7-43c7-8699-f33eb9d20d76
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 840
+      crop_type: focal_point

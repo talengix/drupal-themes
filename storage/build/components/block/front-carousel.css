@@ -1,0 +1,42 @@
+.front-carousel {
+  margin-top: 50px;
+}
+.front-carousel .carousel-indicators button {
+  background-color: #0e53f5;
+  opacity: 0.2;
+  border: 1px solid transparent;
+}
+.front-carousel .carousel-indicators button.active {
+  opacity: 1;
+}
+.front-carousel .carousel-inner .carousel-item {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+  height: 700px;
+  padding-top: 130px;
+}
+.front-carousel .carousel-inner .carousel-item .text {
+  padding-right: 30px;
+}
+.front-carousel .carousel-inner .carousel-item .text h1 {
+  font-weight: 700;
+  font-size: 3.75rem;
+  line-height: 63px;
+  color: #1e2d64;
+}
+.front-carousel .carousel-inner .carousel-item .text p {
+  line-height: 24px;
+  color: #1e2d64;
+  margin-bottom: 48px;
+}
+.front-carousel .carousel-indicators {
+  right: auto;
+  margin: 0;
+  bottom: calc(50% - 120px);
+}
+.front-carousel .carousel-indicators button {
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+}

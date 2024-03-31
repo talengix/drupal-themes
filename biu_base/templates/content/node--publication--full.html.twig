@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme override to display a publication node.
+ * @see template_preprocess_node()
+ *
+ */
+#}
+
+<article {{ bem("node") }}>
+  <div class="container">
+    {{ title_prefix }}
+    {{ title_suffix }}
+
+    <div{{ content_attributes }}>
+      {% if node.field_authors.0.value and node.field_year.0.value %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 2,
+          "heading": node.field_authors.0.value  ~ ', ' ~ node.field_year.0.value,
+          "adiitional_classes": "publication-subtitle"
+        } %}
+      {% elseif node.field_authors.0.value %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 2,
+          "heading": node.field_authors.0.value,
+          "adiitional_classes": "publication-subtitle"
+        } %}
+      {% elseif node.field_year.0.value %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 2,
+          "heading": node.field_year.0.value,
+          "adiitional_classes": "publication-subtitle"
+        } %}
+      {% endif %}
+      {{ content.body }}
+      {{ content.field_file_page }}
+    </div>
+  </div>
+</article>
+

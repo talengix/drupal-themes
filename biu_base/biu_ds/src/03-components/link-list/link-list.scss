@@ -1,0 +1,153 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+.links--list {
+  .link-col {
+    width: 100vw;
+    position: relative;
+    padding-left: 0;
+    padding-right: 0;
+    body[dir="ltr"] & {
+      right: auto;
+    }
+
+    @include ds-breakpoint($bp-tab){
+      width: 33.33%;
+    }
+
+  }
+  .link-container {
+    position: relative;
+    padding-left: 28px;
+    padding-right: 28px;
+    text-align: right;
+
+    body[dir="ltr"] & {
+      text-align: left;
+    }
+
+    a {
+      @include dark-section;
+    }
+
+    .animation-container {
+      svg {
+        position: absolute;
+        left: 28px;
+        top: 20px;
+
+        @include ds-breakpoint($bp-tab){
+          left: auto;
+          float: none;
+        }
+
+        @include dark-section-img;
+      }
+    }
+
+    .external-icon {
+      display: none;
+    }
+
+  }
+  body[dir="ltr"] & {
+    .link-container {
+      .animation-container {
+        svg {
+          left: auto;
+          right: 28px;
+        }
+      }
+    }
+  }
+
+  @include ds-breakpoint($bp-tab) {
+    .link-col {
+      right: auto;
+      body[dir="ltr"] & {
+        left: auto;
+      }
+    }
+    .link-container {
+      padding-right: 0;
+      padding-left: 0;
+      .animation-container {
+        svg {
+          top: 0;
+          position: relative;
+          left: auto;
+          body[dir="ltr"] & {
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.links.links--list {
+  padding-bottom: 32px;
+  
+  .heading {
+    padding: 30px 28px;
+
+    @include ds-breakpoint($bp-tab) {
+      padding-right: 0;
+    }
+
+    @include ds-breakpoint($bp-desk) {
+      float: right;
+      padding-top: 0;
+      padding-right: 0;
+      width: 20%;
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-left: 0;
+        margin-right: 24px;
+      }
+    }
+
+    h4 {
+      font-size: 28px;
+      font-weight: 500;
+      color: $bar-ilan-green;
+      margin: 0;
+      line-height: 28px;
+
+      @include dark-section;
+    }
+  }
+
+  .link-container {
+    border-top: 1px solid rgba($bar-ilan-green, 0.5);
+    .block__link-list--dark & {
+      border-color: $white;
+    }
+  }
+
+  @include ds-breakpoint($bp-tab) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .link-col {
+      margin-left: 24px;
+
+      body[dir="ltr"] & {
+        margin-left: 0;
+        margin-right: 24px;
+      }
+
+      &:last-child {
+        margin-left: 0;
+
+        body[dir="ltr"] & {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .link-container {
+      border-top: none;
+    }
+  }
+}

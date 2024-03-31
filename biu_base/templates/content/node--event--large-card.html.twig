@@ -1,0 +1,19 @@
+{% set title = node.label|raw|render|striptags %}
+{% set title = title|length > 50 ? title|slice(0, 50) ~ '...' : title %}
+
+{% embed "@molecules/card/featured-cards.twig" with {
+  "featured_article_tag": node.type.entity.label,
+  "card__heading": title,
+  "card__event_date": node.field_event_start_date,
+  "card__body": content.field_sub_title,
+  "card__link__text": node.label,
+  "card__link__label": node.label,
+  "card__link__url": url,
+  "featured_card__base_class": "featured-card",
+  "featured_card__modifiers": ["large", "event"],
+  "calendar__links": calendar__links,
+} %}
+  {% block card__img %}
+    {{ content.field_featured_media_image }}
+  {% endblock %}
+{% endembed %}

@@ -1,0 +1,8 @@
+{{ attach_library('biu_base/events-strip') }}
+{% include "@ds_components/events-strip/events-strip.twig" with {
+    "items": items,
+    "component_base_class": component_base_class,
+    "component_modifiers": component_modifiers,
+    "component_blockname": component_blockname,
+    "additional_classes": additional_classes
+} %}

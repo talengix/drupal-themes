@@ -1,0 +1,21 @@
+{{ attach_library('biu_base/expand-collapse') }}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  {% if expand_collapse_section_title %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      "heading_level": 3,
+      "heading": expand_collapse_section_title,
+      "heading_link_base_class": "large-media-heading",
+      "heading_modifiers": ['light']
+    } %}
+  {% endif %}
+
+  {% for item in items %}
+    {% include "@molecules/expand-collapse-item/expand-collapse-item.twig" with {
+      component_base_class: "expand-collapse-item",
+      additional_classes: [],
+      expand_collapse_item_heading: item.heading,
+      expand_collapse_item_description: item.description,
+      icon_url: icon_url
+    } %}
+  {% endfor %}
+</div>

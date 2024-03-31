@@ -1,0 +1,25 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, hero_slide_type_class) }}>
+  <div class="hero-slide-image">
+    {{ hero_image | raw }}
+  </div>
+  {% if show_text_in_slide is not null %}
+    <div class="hero-slide-text-wrapper">
+      <div class="hero-slide-text-content">
+        <p class="slide-title">{{ title }}</p>
+        <p class="slide-text">{{ text }}</p>
+        {% if items.0.link_title %}
+          {% include "@ds_elements/links/link/arrow-link.twig" with {
+            item__content: items.0.link_title,
+            item__url: items.0.link,
+            item__link_title: items.0.link_title,
+            link_base_class: "link",
+            link_modifiers: [],
+            link_container_base_class: "link-container",
+            link_container_modifiers: ['link-container-dark-background'],
+            arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+          } %}
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</div>

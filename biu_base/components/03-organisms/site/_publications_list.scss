@@ -1,0 +1,420 @@
+.page-publications-list-1 {
+  background: #f3f4f8;
+  .breadcrumb {
+    padding-top: 23px;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: #00280f;
+    padding-right: 30px;
+    float: right;
+    position: relative;
+    z-index: 9;
+    body[dir="ltr"] & {
+      float: left;
+      padding-left: 27px;
+    }
+  }
+  .publications-list-page-1 {
+    header {
+      padding-top: 50px;
+      padding-right: 15px;
+      width: 95px;
+      height: 38px;
+      font-size: 32px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: right;
+      color: #00280f;
+      body[dir="ltr"] & {
+        padding-left: 15px;
+      }
+    }
+    form {
+      .search-title {
+        width: 85%;
+        height: 48px;
+        border-radius: 24px;
+        border: 1px solid #00280f;
+        margin-top: 27px;
+        margin-right: 28px;
+        margin-left: 28px;
+        background: #f3f4f8;
+      }
+      .submit-button {
+        margin-bottom: 65px;
+        width: 85%;
+        margin-left: 28px;
+        margin-right: 28px;
+        margin-top: 24px;
+        height: 48px;
+        background: #006937;
+        text-align: right;
+        body[dir="ltr"] & {
+          text-align: left;
+        }
+      }
+      .wrapper_month {
+        float: left;
+        width: 40%;
+        margin-left: 27px;
+        margin-top: 54px;
+        .js-form-item.form-item{
+          margin-bottom: 0;
+          max-width: 100%;
+        }
+        label {
+          display: none;
+        }
+        .form-item__dropdown {
+          border: none;
+          .month_input {
+            border: 1px solid #00280f !important;
+            border-radius: 24px;
+          }
+          select{
+            height: 48px !important;
+          }
+          &::after{
+              left: 15px;
+              right: auto;
+              top: 13px;
+            body[dir="ltr"] & {
+              left: auto;
+              right: 15px;
+            }
+          }
+        }
+      }
+      .wrapper_year {
+        float: left;
+        width: 40%;
+        margin-left: 16px;
+        margin-top: 54px;
+        label {
+          display: none;
+        }
+        .js-form-item.form-item{
+          margin-bottom: 0;
+          max-width: 100%;
+        }
+        .form-item__dropdown {
+          border:0;
+          .year_input {
+            border: 1px solid #00280f !important;
+            border-radius: 24px;
+            height: 48px !important;
+          }
+          &::after{
+            left: 15px;
+            right: auto;
+            top: 13px;
+            body[dir="ltr"] & {
+              left: auto;
+              right: 15px;
+            }
+          }
+        }
+      }
+      .wrapper_title {
+        position: relative;
+        float:left;
+        img {
+          position: absolute;
+          left: 40px;
+          top: 38px;
+          body[dir="ltr"] & {
+            left: auto;
+            right: 40px;
+          }
+        }
+          body[dir="ltr"] & {
+            left: 0;
+          }
+        .js-form-item.form-item{
+          margin-bottom: 0;
+          max-width: 100%;
+        }
+      }
+      .animation-container {
+        position: relative;
+        clear: both;
+        svg {
+          position: absolute;
+          left: 41px;
+          width: unset !important;
+          height: unset !important;
+          top: 40px;
+          body[dir="ltr"] & {
+            transform: rotate(180deg) !important;
+            left:auto;
+            right: 41px;
+          }
+        }
+      }
+
+    }
+    .result-message {
+      text-align: center;
+      h3{
+        line-height: 2;
+        color: $dark-green;
+      }
+      svg {
+        padding: 0;
+        width: 56px;
+        height:56px;
+      }
+    }
+    .views-col {
+      width: 100% !important;
+      padding-right: 28px;
+      padding-left: 28px;
+      height: auto;
+      margin-bottom: 25px;
+      img {
+        width: 100%;
+      }
+    }
+    ul {
+      margin:0;
+      padding:0;
+      li {
+        width: 100%;
+        margin: 0;
+        .button {
+          background-color: #78cde677 !important;
+          border: none;
+          color: $dark-green;
+          font-size: 16px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1;
+          letter-spacing: normal;
+          padding: 18px 20px 14px;
+          width: auto;
+          margin: 55px auto 0;
+          display: block;
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-desk, desk) {
+    .breadcrumb {
+      padding-top: 23px;
+      font-size: 12px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      text-align: left;
+      color: #00280f;
+      padding-right: 120px;
+      float: right;
+      body[dir="ltr"] & {
+        float: left;
+        padding-left: 120px;
+      }
+    }
+    .publications-list-page-1 {
+      padding-left: 103px;
+      padding-right: 103px;
+      padding-top: 67px;
+      width: 1366px;
+      margin: 0 auto;
+      header {
+        padding-top: 0;
+      }
+      form {
+        .submit-button {
+          margin-top: 10px;
+          margin-right: 0;
+          margin-left: 0;
+          width: 166px;
+          height: 36px;
+          padding-top: 5px;
+        }
+        .wrapper_month {
+          margin-right: 0;
+          label {
+            display: none;
+          }
+          .month_input {
+            border:1px solid #00280f !important;
+            border-radius: 24px;
+            height: 48px !important;
+          }
+        }
+        .wrapper_year {
+          margin-left: 30% !important;
+          body[dir="ltr"] & {
+            margin-right: 30% !important;
+            margin-left: 0;
+          }
+          label {
+            display: none;
+          }
+        }
+        .animation-container {
+          position: relative;
+          svg {
+            left: 15px;
+           }
+        }
+
+      }
+      .views-view-grid.horizontal{
+        padding: 0;
+      }
+      .views-row {
+        display: flex;
+
+        .views-col {
+          width: 25% !important;
+          padding-right: 9px;
+          padding-left: 9px;
+          height: auto;
+
+          img {
+            width: unset;
+          }
+
+          .featured-card {
+            .animation-container {
+              .content {
+                width:auto;
+                border-radius: 3px;
+              }
+
+              &:hover {
+                box-shadow: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    .publications-list-page-1 {
+      .views-col {
+        width: 50% !important;
+        padding-right: 11.5px;
+        padding-left: 11.5px;
+        .featured-card {
+          .animation-container {
+            svg {
+              left:20px;
+              body[dir="ltr"] & {
+                left:unset;
+                right:20px;
+              }
+            }
+          }
+        }
+      }
+      form {
+        display: flex;
+        margin-top: 50px;
+        width: 100%;
+        .wrapper_month {
+          width: span(2 of 12);
+          margin-left: 16px;
+          margin-top: 0;
+          margin-right: 15px;
+        }
+        .wrapper_year {
+          width: calc(23px + ((100% - 253px) / 12 * 2));
+          margin-left: 10%;
+          margin-top: 0;
+          body[dir="ltr"] & {
+            margin-left: 16px !important;
+            margin-right: 0%;
+          }
+        }
+        .search-title {
+          margin-top: 0;
+          background: #f3f4f8;
+          padding-right: 23px;
+          body[dir="ltr"] & {
+            padding-right: 0;
+            padding-left:23px;
+          }
+        }
+        .submit-button {
+          margin-top: 0;
+          width: 166px;
+          height: 36px;
+          position: relative;
+          top: 8px;
+          body[dir="ltr"] & {
+            text-align: left;
+            margin-top: 0;
+            padding-left:16px;
+          }
+        }
+        .wrapper_title {
+          .js-form-item.form-item{
+            position: relative;
+          }
+          img {
+            position: absolute;
+            left: 35px;
+            top: 12px;
+            body[dir="ltr"] & {
+              left: auto;
+              right: 35px;
+            }
+          }
+        }
+        .form-item__dropdown {
+          border: 0;
+          .year_input {
+            border: 1px solid #00280f !important;
+            border-radius: 24px;
+            height: 48px !important;
+          }
+        }
+        .animation-container {
+          position: relative;
+          clear: both;
+          svg {
+            position: absolute;
+            left: 30px;
+            width: unset !important;
+            height: unset !important;
+            top: 18px;
+            body[dir="ltr"] & {
+              transform: rotate(180deg) !important;
+              left:auto;
+              right: 15px;
+            }
+          }
+        }
+
+      }
+      .views-view-grid.horizontal{
+        padding: 0 15px;
+      }
+      ul {
+        margin:0;
+        padding:0;
+        .button {
+          background: #006937 !important;
+          width: 884px;
+        }
+      }
+    }
+  }
+}
+
+

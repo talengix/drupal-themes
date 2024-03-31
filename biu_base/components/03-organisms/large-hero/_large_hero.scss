@@ -1,0 +1,264 @@
+.large-hero.main-slider {
+  width: 100vw;
+  height: 454px;
+
+  .media-item {
+    .h1 {
+      width: 314px;
+      font-size: 40px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      color: $pale-green;
+      text-align: right;
+      margin-bottom: 16px;
+      body[dir="ltr"] & {
+        text-align: left;
+      }
+    }
+
+    .h6 {
+      margin: 0;
+      width: 211px;
+      font-size: 20px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      margin-bottom: 16px;
+      color: $pale-green;
+      text-align: right;
+      body[dir="ltr"] & {
+        text-align: left;
+      }
+    }
+
+    .large-hero-link {
+      margin-right: 0;
+    }
+  }
+
+  .scroll-down-link {
+    display: none;
+    position: absolute;
+    bottom: 47px;
+    z-index: 9;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 18px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+  .text-wrapper {
+    @include container;
+
+    position: absolute;
+    bottom: 88px;
+
+    .h1, h6, .large-hero-link {
+      transform: translateY(668px);
+      transition: none;
+    }
+
+    &.first-frame-hero {
+      .h1 {
+        transition: transform 0.5s 0.3s;
+      }
+
+      h6 {
+        transition: transform 0.5s 0.6s;
+      }
+
+      .large-hero-link {
+        transition: transform 0.5s 0.9s;
+      }
+    }
+  }
+
+  .swiper-pagination {
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+
+    .swiper-pagination-bullet {
+      width: 15px;
+      height: 15px;
+      margin-left: 5px;
+      margin-right: 5px;
+      background-color: $pale-green;
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: $lime-green;
+    }
+  }
+
+  .wave-anim {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 270%;
+    top: -85%;
+  }
+
+  .large-hero-control {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    body[dir="ltr"] & {
+      right: auto;
+      left: 0;
+    }
+
+    .circle__box {
+      width: 48px;
+      height: 48px;
+      position: relative;
+      right: 24px;
+      bottom: 24px;
+      body[dir="ltr"] & {
+        right: auto;
+        left: 24px;
+      }
+
+      .circle__wrapper {
+        width: 24px;
+        height: 48px;
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+
+        &.circle__wrapper--right {
+          right: 0;
+        }
+
+        &.circle__wrapper--left {
+          left: 0;
+        }
+
+        .circle__whole {
+          width: 48px;
+          height: 48px;
+          border: 3px solid transparent;
+          border-radius: 50%;
+          position: absolute;
+          top: 0;
+          transform: rotate(-135deg);
+
+          &.circle__right {
+            border-top: 3px solid $white;
+            border-right: 3px solid $white;
+            right: 1px;
+          }
+
+          &.circle__left {
+            border-bottom: 3px solid $white;
+            border-left: 3px solid $white;
+            left: 1px;
+          }
+        }
+      }
+
+      .play, .pause {
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        svg {
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+      .play {
+        display: none;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    height: 360px;
+    .media-item {
+      .h1 {
+        margin: 0;
+        margin-top: 226px;
+        width: 917px;
+        font-size: 64px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.13;
+        letter-spacing: normal;
+        color: $pale-green;
+        text-align: right;
+        body[dir="ltr"] & {
+          text-align: left;
+        }
+      }
+
+      .h6 {
+        padding-top: 1px;
+        width: 917px;
+        height: 72px;
+        font-size: 24px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 3;
+        letter-spacing: normal;
+        color: #f8faf2;
+        text-align: right;
+        margin-bottom: 0;
+        body[dir="ltr"] & {
+          text-align: left;
+        }
+      }
+
+      .large-hero-link {
+        padding-top: 9px;
+        margin-right: 0;
+      }
+    }
+    .text-wrapper {
+      position: relative;
+      bottom: 148px;
+    }
+    .swiper-pagination {
+      bottom: 45px;
+
+      .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .wave-anim {
+      display: block;
+    }
+  }
+
+  body[dir="ltr"] & {
+    right: calc(50vw - 50%);
+  }
+
+  body[dir="rtl"] & {
+    left: calc(50vw - 50%);
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    height: 450px;
+    .media-item {
+      .h1 {
+        margin-top: 273px;
+      }
+    }
+  }
+}

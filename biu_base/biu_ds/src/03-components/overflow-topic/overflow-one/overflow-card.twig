@@ -1,0 +1,12 @@
+<div {{bem('card', ['one'], 'overflow-block')}}>
+  {% if link is not null and link is not empty %}
+  <a class="link" href="{{link}}" title="{{ link_title }}">
+  {% endif %}
+  <figure {{bem('card-image', ['one'], 'overflow-block')}}>
+    {{ image | raw }}
+  </figure>
+  <p {{bem('card-title', ['one'], 'overflow-block')}}>{{ title }}</p>
+  {% if link is not null and link is not empty %}
+  </a>
+  {% endif %}
+</div>

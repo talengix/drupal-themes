@@ -1,0 +1,39 @@
+uuid: 0c84aaa3-bec2-4275-8499-bfbb9b4c7316
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.large_media_desktop
+    - image.style.large_media_mobile
+  theme:
+    - biu_base
+id: large_media
+label: 'Large media'
+image_style_mappings:
+  -
+    breakpoint_id: biu_base.desk-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large_media_desktop
+  -
+    breakpoint_id: biu_base.desk
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large_media_desktop
+  -
+    breakpoint_id: biu_base.tab-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large_media_mobile
+  -
+    breakpoint_id: biu_base.tab
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large_media_mobile
+  -
+    breakpoint_id: biu_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: large_media_mobile
+breakpoint_group: biu_base
+fallback_image_style: large_media_mobile

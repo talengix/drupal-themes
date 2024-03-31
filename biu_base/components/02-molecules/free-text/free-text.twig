@@ -1,0 +1,14 @@
+<div {{ bem(free_text_class,free_text_class__modifiers,free_text_class__blockname,free_text_class__extra_classes) }}>
+  {% if free_text_heading %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      heading_base_class: free_text_heading_base_class|default('heading'),
+      heading_level: 3,
+      heading: free_text_heading,
+    } %}
+  {% endif %}
+  {% if free_text_body %}
+    <div class="free-text-description">
+      {{ free_text_body }}
+    </div>
+  {% endif %}
+</div>

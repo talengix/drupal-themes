@@ -1,0 +1,4 @@
+icon_horizontal__base_class: "icon"
+icon_horizontal__modifiers: ['horizontal']
+item__name: 'Book'
+item__value: 'book'

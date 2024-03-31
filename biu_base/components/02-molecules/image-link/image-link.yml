@@ -1,0 +1,8 @@
+image_link__base_class: "image-link"
+link_attributes:
+  title: "Image link title"
+link_url: "https://google.com"
+image_link__image__src: "https://placeimg.com/320/180/any"
+image_link__image__src_mobile: "https://placeimg.com/320/180/any"
+image_link__image__alt: "Image alt"
+image_link__image__alt_mobile: "Image alt mobile"

@@ -1,0 +1,48 @@
+.icons--horizontal {
+  padding-top: 32px;
+  padding-bottom: 10px;
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-left: span(1 of 12);
+    padding-right: span(1 of 12);
+    padding-top: 40px;
+    padding-bottom: 18px;
+  }
+}
+
+.icons--horizontal.sg-container {
+  @include container;
+}
+
+.icons--grid {
+  padding-top: 32px;
+  padding-bottom: 8px;
+
+  h3 {
+    font-size: 28px;
+    line-height: 32px;
+    color: $color-heading--light;
+    margin-top: 0;
+
+    body[dir="ltr"] & {
+      font-size: 32px;
+      line-height: 1;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    padding-bottom: 16px;
+    .icons--grid--list {
+      padding-left: span(1 of 12);
+      padding-right: span(1 of 12);
+    }
+    h3 {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.icons--grid.sg-container {
+  @include container;
+}

@@ -1,0 +1,156 @@
+@import "../../00-base/base/global";
+
+.alumni-strip {
+  margin-top: 5.5rem;
+}
+
+.alumni-strip__header {
+  display: flex;
+}
+
+.alumni-strip__heading {
+  flex: 1;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.alumni-strip__next,
+.alumni-strip__prev {
+  margin-left: 2.5rem;
+  @include rtl() {
+    margin-left: 0;
+    margin-right: 2.5rem;
+  }
+
+  &[aria-disabled=true] {
+    opacity: 0.2;
+  }
+}
+
+.alumni-strip__next {
+  // -1 is flipped
+  transform: scaleX(-1);
+  @include rtl() {
+    // 1 is normal
+    transform: scaleX(1);
+  }
+}
+
+.alumni-strip__prev {
+  @include rtl() {
+    transform: scaleX(-1);
+  }
+}
+
+.alumni-strip__swiper-wrapper {
+  @media ($bp-min-md) {
+    height: auto;
+  }
+}
+
+.alumni-strip__slide {
+  margin-right: 2rem;
+  @include rtl() {
+    margin-left: 2rem;
+    margin-right: 0;
+  }
+  @media ($bp-min-md) {
+    opacity: 0.35;
+  }
+
+  &.swiper-slide-prev,
+  &.swiper-slide-next,
+  &.swiper-slide-active {
+    opacity: 1;
+  }
+
+  width: 310px;
+  max-width: 66vw;
+  @include ds-breakpoint($bp-min-md) {
+    width: 815px;
+  }
+}
+
+.alumni-strip__pagination {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 13px;
+  position: static;
+  text-align: start;
+  // Limited width is needed to allaw read more stay on same row.
+  width: 5em;
+}
+
+.alumni-strip .swiper-pagination-current {
+  color: var(--light-blue);
+}
+
+.alumni-strip__more-link {
+  color: var(--body-text);
+  left: -7px;
+  margin-top: 13px;
+  padding-inline-end: 3rem;
+  text-align: end;
+  width: calc(100% - 5em);
+
+  &::after {
+    top: calc(50% - 8px);
+  }
+}
+
+.card--alumni {
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  flex-direction: column;
+  width: 100%;
+  @media ($bp-min-md) {
+    flex-direction: row;
+    height: 310px;
+  }
+
+  // Israel: Override cascade by duplicating .card-alumni
+  // @see https://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/
+  // &.card--alumni will compile to  .card--alumni.card--alumni
+  // Duplicate concat same class has same specificity same as 2 separate classes contact together.
+  &.card--alumni:hover,
+  &.card--alumni:active,
+  &.card--alumni:focus {
+    text-decoration: none;
+    box-shadow: 0 2px 24px 3px rgba(0, 40, 15, 0.15);
+  }
+}
+
+.card__image--alumni {
+  max-width: 310px;
+  @media ($bp-min-md) {
+    width: 310px;
+    //min-width: 310px;
+  }
+}
+
+.small-border--alumni {
+  width: 56px;
+  border-bottom: 1px solid var(--white);
+  margin-top: 21px;
+  margin-bottom: 24px;
+  margin-right: 1px;
+}
+
+.card__body--alumni {
+  background-color: var(--biu-green);
+  padding: 1rem 1.5rem;
+  color: var(--white);
+  @media ($bp-min-md) {
+    padding: 2.5rem 2rem 2rem;
+  }
+}
+
+.card__heading--alumni {
+  line-height: 1.25;
+  margin: 0;
+}
+
+.card__subheading--alumni {
+  font-weight: normal;
+  font-size: 20px;
+}

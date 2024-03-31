@@ -1,0 +1,25 @@
+{% set component_class = 'topics-focus' %}
+
+<div {{bem('wrap', [topics_focus_background], component_class)}}>
+  <div {{bem('inner', [], component_class, ['container'])}}>
+    {% if label %}
+      {% include "@ds_elements/text/headings/_heading.twig" with {
+        "heading_level": 2,
+        "heading": label,
+        "heading__additional_classes": "topics-focus__header",
+        } %}
+    {% endif %}
+    <div class="row">
+      {% for item in items %}
+        {% include "@ds_patterns/topic-focus/topic-focus.twig" with {
+          "image_src" : item.image_src,
+          "image_alt" : item.image_alt,
+          "title" : item.title,
+          "text" : item.text,
+          "link" : item.link,
+          "is_external": item.is_external
+        } %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

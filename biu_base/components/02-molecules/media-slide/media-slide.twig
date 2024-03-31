@@ -1,0 +1,52 @@
+{% set body = body|striptags %}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, media_slide_additional_classes) }}>
+  <div class="media-slide-img img-desktop">
+    {{ image }}
+  </div>
+  <div class="media-slide-img img-mobile">
+    {{ mobile_image }}
+  </div>
+  <div class="media-slide-text-wrapper clearfix">
+    <div class="media-slide-heading">
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": 3,
+        "heading": label,
+        "heading_modifiers": ['light']
+      } %}
+    </div>
+    <div class="media-slide-content">
+      {% if sub_title %}
+        <div class="sub-title">
+          {{ sub_title }}
+        </div>
+      {% endif %}
+      <div class="body">
+        {{ body | raw }}
+      </div>
+      {% if link_url %}
+        {% include "@molecules/link/arrow-link.twig" with {
+          item__content: link_title,
+          item__url: link_url,
+          item__link_title: link_title,
+          link_base_class: "link",
+          link_modifiers: [],
+          link_container_base_class: "link-container",
+          link_container_modifiers: ['link-container-dark-background'],
+          arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json",
+        } %}
+      {% endif %}
+      {% if link_url %}
+        {% include "@molecules/link/arrow-link.twig" with {
+          item__content: link_title,
+          item__url: link_url,
+          item__link_title: link_title,
+          link_base_class: "link",
+          link_modifiers: [],
+          link_container_base_class: "link-container" ,
+          link_container_modifiers: ['link-container-light-background'],
+          arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+        } %}
+      {% endif %}
+    </div>
+  </div>
+</div>

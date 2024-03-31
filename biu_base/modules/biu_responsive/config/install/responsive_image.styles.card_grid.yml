@@ -1,0 +1,39 @@
+uuid: 1946cab3-2f15-413e-9ef0-1386aa56374c
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.card_grid_desktop
+    - image.style.card_grid_mobile
+  theme:
+    - biu_base
+id: card_grid
+label: 'Card grid'
+image_style_mappings:
+  -
+    breakpoint_id: biu_base.desk-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_grid_desktop
+  -
+    breakpoint_id: biu_base.desk
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_grid_desktop
+  -
+    breakpoint_id: biu_base.tab-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_grid_mobile
+  -
+    breakpoint_id: biu_base.tab
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_grid_mobile
+  -
+    breakpoint_id: biu_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: card_grid_mobile
+breakpoint_group: biu_base
+fallback_image_style: card_grid_mobile

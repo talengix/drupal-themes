@@ -1,0 +1,139 @@
+.card-grid {
+  margin-bottom: 24px;
+  width: 100%;
+
+  picture {
+    img {
+      /* @todo replace with image style */
+      width: 100%;
+      border-radius: 3px 3px 0 0;
+    }
+  }
+
+  .card-grid__content {
+    padding: 14px;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @include clearfix;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .card-grid__heading {
+      width: span(2 of 3);
+      margin: 0;
+      line-height: 1.13;
+      font-size: 16px;
+      font-weight: normal;
+      color: $white;
+      padding-right: 10px;
+
+      body[dir="ltr"] & {
+        float: left;
+        padding-right: 0;
+        padding-left: 10px;
+      }
+    }
+
+    .card-grid__link {
+      float: right;
+
+      body[dir="ltr"] & {
+        float: left;
+      }
+    }
+  }
+
+  .animation-container {
+    position: relative;
+    background-color: $bar-ilan-green;
+    height: 100%;
+    border-radius: 3px;
+
+    svg:not(.icon) {
+      position: absolute;
+      left: 15px;
+      bottom: 13px;
+      width: 27px !important;
+      height: 12px !important;
+
+      body[dir="ltr"] & {
+        left: auto;
+        right: 15px;
+        transform: rotate(180deg) !important;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .card-grid__content {
+      padding: 16px 11px 9px 45px;
+
+      .card-grid__heading {
+        width: 100%;
+      }
+
+      body[dir="ltr"] & {
+        padding: 16px 45px 9px 11px;
+      }
+    }
+  }
+}
+
+.card-grid.card-grid--faculty {
+  background-color: $bar-ilan-green;
+  position: relative;
+
+  .card-grid__heading {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    padding: 13px 0 9px;
+    background-color: $bar-ilan-green;
+    color: $white;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: normal;
+  }
+
+  .main-link, .secondary-link {
+    height: auto;
+    border-radius: 3px;
+    text-align: center;
+
+    a {
+      font-size: 16px;
+      line-height: 1.13;
+      letter-spacing: normal;
+      color: $white;
+    }
+    svg {
+      position: relative;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      margin: 0 9px;
+    }
+  }
+
+  .main-link {
+    margin: 13px 0 9px;
+    a {
+      font-weight: 500;
+    }
+  }
+  .secondary-link {
+    margin: 0 0 11px;
+  }
+}

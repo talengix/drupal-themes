@@ -1,0 +1,31 @@
+@import "colors-vars";
+
+.sg-colors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sg-colors__list {
+  list-style: none;
+  margin: 1rem 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  border: solid 1px $gray-lightest;
+  border-radius: 1px;
+}
+
+.sg-colors__color {
+  padding: 4rem;
+  border: solid 1px $gray-lightest;
+}
+
+.sg-info {
+  padding: 1rem;
+
+  code {
+    background-color: var(--gray-ligthest);
+    padding: 0.15rem 0.25rem;
+    display: block;
+    margin-top: 0.25rem;
+  }
+}

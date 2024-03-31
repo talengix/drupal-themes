@@ -1,0 +1,110 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+
+.quotes {
+
+  &.quotes--one {
+    margin: 0 15px;
+    @include ds-breakpoint($bp-tab){
+      display: flex;
+      margin: 0;
+    }
+
+    & > figure {
+      width: 100%;
+
+      @include ds-breakpoint($bp-tab){
+        width: 50%;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      body[dir="ltr"] & {
+        order: 1;
+      }
+    }
+
+    .quotes-content {
+      width: 100%;
+      background-color: $light-gray;
+      color: $bar-ilan-green;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 25px;
+      text-align: right;
+
+      @include dark-section;
+      @include background-color;
+
+      @include ds-breakpoint($bp-tab){
+        width: 50%;
+        padding: 55px 35px 55px 100px;
+      }
+
+      body[dir="ltr"] & {
+        text-align: left;
+        padding: 55px 100px 55px 35px;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.58;
+
+        @include ds-breakpoint($bp-tab){
+          font-size: 2rem;
+        }
+      }
+
+      .quotes-person {
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        // body[dir="ltr"] & {
+        //   align-items: flex-end;
+        // }
+
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 25px;
+
+          @include ds-breakpoint($bp-tab){
+            width: 99px;
+            height: 99px;
+            border-radius: 50px;
+
+          }
+        }
+  
+        span {
+          font-size: 1rem;
+          display: block;
+          margin-top: 15px;
+
+          @include ds-breakpoint($bp-tab){
+            font-size: calc(22/16*1rem);
+            display: block;
+            margin-top: 15px;
+
+          }
+        }
+      }
+
+    }
+
+  }
+
+  &.quotes--dark {
+    .quotes-content {
+      color: $white;
+    }
+  }
+}

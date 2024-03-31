@@ -1,0 +1,13 @@
+items:
+  - name: 'Book'
+    value: 'book'
+  - name: 'Book Bulb'
+    value: 'book-bulb'
+  - name: 'Book Mind'
+    value: 'book-mind'
+  - name: 'Certificate'
+    value: 'certificate'
+  - name: 'Certificate 2'
+    value: 'certificate-2'
+  - name: 'Exam'
+    value: 'exam'

@@ -1,0 +1,5 @@
+card__base_class: "statistics-card"
+card__image__src: "https://placeimg.com/195/138/tech"
+card__image__alt: "Image alt"
+card__heading: "29"
+card__subheading: "סטודנטים"

@@ -1,0 +1,276 @@
+/*
+ * Generic header styles:
+ * All arguments are optional. If not defined, the defaults below will be used
+*/
+
+// H1
+@mixin heading-xl(
+  $font-size: 64px,
+  $font-size-ltr: 64px,
+  $line-height:  72px,
+  $line-height-ltr: 72px,
+  $font-weight: normal
+) {
+  font-family: $font-heading;
+  color: $color-heading;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  &--light {
+    color: $color-heading--light;
+  }
+
+  [dir="ltr"] {
+    font-size: $font-size-ltr;
+    line-height: $line-height-ltr;
+  }
+}
+
+// H2
+@mixin heading-large(
+  $font-size: 48px,
+  $font-size-ltr: 48px,
+  $line-height:  64px,
+  $line-height-ltr:  64px,
+  $font-weight: normal,
+  $margin: 26px 0,
+) {
+  font-family: $font-heading;
+  color: $color-heading;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+  margin: $margin;
+
+  &--light {
+    color: $color-heading--light;
+  }
+
+  body[dir="ltr"] & {
+    font-size: $font-size-ltr;
+    line-height: $line-height-ltr;
+  }
+}
+
+// H3
+@mixin heading-medium(
+  $font-size: 40px,
+  $font-size-ltr: 40px,
+  $line-height: 1,
+  $line-height-ltr: 1,
+  $font-weight: 500,
+) {
+  font-family: $font-heading;
+  color: $color-heading;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  &--light {
+    color: $color-heading--light;
+  }
+
+  body[dir="ltr"] & {
+    font-size: $font-size-ltr;
+    line-height: $line-height-ltr;
+  }
+}
+
+// H4
+@mixin heading-small(
+  $font-size: 32px,
+  $font-size-ltr: 32px,
+  $line-height: 1,
+  $line-height-ltr: 72px,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: normal,
+) {
+  font-family: $font-heading;
+  color: $color-heading;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  &--light {
+    color: $color-heading--light;
+  }
+
+  body[dir="ltr"] & {
+    font-size: $font-size-ltr;
+    line-height: $line-height-ltr;
+  }
+}
+
+// H5 + H6
+@mixin heading-xs(
+  $font-size: 32px,
+  $font-size-ltr: 28px,
+  $line-height: 1,
+  $line-height-ltr: 72px,
+  $color-link: inherit,
+  $color-link-hover: inherit,
+  $font-weight: normal,
+) {
+  font-family: $font-heading;
+  color: $color-heading;
+  font-weight: $font-weight;
+  font-style: normal;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  &--light {
+    color: $color-heading--light;
+  }
+
+  body[dir="ltr"] & {
+    font-size: $font-size-ltr;
+    line-height: $line-height-ltr;
+  }
+}
+
+.sg-pattern-title {
+  font-family: 'Courier New', monospace;
+}
+
+.sg-header-styles {
+  background: $pale-green;
+
+  *[class$="--light"] {
+    background: $bar-ilan-green;
+  }
+}
+
+.h1 {
+  @include heading-xl;
+}
+
+.h2 {
+  @include heading-large;
+}
+
+.h3 {
+  @include heading-medium;
+}
+
+.h4 {
+  @include heading-small;
+}
+
+.h5,
+.h6 {
+  @include heading-xs;
+}
+
+/* TODO: BEM selectors should be applied to wysiwyg-created content */
+
+.text-long {
+  h1 {
+    @extend .h1;
+  }
+
+  h2 {
+    @extend .h2;
+
+    margin: 26px 0 3px;
+    line-height: 1;
+    font-size: 26px;
+    font-weight: 500;
+    @include grid-breakpoint($mq-desk, desk) {
+      font-size: 32px;
+      margin: 32px 0 3px;
+    }
+    body[dir="ltr"] & {
+      line-height: 1;
+      font-size: 26px;
+      @include grid-breakpoint($mq-desk, desk) {
+        font-size: 32px;
+      }
+    }
+  }
+
+  h3 {
+    @extend .h3;
+
+    margin: 24px 0 16px;
+    line-height: 1;
+    font-size: 24px;
+    font-weight: normal;
+    @include grid-breakpoint($mq-desk, desk) {
+      font-size: 28px;
+      margin: 28px 0 23px;
+    }
+    body[dir="ltr"] & {
+      line-height: 1;
+      font-size: 24px;
+      @include grid-breakpoint($mq-desk, desk) {
+        font-size: 28px;
+      }
+    }
+  }
+
+  h4 {
+    @extend .h4;
+
+    margin: 22px 0 3px;
+    line-height: 1;
+    font-size: 22px;
+    font-weight: normal;
+    @include grid-breakpoint($mq-desk, desk) {
+      font-size: 26px;
+      margin: 26px 0 3px;
+    }
+    body[dir="ltr"] & {
+      line-height: 1;
+      font-size: 22px;
+      @include grid-breakpoint($mq-desk, desk) {
+        font-size: 26px;
+      }
+    }
+  }
+
+  h5 {
+    @extend .h5;
+
+    margin: 20px 0 3px;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: normal;
+    @include grid-breakpoint($mq-desk, desk) {
+      font-size: 24px;
+      margin: 24px 0 3px;
+    }
+    body[dir="ltr"] & {
+      line-height: 1;
+      font-size: 20px;
+      @include grid-breakpoint($mq-desk, desk) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  h6 {
+    @extend .h6;
+
+    margin: 18px 0 3px;
+    line-height: 1;
+    font-size: 18px;
+    font-weight: normal;
+    @include grid-breakpoint($mq-desk, desk) {
+      font-size: 22px;
+      margin: 22px 0 3px;
+    }
+    body[dir="ltr"] & {
+      line-height: 1;
+      font-size: 18px;
+      @include grid-breakpoint($mq-desk, desk) {
+        font-size: 22px;
+      }
+    }
+  }
+}

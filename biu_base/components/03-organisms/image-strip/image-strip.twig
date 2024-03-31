@@ -1,0 +1,75 @@
+{{ attach_library('biu_base/image-strip') }}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  <div class="image-strip-header">
+    <div class="image-strip-heading">
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": 3,
+        "heading": block_title,
+        "heading_modifiers": []
+      } %}
+    </div>
+    <div class="image-strip-nav">
+      <div class="swiper-button-prev">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'large-arrow',
+          icon_url: icon_url,
+          icon_modifiers: ['large-arrow-dark']
+        } %}
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'large-arrow-white',
+          icon_url: icon_url,
+          icon_modifiers: ['large-arrow-light']
+        } %}
+      </div>
+      <div class="swiper-button-next">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'large-arrow',
+          icon_url: icon_url,
+          icon_modifiers: ['large-arrow-dark']
+        } %}
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'large-arrow-white',
+          icon_url: icon_url,
+          icon_modifiers: ['large-arrow-light']
+        } %}
+      </div>
+    </div>
+  </div>
+  <div class="swiper-wrapper swiper-image-strip">
+    {% for item in items %}
+      {% include "@molecules/image-link/image-link.twig" with {
+        "image_link__base_class": item.component_base_class,
+        "image_link__modifiers": item.component_modifiers,
+        "additional_classes": item.additional_classes,
+        "image_link__image": item.card__image,
+        "image_link__image_mobile": item.card__image_mobile,
+        "link_attributes": {"title" : item.card__link.title},
+        "link_url": item.card__link.0.url
+      } %}
+    {% endfor %}
+  </div>
+  <div class="swiper-pagination"></div>
+
+  {% if strip_link_url %}
+    {% include "@molecules/link/arrow-link.twig" with {
+      item__content: strip_link_content,
+      item__url: strip_link_url,
+      item__link_title: strip_link_content,
+      link_base_class: "link",
+      link_container_base_class: "link-container",
+      link_container_modifiers: ['image-strip image-strip-dark'],
+      item__icon_url: icon_url,
+      arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+    } %}
+    {% include "@molecules/link/arrow-link.twig" with {
+      item__content: strip_link_content,
+      item__url: strip_link_url,
+      item__link_title: strip_link_content,
+      link_base_class: "link",
+      link_container_base_class: "link-container",
+      link_container_modifiers: ['image-strip image-strip-light'],
+      item__icon_url: icon_url,
+      arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json",
+    } %}
+  {% endif %}
+</div>

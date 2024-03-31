@@ -1,0 +1,30 @@
+<div {{ bem(card__base_class,card__modifiers,card__blockname,card__extra_classes) }}>
+  {# Image #}
+  {% block card__img %}
+    {% if card__image__src %}
+      {% include "@atoms/images/image/responsive-image.twig" with {
+        image_blockname: card__base_class,
+        image_src: card__image__src,
+        image_alt: card__image__alt,
+        responsive_image_modifiers: []
+      } %}
+    {% endif %}
+  {% endblock %}
+  {% if card__heading %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+      heading_base_class: card__heading__base_class|default('heading'),
+      heading_level: 3,
+      heading: card__heading,
+      heading_modifiers: []
+    } %}
+  {% endif %}
+  {# Subheading #}
+  {% if card__subheading %}
+    {% include "@atoms/text/headings/_heading.twig" with {
+    heading_base_class: card__subheading__base_class|default('subheading'),
+    heading_level: 4,
+    heading: card__subheading,
+    heading_modifiers: []
+  } %}
+  {% endif %}
+</div>

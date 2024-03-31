@@ -1,0 +1,125 @@
+.paragraph-links {
+  .link-col {
+    width: 100%;
+    position: relative;
+    // right: -28px;
+    body[dir="ltr"] & {
+      right: auto;
+      left: -28px;
+    }
+  }
+  .link-container {
+    position: relative;
+    padding-left: 28px;
+    padding-right: 28px;
+    text-align: right;
+
+    .animation-container {
+      svg {
+        position: absolute;
+        left: 28px;
+        top: 20px;
+      }
+    }
+  }
+  body[dir="ltr"] & {
+    .link-container {
+      text-align: left;
+      .animation-container {
+        svg {
+          left: auto;
+          right: 28px;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .link-col {
+      right: auto;
+      body[dir="ltr"] & {
+        left: auto;
+      }
+    }
+    .link-container {
+      padding-right: 0;
+      padding-left: 0;
+      .animation-container {
+        svg {
+          top: 0;
+          position: relative;
+          left: auto;
+          body[dir="ltr"] & {
+            right: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.paragraph-links .links.links--list {
+  padding-bottom: 32px;
+  .heading {
+    padding-top: 32px;
+    padding-bottom: 27px;
+
+    h4 {
+      font-size: 28px;
+      font-weight: 500;
+      color: $color-heading;
+      margin: 0;
+      line-height: 28px;
+    }
+  }
+
+  .link-container {
+    border-top: 1px solid rgba($color-heading, 0.5);
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .heading {
+      width: span(3 of 12);
+      margin-left: 24px;
+      float: right;
+      padding-top: 0;
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-left: 0;
+        margin-right: 24px;
+      }
+    }
+
+    .link-col {
+      width: span(3 of 12);
+      margin-left: 24px;
+      float: right;
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-left: 0;
+        margin-right: 24px;
+      }
+
+      &:last-child {
+        margin-left: 0;
+
+        body[dir="ltr"] & {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .link-container {
+      border-top: none;
+    }
+  }
+}
+
+.links.links--list.sg-container {
+  @include container;
+}

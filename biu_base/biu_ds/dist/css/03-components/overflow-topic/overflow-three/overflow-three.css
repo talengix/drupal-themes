@@ -1,0 +1,70 @@
+.overflow-block__body {
+  padding: 15px 17px;
+  background-color: #f3f4f8;
+  position: relative; }
+  body[dir="ltr"] .overflow-block__body {
+    text-align: left; }
+  .overflow-block__body a:hover {
+    text-decoration: none; }
+  .overflow-block__body svg {
+    width: 43px !important;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    height: 13px !important; }
+    body[dir="ltr"] .overflow-block__body svg {
+      right: 20px;
+      left: auto;
+      transform: rotate(180deg) translate3d(0, 0, 0) !important; }
+
+.overflow-block__card--three {
+  display: block;
+  margin: 0 15px; }
+  @media (min-width: 720px) {
+    .overflow-block__card--three {
+      display: flex;
+      max-width: 772px;
+      margin: 0 auto !important; } }
+  .overflow-block__card--three > * {
+    width: 100%;
+    order: 2; }
+    @media (min-width: 720px) {
+      .overflow-block__card--three > * {
+        width: 50%; } }
+  .overflow-block__card--three img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+.overflow-block__text--three {
+  color: #004128;
+  font-size: 1.375rem; }
+
+.overflow-block__title-text--three {
+  color: #004128;
+  font-size: 2rem;
+  font-weight: 400;
+  display: inline-block;
+  margin: 5px 0 20px; }
+  .overflow-block__title-text--three::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: #78cde6;
+    margin-top: 10px; }
+
+.overflow-block__wrap {
+  padding: 30px 0;
+  max-width: 1174px;
+  margin: 0 auto; }
+  .overflow-block__wrap--three {
+    padding: 0; }
+
+.overflow-block__content.overflow-block__content--three {
+  display: block; }
+
+.overflow-block__card--three:nth-child(2n+2) figure {
+  order: 3; }
+
+/*# sourceMappingURL=overflow-three.css.map */

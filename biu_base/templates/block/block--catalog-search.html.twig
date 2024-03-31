@@ -1,0 +1,9 @@
+<div {{ bem('block', [], '', 'catalog-search-container') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% include "@organisms/catalog-search/catalog-serach.twig" with {
+    "component_base_class": "catalog-search",
+    "catalog_link": catalog_link,
+    "title": label,
+  } %}
+</div>

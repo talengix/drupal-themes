@@ -1,0 +1,103 @@
+.message__wrap {
+  &--one {
+
+    @include dark-section;
+    @include ds-breakpoint($bp-desk) {
+      border-right: solid 1.5px $bar-ilan-green;
+    }
+
+    body[dir="ltr"] & {
+      @include ds-breakpoint($bp-desk) {
+        border-left: solid 1.5px $bar-ilan-green;
+        border-right: 0;
+      }
+    }
+
+    .link-container {
+      max-width: 140px;
+      padding: 0;
+      text-align: right;
+      position: relative;
+      order: 2;
+
+      body[dir="ltr"] & {
+        text-align: left;
+        order: 0
+      }
+
+      a {
+        font-size: 1rem;
+        @include dark-section;
+      }
+
+      svg {
+        position: absolute;
+        top: calc(50% - 7px);
+        left: 0;
+        height: 14px !important;
+        width: 43px !important;
+        vertical-align: middle;
+
+        body[dir="ltr"] & {
+          transform: rotate(180deg) !important;
+          right: 0;
+          left: auto;
+        }
+
+        @include dark-section-img;
+      }
+    }
+
+    .message {
+
+      &__content {
+        padding: 0 30px;
+        text-align: right;
+
+        @include ds-breakpoint($bp-desk) {
+          padding: 0 15px 0 20px;
+          max-width: 420px;
+        }
+
+        body[dir="ltr"] & {
+          padding: 0 20px 0 15px;
+          text-align: left;
+
+        }
+
+        @include dark-section;
+      }
+
+      &__title {
+        color: $bar-ilan-green;
+        font-size: 1.5rem;
+        line-height: 1.33;
+        @include dark-section;
+
+        a {
+          color: $bar-ilan-green;
+          text-decoration: none;
+          font-weight: normal;
+          @include dark-section;
+        }
+      }
+
+      &__text {
+        color: $bar-ilan-green;
+        font-size: 1rem;
+        line-height: 1.5;
+        @include dark-section;
+      }
+
+      &__footer {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__date {
+        font-size: 1rem;
+        order: 1;
+      }
+    }
+  }
+}

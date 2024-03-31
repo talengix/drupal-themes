@@ -1,0 +1,5 @@
+contact_card__base_class: "contact-card"
+contact_card__modifiers: ["footer"]
+contact_card_address: "Max and Anna Webb St., Ramat Gan"
+contact_card_phone: "03-5318111"
+contact_card_service_number: "*9392"

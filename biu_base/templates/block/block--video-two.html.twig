@@ -1,0 +1,13 @@
+{{ attach_library('biu_base/video-two') }}
+<div {{bem('block-video')}}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% include "@ds_components/videos/video-two/video-two.twig" with {
+      "title": label,
+      "video": content.field_video,
+      "text": text,
+      "component_additional_class": [background_color]
+    } %}
+  {% endblock %}
+</div>

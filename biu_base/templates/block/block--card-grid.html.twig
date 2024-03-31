@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+<div {{ bem('block') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% set items = [] %}
+    {% for item in content.field_card_grid_content['#items'] %}
+      {% set item = {
+        "card_heading": item.entity.label,
+        "img": item.entity.field_featured_image|view,
+        "card_link_title": "לתוכניות הלימוד",
+        "card_link_title2": "לאתר הפקולטה",
+        "icon_url" : card_grid_styles == "faculty" ? "/themes/custom/biu_base/dist/icons.svg" : "",
+        "card_modifier": [card_grid_styles],
+        "card_link_url": item.entity.field_link.0.url,
+        "card_link_url2": item.entity.field_website_link.0.url,
+      } %}
+      {% set items = items|merge([item]) %}
+    {% endfor %}
+    {% include "@organisms/cards-grid/cards--grid.twig" with {
+      "items": items,
+      "grid_label" : label,
+      "card_grid_base_class": "cards-grid",
+      "card_grid_feature_text_title": content['field_sub_title']['#items'][0].value,
+      "card_grid_feature_text_body" : content['field_description']['#items'][0].value,
+      "card_grid_styles": card_grid_styles,
+      "card_grid_modifiers": [],
+    } %}
+  {% endblock %}
+</div>

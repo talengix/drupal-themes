@@ -1,0 +1,16 @@
+{% set component_class = 'overflow-block' %}
+{% set component_modifier = ['three'] %}
+
+<div {{bem('wrap', component_modifier, component_class, additional_classes)}}>
+  <div {{bem('content', component_modifier, component_class)}}>
+    {% for item in items %}
+      {% include "@ds_components/overflow-topic/overflow-three/overflow-card.twig" with {
+        "image": item.image,
+        "text": item.text,
+        "title": item.title,
+        "link": item.link,
+        "link_title": item.link_title
+      } %}
+    {% endfor %}
+  </div>
+</div>

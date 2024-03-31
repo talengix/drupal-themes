@@ -1,0 +1,221 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+@import '../../02-patterns/hero-slide/hero-slide';
+
+.hero-slides-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: $pale-green;
+
+  @include background-color;
+
+  .swiper-pagination-clickable {
+    position: absolute;
+    bottom: 0;
+    padding: 20px 0;
+    margin: 0;
+
+    @include ds-breakpoint($bp-tab){
+      bottom: 20px;
+      padding: 0;
+    }
+
+    @include ds-breakpoint($bp-tab-wide){
+      bottom: 50px;
+    }
+
+
+    .swiper-pagination-bullet {
+      width: 18px;
+      height: 18px;
+      background-color: $white;
+      opacity: 1;
+
+      @include ds-breakpoint($bp-tab){
+        background-color: $pale-green;
+      }
+
+      &-active {
+        background-color: $lime-green;
+      }
+    }
+  }
+
+  .hero-slides-buttons {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    z-index: 10;
+
+    [dir="ltr"] & {
+      right: unset;
+      left: 24px;
+    }
+
+    @include ds-breakpoint($bp-tab){
+      bottom: 24px;
+    }
+
+    @include ds-breakpoint($bp-tab-wide){
+      bottom: 54px;
+    }
+
+    .swiper-button-pause {
+      padding: 3px;
+      cursor: pointer;
+
+      .button-pause-icon {
+        display: block;
+        width: 15px;
+        height: 18px;
+        border-color: #fff;
+        border-style: double;
+        border-width: 0 0 0 15px;
+      }
+    }
+
+    .swiper-button-play {
+      padding: 3px;
+      cursor: pointer;
+
+      .button-play-icon {
+        display: block;
+        width: 9px;
+        height: 9px;
+        border-style: solid;
+        border-width: 9px;
+        border-color: transparent transparent transparent #fff;
+      }
+    }
+  }
+
+  @include ds-breakpoint($bp-tab-wide) {
+    .hero-slides--hero-two & {
+      width: 65%;
+    }
+  }
+
+}
+
+.hero-two-block {
+  .hero-empty-container {
+    height: 0;
+    visibility: hidden;
+  }
+}
+
+.hero-slides--hero-two {
+  display: flex;
+  flex-direction: column;
+
+  @include ds-breakpoint($bp-tab-wide){
+    flex-direction: row;
+    padding-bottom: 16px;
+  }
+
+  .hero-text {
+    background: $pale-green url(/themes/custom/biu_base/assets/images/backgrounds/shape-triangular.png) no-repeat 0 0;
+    background-position-x: 100%;
+    @include background-color;
+    padding: 25px 30px 60px;
+    width: 100%;
+    order: 1;
+
+    @include ds-breakpoint($bp-tab-wide) {
+      width: 35%;
+      padding: 25px 50px;
+      order: 0;
+    }
+
+    @include ds-breakpoint($bp-desk) {
+      padding: 50px 100px;
+    }
+
+    .hero-slide-text-wrapper {
+
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .hero-slide-text-content {
+        .slide-title {
+          line-height: 1.33;
+          font-size: 1.5rem;
+          color: $bar-ilan-green;
+          text-align: left;
+          body[dir="rtl"] & {
+            text-align: right;
+          }
+
+          @include dark-section;
+        }
+
+        .slide-text {
+          line-height: 1.5;
+          font-size: 1rem;
+          color: $bar-ilan-green;
+          text-align: left;
+          body[dir="rtl"] & {
+            text-align: right;
+          }
+
+          @include dark-section;
+        }
+
+        .link-container {
+          width: 180px;
+          padding: 0;
+          text-align: right;
+          position: relative;
+
+          body[dir="ltr"] &{
+            text-align: left;
+          }
+
+          a {
+            font-size: 0.875rem;
+            padding: 9px 20px;
+            color: $bar-ilan-green;
+            width: 100%;
+            display: block;
+            background-color: $tiffany-blue;
+          }
+
+          svg {
+            position: absolute;
+            top: calc(50% - 7px);
+            left: 20px;
+            height: 14px !important;
+            width: 43px !important;
+            vertical-align: middle;
+            body[dir="ltr"] &{
+              transform: rotate(180deg) !important;
+              left: auto;
+              right: 20px;
+            }
+          }
+        }
+      }
+
+    }
+
+    body[dir="ltr"] & {
+      background: $pale-green url(/themes/custom/biu_base/assets/images/backgrounds/shape-triangular-ltr.png) no-repeat 0 0;
+    background-position-x: 0;
+    }
+  }
+}
+
+.hero-slides--hero-one {
+  .hero-slides-buttons {
+    display: none;
+
+    @include ds-breakpoint($bp-desk){
+      display: flex;
+    }
+  }
+}

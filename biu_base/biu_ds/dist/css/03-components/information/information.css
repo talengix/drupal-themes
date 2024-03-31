@@ -1,0 +1,27 @@
+.information__wrap {
+  padding: 50px 0; }
+
+.information__title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600; }
+  .information__title::after {
+    content: "";
+    display: block;
+    width: 105px;
+    height: 4px;
+    background-color: #78cde6;
+    margin: 10px auto 0; }
+
+.information__text {
+  font-size: calc(20/16*1rem);
+  text-align: center; }
+  .block--information.left .information__text {
+    text-align: left; }
+  .block--information.right .information__text {
+    text-align: right; }
+
+.information__item {
+  padding: 50px; }
+
+/*# sourceMappingURL=information.css.map */

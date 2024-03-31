@@ -1,0 +1,27 @@
+{{ attach_library('biu_base/main-menu') }}
+
+<nav>
+  <a href="#" id="main-toggle-expand" class="toggle-expand">
+    <span class="toggle-expand__open">
+      <span class="toggle-expand__text">
+      {{ title }}  >
+      </span>
+    </span>
+    <span class="toggle-expand__close">
+      <span class="toggle-expand__text">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_base_class: "icon",
+          icon_blockname: "toggle-expand",
+          icon_name: "go-back-symbol",
+          icon_url: "/themes/custom/biu_base/dist/icons.svg",
+        } %} {{ title }}
+      </span>
+    </span>
+  </a>
+  <div id="main-menu-sidebar" class="main-nav">
+    {% include "@molecules/menus/_menu.twig" with {
+      menu_class: "main-menu",
+      items: menu_items
+    } %}
+  </div>
+</nav>

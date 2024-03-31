@@ -1,0 +1,326 @@
+@import "./../../00-base/base/global";
+// Israel: import of colors file disabled because it is duplicate in dolev.
+//         Gal, you can use the new biu_ds/dist/css/colors.css  instead.
+//         It is available now to be called from libraries yml file of themes as separate file.
+//  @import "./../../00-base/01-colors/colors";
+
+// Israel: On 2022-01-20 I Removed the String Concatenation for Classes.
+//         The pattern of using & character to concat, chain, BEM modifiers or block sub elements to block name.
+//         for example: .event-horizontal-card {
+//                          &--wrapper {
+//                             // Some rules
+//                          }
+//                      }
+//         Why:
+//         This way of writing sass rules is considered anti pattern because
+//         1. Full classname is not searchable in src code base because it doe's not exists as single string
+//         2. This harms readability of scss code Context of rules is often lost as when first part of classname
+//            is not seen because it located in located many lines above
+//
+//         For more details see:
+//         https://csswizardry.com/2017/02/code-smells-in-css-revisited/#string-concatenation-for-classes
+//         https://chipcullen.com/leading-ampersands-in-sass-an-anti-pattern/
+//         https://bradfrost.com/blog/post/sass-selectors-to-nest-or-not-to-nest/
+
+.event-horizontal-card--wrapper {
+  display: block;
+  height: auto;
+  background-color: var(--white);
+  position: relative;
+
+  a {
+    text-decoration: none;
+    color: var(--bar-ilan-green);
+  }
+
+  .left-column {
+    flex: 0 1 40%;
+  }
+
+  .event-date--wrapper {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: var(--light-blue);
+    z-index: 1;
+    padding: 4px 22px;
+    color: var(--white);
+
+    html[dir="ltr"] & {
+      right: initial;
+      left: 0;
+    }
+
+    @include ds-breakpoint($bp-desk) {
+      html[dir="ltr"] & {
+        right: initial;
+      }
+    }
+  }
+
+  .event-date--day {
+    font-size: 40px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #01280f;
+    margin-bottom: 5px;
+    line-height: 1;
+  }
+
+  .event-date--month {
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #01280f;
+    line-height: 1;
+  }
+
+  .event-date-display--time {
+    direction: ltr;
+    text-align: right;
+
+    html[dir="ltr"] & {
+      text-align: left;
+    }
+
+  }
+
+  .banner-image--img {
+    width: 100%;
+    height: auto;
+  }
+
+  .event--type {
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    color: #0b6938;
+  }
+
+  .event--title {
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #003535;
+  }
+
+  .event--subtitle {
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #003535;
+  }
+
+  .event--cost-meta {
+    font-size: 12px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 2.4;
+    letter-spacing: normal;
+
+    &.desktop-only {
+      position: absolute;
+      bottom: 20px;
+    }
+
+    &.mobile-only {
+      color: #0b6938;
+    }
+  }
+
+  .event--mode {
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.57;
+    letter-spacing: normal;
+    text-align: center;
+    color: #012c12;
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    background-color: var(--tiffany-blue);
+    z-index: 1;
+    padding: 4px 22px;
+
+    html[dir="ltr"] & {
+      left: auto;
+      right: -10px;
+    }
+  }
+
+  .banner-content-wrapper {
+    flex: 0 0 60%;
+    display: block;
+    padding: 20px 15px;
+    @include ds-breakpoint($bp-desk) {
+      display: flex;
+    }
+  }
+
+  .banner-content-wrapper--left {
+    flex: 0 0 55%;
+    @include ds-breakpoint($bp-desk) {
+      border-left: 1px solid var(--bar-ilan-green);
+      padding-left: 40px;
+      body[dir="ltr"] & {
+        padding-left: 0;
+        padding-right: 40px;
+        border-left: 0;
+        border-right: 1px solid var(--bar-ilan-green);
+      }
+    }
+  }
+
+  .banner-content-wrapper--right {
+    flex: 0 1 45%;
+    padding: 0;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #003535;
+    position: relative;
+    @include ds-breakpoint($bp-desk) {
+      padding: 0 25px;
+      padding-top: 20px;
+      margin-top: auto;
+    }
+  }
+
+  .arrow-link {
+    margin-top: 25px;
+    text-align: left;
+    height: 20px;
+
+    body[dir="ltr"] & {
+      text-align: right;
+    }
+  }
+
+  .arrow-link--icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+
+    body[dir="ltr"] & {
+      transform: rotate(180deg) !important;
+    }
+  }
+
+  .event-calendar-links {
+    line-height: normal;
+    margin-top: 5px;
+  }
+
+
+  .event-calendar-links--toggle {
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    position: relative;
+
+    a {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: normal;
+      color: var(--dark-green);
+
+      img {
+        width: 15px;
+        height: 15px;
+        position: relative;
+        top: 3px;
+        left: 0;
+        right: 0;
+        display: inline-block;
+      }
+
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .event-calendar-links--dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+    padding: 0;
+    margin: 6px 0 0;
+    width: 100%;
+    direction: ltr;
+    border: solid 1px rgba(0, 40, 15, 0.2);
+
+    li {
+      list-style: none;
+      background-color: var(--white);
+      z-index: 1;
+      position: relative;
+
+      &:nth-child(2n) {
+        background-color: var(--pale-green);
+      }
+
+      a {
+        display: block;
+        padding: 6px 20px;
+        text-decoration: none;
+        color: var(--dark-green);
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+      }
+    }
+  }
+
+  @include ds-breakpoint($bp-desk) {
+    display: flex;
+    min-height: 253px;
+    .banner-image--wrapper {
+      height: 100%;
+    }
+
+    .banner-image--img {
+      height: 100%;
+    }
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  @include ds-breakpoint($bp-desk) {
+    .mobile-only {
+      display: none;
+    }
+    .desktop-only {
+      display: block;
+    }
+  }
+}

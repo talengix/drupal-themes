@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+    <g id="btn_media_stop" transform="translate(.5 .5)">
+        <path id="Rectangle" fill="none" stroke="#004128" stroke-miterlimit="10" d="M0 0H1V7.5H0z" transform="translate(9.5 8)"/>
+        <path id="Rectangle_Copy" fill="none" stroke="#004128" d="M0 0H1V7.5H0z" stroke-miterlimit="10" transform="translate(14 8)"/>
+        <path id="Oval" fill="none" stroke="#004128" d="M0 12a12 12 0 1 1 12 12A12 12 0 0 1 0 12z"/>
+    </g>
+</svg>

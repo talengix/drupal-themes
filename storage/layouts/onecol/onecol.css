@@ -1,0 +1,7 @@
+/*
+ * @file
+ * Provides the layout styles for lsayout_onecol.
+ */
+.layout--onecol {
+  width: 100%;
+}

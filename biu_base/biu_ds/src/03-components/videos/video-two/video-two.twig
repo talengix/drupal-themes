@@ -1,0 +1,12 @@
+{% set component_class = 'video' %}
+<div {{bem('wrap',['two'], component_class, component_additional_class )}}>
+  <div {{bem('inner',['two'], component_class )}}>
+    <div {{bem('video-embed',['two'], component_class )}}>
+      {{ video }}
+    </div>
+    <div {{bem('body',['two'], component_class, component_additional_class )}}>
+      <h2 {{bem('title',['two'], component_class, component_additional_class )}}>{{ title }}</h2>
+      <p {{bem('text',['two'], component_class, component_additional_class )}}>{{ text }}</p>
+    </div>
+  </div>
+</div>

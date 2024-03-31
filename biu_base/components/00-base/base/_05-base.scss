@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+body,
+body.sb-show-main
+{
+  font-family: $font-body;
+  overflow-x: hidden;
+}
+
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}

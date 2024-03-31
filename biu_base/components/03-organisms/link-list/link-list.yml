@@ -1,0 +1,53 @@
+link_list_base_class: "links"
+link_list_modifiers: ["list"]
+block_title: "Link list"
+link_list_extraclass: ['sg-container']
+items:
+  - link_content: 'Book1'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true
+  - link_content: 'Book2'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: false
+  - link_content: 'Book3'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true
+  - link_content: 'Book4'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true
+  - link_content: 'Book5'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: false
+  - link_content: 'Book6'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true
+  - link_content: 'Book7'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true
+  - link_content: 'Book8'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true
+  - link_content: 'Book9'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: false
+  - link_content: 'Book10'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: false
+  - link_content: 'Book11'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: false
+  - link_content: 'Book12'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+    is_external: true

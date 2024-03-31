@@ -1,0 +1,1 @@
+"use strict";Drupal.behaviors.socialFeed={attach:function attach(){new Swiper(".social-feed-slider",{loop:!0,slidesPerView:"auto",pagination:{el:".swiper-pagination",clickable:!0},navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"}})}};

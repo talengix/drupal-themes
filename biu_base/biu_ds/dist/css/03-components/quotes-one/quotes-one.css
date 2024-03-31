@@ -1,0 +1,78 @@
+.quotes.quotes--one {
+  margin: 0 15px; }
+  @media (min-width: 720px) {
+    .quotes.quotes--one {
+      display: flex;
+      margin: 0; } }
+  .quotes.quotes--one > figure {
+    width: 100%; }
+    @media (min-width: 720px) {
+      .quotes.quotes--one > figure {
+        width: 50%; } }
+    .quotes.quotes--one > figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    body[dir="ltr"] .quotes.quotes--one > figure {
+      order: 1; }
+  .quotes.quotes--one .quotes-content {
+    width: 100%;
+    background-color: #f3f4f8;
+    color: #004128;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 25px;
+    text-align: right; }
+    .dark-section .quotes.quotes--one .quotes-content {
+      color: var(--white);
+      border-color: var(--white); }
+    .background-color-biu-green .quotes.quotes--one .quotes-content {
+      background-color: var(--bar-ilan-green); }
+    .background-color-gray .quotes.quotes--one .quotes-content {
+      background-color: var(--light-gray); }
+    .background-color-white .quotes.quotes--one .quotes-content {
+      background-color: var(--white); }
+    .background-color-pale-green .quotes.quotes--one .quotes-content {
+      background-color: var(--pale-green); }
+    @media (min-width: 720px) {
+      .quotes.quotes--one .quotes-content {
+        width: 50%;
+        padding: 55px 35px 55px 100px; } }
+    body[dir="ltr"] .quotes.quotes--one .quotes-content {
+      text-align: left;
+      padding: 55px 100px 55px 35px; }
+    .quotes.quotes--one .quotes-content p {
+      font-size: 1rem;
+      line-height: 1.58; }
+      @media (min-width: 720px) {
+        .quotes.quotes--one .quotes-content p {
+          font-size: 2rem; } }
+    .quotes.quotes--one .quotes-content .quotes-person {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; }
+      .quotes.quotes--one .quotes-content .quotes-person img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px; }
+        @media (min-width: 720px) {
+          .quotes.quotes--one .quotes-content .quotes-person img {
+            width: 99px;
+            height: 99px;
+            border-radius: 50px; } }
+      .quotes.quotes--one .quotes-content .quotes-person span {
+        font-size: 1rem;
+        display: block;
+        margin-top: 15px; }
+        @media (min-width: 720px) {
+          .quotes.quotes--one .quotes-content .quotes-person span {
+            font-size: calc(22/16*1rem);
+            display: block;
+            margin-top: 15px; } }
+
+.quotes.quotes--dark .quotes-content {
+  color: #fff; }
+
+/*# sourceMappingURL=quotes-one.css.map */

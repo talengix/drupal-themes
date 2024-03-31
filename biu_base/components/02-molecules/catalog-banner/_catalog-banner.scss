@@ -1,0 +1,141 @@
+.catalog-banner {
+  padding: 0;
+
+  .catalog-content {
+    padding-bottom: 30px;
+    h3 {
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;;
+      letter-spacing: normal;
+      margin: 0;
+      text-align: center;
+      background-color: $dark-green;
+      color: $pale-green;
+      padding: 0 10%;
+    }
+
+    h4 {
+      font-size: 30px;
+      line-height: 1.33;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: normal;
+      color: $dark-green;
+      text-align: center;
+      margin: 10px 28px 0;
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      letter-spacing: normal;
+      margin: 40px 28px 0;
+      color: $dark-green;
+      text-align: center;
+    }
+
+    .catalog-banner-link {
+      position: relative;
+      display: block;
+      margin: 34px 28px 0;
+
+      a {
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+        background-color: $jungle-green;
+        padding: 16px 20px;
+        color: $pale-green;
+        width: 100%;
+        display: block;
+
+        body[dir="ltr"] & {
+          padding-right: 59px;
+        }
+
+        body[dir="rtl"] & {
+          padding-left: 59px;
+        }
+      }
+
+      svg {
+        width: 43px !important;
+        height: 13px !important;
+        position: absolute;
+        left: 20px;
+        top: calc(50% - 6px);
+
+        body[dir="ltr"] & {
+          left: auto;
+          transform: rotate(180deg) !important;
+          right: 20px;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding: 0;
+    .catalog-image {
+      float: left;
+      width: 50%;
+
+      body[dir="ltr"] & {
+        float: right;
+      }
+    }
+    .catalog-content {
+      padding: 0;
+      float: right;
+      width: 50%;
+      text-align: right;
+
+      body[dir="ltr"] & {
+        float: left;
+        text-align: left;
+      }
+
+      h3 {
+        font-size: 56px;
+        line-height: 1.11;
+        padding: 0 5px;
+        text-align: inherit;
+        display: inline-block;
+      }
+
+      h4 {
+        font-size: 56px;
+        line-height: 1.11;
+        margin: 0;
+        text-align: inherit;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 4px 0 9px;
+        text-align: inherit;
+      }
+
+      .catalog-banner-link {
+        margin: 0;
+        display: inline-block;
+
+        a {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+icons_horizontal__base_class: "icons"
+icons_horizontal__modifiers: ["horizontal"]
+icons_horizontal__extra_classes: ["sg-container"]
+items:
+  - name: 'Book'
+    value: 'book'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+  - name: 'Book Bulb'
+    value: 'book-bulb'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+  - name: 'Book Mind'
+    value: 'book-mind'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+  - name: 'Certificate'
+    value: 'certificate'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+  - name: 'Certificate 2'
+    value: 'certificate-2'
+    link_url: 'https:google.com'
+    link_title: 'Google'
+  - name: 'Exam'
+    value: 'exam'
+    link_url: 'https:google.com'
+    link_title: 'Google'

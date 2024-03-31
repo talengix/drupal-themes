@@ -1,0 +1,19 @@
+.block--links-by-category {
+  .grid-item {
+    flex: 1 1 100%;
+    @include grid-breakpoint($mq-tab, tab) {
+      margin-inline-end: gutter(of 12);
+      flex-basis: span(3 of 12);
+    }
+    &:last-child {
+      margin-inline-end: 0;
+    }
+  }
+  h3 {
+    @include heading-medium(24px, 24px);
+    span {
+      padding-bottom: 1.5px;
+      border-bottom: 1.5px solid $light-blue;
+    }
+  }
+}

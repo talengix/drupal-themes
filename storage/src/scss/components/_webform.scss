@@ -1,0 +1,47 @@
+.webform-submission-form {
+  h2,
+  label {
+    color: $primary-blue-bright;
+  }
+
+  label {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 23px;
+    margin-top: 20px;
+  }
+
+  .form-control {
+    margin-top: 20px;
+    padding: 10px 0 10px 0;
+    border: none;
+    border-bottom: 1px solid $primary-blue-black;
+    border-radius: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    color: #0e53f5;
+    background-color: transparent;
+
+    &.form-textarea {
+      border: 1px solid $primary-blue-black;
+      padding: 15px;
+    }
+
+    &:focus {
+      border: none;
+    }
+  }
+
+  .btn {
+    margin-top: 50px;
+  }
+
+  &.webform-submission-project-form {
+    padding: 0 50px;
+
+    select {
+      color: #ccc;
+    }
+  }
+}

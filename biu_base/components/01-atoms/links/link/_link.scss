@@ -1,0 +1,11 @@
+/* Link */
+@mixin link {
+  text-decoration: none;
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+.link {
+  @include link;
+}

@@ -1,0 +1,99 @@
+@charset "UTF-8";
+$assets_path: '/themes/custom/storage/build';
+$font-path: $assets_path + "/fonts/";
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-LightItalic.eot');
+  src: local('DIN 2014 Light Italic'), local('DIN2014-LightItalic'), url('#{$font-path}DIN2014-LightItalic.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-LightItalic.woff') format('woff'), url('#{$font-path}DIN2014-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-Light.eot');
+  src: local('DIN 2014 Light'), local('DIN2014-Light'), url('#{$font-path}DIN2014-Light.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-Light.woff') format('woff'), url('#{$font-path}DIN2014-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-ExtraBoldItalic.eot');
+  src: local('DIN 2014 ExtraBold Italic'), local('DIN2014-ExtraBoldItalic'), url('#{$font-path}DIN2014-ExtraBoldItalic.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-ExtraBoldItalic.woff') format('woff'), url('#{$font-path}DIN2014-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-ExtraLight.eot');
+  src: local('DIN 2014 ExtraLight'), local('DIN2014-ExtraLight'), url('#{$font-path}DIN2014-ExtraLight.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-ExtraLight.woff') format('woff'), url('#{$font-path}DIN2014-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-ExtraBold.eot');
+  src: local('DIN 2014 ExtraBold'), local('DIN2014-ExtraBold'), url('#{$font-path}DIN2014-ExtraBold.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-ExtraBold.woff') format('woff'), url('#{$font-path}DIN2014-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-ExtraLightItalic.eot');
+  src: local('DIN 2014 ExtraLight Italic'), local('DIN2014-ExtraLightItalic'), url('#{$font-path}DIN2014-ExtraLightItalic.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-ExtraLightItalic.woff') format('woff'), url('#{$font-path}DIN2014-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-Regular.eot');
+  src: local('DIN 2014 Regular'), local('DIN2014-Regular'), url('#{$font-path}DIN2014-Regular.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-Regular.woff') format('woff'), url('#{$font-path}DIN2014-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-Italic.eot');
+  src: local('DIN 2014 Italic'), local('DIN2014-Italic'), url('#{$font-path}DIN2014-Italic.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-Italic.woff') format('woff'), url('#{$font-path}DIN2014-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-Bold.eot');
+  src: local('DIN 2014 Bold'), local('DIN2014-Bold'), url('#{$font-path}DIN2014-Bold.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-Bold.woff') format('woff'), url('#{$font-path}DIN2014-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-BoldItalic.eot');
+  src: local('DIN 2014 Bold Italic'), local('DIN2014-BoldItalic'), url('#{$font-path}DIN2014-BoldItalic.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-BoldItalic.woff') format('woff'), url('#{$font-path}DIN2014-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-DemiBoldItalic.eot');
+  src: local('DIN 2014 DemiBold Italic'), local('DIN2014-DemiBoldItalic'), url('#{$font-path}DIN2014-DemiBoldItalic.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-DemiBoldItalic.woff') format('woff'), url('#{$font-path}DIN2014-DemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DIN 2014';
+  src: url('#{$font-path}DIN2014-DemiBold.eot');
+  src: local('DIN 2014 DemiBold'), local('DIN2014-DemiBold'), url('#{$font-path}DIN2014-DemiBold.eot?#iefix') format('embedded-opentype'), url('#{$font-path}DIN2014-DemiBold.woff') format('woff'), url('#{$font-path}DIN2014-DemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}

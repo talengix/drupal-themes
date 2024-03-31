@@ -1,0 +1,8 @@
+social_media__base_class: "social-media-component"
+social_block_heading: "Social Media"
+social_base_class: "footer-social-icon"
+social_modifier_class: ['footer']
+instagram_icon_link: "https://instagram.com"
+facebook_icon_link: "https://facebook.com"
+linkedin_icon_link: "https://linkedin.com"
+twitter_icon_link: "https://twitter.com"

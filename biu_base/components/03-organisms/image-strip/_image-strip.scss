@@ -1,0 +1,250 @@
+.image-strip-slider {
+
+  .swiper-button-next, .swiper-button-prev {
+    display: none;
+  }
+
+  .swiper-image-strip {
+    .swiper-slide {
+      width: span(2 of 2);
+    }
+  }
+
+  .image-strip-heading {
+    h3 {
+      font-size: 40px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      padding: 32px 28px;
+      margin: 0;
+    }
+  }
+
+  .link-container {
+    svg {
+      width: 47px !important;
+      height: 13px !important;
+      top: 2px;
+      position: relative;
+
+      body[dir="ltr"] & {
+        transform: rotate(180deg) !important;
+      }
+    }
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    bottom: 27px;
+  }
+
+  .image-strip-light {
+    display: none;
+  }
+
+  @include grid-breakpoint($mq-tab, tab) {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    .image-strip-header {
+      @include container;
+
+      display: block;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+
+      .image-strip-heading {
+        width: span(6 wide of 12);
+        float: right;
+
+        h3 {
+          margin-top: 0;
+          margin-bottom: 32px;
+          padding: 0;
+        }
+
+        body[dir="ltr"] & {
+          float: left;
+        }
+      }
+
+      .image-strip-nav {
+        width: span(3 wide of 12);
+        float: left;
+        position: relative;
+
+        body[dir="ltr"] & {
+          float: right;
+        }
+
+        .swiper-button-next, .swiper-button-prev {
+          margin: 0;
+          display: flex;
+          width: auto;
+          height: auto;
+          left: auto;
+          right: auto;
+
+          &::after {
+            content: none;
+          }
+
+          svg {
+            width: 77px;
+            height: 30px;
+          }
+
+          .icon--large-arrow-light {
+            display: none;
+          }
+        }
+
+        .swiper-button-next {
+          left: 0;
+          top: 5px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 0;
+            transform: rotate(180deg);
+          }
+        }
+
+        .swiper-button-prev {
+          left: 117px;
+          transform: rotate(180deg);
+          top: 4px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 117px;
+            transform: none;
+          }
+        }
+      }
+    }
+
+    .link-container {
+      margin-top: 37px;
+      padding-bottom: 0;
+      text-align: left;
+      float: left;
+
+      body[dir="ltr"] & {
+        text-align: right;
+        float: right;
+      }
+
+      a {
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1;
+        letter-spacing: normal;
+      }
+    }
+    .swiper-pagination {
+      display: none;
+    }
+
+    .swiper-image-strip {
+      .swiper-slide {
+        width: 334px;
+
+        body[dir="rtl"] & {
+          float: right;
+          margin-left: 40px;
+        }
+
+        body[dir="ltr"] & {
+          float: left;
+          margin-right: 40px;
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-desk, desk) {
+    max-width: 1366px;
+    margin-left: -96px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .link-container {
+      margin-left: 74px;
+    }
+    body[dir="ltr"] & {
+      margin-left: 0;
+      margin-right: -96px;
+
+      .link-container {
+        margin-left: 0;
+        margin-right: 74px;
+      }
+    }
+  }
+}
+
+.block--image-strip, .general-page-extra-content .field--name-field-extra-content .field__item > .image-strip {
+  width: 100vw;
+  right: -28px;
+  position: relative;
+
+  .link-container--image-strip {
+    margin-right: 28px;
+  }
+
+  body[dir="ltr"] & {
+    right: auto;
+    left: -28px;
+
+    .link-container--image-strip {
+      margin-right: 0;
+      margin-left: 28px;
+    }
+  }
+
+  @include grid-breakpoint($mq-tab, tab) {
+    width: auto;
+    right: auto;
+    .link-container--image-strip {
+      margin-right: 0;
+    }
+    body[dir="ltr"] & {
+      left: auto;
+
+      .link-container--image-strip {
+        margin-left: 0;
+      }
+    }
+  }
+}
+.background-color-biu-green {
+  .block--image-strip {
+    .image-strip-heading {
+      .h3 {
+        color: $white;
+      }
+    }
+    .image-strip-nav {
+      .icon--large-arrow-dark {
+        display: none;
+      }
+      .icon--large-arrow-light {
+        display: block !important;
+      }
+    }
+    .link-container {
+      a {
+        color: $white;
+      }
+    }
+    .image-strip-dark {
+      display: none;
+    }
+    .image-strip-light {
+      display: block !important;
+    }
+  }
+}

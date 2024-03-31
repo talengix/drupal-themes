@@ -1,0 +1,19 @@
+// Global
+// =============================
+@import "00-base/base/global";
+
+// Storybook only
+@import "00-base/01-colors/colors-sg";
+
+// Cards
+// Set background to plain card
+.sg-children-has-bg--pale > * {
+  background-color: (var(--pale-green));
+}
+
+.alumni-strip {
+  // Since not including grid in biu_ds,
+  // but still need to limit strip width..
+  // So, instead of .container lets set:
+  max-width: 1240px;
+}

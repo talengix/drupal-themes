@@ -1,0 +1,76 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+
+.messages__wrap {
+  &.messages__wrap {
+    &--two {
+
+      padding: 40px 30px;
+
+      @include ds-breakpoint($bp-tab){
+        padding: 34px 100px;
+      }
+
+      .messages {
+        &__content {
+          color: $bar-ilan-green;
+          @include dark-section;
+
+          @include ds-breakpoint($bp-tab){
+            display: flex;
+          }
+
+          .swiper {
+            overflow: hidden;
+          }
+        }
+
+        &__link {
+          text-decoration: none;
+          color: $bar-ilan-green;
+          @include dark-section;
+        }
+
+        &__title {
+          width: 100px;
+          font-size: 1.25rem;
+          font-weight: 600;
+          margin-left: 30px;
+          margin-bottom: 20px;
+          text-align: right;
+          align-self: flex-start;
+
+          @include ds-breakpoint($bp-tab){
+            text-align: center;
+            margin-bottom: 0;
+          }
+
+          body[dir="ltr"] & {
+            margin-left: 0;
+            margin-right: 30px;
+            text-align: left;
+
+            @include ds-breakpoint($bp-tab){
+              text-align: center;
+            }
+          }
+        }
+
+        &__item {
+          font-size: 1.25rem;
+          font-weight: 400;
+          display: block;
+        }
+      }
+
+      &.light {
+        .messages {
+          &__content {
+            color: $bar-ilan-green;
+          }
+        }
+      }
+    }
+  }
+
+}

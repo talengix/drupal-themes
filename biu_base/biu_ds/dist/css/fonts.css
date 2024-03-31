@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "FedraSansBarilan";
+  src: url("../../assets/fonts/FedraSansBarilan-Book.woff2") format("woff2"), url("../../assets/fonts/FedraSansBarilan-Book.woff") format("woff"), url("../../assets/fonts/FedraSansBarilan-Book.otf") format("otf"), url("../../assets/fonts/FedraSansBarilan-Book.eot") format("eot");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "FedraSansBarilan";
+  src: url("../../assets/fonts/FedraSansBarilan-Medium.woff2") format("woff2"), url("../../assets/fonts/FedraSansBarilan-Medium.woff") format("woff"), url("../../assets/fonts/FedraSansBarilan-Medium.otf") format("otf"), url("../../assets/fonts/FedraSansBarilan-Medium.eot") format("eot");
+  font-weight: 500 900;
+  font-style: normal; }
+
+/*# sourceMappingURL=fonts.css.map */

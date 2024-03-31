@@ -1,0 +1,35 @@
+items:
+  - card__image__src: 'https://placeimg.com/773/356/tech'
+    card__image__alt: "This is the card image's alt text"
+    card__base_class: "media-slide-item"
+    card__heading: 'מחקר פורץ דרך בבר-אילן'
+    card__subheading: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+  - card__image__src: 'https://placeimg.com/773/356/tech'
+    card__image__alt: "This is the card image's alt text"
+    card__base_class: "media-slide-item"
+    card__heading: 'מחקר פורץ דרך בבר-אילן'
+    card__subheading: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+  - card__image__src: 'https://placeimg.com/773/356/tech'
+    card__image__alt: "This is the card image's alt text"
+    card__base_class: "media-slide-item"
+    card__heading: 'מחקר פורץ דרך בבר-אילן'
+    card__subheading: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+  - card__image__src: 'https://placeimg.com/773/356/tech'
+    card__image__alt: "This is the card image's alt text"
+    card__base_class: "media-slide-item"
+    card__heading: 'מחקר פורץ דרך בבר-אילן'
+    card__subheading: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+  - card__image__src: 'https://placeimg.com/773/356/tech'
+    card__image__alt: "This is the card image's alt text"
+    card__base_class: "media-slide-item"
+    card__heading: 'מחקר פורץ דרך בבר-אילן'
+    card__subheading: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+  - card__image__src: 'https://placeimg.com/773/356/tech'
+    card__image__alt: "This is the card image's alt text"
+    card__base_class: "media-slide-item"
+    card__heading: 'מחקר פורץ דרך בבר-אילן'
+    card__subheading: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי.'
+component_base_class: 'media-slides-slider'
+component_modifiers: []
+component_blockname: ''
+component_additional_classes: ['sg-container', 'swiper-container']

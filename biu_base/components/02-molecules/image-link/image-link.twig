@@ -1,0 +1,25 @@
+<div {{ bem(image_link__base_class, image_link__modifiers,image_link__blockname, additional_classes) }}>
+  {% if link_url is not empty %}
+  <a
+  {% for attribute, value in link_attributes %}
+    {{ attribute }}="{{ value }}"
+  {% endfor %}
+  href="{{ link_url }}">
+  {% else %}
+  <div>
+    {% endif %}
+    {# Image #}
+    {% block image_link__img %}
+        <div class="img-desktop">
+          {{ image_link__image }}
+        </div>
+        <div class="img-mobile">
+         {{ image_link__image_mobile }}
+        </div>
+    {% endblock %}
+    {% if link_url is not empty %}
+    </a>
+    {% else %}
+    </div>
+      {% endif %}
+</div>

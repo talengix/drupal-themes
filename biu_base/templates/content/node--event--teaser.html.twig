@@ -1,0 +1,73 @@
+{% set title = node.label|raw|render|striptags %}
+{% set title = title|length > 50 ? title|slice(0, 50) ~ '...' : title %}
+
+<article {{ bem("node-event-teaser") }}>
+
+  <div class="event-top-banner-wrapper">
+    <div class="left-column">
+      <a href="{{ url }}">
+        <div class="banner-image-wrapper">
+          <div class="field field--name-field-event-date">
+            <div class="day">
+              {{ node.field_event_start_date.value | date('d') }}
+            </div>
+            <div class="month">
+              {{ node.field_event_start_date.value | date('F')|t }}
+            </div>
+          </div>
+          {{ content.field_event_mode }}
+          {{ content.field_featured_media_image }}
+        </div>
+      </a>
+    </div>
+    <div class="right-column">
+      <div class="banner-content-wrapper-left">
+        <a href="{{ url }}">
+          {% set invite = node.field_event_invited_only.value ? 'Invited only' : 'Open to wide audience' %}
+            {% set cost = node.field_event_cost.value == 'payment' ? node.field_cost_amount.0.value ~ ' ' ~ 'NIS'|t : 'No cost'|t %}
+          {{ content.field_event_type }}
+          <h1 class="title">{{ label }}</h1>
+          <h3 class="subtitle">{{ content.field_sub_title }}</h3>
+          <div class="cost-meta desktop-only"><span>{{ cost }} | {{ invite|t }}</span></div>
+        </a>
+      </div>
+      <div class="banner-content-wrapper-right">
+          <div class="event-date">
+            {{ content.field_event_date_display_one }}
+            {{ content.field_event_date_display_two }}
+          </div>
+          {{ content.field_event_time_display }}
+          <div class="cost-meta mobile-only"><span>{{ cost }} | {{ invite|t }}</span></div>
+          {% if calendar__links %}
+            <div class="calendar-links">
+              {% include "@molecules/link-with-icon/link-with-icon.twig" with {
+                link_icon__base_class: "calendar-links-toggle",
+                link_icon__modifiers: [],
+                link_icon__url: "javascript:void(0)",
+                link_icon__link_title: 'Save in calendar'|t,
+                item__name: "download",
+                link_icon_text: 'Save in calendar'|t,
+                link_icon__extra_classes: [],
+                icon_url: "/themes/custom/biu_base/dist/icons.svg",
+              } %}
+              <ul class="calendar-links-dropdown">
+                {% for link in calendar__links %}
+                  <li>
+                    <a href="{{ link.url }}" target="_blank"> {{ link.type_name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          {% set arrow_src = '/themes/custom/biu_base/assets/animations/arrow.json' %}
+          <div class="arrow-link">
+            {% include "@atoms/images/icons/_icon.twig" with {
+              icon_name: 'regular-arrow',
+              icon_url: '/themes/custom/biu_base/dist/icons.svg',
+              icon_modifiers: []
+            } %}
+          </div>
+      </div>
+    </div>
+  </div>
+</article>

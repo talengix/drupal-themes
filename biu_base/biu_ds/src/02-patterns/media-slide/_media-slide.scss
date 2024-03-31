@@ -1,0 +1,115 @@
+.media-slide-item {
+
+  .media-slide-heading {
+    color: $bar-ilan-green;
+
+    @include dark-section;
+
+    h3 {
+      margin: 20px 0;
+      font-size: 32px;
+      font-weight: normal;
+      line-height: 1.25;
+    }
+  }
+
+  .media-slide-content {
+    color: $bar-ilan-green;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+
+    @include dark-section;
+
+    .body {
+      p {
+        margin: 9px 0;
+      }
+    }
+    .sub-title {
+      font-weight: 500;
+      padding-bottom: 8px;
+    }
+
+    .link-container {
+      text-align: initial;
+      a {
+        color: $white;
+        font-size: 16px;
+        display: inline-block;
+      }
+
+      svg {
+        height: 16px !important;
+        width: 43px !important;
+        padding: 4px;
+        vertical-align: middle;
+        body[dir="ltr"] &{
+          transform: rotate(180deg) !important;
+        }
+      }
+    }
+    .link-container--link-container-light-background {
+      display: none;
+    }
+  }
+
+  @include ds-breakpoint($bp-desk) {
+    width: calc(161px + ((100% - 253px) / 12 * 8));
+    margin-left: 23px;
+    .media-slide-text-wrapper {
+      margin-top: 100px;
+    }
+    .media-slide-heading {
+      width: calc(69px + ((100% - 161px) / 8 * 4));
+
+      h3 {
+        font-size: 40px;
+        line-height: 1;
+        margin-top: 0;
+        margin-left: 16px;
+        body[dir="ltr"] & {
+          margin-left: auto;
+          margin-right: 16px;
+        }
+      }
+    }
+    .media-slide-content {
+      width: calc(69px + ((100% - 161px) / 8 * 4));
+    }
+
+    .media-slide-img img {
+      width: 100%;
+    }
+  }
+
+  @include ds-breakpoint($bp-desk-wide) {
+    .media-slide-text-wrapper {
+      margin-top: 73px;
+    }
+  }
+}
+
+.media-slides__block--light {
+  .media-slide-item {
+    .media-slide-heading {
+      color: $dark-green;
+    }
+    .media-slide-content {
+      color: $dark-green;
+      .link-container--link-container-light-background {
+        display: block !important;
+        a {
+          color: $dark-green;
+        }
+      }
+      .link-container--link-container-dark-background {
+        display: none;
+      }
+      .sub-title {
+        color: $dark-green;
+      }
+    }
+  }
+}

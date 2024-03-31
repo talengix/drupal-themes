@@ -1,0 +1,145 @@
+.publications-lobby-page {
+  #block-biu-base-page-title {
+    h1 {
+      color: $bar-ilan-green;
+      font-size: calc(40 / 16 * 1rem);
+      font-weight: 600;
+    }
+  }
+
+  .publications-lobby {
+    .views-exposed-form {
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: solid 2px var(--dark-green);
+
+      .form-item {
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+
+        .form-item__label {
+          display: none;
+        }
+
+        input {
+          max-width: none;
+          border-color: var(--dark-green);
+          width: 100%;
+          margin: 0;
+        }
+      }
+
+      .form-fieldset {
+        margin-bottom: 0;
+
+        .h2 {
+          font-size: 16px;
+          line-height: 1.5;
+          color: var(--dark-green);
+          margin-bottom: 16px;
+        }
+      }
+
+      .form-actions {
+        input {
+          border: 1px solid var(--tiffany-blue);
+          background-color: var(--tiffany-blue);
+          color: var(--white);
+          padding: 9px 30px;
+        }
+      }
+    }
+
+    .views-row {
+      border-bottom: solid 1px rgba(0, 40, 15, 0.5);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+
+      .views-field-title {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1;
+        color: var(--dark-green);
+      }
+
+      .views-field-nothing {
+        margin-top: 8px;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.2;
+        color: var(--dark-green);
+      }
+
+      .views-field-view-node {
+        margin-top: 8px;
+
+        a {
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 1.2;
+          color: var(--tiffany-blue);
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .publications-lobby {
+      .views-exposed-form {
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+
+        .form-item {
+          width: 27%;
+          display: inline-block;
+          margin-left: 1%;
+
+          body[dir="ltr"] & {
+            margin-left: 0;
+            margin-right: 0.5%;
+          }
+        }
+
+        .form-fieldset {
+          display: inline-block;
+          width: 35%;
+          margin: 0;
+
+          .h2 {
+            float: right;
+            margin: 16px 8px;
+
+            body[dir="ltr"] & {
+              float: left;
+            }
+          }
+
+          .form-item {
+            width: 42%;
+          }
+        }
+
+        .form-actions {
+          display: inline-block;
+          width: 8%;
+        }
+      }
+
+      .views-row {
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+
+        .views-field-title {
+          margin-bottom: 16px;
+        }
+
+        .views-field-nothing {
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+}
+

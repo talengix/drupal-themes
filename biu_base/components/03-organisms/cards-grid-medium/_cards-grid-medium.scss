@@ -1,0 +1,130 @@
+.cards-grid-medium {
+  padding-top: 32px;
+  padding-bottom: 7px;
+
+  .card-grid-medium-heading {
+    margin-bottom: 28px;
+    width: span(2 of 2);
+
+    h3 {
+      font-size: 32px;
+      font-weight: 500;
+      margin-top: 0;
+      margin-bottom: 0;
+      color: $white;
+      text-align: center;
+    }
+  }
+
+  .card-grid-medium {
+    margin-bottom: 25px;
+  }
+
+  @include grid-breakpoint($mq-tab, tab) {
+    .medium-grid-cards {
+      display: flex;
+      flex-wrap: wrap;
+
+      .card-grid-medium {
+        width: span(1 of 2);
+        margin-left: gutter(1);
+        float: right;
+
+        &:nth-child(2n) {
+          margin-left: 0;
+        }
+
+        > .animation-container {
+          height: 100%;
+
+          > a {
+            height: 100%;
+            display: block;
+            background-color: $pale-green;
+          }
+        }
+
+        body[dir='ltr'] & {
+          margin-left: 0;
+          margin-right: gutter(1);
+          float: left;
+
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    padding-bottom: 15px;
+    .card-grid-medium-heading {
+      width: span(12 of 12);
+      float: right;
+      margin-left: gutter(1);
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-right: gutter(1);
+        margin-left: 0;
+      }
+    }
+
+    .medium-grid-cards {
+      width: 100%;
+      // float: right;
+      margin-left: 0;
+
+      .card-grid-medium {
+        width: span(4 of 12);
+        float: right;
+        margin-left: gutter(1);
+
+        &:nth-child(2n) {
+          margin-left: gutter(1);
+        }
+
+        &:nth-child(3n) {
+          margin-left: 0;
+        }
+      }
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-right: 0;
+        margin-left: 0;
+
+        .card-grid-medium {
+          float: left;
+          margin-right: gutter(1);
+          margin-left: 0;
+
+          &:nth-child(2n) {
+            margin-right: gutter(1);
+          }
+
+          &:nth-child(4n) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.background-color-gray, .background-color-white, .background-color-pale-green {
+  .cards-grid-medium {
+    .card-grid-medium-heading {
+      h3 {
+        color: $dark-green;
+      }
+    }
+  }
+}
+
+.cards-grid-medium-block + .cards-grid-medium-block {
+  .cards-grid-medium {
+    padding-top: 0;
+  }
+}

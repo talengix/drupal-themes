@@ -1,0 +1,31 @@
+.accordion {
+  padding: 0 50px;
+}
+.accordion .accordion-item {
+  background-color: transparent;
+  border: none;
+}
+.accordion .accordion-item .accordion-header {
+  margin: 15px 0;
+  font-size: 18px;
+  line-height: 23px;
+  color: #1e2d64;
+}
+.accordion .accordion-item .accordion-header .accordion-button {
+  background: #f2f3fa;
+  border-radius: 19.21px;
+}
+.accordion .accordion-item .accordion-header .accordion-button:focus {
+  border: none;
+}
+.accordion .accordion-item .accordion-collapse {
+  margin: 30px 0;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.02em;
+  background-color: #fff;
+  color: rgba(3, 21, 74, 0.7);
+  padding: 15px;
+  border: 1px solid #1e2d64;
+  border-radius: 12.21px;
+}

@@ -1,0 +1,33 @@
+<div {{ bem(large_media__base_class, large_media__modifiers,large_media__blockname, additional_classes) }}>
+  <a href="{{ link }}" class="overlay-text1" title="{{ link_title }}">
+    <div class="overlay-text"></div>
+  {% block image_link__img %}
+    {{ image }}
+    <div class="text-container">
+      <div class="text-wrapper">
+        {% if large_media_label %}
+          {% include "@atoms/text/headings/_heading.twig" with {
+            "heading_level": 3,
+            "heading": large_media_label,
+            "heading_link_base_class": "large-media-heading",
+            "heading_modifiers": ['light']
+          } %}
+        {% endif %}
+        {% if large_media_subtitle %}
+          {% include "@atoms/text/headings/_heading.twig" with {
+            "heading_level": 5,
+            "heading": large_media_subtitle,
+            "heading_link_base_class": "large-media-subheading",
+            "heading_modifiers": ['light']
+          } %}
+        {% endif %}
+        {% if link_title %}
+          <div class="animation-container large-media-read-more" data-src="/themes/custom/biu_base/assets/animations/white-arrow.json">
+            {{ link_title }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endblock %}
+  </a>
+</div>

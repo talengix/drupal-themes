@@ -1,0 +1,349 @@
+.cards-grid.sg-container {
+  @include container;
+}
+
+.cards-grid.cards-grid--faculty {
+  .grid-heading {
+    margin-bottom: 26px;
+    @include grid-breakpoint($mq-desk, desk) {
+      margin-bottom: 37px;
+    }
+  }
+
+  .cards-content {
+    @include grid-breakpoint($mq-desk, desk) {
+      &::after {
+        content: '';
+        background-image: url(/themes/custom/biu_base/assets/images/backgrounds/cards-grid-faculty.png);
+        position: absolute;
+        top: 245px;
+        right: 0;
+        width: 166px;
+        height: 330px;
+        max-width: calc(50vw - 587px);
+      }
+    }
+  }
+}
+
+.cards-grid {
+  padding-top: 0;
+
+  .grid-heading {
+    font-size: 28px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+    margin: 32px 0;
+    @include grid-breakpoint($mq-desk, desk) {
+      margin-top: 0;
+      font-size: 32px;
+      margin-bottom: 0;
+    }
+  }
+
+  .cards-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .card-grid--faculty {
+    @include grid-breakpoint($mq-tab, tab) {
+      width: span(6 of 12);
+      float: right;
+      margin-left: gutter(1);
+      &:nth-child(2n) {
+        margin-left: 0;
+      }
+      body[dir="ltr"] & {
+        float: left;
+        margin-right: gutter(1);
+        margin-left: 0;
+
+        &:nth-child(2n) {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+    @include grid-breakpoint($mq-desk, desk) {
+      width: span(3 of 12);
+      float: right;
+      margin-left: gutter(1);
+
+      &:nth-child(2n) {
+        margin-left: gutter(1);
+      }
+
+      &:nth-child(4n) {
+        margin-left: 0;
+      }
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-left: 0;
+        margin-right: gutter(1);
+
+        &:nth-child(2n) {
+          margin-right: gutter(1);
+        }
+
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .card-grid--interest_domains {
+    width: span(1 of 2);
+    float: right;
+    margin-left: gutter(1);
+    height: auto;
+
+    &:nth-child(2n) {
+      margin-left: 0;
+    }
+
+    .animation-container {
+      svg {
+        display: none;
+      }
+    }
+
+    body[dir="ltr"] & {
+      float: left;
+      margin-left: 0;
+      margin-right: gutter(1);
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+
+    @include grid-breakpoint($mq-desk, desk) {
+      width: 216px;
+      float: right;
+      margin-left: $spacing-l;
+
+      &:nth-child(2n) {
+        margin-left: $spacing-l;
+      }
+
+      .animation-container {
+        svg {
+          display: block;
+        }
+      }
+
+      body[dir="ltr"] & {
+        margin-left: 0;
+        margin-right: $spacing-l;
+
+        &:nth-child(2n) {
+          margin-right: $spacing-l;
+        }
+
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+  }
+}
+
+// Card grid variation with feature text
+.cards-grid.cards-grid--feature-text {
+  padding-bottom: 8px;
+  padding-top: 32px;
+
+  .card-grid.feature-text-block {
+    width: span(2 of 2);
+    float: none;
+
+    .grid-heading {
+      line-height: 1.43;
+      margin-bottom: 26px;
+      margin-top: 0;
+    }
+
+    .grid-subheading {
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.5;
+    }
+  }
+
+  @include grid-breakpoint($mq-tab, tab) {
+    .card-grid--faculty {
+      margin-left: gutter(1);
+
+      &:nth-child(2n+1) {
+        margin-left: 0;
+      }
+
+      body[dir="ltr"] & {
+        margin-left: 0;
+        margin-right: gutter(1);
+
+        &:nth-child(2n+1) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    padding-bottom: 16px;
+    .card-grid.feature-text-block {
+      width: span(6 of 12);
+      float: right;
+      margin-left: gutter(1);
+
+      .grid-heading {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 64px;
+      }
+
+      .grid-subheading {
+        font-size: 28px;
+      }
+
+      body[dir="ltr"] & {
+        float: left;
+        margin-left: 0;
+        margin-right: gutter(1);
+      }
+    }
+    .card-grid--faculty {
+      &:nth-child(2n+1) {
+        margin-left: gutter(1);
+      }
+
+      &:nth-child(3) {
+        margin-left: 0;
+      }
+
+      &:nth-child(4n) {
+        margin-left: gutter(1);
+      }
+
+      &:nth-child(4n+3) {
+        margin-left: 0;
+      }
+
+      body[dir="ltr"] & {
+        float: left;
+
+        &:nth-child(2n+1) {
+          margin-right: gutter(1);
+        }
+
+        &:nth-child(3) {
+          margin-right: 0;
+        }
+
+        &:nth-child(4n) {
+          margin-right: gutter(1);
+        }
+
+        &:nth-child(4n+3) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .card-grid--interest_domains {
+      &:nth-child(4n+1) {
+        margin-left: gutter(1);
+      }
+
+      body[dir="ltr"] & {
+        float: left;
+
+        &:nth-child(4n+1) {
+          margin-left: 0;
+          margin-right: gutter(1);
+        }
+      }
+    }
+  }
+}
+
+.swiper-cards-grid {
+  padding-bottom: 8px;
+
+  .swiper-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .cards-grid-nav {
+    display: none;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    max-width: 1366px;
+    margin-left: -96px;
+    padding-top: 49px;
+    padding-bottom: 16px;
+
+    .swiper-wrapper {
+      flex-wrap: nowrap;
+    }
+
+    .cards-grid-nav {
+      @include container;
+
+      display: block;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      width: 100%;
+      position: relative;
+      top: -49px;
+
+      .swiper-button-next, .swiper-button-prev {
+        margin: 0;
+        display: flex;
+        width: auto;
+        height: auto;
+        left: auto;
+        right: auto;
+        top: 0;
+
+        &::after {
+          content: none;
+        }
+
+        svg {
+          width: 77px;
+          height: 30px;
+        }
+      }
+
+      .swiper-button-next {
+        left: 0;
+      }
+
+      .swiper-button-prev {
+        left: 117px;
+        transform: rotate(180deg);
+      }
+    }
+    .swiper-slide {
+      height: auto;
+    }
+  }
+}

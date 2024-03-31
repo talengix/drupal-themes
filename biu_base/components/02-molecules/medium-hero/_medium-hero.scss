@@ -1,0 +1,209 @@
+.medium-hero {
+  padding-top: 32px;
+  margin-bottom: 32px;
+  margin-top: 0;
+
+  .medium-hero-content {
+    .h3.h3--light {
+      margin-top: 24px;
+      margin-bottom: 20px;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.25;
+      color: $color-heading;
+    }
+
+    .paragraph.paragraph--light {
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 1.5;
+      color: $dark-green;
+      margin-bottom: 22px;
+    }
+
+    .read-more__link {
+      margin-bottom: 22px;
+
+      a {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.5;
+        color: $dark-green;
+      }
+    }
+
+    .cta-link {
+      background-color: $jungle-green;
+      margin-bottom: 8px;
+      position: relative;
+      width: auto;
+
+      body[dir="ltr"] & a {
+        padding: 16px 40px 16px 20px;
+      }
+
+      a {
+        padding: 16px 20px 16px 34px;
+        width: 100%;
+        display: flex;
+        color: $color-heading--light;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      svg {
+        width: 43px !important;
+        height: 13px !important;
+        margin-right: auto;
+        position: absolute;
+        top: calc(50% - 6.5px);
+        left: 22px;
+
+        body[dir="ltr"] & {
+          transform: rotate(180deg) !important;
+          margin-left: auto;
+          margin-right: unset;
+          left: auto;
+          right: 5px;
+        }
+      }
+    }
+
+    .cta-no-link {
+      color: #0b6937;
+      padding: 10px 0 10px 40px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1;
+      text-align: right;
+
+      body[dir="ltr"] & {
+        padding: 10px 10px 10px 0;
+        text-align: left;
+      }
+    }
+
+    .link-secondary {
+      width: span(2 of 2);
+      background-color: $light-blue;
+      padding-right: 20px;
+      padding-left: 42px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      body[dir="ltr"] & {
+        padding-left: 20px;
+        padding-right: 4px;
+      }
+
+      a {
+        color: $dark-green;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1;
+        text-decoration: none;
+      }
+
+      svg {
+        width: 17px;
+        height: 13px;
+        float: left;
+        margin-top: 5px;
+
+        body[dir="ltr"] & {
+          float: right;
+          transform: rotate(90deg) !important;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    margin-bottom: 40px;
+    margin-top: 0;
+
+    .medium-hero-img {
+      width: span(7 wide of 12);
+      float: left;
+      min-height: 1px;
+
+      body[dir="ltr"] & {
+        float: right;
+      }
+    }
+
+    .medium-hero-content {
+      width: span(5 narrow of 12);
+      float: left;
+      padding-left: gutter(1);
+
+      .h3.h3--light {
+        font-size: 40px;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 27px;
+        margin-top: 21px;
+      }
+
+      .paragraph.paragraph--light {
+        margin-bottom: 28px;
+      }
+
+      .cta-link {
+        display: inline-block;
+        min-width: 303px;
+
+        a {
+          padding: 10px 20px 10px 40px;
+        }
+
+        svg {
+          left: 5px;
+        }
+      }
+
+      .link-secondary {
+        width: span(3 of 5);
+        background-color: transparent;
+        padding: 0 17px;
+
+        svg {
+          width: 17px;
+          height: 13px;
+          float: none;
+
+          body[dir="ltr"] & {
+            float: none;
+          }
+        }
+      }
+
+      body[dir="ltr"] & {
+        padding-left: 0;
+        padding-right: gutter(1);
+      }
+    }
+  }
+}
+
+.medium-hero-block + .medium-hero-block {
+  .medium-hero {
+    padding-top: 0;
+
+    .medium-hero-content .h3 {
+      font-size: 28px;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .medium-hero {
+      .medium-hero-content .h3 {
+        font-size: 32px;
+      }
+    }
+  }
+}

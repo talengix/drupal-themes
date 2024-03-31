@@ -1,0 +1,1 @@
+"use strict";(function(a){Drupal.behaviors.subsiteAccessibilityIcon={attach:function(b){a(".accessibility-icon",b).on("click",function(){a("#INDmenu-btn",b).click()})}}})(jQuery);

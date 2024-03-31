@@ -1,0 +1,21 @@
+<div {{ bem(featured_card_base_class, featured_card_modifiers, featured_card_blockname, featured_card_extra_classes) }}>
+  {% block grid_content %}
+    {% include "@molecules/card/card-featured.twig" with {
+      card__base_class: "card-featured",
+      card__image__src: featured_img_src,
+      card__image__alt: featured_img_alt,
+      card__heading: featured_card_heading,
+      card__subheading: featured_card_subheading,
+      card__body: featured_card_body,
+      card__link__url: featured_card_link_url,
+      card__link__attributes: {"title" : featured_card_link_title},
+      card__link__text: featured_card_link_title,
+      card__image: featured_card_image,
+      card__modifiers: [],
+      card__content__modifiers: [],
+      card__heading__modifiers: [],
+      card__subheading__modifiers: [],
+      card__body__modifiers: []
+    } %}
+  {% endblock %}
+</div>

@@ -1,0 +1,29 @@
+.image-with-text {
+  .image-wrapper {
+    .image-alt {
+      font-size: 12px;
+      margin-top: 11px;
+      margin-bottom: 12px;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .image-wrapper, .image-with-text--text {
+      width: span(4 of 8);
+      display: inline-block;
+      vertical-align: top;
+    }
+    .image-wrapper {
+      position: relative;
+      top: 5px;
+    }
+    .image-with-text--text {
+      padding-right: 23px;
+      body[dir="ltr"] & {
+        padding-right: 0;
+        padding-left: 23px;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,16 @@
+.page-node-type-publication {
+  #block-biu-base-page-title h1 {
+    font-size: calc(40 / 16 * 1rem);
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  .publication-subtitle {
+    font-size: calc(26 / 16 * 1rem);
+    line-height: 1.38;
+    html[dir="ltr"] & {
+      font-size: calc(26 / 16 * 1rem);
+      line-height: 1.38;
+    }
+  }
+}

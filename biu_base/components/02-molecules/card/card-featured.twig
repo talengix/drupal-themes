@@ -1,0 +1,50 @@
+<div {{ bem(card__base_class,card__modifiers,card__blockname,card__extra_classes) }}>
+  {# Image #}
+  {% block card__img %}
+    {{ card__image }}
+  {% endblock %}
+  {# Content #}
+  <div {{ bem('content', card__content__modifiers, card__base_class) }}>
+    {# Heading #}
+    {% if card__heading %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        heading_base_class: card__heading__base_class|default('heading'),
+        heading_modifiers: card__heading__modifiers,
+        heading_blockname: card__base_class,
+        heading_level: 3,
+        heading: card__heading,
+      } %}
+    {% endif %}
+    {# Subheading #}
+    {% if card__subheading %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        heading_base_class: card__subheading__base_class|default('subheading'),
+        heading_modifiers: card__subheading__modifiers,
+        heading_blockname: card__base_class,
+        heading_level: 4,
+        heading: card__subheading,
+      } %}
+    {% endif %}
+    {# Body #}
+    {% if card__body %}
+      {% include "@atoms/text/text/01-paragraph.twig" with {
+        paragraph_base_class: card__body__base_class|default('body'),
+        paragraph_modifiers: card__body__modifiers,
+        paragraph_blockname: card__base_class,
+        paragraph_content: card__body,
+      } %}
+    {% endif %}
+    {# Link #}
+    {% if card__link__url %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: card__link__text,
+        item__url: card__link__url,
+        item__link_title: card__link__text,
+        link_base_class: "link",
+        link_container_base_class: "featured-article",
+        link_container_modifiers: [],
+        link_modifiers: []
+      } %}
+    {% endif %}
+    </div>
+  </div>

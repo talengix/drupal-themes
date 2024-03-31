@@ -1,0 +1,36 @@
+items:
+  - component_base_class: 'media-item'
+    component_modifiers: ['hero']
+    is_title_h1: 'true'
+    label: 'דברים גדולים קורים בבר אילן'
+    sub_title: 'ברוכים הבאים לאוניברסיטת בר אילן'
+    mobile_image_url: 'https://placeimg.com/320/180/any'
+    media_type: 'remote_video'
+    video_media_src: "fuDt7jpxYzM"
+    media_content: 'https://i.picsum.photos/id/866/1920/1080.jpg'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['hero']
+    is_title_h1: 'false'
+    label: 'לורם איפסום דולור סיט אמט'
+    sub_title: 'קונסקטורר אדיפיסינג אלית קונסקטורר'
+    mobile_image_url: 'https://placeimg.com/320/180/any'
+    media_type: 'remote_video'
+    video_media_src: "vAQv7uT-avA"
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['hero']
+    is_title_h1: 'false'
+    label: 'סת אלמנקום ניסי נון ניבאה'
+    sub_title: 'ס איאקוליס וולופטה דיאם'
+    mobile_image_url: 'https://placeimg.com/320/180/any'
+    media_type: 'image'
+    image_media_url: "https://placeimg.com/320/320/any"
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+component_base_class: 'large-hero'
+component_modifiers: []
+component_blockname: ''
+additional_classes: ['sg-section', 'swiper-container', 'main-slider']

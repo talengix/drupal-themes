@@ -1,0 +1,17 @@
+uuid: 05bb9582-00de-45ac-b211-982444cbb8ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: card_grid_desktop
+label: 'Card grid - desktop'
+effects:
+  c71546a2-761f-44f6-b1b5-c6efc9cf3b8e:
+    uuid: c71546a2-761f-44f6-b1b5-c6efc9cf3b8e
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 276
+      height: 259
+      crop_type: focal_point

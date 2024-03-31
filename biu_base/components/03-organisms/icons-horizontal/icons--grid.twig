@@ -1,0 +1,21 @@
+{% set icons_horizontal__base_class = "icons" %}
+{% set icons_horizontal__modifiers = ["grid"] %}
+<div {{ bem(icons_horizontal__base_class, icons_horizontal__modifiers, icons_horizontal__blockname, icons_horizontal__extra_classes) }}>
+  {% include "@atoms/text/headings/_heading.twig" with {
+    "heading_level": 3,
+    "heading": block_title
+  } %}
+  <div class="icons--grid--list clearfix">
+    {% for item in items %}
+      {% include "@molecules/icon/icon--horizontal.twig" with {
+        item__name: item.name,
+        item__value: item.value,
+        item__link_url: item.link_url,
+        item__link_title: item.link_title,
+        icon_horizontal__base_class: "icon",
+        icon_horizontal__modifiers: ['grid'],
+        item__icon_url: item.icon_url,
+      } %}
+    {% endfor %}
+  </div>
+</div>

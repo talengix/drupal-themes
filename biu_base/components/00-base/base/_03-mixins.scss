@@ -1,0 +1,152 @@
+/*
+ * General Mixins (put specific ones in component files where applicable)
+*/
+
+/* Mixin - Clearfix.
+ * Adds clearfix based on http://bourbon.io/docs/#clearfix
+ * use example =   @include clearfix
+*/
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+// Mixin - Standard Margin
+@mixin margin {
+  margin-bottom: 1em;
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin no-bottom {
+  margin-bottom: 0;
+}
+
+@mixin list-reset {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+// =======================================================================================================
+// Apply a susy layout, based on the provided breakpoint. Show svg background if debug grid was requested.
+// =======================================================================================================
+@mixin grid-breakpoint($mq, $bp) {
+  // Wrap in breakpoint mixin
+  @include breakpoint($mq) {
+    // Apply the corresponding susy grid
+    $susy: map_merge($susy, map_get($layouts, $bp));
+    @content;
+  }
+}
+
+// =======================================================================================================
+// Show svg background if debug grid was requested.
+// =======================================================================================================
+@mixin debug-grid($bp) {
+  @if ($debug) {
+    background: susy-svg-grid(map_merge($susy, map_get($layouts, $bp))) no-repeat scroll;
+  }
+}
+
+// =======================================================================================================
+// Container mixin.
+// =======================================================================================================
+@mixin container() {
+  @include debug-grid(mobile);
+  @include clearfix;
+
+  margin-right: 28px;
+  margin-left: 28px;
+
+  @include grid-breakpoint($mq-tab, tab) {
+    @include debug-grid(tab);
+  }
+
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    @include debug-grid(tab-wide);
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    @include debug-grid(desk);
+
+    max-width: 1174px;
+    margin-right: 96px;
+    margin-left: 96px;
+  }
+  @include grid-breakpoint($mq-desk-wide, desk-wide) {
+    @include debug-grid(desk-wide);
+  }
+}
+// =======================================================================================================
+// Susy Gallery mixin.
+// =======================================================================================================
+@mixin gallery(
+  $span,
+  $flow-dir: left,
+  $config: ()
+) {
+  $op-flow-dir: left !default;
+  $grid: susy-compile($span, $config);
+  $span: map-get($grid, 'span');
+  $column-count: length(map-get($grid, 'columns'));
+  $count: floor($column-count / $span);
+  $spread: map-get($grid, 'spread') + 2;
+  $container-spread: map-get($grid, 'container-spread') + 2;
+  $extra: ($container-spread - $spread) * 0.5;
+  $extra-push: su-call('su-gutter', $grid) * $extra;
+  @if ($flow-dir == left) {
+    $op-flow-dir: right;
+  }
+
+  float: $flow-dir;
+  margin-#{$op-flow-dir}: -100%;
+
+  @for $n from 1 through ($count) {
+    $nth: unquote('#{$count}n + #{$n}');
+    $location: $span * ($n - 1) + 1;
+
+    &:nth-child(#{$nth}) {
+      $width: susy-compile($span at $location, $grid);
+
+      width: su-call('su-span', $width);
+
+      @if ($location > 1) {
+
+        $wide: susy-compile('first' $location - 1 'wide', $grid);
+
+        clear: none;
+        margin-#{$flow-dir}: calc(#{su-call('su-span', $wide)} + #{$extra-push});
+      } @else {
+        clear: both;
+        margin-#{$flow-dir}: if($extra-push > 0, $extra-push, 0);
+      }
+    }
+  }
+}
+
+@mixin background-color {
+  .background-color-biu-green & {
+    background-color: $bar-ilan-green;
+  }
+
+  .background-color-gray & {
+    background-color: $light-grey;
+  }
+
+  .background-color-white & {
+    background-color: $white;
+  }
+
+  .background-color-pale-green & {
+    background-color: $pale-green;
+  }
+}

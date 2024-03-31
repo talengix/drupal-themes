@@ -1,0 +1,44 @@
+body {
+  background: $bg-gadient-1;
+
+  &.node-5 main {
+    padding-bottom: 300px;
+  }
+}
+
+main {
+  position: relative;
+}
+
+.layout {
+  padding: 50px 0;
+
+  &.m-top {
+    margin-top: -220px;
+  }
+
+  &.header {
+    margin-bottom: 100px;
+  }
+
+  &.bg-white {
+    background-color: $white;
+  }
+
+  &.bg-grey {
+    background-color: $bg-gray-light;
+  }
+
+  &.bg-gradient-up {
+    background: $bg-gadient-2;
+  }
+
+  &.bg-gradient-down {
+    background: $bg-gadient-2;
+  }
+
+  &.header-simple {
+    text-align: center;
+    padding: 200px 0;
+  }
+}

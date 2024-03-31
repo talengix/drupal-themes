@@ -1,0 +1,24 @@
+:root {
+  --dark-forest-green: #00280f;
+  --darkest-green: var(--dark-forest-green);
+  --dark-green: var(--dark-forest-green);
+  --bar-ilan-green: #004128;
+  --biu-green: var(--bar-ilan-green);
+  --jungle-green: #006937;
+  --lime-green: #c3dc87;
+  --pale-green: #f5faf0;
+  --beige: var(--pale-green);
+  --pale-green-muted: rgba(245, 250, 240, 0.7);
+  --pale-green-muted-most: rgba(245, 250, 240, 0.2);
+  --bluish: #2174d4;
+  --tiffany-blue: #78cde6;
+  --light-blue: var(--tiffany-blue);
+  --biu-magenta: #de5cb6;
+  --gray-ligthest: #e5e5e5;
+  --lithest-gray: var(--gray-ligthest);
+  --light-gray: #f3f4f8;
+  --white: #fff;
+  --body-text: var(--dark-forest-green);
+  --color-heading: var(--body-text); }
+
+/*# sourceMappingURL=colors.css.map */

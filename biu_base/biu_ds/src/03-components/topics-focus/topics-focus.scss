@@ -1,0 +1,39 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+@import '../../02-patterns/topic-focus/topic-focus';
+
+
+.topics-focus {
+
+  &__wrap {
+    padding: 50px 0 30px 0;
+  }
+
+  &__header {
+    font-size: calc(40/16*1rem);
+    color: $bar-ilan-green;
+    font-weight: 600;
+    text-align: center;
+    @include ds-breakpoint($bp-tab){
+      margin-bottom: 55px;
+    }
+
+    @include dark-section;
+  }
+
+  &__inner {
+    .row {
+      .col-md-4 {
+        margin-top: 25px;
+        @include ds-breakpoint('min-width: 768px'){
+          margin-bottom: 0;
+
+          &:nth-child(n + 4) {
+            margin-top: 25px;
+          }
+        }
+        
+      }
+    }
+  }
+}

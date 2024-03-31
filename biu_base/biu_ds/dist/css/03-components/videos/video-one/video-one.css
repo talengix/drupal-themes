@@ -1,0 +1,85 @@
+.video__wrap--one {
+  padding: 60px 15px;
+  background-color: #f3f4f8; }
+  .background-color-biu-green .video__wrap--one {
+    background-color: var(--bar-ilan-green); }
+  .background-color-gray .video__wrap--one {
+    background-color: var(--light-gray); }
+  .background-color-white .video__wrap--one {
+    background-color: var(--white); }
+  .background-color-pale-green .video__wrap--one {
+    background-color: var(--pale-green); }
+
+.video__inner--one {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto; }
+  @media (min-width: 720px) {
+    .video__inner--one {
+      flex-direction: row; } }
+  @media (min-width: 1200px) {
+    .video__inner--one {
+      width: 1160px; } }
+
+.video__video-embed--one {
+  max-width: 699px;
+  width: 100%; }
+  @media (min-width: 720px) {
+    .video__video-embed--one {
+      width: 699px; } }
+
+.video__title--one {
+  font-size: 2.5rem;
+  color: #004128;
+  font-weight: 600;
+  margin-top: 0; }
+  .dark-section .video__title--one {
+    color: var(--white);
+    border-color: var(--white); }
+
+.video__text--one {
+  font-size: 1rem;
+  color: #004128; }
+  .dark-section .video__text--one {
+    color: var(--white);
+    border-color: var(--white); }
+
+.video__body--one {
+  margin-left: 45px;
+  text-align: right; }
+  @media (min-width: 720px) {
+    .video__body--one {
+      width: 430px; } }
+  body[dir="ltr"] .video__body--one {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 45px; }
+  .video__body--one .link-container {
+    text-align: right;
+    max-width: 300px; }
+    body[dir="ltr"] .video__body--one .link-container {
+      text-align: left; }
+    .video__body--one .link-container .animation-container {
+      background-color: #006937;
+      position: relative; }
+    .video__body--one .link-container a {
+      font-size: 1rem;
+      color: #fff;
+      display: block;
+      padding: 8px 25px;
+      text-decoration: none; }
+    .video__body--one .link-container svg {
+      width: 43px !important;
+      height: 13px !important;
+      position: absolute;
+      left: 20px;
+      top: calc(50% - 7px); }
+      body[dir="ltr"] .video__body--one .link-container svg {
+        right: 20px;
+        left: auto;
+        transform: rotate(180deg) !important; }
+
+/*# sourceMappingURL=video-one.css.map */

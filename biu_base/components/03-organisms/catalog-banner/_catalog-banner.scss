@@ -1,0 +1,52 @@
+.block--catalog-banner {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+.background-color-biu-green {
+  .block--catalog-banner {
+    .catalog-content {
+      h3 {
+        background-color: $pale-green;
+        color: $dark-green;
+      }
+
+      h4, p {
+        color: $pale-green;
+      }
+    }
+  }
+}
+
+@include grid-breakpoint($mq-desk, desk) {
+  .block--catalog-banner {
+    margin-right: 96px !important;
+    margin-left: 96px !important;
+    .catalog-banner {
+      width: 100vw;
+      max-width: 1366px;
+
+      body[dir="ltr"] & {
+        right: calc((1366px - 1174px) / 2);
+      }
+
+      body[dir="rtl"] & {
+        left: calc((1366px - 1174px) / 2);
+      }
+
+      position: relative;
+
+      .catalog-content {
+        position: absolute;
+        top: 50%;
+        transform: translate(0,-50%);
+        body[dir="ltr"] & {
+          padding-left: 96px;
+        }
+
+        body[dir="rtl"] & {
+          padding-right: 96px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+card__modifiers: ['horizontal']
+card__wrapped_with_link: false
+card__additional_classes: []
+card__image__src: 'https://placeimg.com/1280/720/nature'
+card__image__alt: "This is the card image's alt text"
+card__image__output_image_tag: true
+card__heading: 'card-horiz Heading card__heading--card-horiz'
+card__heading__level: 2
+card__heading_is_div: true
+card__subheading: 'Card sub heading (sub title)'
+card__subheading__level: 3
+card__subheading_is_div: true
+card__subheading__base_class: subheading
+card__content: 'Card content: usually textual content, porta dapibus. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.'
+card__link_text: 'Card Link, Read more'
+card__link_url: '/'
+card__link_modifiers: ['arrowed']

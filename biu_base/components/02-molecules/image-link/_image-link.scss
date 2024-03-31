@@ -1,0 +1,12 @@
+// Storybook styling
+.img-desktop {
+  display: none;
+}
+@include grid-breakpoint($mq-desk, desk) {
+  .img-mobile {
+    display: none;
+  }
+  .img-desktop {
+    display: block;
+  }
+}

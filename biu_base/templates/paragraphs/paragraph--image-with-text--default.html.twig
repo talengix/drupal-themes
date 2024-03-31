@@ -1,0 +1,14 @@
+<div class="paragraph-image-with-text">
+  {% if paragraph.field_alternative_text.value is not empty %}
+    {%  set alt = paragraph.field_alternative_text.value %}
+  {% else %}
+    {%  set alt = '' %}
+  {% endif %}
+  {% include "@organisms/image-with-text/image-with-text.twig" with {
+    component_base_class: "image-with-text",
+    component_modifiers: [],
+    free_text_content: paragraph.field_free_text_description|view,
+    image: paragraph.field_image_upload|view,
+    image_alt: alt,
+  } %}
+</div>

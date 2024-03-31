@@ -1,0 +1,6 @@
+site_logo__base_class: "site-logo"
+site_logo__modifiers: ["footer"]
+site__url: "/"
+site__link_title:
+  - title: "Site title"
+item__name: "logo-he"

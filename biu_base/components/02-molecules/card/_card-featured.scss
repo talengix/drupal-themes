@@ -1,0 +1,72 @@
+.card-featured {
+  background-color: transparent;
+
+  .card-featured__content {
+    .card-featured__subheading {
+      font-size: 14px;
+      line-height: 1.71;
+      font-weight: normal;
+      color: $color-heading;
+      margin-top: 17px;
+      margin-bottom: 3px;
+    }
+
+    .card-featured__heading {
+      font-size: 28px;
+      color: $color-heading;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      font-weight: normal;
+      line-height: 1.14;
+    }
+
+    .card-featured__body {
+      display: none;
+    }
+  }
+
+  .featured-article {
+    .link {
+      font-size: 16px;
+      line-height: 1.88;
+    }
+  }
+
+  .card-featured__link {
+    text-decoration: none;
+    color: $color-heading;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+
+    .card-featured__content {
+      padding-top: 74px;
+
+      .card-featured__body {
+        display: block;
+        color: $color-heading;
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      .card-featured__heading {
+        margin-bottom: 28px;
+        font-size: 56px;
+        line-height: 1.11;
+        font-weight: normal;
+        width: span(3 of 12);
+      }
+
+      .card-featured__subheading {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 24px;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.sg-container {
+  @include container;
+}

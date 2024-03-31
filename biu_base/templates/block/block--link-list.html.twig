@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+
+{% set links = [] %}
+
+{% for item in content['#block_content'].field_item %}
+  {% set link = {
+    'link_url': item.entity.field_link.0.url,
+    'link_title': item.entity.field_link.0.title,
+    'link_content': item.entity.field_link.0.title,
+    'icon_url': "/themes/custom/biu_base/dist/icons.svg",
+    'is_external': item.entity.field_link.0.external
+  } %}
+  {% set links = links | merge([link]) %}
+  
+{% endfor %}
+
+{{ attach_library('biu_base/link-list') }}
+<div {{ bem('link-list', [background_color], 'block') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% include "@organisms/link-list/link-list-rows.twig" with {
+      "items": links,
+      "block_title": label,
+      "link_list_base_class": "links",
+      "link_list_modifiers" : ["list"],
+      "link_list_extraclass": ["clearfix"]
+    } %}
+  {% endblock %}
+</div>

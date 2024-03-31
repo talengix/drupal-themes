@@ -1,0 +1,103 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  {% if is_contact_page != 1 %}
+    {% if title %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": 3,
+        "heading": title,
+        "heading_link_base_class": "large-media-heading",
+        "heading_modifiers": ['dark']
+      } %}
+    {% endif %}
+  {% endif %}
+  <div class="main-contact">
+    <div class="email-phone">
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: 'contact-illustration',
+        icon_url: '/themes/custom/biu_base/dist/icons.svg',
+        icon_modifiers: []
+      } %}
+      <ul>
+        {% if is_contact_page == 1 %}
+          <h6>{{ "Contact"|t }}</h6>
+          <p>{{ contact_title|t }}</p>
+        {% endif %}
+        <li>
+          {% if phone %}
+            {{ phone_label }}: <a href="tel:{{ phone }}">{{ phone }}</a>
+          {% endif %}
+        </li>
+        <li>
+          {% if phone2 %}
+            {{ phone2_label }}: <a href="tel:{{ phone2 }}">{{ phone2 }}</a>
+          {% endif %}
+        </li>
+        <li>
+          {% if email %}
+            {{ email_label|t }}: <a href="mailto:{{ email }}">{{ email }}</a>
+          {% endif %}
+        </li>
+        <li>
+          {% if contact_link_url %}
+            {{ "Contact"|t }}: <a href="{{ contact_link_url }}">{{ contact_link_title }}</a>
+          {% endif %}
+        </li>
+        {% if is_contact_page == 1 %}
+          <li>
+            {% if link_title %}
+              {{ "Site"|t }}: <a href="{{ link_url }}">{{ link_title }}</a>
+            {% endif %}
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="location-link">
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: 'location',
+        icon_url: '/themes/custom/biu_base/dist/icons.svg',
+        icon_modifiers: []
+      } %}
+      <ul>
+        {% if is_contact_page == 1 %}
+          <h6>{{ "Location"|t }}</h6>
+          <p>{{ contact_title|t }}</p>
+        {% endif %}
+        <li>
+          {% if location %}
+            {{ location }}
+          {% endif %}
+        </li>
+        <li>
+          {% if campus_map_url and is_contact_page == 1%}
+            {% include "@molecules/link/arrow-link.twig" with {
+              item__content: campus_map_title,
+              item__url: campus_map_url,
+              item__link_title: campus_map_title,
+              link_base_class: "link",
+              link_container_base_class: "link-container",
+              link_container_modifiers: ['list'],
+              is_external: item.is_external,
+              item__icon_url: item.icon_url,
+              link_modifiers: [],
+            } %}
+            {% elseif link_title %}
+              {% include "@molecules/link/arrow-link.twig" with {
+                item__content: link_title,
+                item__url: link_url,
+                item__link_title: link_title,
+                link_base_class: "link",
+                link_container_base_class: "link-container",
+                link_container_modifiers: ['list'],
+                is_external: item.is_external,
+                item__icon_url: item.icon_url,
+                link_modifiers: [],
+              } %}
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both;"></div>
+    {% if general_text %}
+      <h5 class="general-text-content">{{ general_text|t }}</h5>
+    {% endif %}
+  </div>
+</div>

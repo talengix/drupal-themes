@@ -1,0 +1,133 @@
+{% set title_top = title_top|striptags('<br>') %}
+<div {{ bem(medium_hero_base_class, medium_hero_modifiers, medium_hero_blockname, medium_hero_extra_classes) }}>
+  {% block medium_hero_content %}
+    <div class="medium-hero-img">
+      {% if video_link is not empty %}
+        {{ video_link }}
+      {% else %}
+        {{ medium_hero__image }}
+      {% endif %}
+    </div>
+    <div class="medium-hero-content">
+      <div class="title_top">
+        {{ title_top | raw }}
+      </div>
+      {% if is_title_h1 == true %}
+        <h1 class="h3 h3--light">{{ label }}</h1>
+      {% else %}
+{#         {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 3,
+          "heading": label,
+          "heading_modifiers": ['light']
+        } %} #}
+         {% include "@ds_elements/text/headings/_heading.twig" with {
+           "heading_level": 3,
+           "heading": label,
+           "heading__additional_classes": "medium-hero__title",
+           "heading_modifiers": ['light']
+         } %}
+      {% endif %}
+
+      <p class="paragraph paragraph--light">
+        {{ sub_title|striptags('<br>')|raw }}
+      </p>
+
+      {% if read_more_link_link %}
+        inside read more link
+        <div class="read-more__link">
+          {% include "@atoms/links/link/link.twig" with {
+            "link_content": read_more_link_text,
+            "link_url": read_more_link_link,
+          } %}
+        </div>
+      {#link_blockname: card__base_class,#}
+        {#          link_modifiers: card__modifiers,#}
+        {% include "@ds_elements/links/link/link.twig" with {
+          link_base_class: card__link_base_class|default('link'),
+          link_content: read_more_link_text,
+          link_url: read_more_link_link,
+          link_attributes: [],
+          link_extra_classes: ['arrowed']
+        } %}
+      {% endif %}
+
+      {% if link_url %}
+{#         {% include "@molecules/link/arrow-link.twig" with {
+          item__content: link_title,
+          item__url: link_url,
+          item__link_title: link_title,
+          link_container_base_class: "cta-link",
+          link_container_modifiers: [],
+          link_modifiers: [],
+          arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json"
+        } %} #}
+        {% include "@ds_elements/links/link/arrow-link.twig" with {
+          item__content: link_title,
+          item__url: link_url,
+          item__link_title: link_title,
+          link_container_base_class: "cta-link",
+          link_container_modifiers: [],
+          link_modifiers: [],
+          arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json"
+        } %}
+      {% elseif link_url is empty and link_title is not empty %}
+        <div class="cta-no-link">{{ link_title }}</div>
+      {% endif %}
+
+      {% if link_sec_external %}
+        {% set link_sec_attributes = {'target': '_blank'} %}
+      {% else %}
+        {% set link_sec_attributes = {} %}
+      {% endif %}
+      {% if link_sec_url %}
+        <div class="link-secondary">
+{#           {% include "@atoms/links/link/link.twig" with {
+            "link_content": link_sec_content,
+            "link_url": link_sec_url,
+            "link_attributes": link_sec_attributes,
+            "link_modifiers": []
+          } %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: "regular",
+            icon_url: icon_url
+          } %} #}
+          {% include "@ds_elements/links/link/link.twig" with {
+            "link_content": link_sec_content,
+            "link_url": link_sec_url,
+            "link_attributes": link_sec_attributes,
+            "link_modifiers": []
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: "regular",
+            icon_url: icon_url
+          } %}
+        </div>
+      {% endif %}
+      {# {% if link_sec_url2 %}
+        <div class="link-secondary">
+          {% include "@atoms/links/link/link.twig" with {
+            "link_content": link_sec_content2,
+            "link_url": link_sec_url2,
+            "link_attributes": link_sec_attributes,
+            "link_modifiers": []
+          } %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: "regular",
+            icon_url: icon_url
+          } %}
+          {% include "@ds_elements/links/link/link.twig" with {
+            "link_content": link_sec_content2,
+            "link_url": link_sec_url2,
+            "link_attributes": link_sec_attributes,
+            "link_modifiers": []
+          } %}
+          {% include "@ds_elements/images/icons/_icon.twig" with {
+            icon_name: "regular",
+            icon_url: icon_url
+          } %}
+        </div>
+      {% endif %} #}
+    </div>
+  {% endblock %}
+  <div class="clearfix"></div>
+</div>

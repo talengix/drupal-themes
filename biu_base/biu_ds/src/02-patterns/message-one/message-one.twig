@@ -1,0 +1,26 @@
+{% set block_name = 'message' %}
+{% set additional_classes = ['swiper-slide']|merge(extra_classes) %}
+
+
+<div {{bem('wrap', 'one', block_name, additional_classes)}}>
+  <div {{bem('content', [], block_name)}}>
+    <h3 {{bem('title', [], block_name)}}>
+      <a href="{{link}}">{{ title }}</a>
+    </h3>
+    <p {{bem('text', [], block_name)}}>{{ text }}</p>
+    <div {{bem('footer', [], block_name)}}>
+      {% include "@ds_elements/links/link/arrow-link.twig" with {
+          item__content: link_title,
+          item__url: link,
+          is_external: is_external,
+          item__link_title: link_title,
+          link_base_class: "link",
+          link_modifiers: [],
+          link_container_base_class: "link-container",
+          link_container_modifiers: ['link-container-dark-background'],
+          arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+        } %}
+      <span {{bem('date', [], block_name)}}>{{ date }}</span>
+    </div>
+  </div>
+</div>

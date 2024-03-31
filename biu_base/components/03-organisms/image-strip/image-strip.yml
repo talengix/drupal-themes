@@ -1,0 +1,39 @@
+items:
+  - component_base_class: 'media-item'
+    component_modifiers: ['strip']
+    image_url: 'https://placeimg.com/320/180/any'
+    media_content: 'https://i.picsum.photos/id/866/1920/1080.jpg'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['strip']
+    image_url: 'https://placeimg.com/320/180/any'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['strip']
+    image_url: 'https://placeimg.com/320/180/any'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['strip']
+    image_url: 'https://placeimg.com/320/180/any'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['hero']
+    image_url: 'https://placeimg.com/320/180/any'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+  - component_base_class: 'media-item'
+    component_modifiers: ['strip']
+    image_url: 'https://placeimg.com/320/180/any'
+    link_title: 'Read More'
+    link_url: 'https://www1.biu.ac.il'
+component_base_class: 'image-strip-slider'
+component_modifiers: []
+component_blockname: ''
+additional_classes: ['sg-container', 'swiper-container']
+block_title: 'Images strip'
+strip_link_content: "קרא עוד בעמוד החדשות"
+strip_link_url: "https://google.com"

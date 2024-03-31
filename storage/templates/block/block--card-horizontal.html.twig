@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Template for a block.
+ */
+#}
+
+{% embed '@storage/block/block.twig' with {
+  html_tag: 'div',
+} %}
+
+  {% block content %}
+    {% for item in elements.content['#block_content'].field_items %}
+      {% set card = item.entity %}
+      {% if card.field_image.entity.uri.value is not null and card.field_headline.value is not null %}
+        {% set image = {
+          '#theme': 'image_style',
+          '#style_name': 'card_horizontal_icon',
+          '#uri': card.field_image.entity.uri.value,
+          '#alt': card.field_image.alt,
+          '#attributes': attributes.addClass(['d-block', 'mx-auto'])
+        } %}
+
+        {% set imageBlockClass = [
+            'col-md-6',
+            'd-flex',
+            'align-items-center',
+        ] %}
+
+        {% if loop.index % 2 == 0 %}
+          {% set imageBlockClass = [
+            'col-md-4',
+            'd-flex',
+            'align-items-center',
+            'order-last'
+          ] %}
+        {% endif %}
+        
+        <div class="card card-horizontal">
+          <div class="row g-0">
+            <div {{create_attribute({'class': imageBlockClass})}}>
+              {{ image }}
+            </div>
+            <div class="col-md-6">
+              <div class="card-body">
+                <h5 class="card-title">{{ card.field_headline.value }}</h5>
+                <h6 class="card-subtitle">{{ card.field_subtitle.value }}</h6>
+                <div class="card-text">
+                  {{ card.field_card_text.value | raw }}
+                </div>
+              <a href="/contact-us" class="btn btn-primary">Get started</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endblock %}
+{% endembed %}

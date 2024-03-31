@@ -1,0 +1,157 @@
+.background-color-biu-green {
+  .featured-card-title {
+    
+    h2 {
+      color: $white;
+    }
+  }
+  .field--name-field-featured-link{
+    .link-container{
+      a{
+        color: $white;
+      }
+    }
+    .field-featured-light{
+      display: none;
+    }
+    .field-featured-dark {
+      display: block !important;
+    }
+  }
+}
+.featured-cards {
+  padding-bottom: 9px;
+  @include clearfix;
+
+  .featured-card {
+    .category.article-tag {
+      display: block;
+    }
+  }
+
+  .featured-card-title {
+    h2 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.25;
+      margin: 0;
+      padding: 32px 0;
+    }
+  }
+
+  .field--name-field-featured-link {
+    .field-featured-dark {
+      display: none;
+    }
+  }
+  .cards-content {
+    .field--name-field-featured-content-main {
+      margin-bottom: 23px;
+    }
+  }
+  .field--name-field-featured-content {
+    >.field__item {
+      margin-bottom: 23px;
+    }
+  }
+
+  @include grid-breakpoint($mq-tab, tab) {
+    .field--name-field-featured-content {
+      display: flex;
+      flex-wrap: wrap;
+
+      > .field__item {
+        width: span(1 of 2);
+        margin-left: gutter(1);
+
+        &:nth-child(2n) {
+          margin-left: 0;
+        }
+
+        body[dir='ltr'] & {
+          margin-left: 0;
+          margin-right: gutter(1);
+
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-bottom: 17px;
+    .featured-card-title {
+      h2 {
+        padding: 40px 0;
+      }
+    }
+    .cards-content {
+      display: flex;
+      flex-wrap: wrap;
+
+      .field--name-field-featured-content-main {
+        width: span(6 of 12);
+        margin-left: gutter(1);
+
+        body[dir="ltr"] & {
+          margin-left: 0;
+          margin-right: gutter(1);;
+        }
+
+        .featured-card {
+          height: 100%;
+
+          > .animation-container {
+            height: 100%;
+            background-color: $white;
+          }
+        }
+        .date{
+          position: absolute;
+          bottom: 15px;
+        }
+      }
+
+      .field--name-field-featured-content {
+        width: span(6 of 12);
+
+        > .field__item {
+          width: span(6 of 12);
+
+          .featured-card {
+            height: 100%;
+            > .animation-container {
+              position: static;
+              background-color: $white;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .field--name-field-featured-link {
+      clear: both;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      .link-container.link-container--list {
+        display: inline-block;
+        width: auto;
+        margin-right: 48px;
+
+        svg {
+          margin-right: 10px;
+          width: 43px !important;
+          height: 13px !important;
+        }
+      }
+    }
+  }
+}
+
+.featured-cards.sg-container {
+  @include container;
+}

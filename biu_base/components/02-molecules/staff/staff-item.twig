@@ -1,0 +1,30 @@
+{% set component_class = 'staff' %}
+{% set layout = staff_layout|default('grid') %}
+{% set grid_class = 'col-lg-6' %}
+{% if layout == 'list' %}
+  {% set grid_class = 'col-lg-10' %}
+{% endif %}
+
+<div {{bem('wrap', [layout], component_class, [grid_class])}}>
+  <div {{bem('item', [layout], component_class)}}>
+    <figure {{bem('picture', [], component_class)}}>
+      {{staff_picture}}
+    </figure>
+
+    <div {{bem('content', [], component_class)}}>
+      {% include "@ds_elements/text/headings/_heading.twig" with {
+        "heading_level": 3,
+        "heading": staff_name,
+        "heading__additional_classes": "staff__content--name",
+      } %}
+      {% include "@ds_elements/text/headings/_heading.twig" with {
+        "heading_level": 4,
+        "heading": staff_job,
+        "heading__additional_classes": "staff__content--job",
+      } %}
+      <p class="staff__content--text">
+        {{staff_text | raw}}
+      </p>
+    </div>
+  </div>
+</div>

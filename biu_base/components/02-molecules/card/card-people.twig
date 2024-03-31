@@ -1,0 +1,55 @@
+{% set card__body = card__body|raw|render|striptags %}
+{% set card__body = card__body|length > 150 ? card__body|slice(0, 150) ~ '...' : card__body %}
+
+<div {{ bem(card__base_class,card__modifiers,card__blockname,card__extra_classes) }}>
+    {% if arrow_src %}
+    <div class="animation-container" data-src="{{ arrow_src }}">
+        {% endif %}
+        <a href="{{ card__link_url }}" title="{{ card__link_title }}">
+            {# Image #}
+            {% block card__img %}
+                {% if card__image %}
+                    {{ card__image }}
+                {% endif %}
+            {% endblock %}
+            {# Content #}
+            <div {{ bem('content', card__content__modifiers, card__base_class) }}>
+                {# Heading #}
+                {% if card__heading %}
+                    {% include "@atoms/text/headings/_heading.twig" with {
+                        heading_base_class: card__heading__base_class|default('heading'),
+                        heading_modifiers: card__heading__modifiers,
+                        heading_blockname: card__base_class,
+                        heading_level: 4,
+                        heading: card__heading,
+                    } %}
+                {% endif %}
+                {% if card__body is empty %}
+                    <div class="small-border"></div>
+                {% endif %}
+                {# Subheading #}
+                {% if card__subheading %}
+                    {% include "@atoms/text/headings/_heading.twig" with {
+                        heading_base_class: card__subheading__base_class|default('subheading'),
+                        heading_modifiers: card__subheading__modifiers,
+                        heading_blockname: card__base_class,
+                        heading_level: 5,
+                        heading: card__subheading,
+                    } %}
+                {% endif %}
+                {# Body #}
+                {% if card__body %}
+                    <div class="small-border"></div>
+                    {% include "@atoms/text/text/01-paragraph.twig" with {
+                        paragraph_base_class: card__body__base_class|default('body'),
+                        paragraph_modifiers: card__body__modifiers,
+                        paragraph_blockname: card__base_class,
+                        paragraph_content: card__body,
+                    } %}
+                {% endif %}
+            </div>
+        </a>
+        {% if arrow_src %}
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,17 @@
+uuid: 5aeef7f8-b777-4f21-9a67-29c256a112b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: featured_article_desktop
+label: 'Featured article - desktop'
+effects:
+  82cebf67-cfb1-4b8a-89be-89c277508d48:
+    uuid: 82cebf67-cfb1-4b8a-89be-89c277508d48
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 683
+      height: 584
+      crop_type: focal_point

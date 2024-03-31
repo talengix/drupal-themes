@@ -1,0 +1,9 @@
+//Free-text Styling
+.free-text {
+  @extend .text-long;
+  .free-text-description {
+    p {
+      word-break: break-word;
+    }
+  }
+}

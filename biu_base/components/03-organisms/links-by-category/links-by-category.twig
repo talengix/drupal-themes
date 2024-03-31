@@ -1,0 +1,15 @@
+{% for item in items %}
+  <div class="grid-item">
+    <h3><span>{{ item.category }}</span></h3>
+    {% for link in item.links %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: link.link_content,
+        item__url: link.link_url,
+        item__link_title: link.link_title,
+        link_base_class: "link",
+        link_container_base_class: "link-container",
+        link_container_modifiers: ['list'],
+      } %}
+    {% endfor %}
+  </div>
+{% endfor %}

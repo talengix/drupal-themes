@@ -1,0 +1,18 @@
+{% set component_blockname = 'messages' %}
+
+<div {{bem('wrap', 'two', component_blockname, messages_additional_classes)}}>
+  <div class="messages__content">
+    <div class="messages__title">{{ messages_title }}</div>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        {% for item in items %}
+          <div class="swiper-slide">
+            <a href="{{item.link}}" {{item.is_external ? 'target="_blank"': ''}} class="messages__link">
+              <span class="messages__item">{{ item.text }}</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

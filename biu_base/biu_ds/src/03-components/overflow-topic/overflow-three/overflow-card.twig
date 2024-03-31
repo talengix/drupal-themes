@@ -1,0 +1,17 @@
+<div {{bem('card', ['three'], 'overflow-block')}}>
+  <figure {{bem('image', ['three'], 'overflow-block')}}>
+    {{ image | raw }}
+  </figure>
+  <div {{bem('body', ['three'], 'overflow-block')}}>
+    {% if link is not null and link is not empty %}
+    <div class="animation-container anim-6" data-src="/themes/custom/biu_base/assets/animations/arrow.json">
+    <a class="link" href="{{link}}" title="{{ link_title }}">
+    {% endif %}
+    <h2 {{bem('title-text', ['three'], 'overflow-block')}}>{{ title }}</h2>
+    <p {{bem('text', ['three'], 'overflow-block')}}>{{ text }}</p>
+    {% if link is not null and link is not empty %}
+    </a>
+    </div>
+    {% endif %}
+  </div>
+</div>

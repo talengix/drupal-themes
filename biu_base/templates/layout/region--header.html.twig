@@ -1,0 +1,26 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% if group_page_info is null %}
+{% else %}
+  {{ attach_library('biu_base/subsite-header') }}
+  {% include "@organisms/site/subsite-header/subsite-header.twig" with {
+    "site_url" : group_page_info.header.site_url,
+    "site_url_class" : group_page_info.header.site_url_class,
+    "logo_src": group_page_info.header.logo_src,
+    "site_name": group_page_info.header.site_name,
+    "link_attributes": '',
+    "language_block" : language_block,
+  }%}
+{% endif %}

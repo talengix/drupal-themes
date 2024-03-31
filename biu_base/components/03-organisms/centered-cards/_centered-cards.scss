@@ -1,0 +1,184 @@
+.centered-cards {
+  @include clearfix;
+
+  .field--name-field-centered-card-content {
+    .field__item {
+      width: span(1 of 2);
+      float: right;
+      margin-left: gutter(1);
+
+      &:nth-child(2n) {
+        margin-left: 0;
+      }
+
+      .field--label-hidden.field__item {
+        width: 100%;
+        margin: 0;
+        float: none;
+      }
+
+      .content {
+        clear: both;
+      }
+    }
+    .field--type-image {
+      .field__item {
+        width: auto !important;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  .centered-card-title {
+    h2 {
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.25;
+      margin: 0;
+      padding: 40px 0 33px;
+      text-align: center;
+
+      &.h2--dark {
+        display: none;
+      }
+
+      .background-color-gray &, .background-color-white &, .background-color-pale-green & {
+        &.h2--dark {
+          display: block;
+        }
+
+        &.h2--light {
+          display: none;
+        }
+      }
+
+    }
+  }
+
+  .featured-card {
+    margin-bottom: 23px;
+
+    .cards-content {
+      .header-content {
+        .category {
+          margin-right: 14px;
+          font-size: 12px;
+
+        }
+      }
+
+      .content {
+        .heading {
+          font-size: 14px;
+          color: $color-heading;
+        }
+      }
+    }
+  }
+
+  .body .text-long p {
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .field--name-field-centered-cards-link {
+    &.centered-card-dark {
+      display: none;
+    }
+
+    .background-color-gray &, .background-color-white &, .background-color-pale-green & {
+      &.centered-card-dark {
+        display: block;
+      }
+
+      &.centered-card-light {
+        display: none;
+      }
+    }
+
+    .link-container a {
+
+      &.link--light {
+        color: $white;
+      }
+
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+
+    svg {
+      width: 43px !important;
+      height: 13px !important;
+
+      body[dir="ltr"] & {
+        transform: rotate(180deg) !important;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-tab, tab) {
+    .views-row {
+      width: span(1 of 2);
+      float: right;
+      margin-left: gutter(1);
+
+      &:nth-child(2n) {
+        margin-left: 0;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .field--name-field-centered-card-content {
+      .field__item {
+        width: span(3 of 12);
+
+        &:nth-child(2n) {
+          margin-left: gutter(1);
+        }
+
+        &:nth-child(4n) {
+          margin-left: 0;
+        }
+      }
+    }
+    .field--name-field-centered-cards-link {
+      clear: both;
+      text-align: center;
+      padding-bottom: 29px;
+    }
+    .featured-card {
+      margin-bottom: 52px;
+    }
+
+    .views-row {
+      width: span(3 of 12);
+
+      &:nth-child(2n) {
+        margin-left: gutter(1);
+      }
+
+      &:nth-child(4n) {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+#block-views-block-centered-cards-pulications-centered-cards-articles, #block-views-block-centered-cards-pulications-centered-cards, #block-views-block-podcast-card-podcast-card {
+  background-color: $light-grey;
+
+  .block-centered-cards-layout-container {
+    max-width: 1366px;
+    @include push--auto;
+
+    .block.centered-cards {
+      @include container;
+
+      .centered-card-title h2 {
+        color: $dark-green;
+      }
+    }
+  }
+}

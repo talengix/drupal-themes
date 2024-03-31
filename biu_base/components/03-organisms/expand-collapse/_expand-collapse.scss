@@ -1,0 +1,30 @@
+.expand-collapse {
+  margin-top: 73px;
+  margin-bottom: 58px;
+
+  h3 {
+    font-size: 28px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    color: $dark-green;
+    margin: 0 0 21px;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    margin-top: 72px;
+    margin-bottom: 72px;
+    h3 {
+      font-size: 32px;
+      line-height: 1.25;
+      margin: 0 0 36px;
+    }
+    .expand-collapse-item {
+      .accordion {
+        font-size: 20px;
+      }
+    }
+  }
+}

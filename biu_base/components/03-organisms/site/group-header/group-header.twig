@@ -1,0 +1,12 @@
+{% set header__base_class = 'header' %}
+
+<header {{ bem(header__base_class) }}>
+  <div {{ bem('inner', [], header__base_class) }}>
+    <div class="header__inner--brand">
+      {{ drupal_view('group_entity', 'block_site_brand') }}
+    </div>
+    <div class="header__inner--language">
+      {{ drupal_block('language_dropdown_block:language_interface') }}
+    </div>
+  </div>
+</header>

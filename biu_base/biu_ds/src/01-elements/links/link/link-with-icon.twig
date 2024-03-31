@@ -1,0 +1,23 @@
+<div {{ bem(link_icon__base_class, link_icon__modifiers, link_icon__blockname, link_icon__additional_classes) }}>
+    {% set link_base_class = link_base_class|default('link') %}
+    <a
+    {{ bem(link_base_class, link_modifiers, link_blockname, link_extra_classes) }}
+    {% for attribute, value in link_attributes %}
+        {{ attribute }}="{{ value }}"
+    {% endfor %}
+    href="{{ link_icon__url }}"
+    >
+    {% include "@ds_elements/images/icon/_icon.twig" with {
+        "icon_base_class": 'icon',
+        "icon_title": icon__title,
+        "icon_name": item__name,
+        "icon_modifiers": [],
+        "icon_full_url": icon_full_url,
+    } %}
+    {% if link_icon_text %}
+        <span>
+          {{ link_icon_text }}
+        </span>
+    {% endif %}
+    </a>
+</div>

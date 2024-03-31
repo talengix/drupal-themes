@@ -1,0 +1,20 @@
+<div class="sg-header-styles">
+  {% for i in 1..6 %}
+    <div class="sg-pattern pl-heading-examples">
+      <h3 class="sg-pattern-title">h{{ i }}</h3>
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": i,
+        "heading": "This is a Header " ~ i ~ " example"
+      } %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": i,
+        "heading": "This is a light Header " ~ i ~ " example",
+        "heading_modifiers": ['light']
+      } %}
+    </div>
+      <hr />
+  {% endfor %}
+</div>
+{% if meta %}
+  <p> <small>{{ meta.description }}</small> </p>
+{% endif %}

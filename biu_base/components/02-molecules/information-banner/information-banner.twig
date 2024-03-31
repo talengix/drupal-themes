@@ -1,0 +1,75 @@
+<div {{ bem(information_banner_class,information_banner__modifiers,information_banner__blockname,information_banner__extra_classes) }}>
+  <div class="open-days">
+    {# Heading #}
+    {% if information_banner_heading %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        heading_base_class: information_banner_heading_base_class|default('heading'),
+        heading_level: 3,
+        heading: information_banner_heading,
+      } %}
+    {% endif %}
+    {# Sub Heading #}
+    {% if information_banner_sub_heading %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        heading_base_class: information_banner_sub_heading_base_class|default('heading'),
+        heading_level: 4,
+        heading: information_banner_sub_heading,
+      } %}
+    {% endif %}
+  </div>
+
+  <div class="banner-content">
+    {# Link #}
+   {% if banner_information__link__url %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: banner_information__link__text,
+        item__url: banner_information__link__url,
+        item__link_title: banner_information__link__text,
+        link_container_base_class: "banner-link",
+        arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json"
+      } %}
+   {% endif %}
+
+    {# Body #}
+    {% if banner_information__body %}
+      {% include "@atoms/text/text/01-paragraph.twig" with {
+        paragraph_base_class: banner_information__body__base_class|default('body'),
+        paragraph_modifiers: banner_information__body__modifiers,
+        paragraph_blockname: banner_information__base_class,
+        paragraph_content: banner_information__body,
+      } %}
+    {% endif %}
+  </div>
+
+  <div class="banner-links">
+    {# Link #}
+    {% if banner_information_tour__link__url %}
+      {% include "@molecules/link-with-icon/link-with-icon.twig" with {
+        link_icon__base_class: "link-with-icon",
+        link_icon__modifiers: ["tour"],
+        link_icon__url: banner_information_tour__link__url,
+        link_icon__link_title: { title: banner_information_tour__link__attributes },
+        item__name: "tour",
+        link_icon_text: banner_information_tour__link__text,
+        link_icon__extra_classes: ["animation-container", "banner-tour"],
+        icon_url: icon_url,
+        arrow_json_name: '/themes/custom/biu_base/assets/animations/arrow.json',
+      } %}
+    {% endif %}
+
+    {# Link #}
+    {% if banner_information_map__link__url %}
+      {% include "@molecules/link-with-icon/link-with-icon.twig" with {
+        link_icon__base_class: "link-with-icon",
+        link_icon__modifiers: ["map"],
+        link_icon__url: banner_information_map__link__url,
+        link_icon__link_title: { title: banner_information_map__link__text },
+        item__name: "map",
+        link_icon_text: banner_information_map__link__text,
+        link_icon__extra_classes: ["animation-container", "banner-map"],
+        icon_url: icon_url,
+        arrow_json_name: '/themes/custom/biu_base/assets/animations/arrow.json',
+      } %}
+    {% endif %}
+  </div>
+</div>

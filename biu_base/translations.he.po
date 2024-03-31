@@ -1,0 +1,78 @@
+# Hebrew translations for BIU
+msgid ""
+msgstr ""
+"Project-Id-Version: Biu\n"
+"POT-Creation-Date: 2017-04-23 12:54+0300\n"
+"PO-Revision-Date: 2017-04-23 12:54+0300\n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+
+#/*************************** BIU Core Translations ***************************/#
+msgid "Save in calendar"
+msgstr "שמירה ביומן שלי"
+
+msgid "View all events"
+msgstr "לצפייה בכל האירועים"
+
+msgid "To all events"
+msgstr "לכל האירועים"
+
+msgid "January"
+msgstr "ינואר"
+
+msgid "February"
+msgstr "פברואר"
+
+msgid "March"
+msgstr "מרץ"
+
+msgid "April"
+msgstr "אפריל"
+
+msgid "May"
+msgstr "מאי"
+
+msgid "June"
+msgstr "יוני"
+
+msgid "July"
+msgstr "יולי"
+
+msgid "August"
+msgstr "אוגוסט"
+
+msgid "September"
+msgstr "ספטמבר"
+
+msgid "October"
+msgstr "אוקטובר"
+
+msgid "November"
+msgstr "נובמבר"
+
+msgid "December"
+msgstr "דצמבר"
+
+msgid "Sunday"
+msgstr "ראשון"
+
+msgid "Monday"
+msgstr "שני"
+
+msgid "Tuesday"
+msgstr "שלישי"
+
+msgid "Wednesday"
+msgstr "רביעי"
+
+msgid "Thursday"
+msgstr "חמישי"
+
+msgid "Friday"
+msgstr "שישי"
+
+msgid "Saturday"
+msgstr "שבת"

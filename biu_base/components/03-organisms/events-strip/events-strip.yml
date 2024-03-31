@@ -1,0 +1,5 @@
+items: []
+component_base_class: 'events-strip'
+component_modifiers: []
+component_blockname: ''
+additional_classes: ['sg-section', 'swiper-container']

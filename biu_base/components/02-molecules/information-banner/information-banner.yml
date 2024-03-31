@@ -1,0 +1,13 @@
+information_banner_class: "information-banner"
+information_banner__extra_classes: ["sg-container"]
+information_banner_heading: "2.9.20"
+information_banner_sub_heading: "Open days"
+banner_information__link__url: "https://google.com"
+banner_information__link__attributes:
+  - title: "Google 1"
+banner_information__link__text: "google 1"
+banner_information__body: "Guided tour around campus and departmental meetings every Monday"
+banner_information_tour__link__url: "https://yahoo.com"
+banner_information_tour__link__text: "yahoo.com"
+banner_information_map__link__url: "https://facebook.com"
+banner_information_map__link__text: "Facebook"

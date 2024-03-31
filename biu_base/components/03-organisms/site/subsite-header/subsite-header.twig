@@ -1,0 +1,35 @@
+{% set header__base_class = 'header' %}
+<header {{bem(header__base_class, 'sub-site', [], site_url_class)}}>
+  <style>
+    .bot .lang-dropdown-form {
+      display: none;
+    }
+  </style>
+  <div class="header__inner header__inner--sub-site">
+    <div class="header__primary header__primary--sub-site">
+      <div class="header__branding header__branding--sub-site">
+        {% embed "@atoms/links/link/link.twig" with {
+          link_url: site_url,
+          link_base_class: 'site-link',
+          link_modifiers: [],
+          link_attributes: link_attributes,
+        } %}
+          {% block link_content %}
+            {% include "@atoms/images/image/_image.twig" with {
+              image_src: logo_src
+            } %}
+          {% endblock %}
+        {% endembed %}
+      </div>
+      <a href="{{site_url}}">
+        <h1 class="header__name header__name--sub-site">
+          {{ site_name }}
+        </h1>
+      </a>
+    </div>
+    <div class="header__secondary header__secondary--sub-site">
+      {{ language_block }}
+      <a href="javascript:void(0)" class="accessibility-icon"><img src="/themes/custom/biu_base/assets/images/icons/accessibility.svg" alt={{ 'Accessibility'|t }}></a>
+    </div>
+  </div>
+</header>

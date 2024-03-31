@@ -1,0 +1,284 @@
+.footer {
+  background-color: $light-grey;
+  padding: 37px 0 87px;
+  background-image: url(/themes/custom/biu_base/assets/images/backgrounds/footer-bg.png);
+  background-repeat: no-repeat;
+  background-position: -157px 108%;
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    background-position: -87px 108%;
+  }
+
+  .footer__region--sub-site {
+    max-width: 1366px;
+    @include push--auto;
+
+    .footer__inner {
+      @include clearfix;
+      @include container;
+
+      &--sub-site {
+        display: grid;
+        grid-template-columns: auto;
+        @include grid-breakpoint($mq-desk, desk) {
+          grid-template-columns: auto auto auto;
+        }
+      }
+
+      .footer__menu {
+        ul {
+          li {
+            svg {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .footer__site-logo {
+        margin-bottom: 36px;
+
+        > .footer__contact_address, > .footer__donation_link {
+          display: none;
+        }
+      }
+    }
+
+    .footer-mobile-wrapper {
+      .footer__menu {
+        display: inline;
+
+        #footer-menu {
+          display: inline;
+
+          > .footer-menu {
+            display: inline;
+          }
+        }
+      }
+
+      .footer__contact_address {
+        display: inline;
+
+        .contact-card {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .footer-third-section {
+    .footer__social_icons {
+      margin-top: 40px;
+    }
+
+    .footer__donation_link {
+      margin-top: 45px;
+      .link-with-icon {
+        background-color: #0b6937;
+        svg.icon--donation {
+          body[dir="ltr"] & {
+            transform: unset !important;
+          }
+        }
+        .link {
+          color: $white;
+          background-color: #0b6937;
+          span {
+            padding-top: 5px;
+            padding-right: 10px;
+            padding-left: 10px;
+          }
+          svg {
+            width: 24px !important;
+            height: 24px !important;
+            fill: $white;
+          }
+        }
+        > svg {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          box-sizing: content-box;
+        }
+      }
+    }
+  }
+  .powered_by {
+    width: 100%;
+    margin: 32px auto 0;
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    color: $dark-green;
+    font-weight: normal;
+    a {
+      font-size: 14px;
+      color: $dark-green;
+      font-weight: normal;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+  body[dir="ltr"] & {
+    background-image: url(/themes/custom/biu_base/assets/images/backgrounds/footer-bg-en.png);
+    background-position: calc(100% + 157px) 108%;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    position: relative;
+    padding: 58px 0;
+    background-position: 0 100%;
+    .footer__region--sub-site .footer__inner {
+      .footer__site-logo {
+        width: span(3 of 12);
+        float: right;
+        margin-left: gutter(1);
+
+        .footer__contact_address, .footer__donation_link {
+          display: block;
+        }
+
+        .footer__contact_address {
+          margin-top: 46.5px;
+          margin-bottom: 36px;
+        }
+      }
+
+      .footer__social_icons, .footer__donation_link {
+        display: block;
+        margin-top: 0;
+      }
+
+      .footer__donation_link {
+        .link-with-icon {
+          width: span(2.2 of 3);
+          padding: 6px 16px;
+          align-items: center;
+          background-color: #0b6937;
+          a {
+            align-items: center;
+            background-color: unset;
+            color: $white;
+            svg {
+              width: 24px !important;
+              height: 24px !important;
+              margin-left: 8px;
+              fill: $white;
+            }
+          }
+        }
+      }
+    }
+    .footer__region--sub-site {
+      .footer-mobile-wrapper {
+        .footer__menu {
+          width: span(6 of 12);
+          float: right;
+          margin-left: gutter(1);
+          display: block;
+
+          ul.footer-menu {
+            margin-top: 0;
+          }
+
+          #footer-menu {
+            display: block;
+
+            > .footer-menu {
+              display: flex;
+            }
+          }
+        }
+
+        .footer__contact_address {
+          display: none;
+        }
+      }
+    }
+
+    .footer__region--sub-site .footer__inner .footer-third-section {
+      width: span(3 of 12);
+      float: right;
+
+      .footer__donation_link {
+        display: none;
+      }
+    }
+
+    .powered_by {
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      left: 0;
+    }
+    body[dir="ltr"] & {
+      background-position: 100% 0;
+
+      .footer__region--sub-site .footer__inner .footer__site-logo {
+        float: left;
+        margin-right: gutter(1);
+        margin-left: 0;
+      }
+
+      .footer__region--sub-site .footer-mobile-wrapper .footer__menu {
+        float: left;
+        margin-right: gutter(1);
+        margin-left: 0;
+      }
+
+      .footer__region--sub-site .footer__inner .footer-third-section {
+        float: left;
+      }
+
+      .footer__region--sub-site .footer__inner .footer__donation_link {
+        .link-with-icon {
+          a {
+            svg {
+              margin-left: 0;
+              margin-right: 8px;
+            }
+            svg.icon--donation {
+              transform: unset !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.site-social {
+  ul {
+    display: flex;
+    list-style: none;
+  }
+  .social {
+    margin: 0 10px;
+    display: block;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+  }
+  .social.facebook {
+    background-image: url(/themes/custom/biu_base/assets/images/icons/facebook.svg);
+  }
+  .social.twitter {
+    background-image: url(/themes/custom/biu_base/assets/images/icons/twitter.svg);
+  }
+  .social.linkedin {
+    background-image: url(/themes/custom/biu_base/assets/images/icons/linkedin.svg);
+  }
+  .social.instagram {
+    background-image: url(/themes/custom/biu_base/assets/images/icons/instagram.svg);
+  }
+}
+
+.footer__social-icons--sub-site .social-media-component {
+  text-align: right;
+
+  body[dir="ltr"] & {
+    text-align: left;
+  }
+}

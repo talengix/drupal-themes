@@ -1,0 +1,17 @@
+uuid: 350fd6ef-15aa-4d28-a548-cd4213309c06
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: linked_images_strip
+label: 'Linked Images Strip'
+effects:
+  38b0f42b-e0fa-4d3b-8ca0-92cb5be1728f:
+    uuid: 38b0f42b-e0fa-4d3b-8ca0-92cb5be1728f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 375
+      height: 375
+      crop_type: focal_point

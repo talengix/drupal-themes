@@ -1,0 +1,101 @@
+// Color variables - it is better to use the colors in
+// components/00-base/01-colors/_01-colors-used.scss rather than
+// these colors directly.
+
+// Zeplin syleguide color names
+// See https://app.zeplin.io/project/5e0e17d1b617fa97394cc47b/styleguide/colors
+
+// BIU Style guide
+// Gray scale
+$white: #fff;
+$light-gray: #f3f4f8;
+$pale-gray: var(--light-gray);
+$near-white: #f2f2f2;
+$gray-lightest: #e5e5e5;
+$gray-lighter: #ccc;
+$gray-light: #888;
+$weak-text: $gray-light;
+$gray: #666;
+$gray-dark: #4c4c4c;
+$gray-darker: #333;
+$black: black;
+
+// Gray
+$gray-90: #909090;
+$gray-58: #5f666c; // Very Dark Gray, brightness of 42%  4c4c4c
+$gray-33: #ababab; // Medium Gray,    brightness of 67%. Looks dark as background. Use for i.e., table headers.
+$gray-29: #b4b4b4; // Light gray , brightness of 71%
+$gray-03: #f8f8f8; // Lightest Gray, brightness of 97%.
+$medium-gray: $gray-33; // Medium Gray,    brightness of 67%. Looks dark as background. Use for i.e., table headers.
+$gray-medium: $medium-gray;
+$lightest-gray: $gray-03; // Lightest Gray, brightness of 97%.
+$muted-text: $gray-29;
+$black-muted: #4d555b;
+$bg-darkest-gray: $medium-gray; // Medium Gray,    brightness of 67%. Looks dark as background. Use for i.e., table headers.
+$table-head-gray-bg: $medium-gray;
+$dark-gray-bg: $medium-gray;
+// Borders - Separators
+$dark-sep: $medium-gray; // Medium Gray 67% brightness. Haya color for views table row separator
+$input-border-color: $medium-gray;
+$gray-medium-light: #e0e0e0; //  brightness of 88%
+
+// Greens
+$pale-green: #f5faf0;
+$off-white: var(--pale-green);
+$beige: var(--pale-green);
+$pale-green-muted: rgba(245, 250, 240, 0.7);
+$pale-green-muted-most: rgba(245, 250, 240, 0.2);
+$bg-light-green: #f6f9f1;
+$lime-green: #c3dc87;
+$pale-olive-green: var(--lime-green);
+$jungle-green: #006937;
+$dark-blue-green2: var(--jungle-green);
+$bar-ilan-green: #004128;
+$biu-green: var(--bar-ilan-green);
+$dark-blue-green: var(--bar-ilan-green);
+$darker-blue-green: var(--bar-ilan-green);
+$intensive-orange: var(--bar-ilan-green); // Green replaced pre 2020 Orange @todo: remove this var name.
+$orange-dark: var(--bar-ilan-green);
+$dark-orange: var(--bar-ilan-green);
+$headeings-n-link-color: var(--bar-ilan-green);
+$accessible-link: var(--bar-ilan-green);
+$dark-blue-green: var(--bar-ilan-green);
+$dark-forest-green: var(--dark-forest-green);
+$dark-green: var(--bar-ilan-green);
+$darkest-green: var(--dark-forest-green);
+
+// Blues
+$tiffany-blue: #78cde6;
+$light-blue: var(--tiffany-blue);
+$pale-tiffany-blue: #ade6f7;
+$bluish: #2174d4;
+
+$pink: #de5cb6;
+// Status
+$yellow-light: #f9fb93;
+$red-light: #fbe3e4;
+$green-light: #cfefc2;
+$purple: #610c63;
+$blue: #005de0;
+
+$pale-gray-two: #fafbfc;
+$pale-gray2: $pale-gray-two;
+
+$body-text: var(--dark-forest-green); // Very Dark green, brightness of 16%;
+$body-txt: var(--body-text);
+
+$line-gray-medium-light: 1px solid $gray-medium-light;
+
+$acc-link: $accessible-link;
+$dark-blue-green: var(--bar-ilan-green);
+$orange: var(--bar-ilan-green);
+$top-nav-line-color: var(--bar-ilan-green);
+$pastel-color-bg: #f8ebe5; // light, very light orange
+
+$h2-font-size: 1.5em;
+$line-gray-medium-light: 1px solid $gray-medium-light;
+$header-region-height: 1.731em;
+$minus-header-region-height: -1.8em;
+$post-vertical-space: 45px;
+
+$post-seperator-style: 1px solid #eee;

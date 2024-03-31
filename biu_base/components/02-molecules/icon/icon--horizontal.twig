@@ -1,0 +1,18 @@
+{% if item__link_url %}
+  <a href="{{ item__link_url }}" title="{{ item__link_title }}" {{ bem(icon_horizontal__base_class, icon_horizontal__modifiers, icon_horizontal__blockname, icon_horizontal__extra_classes) }}>
+{% else %}
+  <div {{ bem(icon_horizontal__base_class, icon_horizontal__modifiers, icon_horizontal__blockname, icon_horizontal__extra_classes) }}>
+{% endif %}
+    <div class="icon-horizontal-content">
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: item__value,
+        icon_value: item__value,
+        icon_url: item__icon_url
+      } %}
+      <h5>{{ item__name }}</h5>
+    </div>
+{% if item__link_url %}
+  </a>
+{% else %}
+  </div>
+{% endif %}

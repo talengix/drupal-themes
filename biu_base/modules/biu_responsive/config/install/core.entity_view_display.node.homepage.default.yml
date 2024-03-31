@@ -1,0 +1,91 @@
+uuid: 6cc318ac-c022-46ad-8573-f400eb1db173
+langcode: he
+status: true
+dependencies:
+  config:
+    - field.field.node.homepage.layout_builder__layout
+    - node.type.homepage
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - user
+  theme:
+    - biu_base
+third_party_settings:
+  layout_builder:
+    allow_custom: true
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          9c60caac-4a21-4882-8add-2da71d07fcfd:
+            uuid: 9c60caac-4a21-4882-8add-2da71d07fcfd
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:homepage:links'
+            additional: {  }
+            weight: 0
+            third_party_settings: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories:
+      - Block
+      - 'Content fields'
+      - 'Custom block types'
+      - Embed
+      - Forms
+      - Help
+      - 'Inline blocks'
+      - 'Lists (Views)'
+      - Menus
+      - System
+      - core
+      - משתמש
+    entity_view_mode_restriction:
+      whitelisted_blocks:
+        Block: {  }
+        'Content fields': {  }
+        'Custom block types': {  }
+        Embed: {  }
+        Forms: {  }
+        Help: {  }
+        'Inline blocks':
+          - 'inline_block:card_grid'
+          - 'inline_block:centered_cards'
+          - 'inline_block:featured_article'
+          - 'inline_block:featured_cards'
+          - 'inline_block:information_banner'
+          - 'inline_block:large_hero'
+          - 'inline_block:large_media'
+          - 'inline_block:link_list'
+          - 'inline_block:media_slides'
+          - 'inline_block:social_feed'
+        'Lists (Views)': {  }
+        Menus: {  }
+        System: {  }
+        core: {  }
+        משתמש: {  }
+      blacklisted_blocks: {  }
+      allowed_layouts: {  }
+_core:
+  default_config_hash: tPk3fFNY8XETC5mmK8_oP5QKz4UCri8FmtzP8Xx2fqI
+id: node.homepage.default
+targetEntityType: node
+bundle: homepage
+mode: default
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
+  layout_builder__layout: true

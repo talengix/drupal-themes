@@ -1,0 +1,14 @@
+{% set component_class = 'staffs' %}
+{% set staff_layout = staff_layout|default('grid') %}
+
+<div {{bem('wrap', [staff_layout], component_class, ['row'])}}>
+  {% for item in items %}
+    {% include "@molecules/staff/staff-item.twig" with {
+      "layout": staff_layout,
+      "staff_picture": item.staff_picture,
+      "staff_name": item.staff_name,
+      "staff_job": item.staff_job,
+      "staff_text": item.staff_text
+    } %}
+  {% endfor %}
+</div>

@@ -1,0 +1,20 @@
+{% block information_banner_content %}
+  {% include "@molecules/information-banner/information-banner.twig" with {
+    information_banner_class: "information-banner",
+    information_banner__modifiers: [],
+    information_banner__blockname: '',
+    information_banner__extra_classes: ['clearfix'],
+    information_banner_heading: info_banner_heading,
+    information_banner_sub_heading: info_banner_subheading,
+    banner_information__link__url: info_banner_link_url,
+    banner_information__link__attributes: {"title" : info_banner_link_title},
+    banner_information__link__text: info_banner_link_title,
+    banner_information__body: info_banner_body,
+    banner_information_tour__link__url: info_banner_tour_link_url,
+    banner_information_tour__link__text: info_banner_tour_link_text,
+    banner_information_map__link__url:info_banner_map_link_url,
+    banner_information_map__link__text: info_banner_map_link_text,
+    icon_url: icon_url,
+  } %}
+{% endblock %}
+

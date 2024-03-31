@@ -1,0 +1,51 @@
+<div {{bem(component_base_class, component_modifiers, component_blockname)}}>
+  {% if show_text_in_slide is null %}
+  <div class="hero-text">
+    <div class="hero-slide-text-wrapper">
+      <div class="hero-slide-text-content">
+        <p class="slide-title">{{ items.0.title }}</p>
+        <p class="slide-text">{{ items.0.text }}</p>
+        {% if read_more_text is not null %}
+          {% include "@ds_elements/links/link/arrow-link.twig" with {
+            item__content: read_more_text,
+            item__url: items.0.link,
+            is_external: items.0.is_external,
+            item__link_title: read_more_text,
+            link_base_class: "link",
+            link_modifiers: [],
+            link_container_base_class: "link-container",
+            link_container_modifiers: ['link-container-dark-background'],
+            arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+          } %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="hero-slides-wrapper swiper">
+    <div class="swiper-wrapper" aria-label="slider">
+      {% for item in items %}
+        {% include "@ds_patterns/hero-slide/hero-slide.twig" with {
+          hero_image: item.hero_image,
+          title: item.title,
+          text: item.text,
+          read_more_link: item.link,
+          is_external: item.is_external,
+          read_more_text: read_more_text,
+          component_base_class: 'swiper-slide',
+          component_modifiers: [],
+          component_blockname: '',
+          hero_slide_type_class: hero_slide_type_class,
+          show_text_in_slide: show_text_in_slide
+        } %}
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="hero-slides-buttons">
+        <div class="swiper-button-pause">
+            <span class="button-pause-icon"></span></div>
+        <div class="swiper-button-play">
+            <span class="button-play-icon"></span></div>
+    </div>
+  </div>
+</div>

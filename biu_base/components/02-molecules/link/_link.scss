@@ -1,0 +1,66 @@
+.link-container {
+  width: 100%;
+  padding-top: 13px;
+  padding-bottom: 20px;
+
+  a {
+    font-size: 18px;
+    color: $color-heading;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 0;
+    padding-bottom: 23px;
+  }
+}
+
+.link-container--list .animation-container svg {
+  width: 32px !important;
+  height: 12px !important;
+
+  body[dir="ltr"] & {
+    transform: rotate(180deg) !important;
+  }
+}
+
+.external-icon + .animation-container {
+  display: inline-block;
+}
+
+.external-icon svg {
+  width: 16px;
+  height: 16px;
+  float: right;
+
+  body[dir="ltr"] & {
+    float: left;
+  }
+}
+
+.links--list {
+  .animation-container {
+    width: 94%;
+
+    svg {
+      float: left;
+
+      body[dir="ltr"] & {
+        float: right;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .animation-container {
+      width: auto;
+
+      svg {
+        float: none;
+
+        body[dir="ltr"] & {
+          float: none;
+        }
+      }
+    }
+  }
+}

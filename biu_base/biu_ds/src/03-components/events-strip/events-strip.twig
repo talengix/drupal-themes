@@ -1,0 +1,32 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+    <div class="swiper-wrapper swiper-events-strip">
+        {% for item in items %}
+            <div class="swiper-slide">
+                {% include "@ds_components/events-strip/event-horizontal-card.twig" with {
+                    "component_base_class": 'event-horizontal-card',
+                    "component_modifiers": [],
+                    "component_blockname": '',
+                    "additional_classes": [],
+                    "item_url": item.item_url,
+                    "event_start_date_day": item.event_start_date_day,
+                    "event_start_date_month": item.event_start_date_month,
+                    "event_mode": item.event_mode,
+                    "image_src": item.image_src,
+                    "image_alt": item.image_alt,
+                    "invite": item.invite,
+                    "cost": item.cost,
+                    "type": item.type,
+                    "label": item.label,
+                    "sub_title": item.sub_title,
+                    "event_date_display_one": item.event_date_display_one,
+                    "event_date_display_two":item.event_date_display_two,
+                    "event_time_display": item.event_time_display,
+                    "calendar__links": item.calendar__links,
+                    "download_icon_full_url": download_icon_full_url,
+                    "arrow_icon_full_url": arrow_icon_full_url,
+                } %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>

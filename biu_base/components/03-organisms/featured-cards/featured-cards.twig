@@ -1,0 +1,38 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  <div class="featured-card-title">
+    {{ featured__card_label }}
+  </div>
+  <div class="cards-content">
+    <div class="field--name-field-featured-content-main">
+      {% include "@molecules/card/featured-cards.twig" with {
+        "card__image__src": items[0].featured__card_img_src,
+        "card__image__alt": items[0].featured__card_img_alt,
+        "card__event_date": items[0].featured__card_event_date,
+        "featured_article_tag": items[0].featured__card_article_tag,
+        "card__heading": items[0].featured__card_heading,
+        "card__body": items[0].featured__card_body,
+        "card__link__text": items[0].featured__card_link_text,
+        "card__link__url": items[0].featured__card_link_url,
+        "featured_card__base_class": "featured-card",
+        "featured_card__modifiers": ["large"],
+      } %}
+    </div>
+    <div class="field--name-field-featured-content">
+      {% for item in items %}
+        {% if not loop.first %}
+          {% include "@molecules/card/featured-cards.twig" with {
+            "card__image__src": item.featured__card_img_src,
+            "card__image__alt": item.featured__card_img_alt,
+            "card__event_date": item.featured__card_event_date,
+            "featured_article_tag": item.featured__card_article_tag,
+            "card__heading": item.featured__card_heading,
+            "card__body": item.featured__card_body,
+            "card__link__text": item.featured__card_link_text,
+            "card__link__url": item.featured__card_link_url,
+            "featured_card__base_class": "featured-card",
+          } %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

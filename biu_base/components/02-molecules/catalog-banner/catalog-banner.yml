@@ -1,0 +1,11 @@
+catalog_banner_class: "catalog-banner"
+catalog_banner__extra_classes: ["sg-container"]
+catalog_banner_heading: "2.9.20"
+catalog_banner_sub_heading: "Open days"
+catalog_banner__link__url: "https://google.com"
+catalog_banner__link__attributes:
+  - title: "Google 1"
+catalog_banner__link__text: "google 1"
+catalog_banner__body: "Guided tour around campus and departmental meetings every Monday"
+catalog__image__src: 'https://placeimg.com/577/284/tech'
+catalog__image__alt: "This is the card image's alt text"

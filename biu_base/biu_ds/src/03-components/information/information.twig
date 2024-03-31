@@ -1,0 +1,12 @@
+<div {{bem('wrap', [], 'information')}}>
+  <div class="container">
+    <div class="row">
+      {% for item in items %}
+        {% include "@ds_components/information/information-item.twig" with {
+          title: item.title,
+          description: item.description
+        } %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

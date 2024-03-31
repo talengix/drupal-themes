@@ -1,0 +1,17 @@
+uuid: 9937d7ac-5a6d-4bae-a434-4b597e45db57
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: card_grid_mobile
+label: 'Card grid - mobile'
+effects:
+  39be777e-ff41-4efd-9378-ed701cbf402b:
+    uuid: 39be777e-ff41-4efd-9378-ed701cbf402b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 535
+      crop_type: focal_point

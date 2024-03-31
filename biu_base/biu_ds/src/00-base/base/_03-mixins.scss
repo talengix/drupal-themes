@@ -1,0 +1,52 @@
+
+// Dolev's RTL mixin
+@mixin rtl() {
+  [dir="rtl"] & {
+    @content;
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin ds-breakpoint($mq) {
+  @media ($mq) {
+    @content;
+  }
+}
+
+@mixin dark-section {
+  .dark-section & {
+    color: var(--white);
+    border-color: var(--white);
+  }
+}
+
+@mixin dark-section-img {
+  .dark-section & {
+    filter: invert(99%) sepia(63%) saturate(119%) hue-rotate(216deg) brightness(116%) contrast(100%);
+  }
+}
+
+@mixin background-color {
+  .background-color-biu-green & {
+    background-color: var(--bar-ilan-green);
+  }
+
+  .background-color-gray & {
+    background-color: var(--light-gray);
+  }
+
+  .background-color-white & {
+    background-color: var(--white);
+  }
+
+  .background-color-pale-green & {
+    background-color: var(--pale-green);
+  }
+}

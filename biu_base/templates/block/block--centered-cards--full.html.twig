@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+<div {{ bem('block', [], '', 'centered-cards') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% if label %}
+      <div class="centered-card-title">
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 2,
+          "heading": label,
+          "heading_modifiers": ['light']
+        } %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 2,
+          "heading": label,
+          "heading_modifiers": ['dark']
+        } %}
+      </div>
+    {% endif %}
+    <div class="cards-content">
+      {% if content['#block_content'].field_centered_card_type.value == 'Manual' %}
+        {{ content.field_centered_card_content }}
+      {% elseif content['#block_content'].field_centered_card_type.value == 'Automatic' %}
+        {{ content.field_centered_card_view }}
+      {% endif %}
+      {% if content.field_link['#items'][0].title %}
+      <div class="field--name-field-centered-cards-link centered-card-light">
+        {% include "@molecules/link/arrow-link.twig" with {
+          item__content: content.field_link['#items'][0].title,
+          item__url: content.field_link['#items'][0].url,
+          link_base_class: "link",
+          link_modifiers: ['light'],
+          link_container_base_class: "link-container",
+          link_container_modifiers: [],
+          is_external: is_external,
+          item__icon_url: icon_url,
+          item__link_title : content.field_link['#items'][0].title,
+          arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json"
+        } %}
+      </div>
+      <div class="field--name-field-centered-cards-link centered-card-dark">
+        {% include "@molecules/link/arrow-link.twig" with {
+          item__content: content.field_link['#items'][0].title,
+          item__url: content.field_link['#items'][0].url,
+          link_base_class: "link",
+          link_modifiers: ['dark'],
+          link_container_base_class: "link-container",
+          link_container_modifiers: [],
+          is_external: is_external,
+          item__icon_url: icon_url,
+          item__link_title : content.field_link['#items'][0].title,
+          arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json"
+        } %}
+      </div>
+      {% endif %}
+    </div>
+  {% endblock %}
+</div>

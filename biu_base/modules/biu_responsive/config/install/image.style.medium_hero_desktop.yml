@@ -1,0 +1,17 @@
+uuid: 5d1a7078-1633-430b-81a0-789dad81da62
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: medium_hero_desktop
+label: 'Medium hero - desktop'
+effects:
+  31994eb9-be2c-4d28-b8de-6cab869a5b19:
+    uuid: 31994eb9-be2c-4d28-b8de-6cab869a5b19
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 702
+      height: 416
+      crop_type: focal_point

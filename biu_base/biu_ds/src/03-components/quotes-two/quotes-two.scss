@@ -1,0 +1,62 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+@import "../../00-base/base/global";
+
+.quotes {
+
+  &.quotes--two {
+    position: relative;
+    
+    .quotes__background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      filter: blur(5px);
+      z-index: -99;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .quotes-content {
+      color: $bar-ilan-green;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 55px;
+      text-align: center;
+      
+
+      p {
+        font-size: 2.6rem;
+        line-height: 1.2;
+        width: 80%;
+      }
+
+      .quotes-person {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        img {
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
+        }
+    
+        span {
+          font-size: 22px;
+          display: block;
+          margin-top: 15px;
+        }
+      }
+
+      @include dark-section;
+
+    }
+  }
+  
+}

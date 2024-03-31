@@ -1,0 +1,112 @@
+.header {
+  background-color: #004128;
+
+  &__inner {
+    //@include container;
+    display: flex;
+    justify-content: space-between;
+
+    &--brand, &--language {
+      display: flex;
+    }
+
+    &--brand {
+      align-items: center;
+      justify-content: flex-end;
+
+      .logo {
+        margin-left: 15px;
+        border-left: 1px solid #fff;
+
+        img {
+          max-width: 200px;
+          height: auto;
+          display: block;
+        }
+      }
+
+      h1 a {
+        color: $white;
+        font-size: 1.2rem;
+        font-weight: normal;
+        text-decoration: none;
+      }
+    }
+
+    &--language {
+      .form-item__dropdown {
+        margin-top: 4px;
+        border: none;
+        color: #fff;
+      }
+
+      .form-item__select {
+        border: none;
+        color: #fff;
+        width: 115px !important;
+
+        &:focus {
+          border: none;
+          color: #fff;
+        }
+      }
+      .w3c {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+// New
+
+// .header__inner {
+//   margin: 0 auto;
+//   max-width: 80%;
+//   padding: 15px 0;
+// }
+
+.site-brand {
+  display: flex;
+}
+
+.grpmenu ul.menu {
+  padding: 0;
+  margin: 0;
+
+  li {
+    line-height: 3;
+    display: inline-block;
+
+    > a {
+      padding: 0 0.6em;
+      font-size: 14px;
+      color: $pale-green;
+      text-decoration: none;
+      display: block;
+
+      &:hover, &.is-active {
+        background-color: rgba(255, 255, 255, 0.07);
+      }
+    }
+  }
+}
+
+.form-item__dropdown {
+  &::after {
+    top: 7px;
+    right: 0;
+    background-image: url(/themes/custom/biu_base/assets/images/icons/white.svg);
+  }
+
+  color: #000;
+  font-family: "FedraSansBarilan","HelveticaNeue","Helvetica","Arial",sans-serif;
+}
+
+#INDmenu-btn, .grpmenu ul.menu li svg {
+  display: none;
+}
+
+.dropbutton-widget {
+  padding: 10px !important;
+  background-color: #f2f2f2;
+}

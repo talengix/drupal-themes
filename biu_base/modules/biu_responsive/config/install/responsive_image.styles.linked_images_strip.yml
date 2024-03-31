@@ -1,0 +1,38 @@
+uuid: 67fdb0e7-281e-40f6-811d-fd6a3f37e439
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.linked_images_strip
+  theme:
+    - biu_base
+id: linked_images_strip
+label: 'Linked Images Strip'
+image_style_mappings:
+  -
+    breakpoint_id: biu_base.desk-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: linked_images_strip
+  -
+    breakpoint_id: biu_base.desk
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: linked_images_strip
+  -
+    breakpoint_id: biu_base.tab-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: linked_images_strip
+  -
+    breakpoint_id: biu_base.tab
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: linked_images_strip
+  -
+    breakpoint_id: biu_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: linked_images_strip
+breakpoint_group: biu_base
+fallback_image_style: linked_images_strip

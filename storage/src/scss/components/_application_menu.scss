@@ -1,0 +1,30 @@
+.applications-menu {
+  margin-top: -83px;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    background-color: $primary-blue-black;
+    border-radius: 145.5px;
+    padding: 15px 50px;
+
+    li {
+      a {
+        width: 180px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 17px;
+        letter-spacing: 1.40126px;
+        color: $white;
+        border-bottom: 2px solid transparent;
+
+        &:hover {
+          color: $white;
+          font-weight: 800;
+          border-bottom: 2px solid #0ef5f5;
+        }
+      }
+    }
+  }
+}

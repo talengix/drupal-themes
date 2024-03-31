@@ -1,0 +1,10 @@
+component_base_class: 'media-item'
+component_modifiers: ['hero']
+is_title_h1: 'false'
+label: 'דברים גדולים קורים בבר אילן'
+sub_title: 'ברוכים הבאים לאוניברסיטת בר אילן'
+mobile_image_url: 'https://placeimg.com/320/180/any'
+media_type: 'remote_video'
+video_media_src: "GAo3MiR36MQ"
+link_title: 'Read More'
+link_url: 'https://www1.biu.ac.il'

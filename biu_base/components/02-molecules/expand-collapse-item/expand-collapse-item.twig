@@ -1,0 +1,22 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  <div class="accordion">
+    <div class="arrow plus">
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: "plus",
+        icon_url: icon_url,
+        icon_modifiers: []
+      } %}
+    </div>
+    <div class="arrow minus">
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: "minus",
+        icon_url: icon_url,
+        icon_modifiers: []
+      } %}
+    </div>
+    <div class="accordion-title">{{ expand_collapse_item_heading }}</div>
+  </div>
+  <div class="panel">
+    <div class="panel-content">{{ expand_collapse_item_description }}</div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+medium_hero_base_class: "medium-hero"
+medium_hero_extra_classes: ["sg-container"]
+medium_hero__image__src: "https://placeimg.com/700/416/any"
+medium_hero__image__alt: "Image alt"
+is_title_h1: true
+read_more_link_text: "קרא עוד"
+read_more_link_link: "https://readmore.com"
+label: "מכינות"
+sub_title: "לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג'יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו' - במקום הטקסט האמיתי הסופי - עד שיהיה טקסט אמיתי."
+link_title: "כל המידע אודות לימודים באקדמיה"
+link_url: "https://google.com"
+link_sec_content: "לתחומי הלימוד"
+link_sec_url: "https://facebook.com"
+link_sec_content2: "לתחומי הלימוד"
+link_sec_url2: "https://google.com"
+

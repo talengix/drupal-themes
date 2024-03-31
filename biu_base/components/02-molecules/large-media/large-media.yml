@@ -1,0 +1,7 @@
+large_media__base_class: 'large-media'
+large_media__modifiers: ['full']
+image_link__base_class: 'large-media-image'
+large_media_label: 'דברים גדולים קורים בבר אילן'
+large_media_subtitle: 'ברוכים הבאים לאוניברסיטת בר אילן'
+image_link__image__src: 'https://placeimg.com/1365/700/any'
+image_link__image__alt: "Large Media image"

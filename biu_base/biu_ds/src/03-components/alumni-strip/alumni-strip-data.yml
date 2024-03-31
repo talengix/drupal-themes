@@ -1,0 +1,36 @@
+items:
+  - card__image: '<picture class="image"><img src="https://placeimg.com/310/312/alumni" alt="This is the alt text"></picture>'
+    card__image__alt: "This is the card image's alt text"
+    card__link_url: /
+    card__heading: '1. רות כהן'
+    card__subheading: 'מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי'
+    card__content: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות'
+  - card__image: '<picture class="image"><img src="https://placeimg.com/310/312/tech" alt="This is the alt text"></picture>'
+    card__image__alt: "This is the card image's alt text"
+    card__link_url: /
+    card__heading: '2. נעמי בועזיה'
+    card__subheading: 'מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי'
+    card__content: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות'
+  - card__image: '<picture class="image"><img src="https://placeimg.com/310/312/tech" alt="This is the alt text"></picture>'
+    card__image__alt: "This is the card image's alt text"
+    card__link_url: /
+    card__heading: '3. נעם גילאור'
+    card__subheading: 'מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי'
+    card__content: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות'
+  - card__image: '<picture class="image"><img src="https://placeimg.com/310/312/tech" alt="This is the alt text"></picture>'
+    card__image__alt: "This is the card image's alt text"
+    card__link_url: /
+    card__heading: '4. ראובן בן-בסט'
+    card__subheading: 'מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי'
+    card__content: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'
+  - card__image: '<picture class="image"><img src="https://placeimg.com/310/312/tech" alt="This is the alt text"></picture>'
+    card__image__alt: "This is the card image's alt text"
+    card__link_url: /
+    card__heading: '5. ניר בר-טנא'
+    card__subheading: 'מודעות, אתרי אינטרנט וכו'' - במקום הטקסט האמיתי הסופי'
+    card__content: 'לורם איפסום הוא כינוי לטקסט חסר משמעות לחלוטין - הנקרא לפעמים גם דמי טקסט או ג''יבריש - ומיועד להיות ממוקם בסקיצות עיצוביות - של עלונים, מגזינים, מודעות, אתרי אינטרנט וכו'
+component_modifiers: []
+component_blockname: ''
+view_title: "מה עושים בוגרינו?"
+component__read_more_url:  "/alumni"
+component__read_more_title: "לבוגרים נוספים"

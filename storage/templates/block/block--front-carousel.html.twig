@@ -1,0 +1,61 @@
+{#
+/**
+* @file
+* Template for a block.
+*/
+#}
+
+{{ attach_library('storage/front-carousel') }}
+
+{% embed '@storage/block/block.twig' with {
+  html_tag: 'div',
+} %}
+
+  {% block content %}
+    <div class="front-carousel">
+      <div id="carousel-front" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          {% for item in content['#block_content'].field_items %}
+            {% if loop.first %}
+              <button type="button" data-bs-target="#carousel-front" data-bs-slide-to="{{loop.index - 1}}" class="active" aria-current="true" aria-label="Slide {{loop.index}}"></button>
+            {% else %}
+              <button type="button" data-bs-target="#carousel-front" data-bs-slide-to="{{loop.index - 1}}" aria-current="true" aria-label="Slide {{loop.index}}"></button>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="carousel-inner">
+          {% for item in content['#block_content'].field_items %}
+            {% set carousel = item.entity %}
+
+            {% if loop.first %}
+              <div class="carousel-item active id-{{loop.index - 1}}" style="background-image: url({{ file_url(carousel.field_image.entity.uri.value) }})">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="text">
+                      <h1>{{ carousel.field_headline.value }}</h1>
+                      <p>{{ carousel.field_card_text.value | raw }}</p>
+                      {{ link(carousel.field_link.0.title, carousel.field_link.0.uri, {'class': ['btn', 'btn-primary']}) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="carousel-item id-{{loop.index - 1}}" style="background-image: url({{ file_url(carousel.field_image.entity.uri.value) }})">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="text">
+                      <h1>{{ carousel.field_headline.value }}</h1>
+                      <p>{{ carousel.field_card_text.value | raw }}</p>
+                      {{ link(carousel.field_link.0.title, carousel.field_link.0.uri, {'class': ['btn', 'btn-primary']}) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  {% endblock %}
+{% endembed %}

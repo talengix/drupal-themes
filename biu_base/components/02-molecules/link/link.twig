@@ -1,0 +1,13 @@
+<div {{ bem(link_container_base_class, link_container_modifiers, link_container_blockname) }}>
+  {% include "@atoms/links/link/link.twig" with {
+    link_url: item__url,
+    link_attributes: {'title': item__link_title},
+    link_content: item__content,
+    link_base_class: link_base_class,
+    link_modifiers: link_modifiers
+  } %}
+  {% include "@atoms/images/icons/_icon.twig" with {
+    icon_name: 'arrow-small-green-regular',
+    icon_url: item__icon_url
+  } %}
+</div>

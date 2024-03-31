@@ -1,0 +1,108 @@
+{{ attach_library('biu_base/cards-grid-strip') }}
+{% if (card_grid_styles == "faculty") %}
+  {% if (card_grid_feature_text_body) %}
+    {% set card_grid_modifiers = ['feature-text'] %}
+  {% else %}
+    {% set card_grid_modifiers = ['faculty'] %}
+  {% endif %}
+{% else %}
+  {% set card_grid_feature_text_body = "" %}
+{% endif %}
+<div {{ bem(card_grid_base_class, card_grid_modifiers, card_grid_blockname, card_grid_extra_classes) }}>
+  {% if not card_grid_feature_text_body %}
+    {% if grid_label %}
+      {% include "@atoms/text/headings/_heading.twig" with {
+        "heading_level": 3,
+        "heading": grid_label,
+        "heading_base_class": "grid-heading",
+        "heading_modifiers": [],
+      } %}
+    {% endif %}
+  {% endif %}
+  {% if card_grid_styles == "faculty" %}
+    <div class="cards-content">
+  {% else %}
+    <div class="swiper-container swiper-cards-grid cards-content">
+    <div class="cards-grid-nav">
+        <div class="swiper-button-prev">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'large-arrow',
+            icon_url: '/themes/custom/biu_base/dist/icons.svg'
+          } %}
+        </div>
+        <div class="swiper-button-next">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'large-arrow',
+            icon_url: '/themes/custom/biu_base/dist/icons.svg'
+          } %}
+        </div>
+      </div>
+  {% endif %}
+    {% if card_grid_feature_text_body %}
+      <div class="card-grid feature-text-block">
+        {% if grid_label %}
+          {% include "@atoms/text/headings/_heading.twig" with {
+            "heading_level": 3,
+            "heading": grid_label,
+            "heading_modifiers": [],
+            "adiitional_classes": "grid-heading"
+          } %}
+        {% endif %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 5,
+          "heading": card_grid_feature_text_title,
+          "heading_modifiers": [],
+          "adiitional_classes": "grid-subheading"
+        } %}
+
+        {% if card_grid_feature_text_body %}
+          <p class="grid-featured-body">
+            {{ card_grid_feature_text_body }}
+          </p>
+        {% endif %}
+
+      </div>
+    {% endif %}
+
+    {% block grid_content %}
+      {% if card_grid_styles == "interest_domains" %}
+        <div class="swiper-wrapper">
+      {% endif%}
+      {% for item in items %}
+        {% if card_grid_styles == "faculty" %}
+        {% include "@molecules/card/card-grid-faculty.twig" with {
+          card__base_class: "card-grid",
+          card__content__modifiers: [],
+          card__image: item.img,
+          card__heading: item.card_heading,
+          card__heading__modifiers: [],
+          card__link__url: item.card_link_url,
+          card__link__attributes: {"title" : item.card_link_title},
+          card__link__text: item.card_link_title,
+          card__link__url2: item.card_link_url2,
+          card__link__text2: item.card_link_title2,
+          card__modifiers: item.card_modifier,
+          card__extra_classes: card_grid_styles == "interest_domains" ? ['swiper-slide'] : []
+        } %}
+      {% else %}
+        {% include "@molecules/card/card-grid.twig" with {
+          card__base_class: "card-grid",
+          card__content__modifiers: [],
+          item__icon_url: item.icon_url,
+          card__image: item.img,
+          card__heading: item.card_heading,
+          card__heading__modifiers: [],
+          card__link__url: item.card_link_url,
+          card__link__attributes: {"title" : item.card_link_title},
+          card__link__text: item.card_link_title,
+          card__modifiers: item.card_modifier,
+          card__extra_classes: card_grid_styles == "interest_domains" ? ['swiper-slide'] : []
+        } %}
+        {% endif %}
+      {% endfor %}
+      {% if card_grid_styles == "interest_domains" %}
+        </div>
+      {% endif%}
+    {% endblock %}
+  </div>
+</div>

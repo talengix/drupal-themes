@@ -1,0 +1,5 @@
+# Schema for the configuration files of the storage theme.
+
+storage.settings:
+  type: theme_settings
+  label: 'storage settings'

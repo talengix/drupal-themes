@@ -1,0 +1,47 @@
+<input type="radio" id="{{tab_id}}" name="tab" {% if tab_active %} checked {% endif %}>
+<label class="tabButton" for="{{ tab_id }}">{{ tab_heading }}<span class="tab_arrow_icon"></span></label>
+
+<div {{ bem(horizontal_tab_base_class, horizontal_tab_modifiers, horizontal_tab_blockname, horizontal_tab_extra_classes) }}>
+  <div class="content">
+    <p>{{ tab_content|striptags('<br><a><div><b><em><strong>')|raw }}</p>
+    {% if link_1_url %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: link_1_title,
+        item__url: link_1_url,
+        item__link_title: link_1_title,
+        link_base_class: "link",
+        link_modifiers: [],
+        link_container_base_class: "horizontal-tab-link",
+        link_container_modifiers: [],
+        item__icon_url: "/themes/custom/biu_base/dist/icons.svg",
+        is_external: link_1_is_external,
+      } %}
+    {% endif %}
+    {% if link_2_url %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: link_2_title,
+        item__url: link_2_url,
+        item__link_title: link_2_title,
+        link_base_class: "link",
+        link_modifiers: [],
+        link_container_base_class: "horizontal-tab-link",
+        link_container_modifiers: [],
+        item__icon_url: "/themes/custom/biu_base/dist/icons.svg",
+        is_external: link_2_is_external,
+      } %}
+    {% endif %}
+    {% if link_3_url %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: link_3_title,
+        item__url: link_3_url,
+        item__link_title: link_3_title,
+        link_base_class: "link",
+        link_modifiers: [],
+        link_container_base_class: "horizontal-tab-link",
+        link_container_modifiers: [],
+        item__icon_url: "/themes/custom/biu_base/dist/icons.svg",
+        is_external: link_3_is_external,
+      } %}
+    {% endif %}
+  </div>
+</div>

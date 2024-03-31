@@ -1,0 +1,38 @@
+.overflow-block {
+  &__card {
+    position: relative;
+    margin: 0 15px;
+
+    @include ds-breakpoint($bp-desk){
+      margin: 0;
+    }
+  }
+
+  &__card-image {
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      background-color: $black;
+      opacity: 0.6;
+    }
+  }
+
+  &__card-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $white;
+    position: absolute;
+    top: calc(50% - 24px);
+    margin-bottom: 0;
+    width: 100%;
+    text-align: center;
+  }
+}

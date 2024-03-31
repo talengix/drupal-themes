@@ -1,0 +1,41 @@
+{# Main gallery #}
+<!-- If we need pagination -->
+<div class="swiper-pagination"></div>
+
+<!-- Slider main container -->
+<div class="swiper gallery-swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {% for item in items %}
+      <div class="swiper-slide">
+        <figure class="gallery-slide-item">
+          {{item.image}}
+          <figcaption>
+            <div class="current-item"> {{item.weight}} </div>
+            <div class="caption">{{item.description}}</div>
+          </figcaption>
+        </figure>
+      </div>
+    {% endfor %}
+  </div>
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+
+{# Thumbnail gallery #}
+<!-- Slider main container -->
+<div class="swiper thumbnail-swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {% for item in items %}
+      <div class="swiper-slide">
+        {{item.thumbnail}}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+

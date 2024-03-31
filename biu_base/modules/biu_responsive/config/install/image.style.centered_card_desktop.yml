@@ -1,0 +1,17 @@
+uuid: 889788f7-f109-4857-b200-16d6a416461a
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: centered_card_desktop
+label: 'Centered card - desktop'
+effects:
+  77115dae-3486-4d1f-9190-646f88a0b3c4:
+    uuid: 77115dae-3486-4d1f-9190-646f88a0b3c4
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 276
+      height: 128
+      crop_type: focal_point

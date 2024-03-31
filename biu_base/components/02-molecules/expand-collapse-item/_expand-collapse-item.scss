@@ -1,0 +1,167 @@
+.expand-collapse-item {
+  width: 100vw;
+  position: relative;
+  right: -28px;
+
+  body[dir="ltr"] & {
+    right: auto;
+    left: -28px;
+  }
+
+  &:first-of-type {
+    border-top: 1px solid;
+  }
+
+  .accordion {
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.4s;
+    color: $dark-green;
+    border-bottom: 1px solid;
+    padding: 9px 28px 9px 38px;
+    position: relative;
+
+    .accordion-title {
+      width: 94%;
+    }
+
+    body[dir="ltr"] & {
+      padding: 9px 38px 9px 28px;
+    }
+
+    .arrow.plus {
+      background-color: $dark-green;
+      -webkit-mask: url('/themes/custom/biu_base/assets/images/arrows/dropdown.svg') no-repeat center;
+    }
+
+    .arrow.minus {
+      display: none;
+      background-color: $dark-green;
+      -webkit-mask: url('/themes/custom/biu_base/assets/images/arrows/dropdown.svg') no-repeat center;
+      transform: rotate(180deg);
+    }
+
+    .arrow {
+      position: absolute;
+      left: 38px;
+      font-size: 20px;
+      color: $bar-ilan-green;
+
+      body[dir="ltr"] & {
+        right: 38px;
+        left: auto;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .accordion.active {
+    border-bottom: none;
+    color: $jungle-green;
+    font-weight: 500;
+
+    .arrow.plus {
+      display: none;
+    }
+
+    .arrow.minus {
+      display: block;
+    }
+  }
+
+  .panel {
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    p {
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $dark-green;
+      margin: 0;
+    }
+
+    .panel-content {
+      padding: 0 28px 12px;
+      border-bottom: 1px solid;
+      .text-long a {
+        color: $jungle-green;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    width: 100%;
+    right: auto;
+    body[dir="ltr"] & {
+      left: auto;
+    }
+    .accordion {
+      padding: 17px 0;
+      body[dir="ltr"] & {
+        padding: 17px 0;
+      }
+
+      .arrow {
+        left: 10px;
+
+        body[dir="ltr"] & {
+          right: 10px;
+        }
+      }
+
+      .arrow.plus {
+        display: block;
+        background-color: $dark-green;
+        -webkit-mask: url('/themes/custom/biu_base/assets/images/icons/plus.svg') no-repeat center;
+      }
+
+      .arrow.minus {
+        display: none;
+      }
+    }
+    .panel {
+
+      p {
+        font-size: 20px;
+      }
+      .panel-content {
+        padding: 0 0 21px 100px;
+
+        body[dir="ltr"] & {
+          padding: 0 100px 21px 0;
+        }
+      }
+    }
+    .accordion.active {
+      border-bottom: none;
+      color: $jungle-green;
+      font-weight: 500;
+
+      .arrow.plus {
+        display: none;
+      }
+
+      .arrow.minus {
+        display: block;
+        background-color: $dark-green;
+        -webkit-mask: url('/themes/custom/biu_base/assets/images/icons/minus.svg') no-repeat center;
+      }
+    }
+  }
+}

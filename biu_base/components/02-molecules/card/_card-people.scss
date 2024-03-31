@@ -1,0 +1,68 @@
+.card-people {
+  a {
+    text-decoration: none;
+    @include grid-breakpoint($mq-tab-wide, tab-wide) {
+      display: flex;
+    }
+  }
+  .card-people__content {
+    background-color: $pale-green;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 17px;
+    padding-bottom: 32px;
+
+    .card-people__heading {
+      margin: 0;
+      font-size: 28px;
+      color: $color-heading;
+      margin-bottom: 9px;
+    }
+
+    .card-people__subheading {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: normal;
+      margin: 0;
+      color: $color-heading;
+    }
+
+    .small-border {
+      width: 56px;
+      border-bottom: 1px solid $bar-ilan-green;
+      margin-top: 21px;
+      margin-bottom: 24px;
+      margin-right: 1px;
+    }
+
+    .card-people__body {
+      margin: 0;
+      color: $dark-green;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    picture.image {
+      float: right;
+      width: span(3 of 8);
+    }
+
+    .card-people__content {
+      width: span(5 of 8);
+      float: right;
+      padding-top: 47px;
+      padding-bottom: 42px;
+
+      .card-people__heading {
+        font-size: 32px;
+        font-weight: 500;
+      }
+
+      .card-people__subheading {
+        font-size: 20px;
+      }
+    }
+  }
+}

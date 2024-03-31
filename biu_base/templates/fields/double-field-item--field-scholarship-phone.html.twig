@@ -1,0 +1,8 @@
+{% for subfield, subitem in item %}
+  {% if subitem -%}
+    <div class="double-field-{{ subfield }}">
+      {{- subitem|nl2br -}}
+      {% if loop.first %}:{% endif %}
+    </div>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ *
+ * @see template_preprocess_block()
+ */
+#}
+<div {{ bem('block', [], '','medium-hero-block') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% if content.field_video['#items'].value is not empty %}
+      {% set video_link = content.field_video %}
+    {% endif %}
+    {% include "@ds_components/medium-hero/medium-hero.twig" with {
+      "medium_hero__image": content['field_featured_image'][0]['#item']|view,
+      "label": label,
+      "sub_title": content['field_description']['#items'][0].value,
+      "link_url": content['#block_content'].field_link.0.url,
+      "link_title": content['field_link']['#items'][0].title,
+      "link_sec_url": content['#block_content'].field_secondary_link.0.url,
+      "link_sec_content": content['field_secondary_link']['#items'][0].title,
+      "link_sec_external": content['field_secondary_link']['#items'][0].isExternal,
+      "is_title_h1": content['field_is_title_h1']['#items'][0].value,
+      "medium_hero_base_class": "medium-hero",
+      "medium_hero_modifiers": [],
+      "medium_hero_extra_classes": "clearfix",
+      "icon_url" : "/themes/custom/biu_base/dist/icons.svg",
+      "video_link" : video_link,
+    } %}
+  {% endblock %}
+</div>

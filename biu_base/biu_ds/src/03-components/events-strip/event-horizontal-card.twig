@@ -1,0 +1,68 @@
+<article {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+    <div class="event-horizontal-card--wrapper">
+        <div class="left-column">
+            <a href="{{ item_url }}">
+                <div class="banner-image--wrapper">
+                    <div class="event-date--wrapper">
+                        <div class="event-date--day">
+                            {{ event_start_date_day }}
+                        </div>
+                        <div class="event-date--month">
+                            {{ event_start_date_month|t }}
+                        </div>
+                    </div>
+                    <div class="event--mode">{{ event_mode }}</div>
+                    <img class="banner-image--img" src="{{ image_src }}" alt="{{ image_alt }}"/>
+                </div>
+            </a>
+        </div>
+        <div class="banner-content-wrapper">
+            <div class="banner-content-wrapper--left">
+                <a href={{ item_url }}>
+                    <div class="event--type"> {{ type }}</div>
+                    <h1 class="event--title">{{ label }}</h1>
+                    <h3 class="event--subtitle">{{ sub_title }}</h3>
+                    <div class="event--cost-meta desktop-only"><span>{{ cost }} | {{ invite|t }}</span></div>
+                </a>
+            </div>
+            <div class="banner-content-wrapper--right">
+                <div class="event-date-display--wrapper">
+                    <div class="event-date-display--one">{{ event_date_display_one }}</div>
+                    <div class="event-date-display--two">{{ event_date_display_two }}</div>
+                </div>
+                <div class="event-date-display--time">{{ event_time_display }}</div>
+                <div class="event--cost-meta mobile-only"><span>{{ cost }} | {{ invite|t }}</span></div>
+                {% if calendar__links %}
+                    <div class="event-calendar-links">
+                        {% include "@ds_elements/links/link/link-with-icon.twig" with {
+                            link_icon__base_class: "event-calendar-links--toggle",
+                            link_icon__modifiers: [],
+                            link_icon__additional_classes: [],
+                            link_icon__url: "javascript:void(0)",
+                            link_attributes: {'title':'Save in calendar'|t},
+                            item__name: "download",
+                            link_icon_text: 'Save in calendar'|t,
+                            icon_full_url: download_icon_full_url,
+                            link_modifiers: [],
+                        } %}
+                        <ul class="event-calendar-links--dropdown">
+                            {% for link in calendar__links %}
+                                <li>
+                                    <a href="{{ link.url }}" target="_blank"> {{ link.type_name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="arrow-link">
+                    {% include "@ds_elements/images/icon/_icon.twig" with {
+                        "icon_name": 'arrow-dark-left',
+                        "icon_base_class": 'arrow-link--icon',
+                        "icon_modifiers": [],
+                        "icon_full_url": arrow_icon_full_url,
+                    } %}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

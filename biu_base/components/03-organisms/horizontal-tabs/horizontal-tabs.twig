@@ -1,0 +1,22 @@
+<div {{ bem(horizonta_tabs_base_class, horizontal_tabs_modifiers, horizontal_tabs_blockname, horizontal_tabs_extra_classes) }}>
+  {% for item in items %}
+    {% include "@molecules/horizontal-tab/horizontal-tab.twig" with {
+      horizontal_tab_base_class: "horizontal-tab",
+      horizontal_tab_modifiers: [],
+      horizontal_tab_extra_classes: ["tab"],
+      tab_id: item.tab_id,
+      tab_active: item.tab_active,
+      tab_heading: item.tab_heading,
+      tab_content: item.tab_content,
+      link_1_url: item.link_1_url,
+      link_1_title: item.link_1_title,
+      link_1_is_external: item.link_1_is_external,
+      link_2_url: item.link_2_url,
+      link_2_title: item.link_2_title,
+      link_2_is_external: item.link_2_is_external,
+      link_3_url: item.link_3_url,
+      link_3_title: item.link_3_title,
+      link_3_is_external: item.link_3_is_external,
+    } %}
+  {% endfor %}
+</div>

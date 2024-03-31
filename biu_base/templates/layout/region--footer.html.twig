@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Theme override to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @see template_preprocess_region()
+ */
+#}
+
+{% if group_page_info is null %}
+
+{% else %}
+  {% set social_links = group_page_info.footer.social_links %}
+
+  {% embed "@organisms/site/subsite-footer/subsite-footer.twig" with {
+    "social_block_label": "Follow us"|t,
+    "instagram_icon_link": social_links['instagram'],
+    "facebook_icon_link": social_links['facebook'],
+    "linkedin_icon_link": social_links['linkedin'],
+    "twitter_icon_link": social_links['twitter'],
+    "youtube_icon_link": social_links['youtube'],
+    "external_site_link": social_links['external_site'],
+    "address": group_page_info.footer.address,
+    "phone": group_page_info.footer.phone,
+    "fax": group_page_info.footer.fax,
+    "free_text": group_page_info.footer.free_text,
+    "email": group_page_info.footer.email,
+    "icon__url" : "/themes/custom/biu_base/dist/icons.svg",
+  }%}
+  {% endembed %}
+
+{% endif %}

@@ -1,0 +1,50 @@
+<div {{ bem(catalog_banner_class,catalog_banner__modifiers,catalog_banner__blockname,catalog_banner__extra_classes) }}>
+  {# Image #}
+  <div class ="catalog-image">
+    {{ catalog__image }}
+  </div>
+  <div class ="catalog-content">
+      {# Heading#}
+      {% if catalog_banner_heading %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          heading_base_class: catalog_banner_heading_base_class|default('heading'),
+          heading_level: 3,
+          heading_modifiers: [],
+          heading: catalog_banner_heading,
+        } %}
+      {% endif %}
+
+      {# Sub Heading#}
+      {% if catalog_banner_sub_heading %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          heading_base_class: catalog_banner_sub_heading_base_class|default('heading'),
+          heading_level: 4,
+          heading_modifiers: [],
+          heading: catalog_banner_sub_heading,
+        } %}
+      {% endif %}
+
+      {#Body#}
+      {% if catalog_banner__body %}
+        {% include "@atoms/text/text/01-paragraph.twig" with {
+          paragraph_base_class: catalog_banner__body__base_class|default('body'),
+          paragraph_modifiers: [],
+          paragraph_blockname: catalog_banner__body__base_class,
+          paragraph_content: catalog_banner__body,
+        } %}
+      {% endif %}
+
+      {#Link#}
+      {% if catalog_banner__link__url %}
+        {% include "@molecules/link/arrow-link.twig" with {
+          item__content: catalog_banner__link__text,
+          item__url: catalog_banner__link__url,
+          item__link_title: catalog_banner__link__text,
+          link_container_base_class: "catalog-banner-link",
+          link_container_modifiers: [],
+          link_modifiers: [],
+          arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json"
+        } %}
+      {% endif %}
+  </div>
+</div>

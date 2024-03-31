@@ -1,0 +1,17 @@
+<div {{ bem(footer_social__base_class, footer_social__modifiers, footer_social__blockname, footer_social__extra_classes) }}>
+  {% embed "@atoms/links/link/link.twig" with {
+    link_url: social__url,
+    link_base_class: 'footer-social',
+    link_modifiers: [],
+    link_attributes: social__link_title,
+    link_alt: link__alt
+  } %}
+    {% block link_content %}
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: item__name,
+        icon_modifiers: [],
+        icon_url: icon_url
+      } %}
+    {% endblock %}
+  {% endembed %}
+</div>

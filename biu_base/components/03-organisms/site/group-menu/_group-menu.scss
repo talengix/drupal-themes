@@ -1,0 +1,58 @@
+.grpmenu {
+  background-color: $jungle-green;
+  width: 100%;
+
+  @include grid-breakpoint($mq-desk, desk) {
+    position: fixed;
+    top: 106px;
+    z-index: 99;
+
+    .toolbar-fixed:not(.toolbar-tray-open) & {
+      top: 145px;
+    }
+
+    .toolbar-fixed.toolbar-tray-open & {
+      top: 185px;
+    }
+    
+  }
+
+  &__inner {
+    @include large {
+      flex-direction: row;
+    }
+
+  }
+
+}
+
+.grpmenu__menu {
+  @include large {
+    flex: 1 1 100%;
+    margin: 0 auto;
+  }
+
+}
+
+.grpmenu__menu ul.menu {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.grpmenu__menu ul.menu li {
+  line-height: 3;
+  display: inline-block;
+}
+
+.grpmenu__menu ul.menu li>a {
+  padding: 0 0.6em;
+  font-size: 14px;
+  color: $pale-green;
+  text-decoration: none;
+  display: block;
+}
+
+.grpmenu__menu ul.menu li>a:hover,
+.grpmenu__menu ul.menu li>a.is-active {
+  background-color: rgba(255, 255, 255, 0.07);
+}

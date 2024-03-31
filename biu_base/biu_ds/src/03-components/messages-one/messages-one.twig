@@ -1,0 +1,40 @@
+{% set component_blockname = 'messages' %}
+
+<div {{bem('wrap', 'one', component_blockname, messages_additional_classes)}}>
+  <div {{bem('slides', [], component_blockname)}}>
+    <div {{bem('title', [], component_blockname)}}>
+      <h1>{{ messages_title }}</h1>
+      <div {{bem('control', [], component_blockname)}}>
+        <div class="messages__control--prev-button">
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+                "icon_name": 'large-arrow',
+                "icon_base_class": 'arrow-link--icon',
+                "icon_modifiers": [],
+            } %}
+        </div>
+        <div class="messages__control--next-button">
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+                "icon_name": 'large-arrow',
+                "icon_base_class": 'arrow-link--icon',
+                "icon_modifiers": ['right'],
+            } %}
+        </div>
+      </div>
+    </div>
+    <div class="swiper">
+      <div {{bem('content', [], component_blockname, ['swiper-wrapper'])}}>
+        {% for item in items %}
+          {% include "@ds_patterns/message-one/message-one.twig" with {
+            title: item.title,
+            text: item.text,
+            link: item.link,
+            is_external: item.is_external,
+            date: item.date,
+            link_title: item.link_title,
+            extra_classes: []
+          } %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

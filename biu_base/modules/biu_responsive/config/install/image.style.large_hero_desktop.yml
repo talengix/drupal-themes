@@ -1,0 +1,17 @@
+uuid: f5d674c5-ddb8-4f1e-a755-c8a61fa41e48
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: large_hero_desktop
+label: 'Large hero - desktop'
+effects:
+  7076c808-384d-4460-9e70-bace22339039:
+    uuid: 7076c808-384d-4460-9e70-bace22339039
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1900
+      height: 668
+      crop_type: focal_point

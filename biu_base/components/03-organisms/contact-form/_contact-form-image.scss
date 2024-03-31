@@ -1,0 +1,130 @@
+.block--contact-form-image {
+  padding: 60px 0;
+  background-color: $pale-green;
+
+  .background-color-biu-green & {
+    background-color: $bar-ilan-green;
+  }
+
+  .background-color-gray & {
+    background-color: $light-grey;
+    .form-item input {
+      background-color: $light-grey;
+    }
+
+    .form-item textarea {
+      background-color: $light-grey;
+    }
+  }
+
+  .background-color-white & {
+    background-color: $white;
+    .form-item input {
+      background-color: $white;
+    }
+
+    .form-item textarea {
+      background-color: $white;
+    }
+  }
+
+  .background-color-pale-green & {
+    background-color: $pale-green;
+    .form-item input {
+      background-color: $pale-green;
+    }
+
+    .form-item textarea {
+      background-color: $pale-green;
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 0;
+    line-height: 1;
+
+    .dark-section & {
+      color: $white;
+    }
+  }
+
+  .field--name-field-image {
+    img {
+      width: 100%;
+      @include grid-breakpoint($mq-desk, desk) {
+        max-width: 632px;
+        float: left;
+      }
+    }
+  }
+  .form-item {
+    input {
+      width: 100%;
+      height: 48px;
+      margin-bottom: 15px;
+      border-radius: 24px;
+      border: 1px solid $dark-green;
+    }
+
+    textarea {
+      margin-bottom: 15px;
+      border-radius: 24px;
+      border: 1px solid $dark-green;
+    }
+  }
+
+  .contact-form {
+    max-width: 433px;
+    margin-bottom: 40px;
+    @include grid-breakpoint($mq-desk, desk) {
+      margin-bottom: 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .webform-button--submit {
+      background-color: $jungle-green;
+      font-size: 1rem;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      padding: 10px 16px 10px 30px;
+      text-align: right;
+      width: 100%;
+      margin: 0;
+      text-transform: inherit;
+      border: 0;
+
+      body[dir="ltr"] & {
+        text-align: left;
+      }
+    }
+  }
+
+  .animation-container {
+    position: relative;
+    svg {
+      width: 25px !important;
+      height: 15px !important;
+      position: absolute;
+      left: 30px;
+      top: 11px;
+
+      body[dir="ltr"] & {
+        right: 30px;
+        left: auto;
+        transform: rotate(180deg) translate3d(0, 0, 0) !important;
+      }
+    }
+  }
+}

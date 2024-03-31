@@ -1,0 +1,58 @@
+.statistics-cards {
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  .statistics-cards-heading {
+    h2 {
+      font-size: 32px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      margin: 0;
+    }
+  }
+
+  .statistics-cards-content {
+    .statistics-card {
+      float: none;
+
+      picture {
+        img {
+          margin: 55px auto 0;
+          display: block;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    .statistics-cards-heading {
+      h2 {
+        font-size: 40px;
+        line-height: 1.2;
+        margin: 0 0 31px;
+      }
+    }
+    .statistics-cards-content {
+      display: flex;
+      margin: 0 auto;
+      text-align: center;
+
+      .statistics-card {
+        display: inline-block;
+        width: 100%;
+        padding: 0 16px;
+
+        picture {
+          img {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

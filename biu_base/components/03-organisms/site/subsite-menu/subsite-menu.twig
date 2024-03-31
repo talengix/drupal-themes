@@ -1,0 +1,13 @@
+{% set grpmenu__base_class = 'subsite-menu' %}
+
+<aside {{ bem(grpmenu__base_class) }}>
+  <div {{ bem('inner', [], grpmenu__base_class) }}>
+    <div {{ bem('menu', [], header__base_class) }}>
+      {% block subsite_menu %}
+        {% include "@molecules/menus/main-menu/main-menu.twig"  with {
+          language_link: language_link
+        }%}
+      {% endblock %}
+    </div>
+  </div>
+</aside>

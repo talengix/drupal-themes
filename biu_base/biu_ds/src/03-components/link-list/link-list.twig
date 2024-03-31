@@ -1,0 +1,69 @@
+<div {{ bem(link_list_base_class, link_list_modifiers, link_list_blockname, link_list_extraclass) }}>
+  <div class="container">
+    <div class="heading"><h4>{{ block_title }}</h4></div>
+    <div class="row">
+      <div class="link-col col-md-4">
+        {% set break = 0 %}
+        {% if items|length > 3 %}
+          {% for item in items if break < 4 %}
+            {% include "@ds_elements/links/link/arrow-link.twig" with {
+              item__content: item.link_content,
+              item__url: item.link_url,
+              item__link_title: item.link_title,
+              link_base_class: "link",
+              link_container_base_class: "link-container",
+              link_container_modifiers: ['list'],
+              is_external: item.is_external,
+              item__icon_url: item.icon_url,
+              link_modifiers: [],
+            } %}
+            {% set items = items|slice(1) %}
+            {% set break = break + 1 %}
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="link-col col-md-4">
+        {% set break = 0 %}
+        {% if items|length > 0 %}
+          {% for item in items if break < 4 %}
+            {% include "@ds_elements/links/link/arrow-link.twig" with {
+              item__content: item.link_content,
+              item__url: item.link_url,
+              item__link_title: item.link_title,
+              link_base_class: "link",
+              link_container_base_class: "link-container",
+              link_container_modifiers: ['list'],
+              is_external: item.is_external,
+              item__icon_url: item.icon_url,
+              link_modifiers: [],
+            } %}
+            {% set items = items|slice(1) %}
+            {% set break = break + 1 %}
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="link-col col-md-4">
+        {% set break = 0 %}
+        {% if items|length > 0 %}
+          {% for item in items if break < 4 %}
+            {% include "@ds_elements/links/link/arrow-link.twig" with {
+              item__content: item.link_content,
+              item__url: item.link_url,
+              item__link_title: item.link_title,
+              link_base_class: "link",
+              link_container_base_class: "link-container",
+              link_container_modifiers: ['list'],
+              is_external: item.is_external,
+              item__icon_url: item.icon_url,
+              link_modifiers: [],
+            } %}
+            {% set items = items|slice(1) %}
+            {% set break = break + 1 %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Template for a block.
+ */
+#}
+
+{{ attach_library('storage/accordion') }}.
+
+{% embed '@storage/block/block.twig' with {
+  html_tag: 'div',
+} %}
+  {% block content %}
+  <p>{{content.body[0]}}</p>
+
+  {% set accordion_id = content['#block_content'].id.value %}
+
+  <div class="accordion" id="accordion-{{accordion_id}}">
+  {% for item in content['#block_content'].field_faqs %}
+    {% set accordion = item.entity %}
+
+    {% if loop.first %}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-{{loop.index}}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{loop.index}}" aria-expanded="true" aria-controls="collapse-{{loop.index}}">
+            {{accordion.field_title.value}}
+          </button>
+        </h2>
+        <div id="collapse-{{loop.index}}" class="accordion-collapse collapse show" aria-labelledby="heading-{{loop.index}}" data-bs-parent="#accordion-{{accordion_id}}">
+          <div class="accordion-body">
+            {{accordion.field_card_text.value | raw}}
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-{{loop.index}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{loop.index}}" aria-expanded="false" aria-controls="collapse-{{loop.index}}">
+            {{accordion.field_title.value}}
+          </button>
+        </h2>
+        <div id="collapse-{{loop.index}}" class="accordion-collapse collapse" aria-labelledby="heading-{{loop.index}}" data-bs-parent="#accordion-{{accordion_id}}">
+          <div class="accordion-body">
+            {{accordion.field_card_text.value | raw}}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+  {% endblock %}
+{% endembed %}

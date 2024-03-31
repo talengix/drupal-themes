@@ -1,0 +1,59 @@
+grid_label: "מסלולים נוספים שיעניינו אותך"
+card_grid_base_class: "cards-grid-medium"
+card_grid_extra_classes: ["sg-container"]
+items:
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 1"
+    card_heading: "Card 1"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 2"
+    card_heading: "Card 2"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 3"
+    card_heading: "Card 3"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 4"
+    card_heading: "Card 4"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 5"
+    card_heading: "Card 5"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 6"
+    card_heading: "Card 6"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 7"
+    card_heading: "Card 7"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"
+  - img_src: 'https://placeimg.com/319/232/tech'
+    img_alt: "Item alt 8"
+    card_heading: "Card 8"
+    card_link_url: "https://google.com"
+    card_link_title: "Google link"

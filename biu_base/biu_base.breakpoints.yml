@@ -1,0 +1,16 @@
+# Breakpoints - change based on site need
+biu_base.mobile:
+  label: mobile
+  mediaQuery: 'all and (min-width: 0)'
+biu_base.tab:
+  label: tab
+  mediaQuery: 'all and (min-width: 720px)'
+biu_base.tab-wide:
+  label: tab-wide
+  mediaQuery: 'all and (min-width: 960px)'
+biu_base.desk:
+  label: desk
+  mediaQuery: 'all and (min-width: 1200px)'
+biu_base.desk-wide:
+  label: desk-wide
+  mediaQuery: 'all and (min-width: 1366px)'

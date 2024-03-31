@@ -1,0 +1,1 @@
+"use strict";(function(a){"use strict";Drupal.behaviors.calendarButton={attach:function(b){a(".calendar-links .calendar-links-toggle",b).click(function(){a(".calendar-links-dropdown",a(this).parent()).toggle()})}}})(jQuery);

@@ -1,0 +1,346 @@
+{#
+/**
+ * @file
+ * Theme override to display a node.
+ *
+ * Available variables:
+ * - node: The node entity with limited access to object properties and methods.
+ *   Only method names starting with "get", "has", or "is" and a few common
+ *   methods such as "id", "label", and "bundle" are available. For example:
+ *   - node.getCreatedTime() will return the node creation timestamp.
+ *   - node.hasField('field_example') returns TRUE if the node bundle includes
+ *     field_example. (This does not indicate the presence of a value in this
+ *     field.)
+ *   - node.isPublished() will return whether the node is published or not.
+ *   Calling other methods, such as node.delete(), will result in an exception.
+ *   See \Drupal\node\Entity\Node for a full list of public properties and
+ *   methods for the node object.
+ * - label: The title of the node.
+ * - content: All node items. Use {{ content }} to print them all,
+ *   or print a subset such as {{ content.field_example }}. Use
+ *   {{ content|without('field_example') }} to temporarily suppress the printing
+ *   of a given child element.
+ * - author_picture: The node author user entity, rendered using the "compact"
+ *   view mode.
+ * - metadata: Metadata for this node.
+ * - date: Themed creation date field.
+ * - author_name: Themed author name field.
+ * - url: Direct URL of the current node.
+ * - display_submitted: Whether submission information should be displayed.
+ * - attributes: HTML attributes for the containing element.
+ *   The attributes.class element may contain one or more of the following
+ *   classes:
+ *   - node: The current template type (also known as a "theming hook").
+ *   - node--type-[type]: The current node type. For example, if the node is an
+ *     "Article" it would result in "node--type-article". Note that the machine
+ *     name will often be in a short form of the human readable label.
+ *   - node--view-mode-[view_mode]: The View Mode of the node; for example, a
+ *     teaser would result in: "node--view-mode-teaser", and
+ *     full: "node--view-mode-full".
+ *   The following are controlled through the node publishing options.
+ *   - node--promoted: Appears on nodes promoted to the front page.
+ *   - node--sticky: Appears on nodes ordered above other non-sticky nodes in
+ *     teaser listings.
+ *   - node--unpublished: Appears on unpublished nodes visible only to site
+ *     admins.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - content_attributes: Same as attributes, except applied to the main
+ *   content tag that appears in the template.
+ * - author_attributes: Same as attributes, except applied to the author of
+ *   the node tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - view_mode: View mode; for example, "teaser" or "full".
+ * - teaser: Flag for the teaser state. Will be true if view_mode is 'teaser'.
+ * - page: Flag for the full page state. Will be true if view_mode is 'full'.
+ * - readmore: Flag for more state. Will be true if the teaser content of the
+ *   node cannot hold the main body content.
+ * - logged_in: Flag for authenticated user status. Will be true when the
+ *   current user is a logged-in member.
+ * - is_admin: Flag for admin user status. Will be true when the current user
+ *   is an administrator.
+ *
+ * @see template_preprocess_node()
+ *
+ * @todo Remove the id attribute (or make it a class), because if that gets
+ *   rendered twice on a page this is invalid CSS for example: two lists
+ *   in different view modes.
+ */
+#}
+{% set fb_share_url = 'https://www.facebook.com/sharer/sharer.php?u=' ~ url %}
+{% set twitter_share_url = 'https://twitter.com/intent/tweet?url=' ~ url %}
+{% set mail_share_url = 'mailto:?subject=I wanted you to see this Event&amp;body=Check out this site' ~ url %}
+{% set icon__url = "/themes/custom/biu_base/dist/icons.svg" %}
+<article {{ bem("node-event-full") }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  <div class="event-top-banner-wrapper">
+    <div class="left-column">
+      <div class="banner-image-wrapper mobile-only">
+        <div class="field field--name-field-event-date">
+          <div class="day">
+            {{ node.field_event_start_date.value | date('d') }}
+          </div>
+          <div class="month">
+            {{ node.field_event_start_date.value | date('F')|t }}
+          </div>
+        </div>
+        {{ content.field_featured_media_image }}
+      </div>
+      <div class="banner-content-wrapper desktop-only">
+        <div class="field field--name-field-event-date">
+          <div class="day">
+            {{ node.field_event_start_date.value | date('d') }}
+          </div>
+          <div class="month">
+            {{ node.field_event_start_date.value | date('F')|t }}
+          </div>
+        </div>
+        <h1 class="title">{{ label }}</h1>
+        <h3 class="subtitle">{{ content.field_sub_title }}</h3>
+      </div>
+    </div>
+    <div class="right-column">
+      <div class="banner-content-wrapper mobile-only">
+        <h1 class="title">{{ label }}</h1>
+        <h3 class="subtitle">{{ content.field_sub_title }}</h3>
+      </div>
+      <div class="banner-image-wrapper desktop-only">
+        {{ content.field_event_mode }}
+        {{ content.field_featured_media_image }}
+      </div>
+    </div>
+  </div>
+
+  <div class="event-content-wrapper">
+    <div class="left-column">
+      <div class="table-style-content">
+        <div class="field field-event-date clearfix">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'event-calendar',
+            icon_modifiers: [],
+            icon_url: "/themes/custom/biu_base/dist/icons.svg"
+          } %}
+          <div class="field__label">{{ 'Event date'|t }}</div>
+
+          <div class="field__item">{{ node.field_event_date_display_full.value }}
+          {% if node.field_event_date_display_two.value is not empty %}
+            |  {{ content.field_event_date_display_two }}
+          {% endif %}
+          </div>
+        </div>
+        {% if node.field_event_time_display.value is not empty %}
+          <div class="field field-event-time clearfix">
+            {% include "@atoms/images/icons/_icon.twig" with {
+              icon_name: 'event-time',
+              icon_modifiers: [],
+              icon_url: "/themes/custom/biu_base/dist/icons.svg"
+            } %}
+            <div class="field__label">{{ "Event time" |t }}</div>
+            <div class="field__item">{{ node.field_event_time_display.value }}</div>
+          </div>
+        {% endif %}
+        {% if node.field_event_location.value is not empty %}
+          <div class="field field-event-location clearfix">
+            {% include "@atoms/images/icons/_icon.twig" with {
+              icon_name: 'event-location',
+              icon_modifiers: [],
+              icon_url: "/themes/custom/biu_base/dist/icons.svg"
+            } %}
+            <div class="field__label">{{ 'Event location'|t }}</div>
+            <div class="field__item">{{ node.field_event_location.value }}</div>
+          </div>
+        {% endif %}
+        {% if node.field_zoom_link.value is not empty %}
+          <div class="field field-event-location clearfix">
+            {% include "@atoms/images/icons/_icon.twig" with {
+              icon_name: 'event-location',
+              icon_modifiers: [],
+              icon_url: "/themes/custom/biu_base/dist/icons.svg"
+            } %}
+            <div class="field__label">{{ 'Event link'|t }}</div>
+            <div class="field__item"><a href="{{ node.field_zoom_link.0.url }}" title ="{{ 'Enter the event'|t }}" target="_blank">{{ 'Enter the event'|t }}</a></div>
+          </div>
+        {% endif %}
+        <div class="field field-event-price clearfix">
+          {% set cost = node.field_event_cost.value == 'payment' ? node.field_cost_amount.0.value ~ ' ' ~ 'NIS'|t : 'No cost'|t %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'event-price',
+            icon_modifiers: [],
+            icon_url: "/themes/custom/biu_base/dist/icons.svg"
+          } %}
+          <div class="field__label">{{ "Event price" |t }}</div>
+          <div class="field__item">{{ cost }}</div>
+        </div>
+        <div class="field field-event-type clearfix">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'event-type',
+            icon_modifiers: [],
+            icon_url: "/themes/custom/biu_base/dist/icons.svg"
+          } %}
+          <div class="field__label">{{ 'Event type'|t }}</div>
+          <div class="field__item">{{ node.field_event_type.getSetting('allowed_values')[node.field_event_type.value] }}</div>
+        </div>
+      </div>
+      <div class="event-bottom-wrapper desktop-only">
+        {% if content.field_action_button_link and node.field_event_action_button.value != 'no_action' %}
+          {% if node.field_event_action_button.value == 'other' %}
+            {% set item_content = node.field_action_button_label.value ? node.field_action_button_label.value : node.field_action_button_link.0.url %}
+            {% set item_link_title = node.field_action_button_label.value ? node.field_action_button_label.value : node.field_action_button_link.0.url %}
+           {% else %}
+            {% set item_content = node.field_event_action_button.value ? content.field_event_action_button[0]['#markup'] : node.field_action_button_link.0.url %}
+            {% set item_link_title = node.field_event_action_button.value ? content.field_event_action_button[0]['#markup'] : node.field_action_button_link.0.url %}
+          {% endif %}
+          {% include "@molecules/link/arrow-link.twig" with {
+            item__content: item_content,
+            item__url: node.field_action_button_link.0.url,
+            item__link_title: item_link_title,
+            link_container_base_class: "cta-link",
+            link_container_modifiers: [],
+            link_modifiers: [],
+            arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json"
+          } %}
+
+        {% endif %}
+        {% if node.field_event_phone is not empty %}
+          {% set phone_label = node.field_event_phone.first %}
+        {% else %}
+          {% set phone_label = NULL  %}
+        {% endif %}
+        {% if (node.field_email is not empty) or (node.field_link is not empty) or (node.field_event_phone is not empty) %}
+          <div class="general_page-contact contact-page-sec">
+            {% include "@organisms/contact/contact.twig" with {
+              "contact_title": '',
+              "email": node.field_email.0.value,
+              "email_label": 'email',
+              "contact_link_title": node.field_link.title,
+              "contact_link_url": node.field_link.0.url,
+              "phone" : node.field_event_phone.second,
+              "phone_label": phone_label,
+              "is_contact_page": TRUE,
+            } %}
+          </div>
+        {% endif %}
+        <div class="social-icons">
+          <div class="title"><h3>{{ 'Share with friends'|t }}</h3></div>
+            <div class="social-icon">
+              {% include "@molecules/footer-social/footer-social.twig" with {
+                footer_social__base_class: social_base_class,
+                footer_social__modifiers: social_modifier_class,
+                social__url: fb_share_url,
+                social__link_title: { title: "Facebook" , target: "_blank"},
+                item__name: "facebook",
+                icon_url: icon__url,
+                link__alt: "facebook"
+              } %}
+            </div>
+            <div class="social-icon">
+              {% include "@molecules/footer-social/footer-social.twig" with {
+                footer_social__base_class: social_base_class,
+                footer_social__modifiers: social_modifier_class,
+                social__url: twitter_share_url,
+                social__link_title: { title: "Twitter", target: "_blank"},
+                item__name: "twitter",
+                icon_url: icon__url,
+                link__alt: "twitter"
+              } %}
+            </div>
+            <div class="social-icon">
+              {% include "@molecules/footer-social/footer-social.twig" with {
+                footer_social__base_class: social_base_class,
+                footer_social__modifiers: social_modifier_class,
+                social__url: mail_share_url,
+                social__link_title: { title: "Email", target: "_blank"},
+                item__name: "mail-bg",
+                icon_url: icon__url,
+                link__alt: "Mail"
+              } %}
+            </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="right-column">
+      {{ content.body }}
+      {{ content.field_event_accessibility_data }}
+      {{ content.field_event_comments }}
+      {{ content.field_event_program }}
+      </a>
+    </div>
+  </div>
+
+  <div class="event-bottom-wrapper mobile-only">
+    {% if content.field_action_button_link and node.field_event_action_button.value != 'no_action' %}
+      {% include "@molecules/link/arrow-link.twig" with {
+        item__content: node.field_event_action_button.value ? content.field_event_action_button[0]['#markup'] : node.field_action_button_link.0.url,
+        item__url: node.field_action_button_link.0.url,
+        item__link_title: node.field_event_action_button.value ? content.field_event_action_button[0]['#markup'] : node.field_action_button_link.0.url,
+        link_container_base_class: "cta-link",
+        link_container_modifiers: [],
+        link_modifiers: [],
+        arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json"
+      } %}
+    {% endif %}
+    {% if node.field_event_phone is not empty %}
+      {% set phone_label = node.field_event_phone.first %}
+    {% else %}
+      {% set phone_label = NULL  %}
+    {% endif %}
+    {% if (node.field_email is not empty) or (node.field_link is not empty) or (node.field_event_phone is not empty) %}
+      <div class="general_page-contact contact-page-sec">
+        {% include "@organisms/contact/contact.twig" with {
+          "contact_title": '',
+          "email": node.field_email.0.value,
+          "email_label": 'email',
+          "contact_link_title": node.field_link.title,
+          "contact_link_url": node.field_link.0.url,
+          "phone" : node.field_event_phone.second,
+          "phone_label": phone_label,
+          "is_contact_page": TRUE,
+        } %}
+      </div>
+    {% endif %}
+    <div class="social-icons">
+      <div class="title"><h3>{{ 'Share with friends'|t }}</h3></div>
+        <div class="social-icon">
+          {% include "@molecules/footer-social/footer-social.twig" with {
+            footer_social__base_class: social_base_class,
+            footer_social__modifiers: social_modifier_class,
+            social__url: fb_share_url,
+            social__link_title: { title: "Facebook" , target: "_blank"},
+            item__name: "facebook",
+            icon_url: icon__url,
+            link__alt: "facebook"
+          } %}
+        </div>
+        <div class="social-icon">
+          {% include "@molecules/footer-social/footer-social.twig" with {
+            footer_social__base_class: social_base_class,
+            footer_social__modifiers: social_modifier_class,
+            social__url: twitter_share_url,
+            social__link_title: { title: "Twitter", target: "_blank"},
+            item__name: "twitter",
+            icon_url: icon__url,
+            link__alt: "twitter"
+          } %}
+        </div>
+
+        <div class="social-icon">
+          {% include "@molecules/footer-social/footer-social.twig" with {
+            footer_social__base_class: social_base_class,
+            footer_social__modifiers: social_modifier_class,
+            social__url: mail_share_url,
+            social__link_title: { title: "Email", target: "_blank"},
+            item__name: "mail-bg",
+            icon_url: icon__url,
+            link__alt: "Mail"
+          } %}
+        </div>
+    </div>
+
+    </div>
+  </div>
+</article>

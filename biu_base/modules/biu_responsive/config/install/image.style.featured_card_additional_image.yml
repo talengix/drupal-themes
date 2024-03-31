@@ -1,0 +1,17 @@
+uuid: 993cc90f-6cee-4307-ad6f-c23695c6c884
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: featured_card_additional_image
+label: "Featured card - additional image\t- mobile"
+effects:
+  346388fa-1bf3-4c72-8dab-59f2228ee557:
+    uuid: 346388fa-1bf3-4c72-8dab-59f2228ee557
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 538
+      crop_type: focal_point

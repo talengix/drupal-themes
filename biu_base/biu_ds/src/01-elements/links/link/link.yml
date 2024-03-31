@@ -1,0 +1,4 @@
+link_url: 'https://github.com/dolev21-ds/dolev21-design-system'
+link_content: 'This is my link text'
+link_attributes:
+  'target': '_blank'

@@ -1,0 +1,447 @@
+.search-google-page {
+  .gs-bidi-start-align {
+    body[dir="ltr"] & {
+      text-align: left;
+    }
+  }
+  .gs-no-results-result {
+    .gs-snippet {
+      display: none;
+    }
+  }
+  .status--error {
+    display: none;
+  }
+  .result-message {
+    display: none;
+    text-align: center;
+    margin-top: 59px;
+    margin-bottom: 60px;
+
+    svg{
+      width: 56px;
+      height: 56px;
+    }
+    h3{
+      line-height: 2;
+      color: $dark-green;
+      margin:0;
+    }
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .result-message-empty {
+    text-align: center;
+    margin-top: 59px;
+    margin-bottom: 60px;
+
+    h3{
+      line-height: 2;
+      color: $dark-green;
+      margin:0;
+    }
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  > h3 {
+    padding: 0 28px;
+  }
+
+  #block-searchform {
+    display: none;
+  }
+
+  h2 {
+    display: none;
+  }
+
+  .form-item__label {
+    display: block;
+    font-size: 32px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    padding-top: 52px;
+    padding-bottom: 17px;
+    color: $dark-green;
+  }
+
+  .search-form {
+    padding: 0 28px;
+
+    .search-help-link {
+      display: none;
+    }
+
+    #edit-keys::-webkit-search-cancel-button {
+      display: none;
+    }
+
+
+    #edit-keys {
+      width: 100%;
+      height: 48px;
+      padding: 10px 24px;
+      border-radius: 24px;
+      border: 1px solid $dark-green;
+      background-image: none !important;
+
+      &:focus {
+        border: 2px solid rgb(16, 16, 16);
+        outline: 0;
+      }
+
+      &.mobile-sticky-search {
+        position: fixed;
+        top: 74px;
+        left: 0;
+        border-radius: 0 !important;
+        z-index: 1;
+        box-shadow: 0 2px 20px 0 rgba($black, 0.1);
+        border: 0;
+      }
+    }
+
+    #mobile-search-icon {
+      position: fixed;
+      left: 26px;
+      top: 84px;
+      z-index: 2;
+    }
+
+    .submit-search-wrapper {
+      position: relative;
+      display: block;
+
+      #edit-submit {
+        text-transform: capitalize;
+        display: block;
+        background-color: $jungle-green;
+        width: 100%;
+        height: 48px;
+        margin-top: 33px;
+        padding: 0 51px;
+        text-align: inherit;
+      }
+
+      #submit-search-icon {
+        width: 24px !important;
+        height: 24px !important;
+        position: absolute;
+        bottom: 12px;
+        background-image: url(/themes/custom/biu_base/assets/images/icons/search.svg);
+        background-size: cover;
+        right: 18px;
+
+        body[dir="ltr"] & {
+          right: auto;
+          left: 18px;
+        }
+      }
+
+      svg {
+        left: 18px;
+        width: 32px !important;
+        height: 24px !important;
+        position: absolute;
+        bottom: 12px;
+
+        body[dir="ltr"] & {
+          transform: rotate(180deg) !important;
+          left: auto;
+          right: 18px;
+        }
+      }
+    }
+  }
+
+  #google-cse-results {
+    .gsc-control-cse-iw {
+      display: none;
+    }
+
+    .gsc-control-cse {
+      padding: 0;
+      border: none;
+
+      .gsc-results {
+        width: 100%;
+      }
+    }
+  }
+
+  .gsc-above-wrapper-area {
+    border-bottom: solid 2px $dark-green;
+    padding: 49px 30px 20px;
+    display: block;
+
+    .gsc-result-info {
+      height: 48px;
+      font-size: 20px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      color: $dark-green;
+    }
+  }
+
+  .gsc-webResult.gsc-result {
+    padding: 23px 28px 17px 30px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 40, 15, 0.5);
+
+    &:hover {
+      border-bottom: 1px solid rgba(0, 40, 15, 0.5);
+    }
+
+    body[dir="ltr"] & {
+      text-align: left;
+    }
+
+    .gs-title {
+      height: 24px;
+      font-size: 20px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.2;
+      letter-spacing: normal;
+      color: $dark-green !important;
+
+      b {
+        color: $dark-green !important;
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+
+    .gsc-url-top {
+      //width: 229px;
+      height: 24px;
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $jungle-green;
+      margin-bottom: 15px;
+      margin-top: 8px;
+    }
+
+    .gsc-table-result {
+      padding: 0;
+      opacity: 0.8;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      color: $dark-green;
+      .gs-bidi-start-align.gs-snippet{
+        height: 50px;
+        overflow: hidden;
+      }
+      .gs-per-result-labels {
+        display: none;
+      }
+    }
+
+    .gs-image-box {
+      display: none;
+    }
+  }
+
+  .gsc-cursor-box {
+    text-align: center !important;
+    margin-top: 33px !important;
+
+    .gsc-cursor-page {
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      color: $dark-green !important;
+      margin: 0 8px;
+    }
+
+    .gsc-cursor-page.gsc-cursor-current-page {
+      font-weight: 600;
+    }
+  }
+
+  .gcsc-more-maybe-branding-root {
+    display: none;
+  }
+
+  .search-bar-scroll {
+    display: none;
+    opacity: 0;
+  }
+
+  .visible {
+    display: block;
+    opacity: 1;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .form-item__label {
+      font-size: 40px;
+      line-height: 1.2;
+      position: absolute;
+      top: 86px;
+      padding: 0;
+      right: 0;
+      margin: 0;
+
+      body[dir="ltr"] & {
+        right: unset;
+        left: 0;
+      }
+    }
+    .result-message{
+      margin-top: 72.5px;
+      margin-bottom: 184px;
+    }
+    .result-message-empty {
+      text-align: center;
+      margin-top: 72.5px;
+      margin-bottom: 184px;
+    }
+    .search-form {
+      padding: 188px 200px 0 200px;
+      position: relative;
+
+      #edit-basic {
+        display: flex;
+        padding-right: 96px;
+
+        body[dir="ltr"] & {
+          padding-right: 0;
+          padding-left: 96px;
+        }
+      }
+
+      #edit-keys {
+        width: 372px;
+      }
+
+      .submit-search-wrapper {
+        #edit-submit {
+          width: 214px;
+          height: 36px;
+          margin: 6px 20px 6px 0;
+
+          body[dir="ltr"] & {
+            margin: 6px 0 6px 20px;
+          }
+        }
+
+        #submit-search-icon {
+          bottom: 30px;
+          right: 36px;
+
+          body[dir="ltr"] & {
+            right: auto;
+            left: 36px;
+          }
+        }
+
+        svg {
+          bottom: 28px;
+          left: 30px;
+
+          body[dir="ltr"] & {
+            left: auto;
+            right: 30px;
+          }
+        }
+      }
+    }
+    #google-cse-results {
+      padding-left: 200px;
+      padding-right: 200px;
+
+      .gsc-control-cse {
+        padding: 1em;
+      }
+    }
+    .gsc-above-wrapper-area {
+      width: 778px;
+      padding: 0;
+
+      body[dir="ltr"] & {
+        margin: 0 auto 0 0;
+      }
+
+      .gsc-result-info {
+        width: 778px;
+
+        body[dir="ltr"] & {
+          text-align: left;
+        }
+      }
+    }
+    .gsc-webResult.gsc-result {
+      width: 778px;
+      padding: 30px 23px 30px 0;
+
+      body[dir="ltr"] & {
+        padding: 30px 0 30px 23px;
+        margin: 0 auto 0 0;
+      }
+
+      .gs-title {
+        width: 497px;
+
+        body[dir="ltr"] & {
+          margin: 0 auto 0 0;
+        }
+      }
+
+      .gsc-url-top {
+        margin-bottom: 11px;
+        margin-top: 10px;
+      }
+
+      .gsc-table-result {
+        width: 571px;
+
+        body[dir="ltr"] & {
+          margin: 0 auto 0 0;
+        }
+        .gs-bidi-start-align.gs-snippet{
+          height: auto;
+          overflow: auto;
+        }
+      }
+    }
+    .gsc-cursor-box {
+      width: 778px;
+
+      body[dir="ltr"] & {
+        margin-right: auto !important;
+      }
+    }
+    .search-bar-scroll {
+      display: none;
+    }
+  }
+
+}

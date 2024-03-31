@@ -1,0 +1,11 @@
+{% set grpmenu__base_class = 'grpmenu' %}
+
+<aside {{ bem(grpmenu__base_class) }}>
+  <div {{ bem('inner', [], grpmenu__base_class) }}>
+    <div {{ bem('menu', [], header__base_class) }}>
+      {% block grpmenu__menu %}
+        {% include "@molecules/menus/main-menu/main-menu.twig" %}
+      {% endblock %}
+    </div>
+  </div>
+</aside>

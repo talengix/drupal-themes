@@ -1,0 +1,26 @@
+#drupal-off-canvas summary {
+  padding: 10px 29px;
+}
+
+#drupal-off-canvas ul.inline-block-list {
+  li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    img, span {
+      display: inline-block;
+      margin-left: 26px;
+      max-width: 100px;
+
+      html[dir="ltr"] & {
+        margin-right: 26px;
+        margin-left: 0;
+      }
+    }
+  }
+
+}
+
+#drupal-off-canvas .inline-block-list__item {
+  display: inline-block;
+}

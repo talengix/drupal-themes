@@ -1,0 +1,17 @@
+uuid: a1732907-0a1c-4523-b05a-3baac243e0b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: featured_card_additional_image_desktop
+label: "Featured card - additional image\t- desktop"
+effects:
+  100d521b-6f27-4b42-863d-e4c143ef930d:
+    uuid: 100d521b-6f27-4b42-863d-e4c143ef930d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 276
+      height: 136
+      crop_type: focal_point

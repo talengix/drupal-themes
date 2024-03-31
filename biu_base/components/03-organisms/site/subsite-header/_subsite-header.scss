@@ -1,0 +1,120 @@
+.header {
+  &__primary {
+    &--sub-site {
+      display: flex;
+      align-items: center;
+      box-shadow: none;
+    }
+
+    & > a {
+      text-decoration: none;
+      display: none;
+
+      @include grid-breakpoint($mq-tab, tab) {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__branding {
+    &--sub-site {
+      max-width: 260px;
+      height: 45px;
+      width: 120px;
+
+      @include grid-breakpoint($mq-tab, tab) {
+        border-left: 1px solid #fff;
+        padding-left: 15px;
+      }
+
+      .site-link {
+        img {
+          max-height: 45px;
+          margin: 0 auto;
+        }
+      }
+
+      body[dir="ltr"] & {
+        border-left: none;
+        padding-left: 0;
+
+        @include grid-breakpoint($mq-tab, tab) {
+          border-right: 1px solid #fff;
+          padding-right: 15px;
+        }
+      }
+
+      @include grid-breakpoint($mq-desk, desk) {
+        padding: 0 30px;
+        height: 80px;
+        width: 260px;
+
+        .site-link {
+          img {
+            max-height: none;
+          }
+        }
+
+        body[dir="ltr"] & {
+          padding: 0 30px;
+        }
+      }
+
+    }
+  }
+  &__name {
+    &--sub-site {
+      font-size: 1.1rem;
+      color: #fff;
+      padding: 0 15px;
+      max-width: 300px;
+      font-weight: normal;
+
+      @include grid-breakpoint($mq-desk, desk) {
+        font-size: 1.8rem;
+        display: block;
+        max-width: 340px;
+      }
+    }
+  }
+
+  &__secondary {
+    &--sub-site {
+      display: none;
+      @include grid-breakpoint($mq-desk, desk) {
+        display: flex;
+        align-self: flex-start;
+        align-items: center;
+        margin: 10px 25px;
+      }
+
+      .form-item {
+        margin: 0;
+
+        select {
+          color: #fff;
+          border: none;
+          padding: 0 50px;
+        }
+      }
+    }
+  }
+}
+
+.header--sub-site {
+  position: fixed;
+  z-index: 99;
+  @include grid-breakpoint($mq-desk, desk) {
+    // position: relative;
+    margin-bottom: 0;
+  }
+}
+
+.header__inner--sub-site {
+  justify-content: center;
+  @include grid-breakpoint($mq-desk, desk) {
+    justify-content: space-between;
+    flex-direction: row;
+    height: 106px;
+  }
+}

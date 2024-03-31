@@ -1,0 +1,96 @@
+// Article page styling
+.node--article-full, .node--podcast-full {
+  max-width: 1366px;
+  margin-top: 71px;
+  @include push--auto;
+
+  .node--article-content {
+    .edit-delete-link {
+      float: left;
+    }
+
+    @include container;
+
+    h1 {
+      margin: 0;
+      padding: 0;
+      padding-top: 16px;
+    }
+
+    .update-date {
+      font-size: 16px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.88;
+      letter-spacing: normal;
+      height: 30px;
+    }
+
+    .sub-title-h2 {
+      font-size: 26px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.38;
+      letter-spacing: normal;
+      color: $dark-green;
+      margin-bottom: 26px;
+    }
+
+    .article-title {
+      margin-top: 16px;
+      margin-bottom: 15px;
+      font-size: 40px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+    .social-media-component {
+      text-align: left;
+      body[dir="ltr"] & {
+        float: right;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    margin-top: 89px;
+    .node--article-content {
+      padding-right: 200px;
+      padding-left: 200px;
+
+      .edit-delete-link {
+        float: left;
+        display: flex;
+
+        .delete-link {
+          a {
+            padding-left: 5px;
+          }
+        }
+
+        .edit-link {
+          a {
+            padding-left: 5px;
+          }
+        }
+      }
+
+      .update-date {
+        display: block;
+      }
+
+      img {
+        width: 774px;
+        margin-bottom: 39px;
+      }
+    }
+  }
+}
+
+.node--podcast-full .iframe-podcast {
+  margin-bottom: 16px;
+  @include grid-breakpoint($mq-desk, desk) {
+    margin-bottom: 23px;
+  }
+}

@@ -1,0 +1,12 @@
+<div {{bem('card', ['two'], 'overflow-block',['col-md-4'])}}>
+  {% include "@ds_elements/links/link/arrow-link.twig" with {
+    item__content: text,
+    item__url: link,
+    item__link_title: link_title,
+    link_base_class: "link",
+    link_modifiers: additional_classes,
+    link_container_base_class: "overflow-block__card-body",
+    link_container_modifiers: ['two'],
+    arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+  } %}
+</div>

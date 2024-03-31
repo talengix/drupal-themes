@@ -1,0 +1,39 @@
+uuid: bb581542-6dca-4d2f-a3d5-8031c42653ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.featured_card_featured_image
+    - image.style.featured_card_featured_image_desktop
+  theme:
+    - biu_base
+id: featured_card_featured_image
+label: 'Featured card - featured image'
+image_style_mappings:
+  -
+    breakpoint_id: biu_base.desk-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: featured_card_featured_image_desktop
+  -
+    breakpoint_id: biu_base.desk
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: featured_card_featured_image_desktop
+  -
+    breakpoint_id: biu_base.tab-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: featured_card_featured_image
+  -
+    breakpoint_id: biu_base.tab
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: featured_card_featured_image
+  -
+    breakpoint_id: biu_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: featured_card_featured_image
+breakpoint_group: biu_base
+fallback_image_style: featured_card_featured_image

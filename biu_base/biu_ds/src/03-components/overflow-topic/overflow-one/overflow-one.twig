@@ -1,0 +1,17 @@
+{% set component_class = 'overflow-block' %}
+{% set component_modifier = ['one'] %}
+
+<div {{bem('wrap', component_modifier, component_class, additional_classes)}}>
+  <h2 {{bem('title', component_modifier, component_class)}}>{{ title }}</h2>
+  <p {{bem('sub-title', component_modifier, component_class)}}>{{ sub_title }}</p>
+  <div {{bem('content', component_modifier, component_class)}}>
+    {% for item in items %}
+      {% include "@ds_components/overflow-topic/overflow-one/overflow-card.twig" with {
+        "image": item.image,
+        "title": item.title,
+        "link": item.link,
+        "link_title": item.link_title
+      } %}
+    {% endfor %}
+  </div>
+</div>

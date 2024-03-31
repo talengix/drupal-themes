@@ -1,0 +1,12 @@
+<div {{bem('quotes', 'two')}}>
+  <div class="quotes-content">
+    <figure class="quotes__background">
+      <img src="{{ quotes_image_url }}" alt="quote background" />
+    </figure>
+    <p>{{ quotes_text }}</p>
+    <div class="quotes-person">
+      {{ person_image | raw}}
+      <span>{{ person_name }}</span>
+    </div>
+  </div>
+</div>

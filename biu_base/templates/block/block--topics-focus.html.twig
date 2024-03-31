@@ -1,0 +1,42 @@
+{{ attach_library('biu_base/topics-focus') }}
+
+
+{# collect topics #}
+
+{% set topics = [] %}
+
+{% for item in content['#block_content'].field_item %}
+  {% if item.entity is not null and item.entity.field_image_upload.entity.uri.value is not null %}
+    {% set topic = {
+      'title': item.entity.field_title.0.value,
+      'text': item.entity.field_text.0.value,
+      'link': item.entity.field_link.0.url | render,
+      'is_external': item.entity.field_link.0.external,
+      'image_src': item.entity.field_image_upload.entity.uri.value | image_style('topics_focus') | default(''),
+      'image_alt': item.entity.field_image_upload.alt | default('')
+    } %}
+    {% set topics = topics | merge([topic]) %}
+  {% elseif item.entity is not null %}
+    {% set topic = {
+      'title': item.entity.field_title.0.value,
+      'text': item.entity.field_text.0.value,
+      'link': item.entity.field_link.0.url | render,
+      'is_external': item.entity.field_link.0.external,
+      'image_src': '',
+      'image_alt': ''
+    } %}
+    {% set topics = topics | merge([topic]) %}
+  {% endif %}
+{% endfor %}
+
+<div {{ bem('block', 'topics-focus') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% include "@organisms/topics-focus/topics-focus.twig" with {
+      "label": label,
+      "items": topics,
+      "topics_focus_background": topics_focus_background
+    } %}
+  {% endblock %}
+</div>

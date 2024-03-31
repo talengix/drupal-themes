@@ -1,0 +1,186 @@
+.horizontal-tabs.tabsy {
+  width: span(2 of 2);
+  margin-top: 0;
+  margin-bottom: 36px;
+  color: $dark-green;
+
+  label{
+    position: relative;
+    .tab_arrow_icon {
+      display: block;
+      content: "";
+      background-image: url('/themes/custom/biu_base/assets/images/icons/green.svg');
+      position: absolute;
+      left: 28px;
+      top: 15px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+  .tabButton {
+    background-color: transparent;
+    border-top: 0.5px solid $dark-green;
+    color: $dark-green;
+    font-size: 18px;
+    padding: 17px 28px 19px 0;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    margin: 0;
+
+    body[dir="ltr"] & {
+      padding: 17px 0 19px 28px;
+      text-align: left;
+      display: block;
+    }
+  }
+
+  label.tabButton:last-of-type {
+    border-bottom: 0.5px solid $dark-green;
+  }
+
+  input:checked + .tabButton:last-of-type {
+    border-bottom: none;
+  }
+
+  .horizontal-tab:last-of-type {
+    border-bottom: 0.5px solid $dark-green;
+  }
+
+  .tab {
+    background-color: $light-grey;
+    padding: 0 28px 26px 0;
+    width: 100%;
+
+    body[dir="ltr"] & {
+      padding-left: 28px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .horizontal-tab-link {
+      display: block;
+      width: auto;
+      margin-top: 14px;
+      a {
+        color: $dark-green;
+        text-decoration: underline;
+      }
+
+      svg {
+        display: none;
+        width: 43px !important;
+        height: 13px !important;
+        top: 2px;
+        position: relative;
+      }
+      .external-icon {
+        .icon {
+          width: 22px !important;
+          height: 18px !important;
+          top: -2px;
+        }
+      }
+    }
+  }
+
+  input:checked + label {
+    background-color: $light-grey;
+    color: $jungle-green;
+    border-bottom: 0;
+    padding-bottom: 16px;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    border-radius: 3px;
+    box-shadow: 0 2px 15px 3px rgba(0, 0, 0, 0.12);
+    background-color: $white;
+    width: span(12 of 12);
+    margin-top: 0;
+    margin-bottom: 28px;
+    padding-top: 18px;
+
+      label{
+        .tab_arrow_icon {
+          display: none;
+        }
+      }
+    .tabButton {
+      background-color: transparent;
+      border-top: none;
+      padding: 0 19px 20px 19px;
+
+      body[dir="ltr"] & {
+        padding: 0 19px 20px 19px;
+      }
+
+      svg {
+        display: none;
+      }
+    }
+    label.tabButton:last-of-type {
+      border-bottom: none;
+    }
+    .horizontal-tab:last-of-type {
+      border-bottom: none;
+    }
+    .tabButton:nth-child(2) {
+      margin-right: 41px;
+
+      body[dir="ltr"] & {
+        margin-right: 0;
+        margin-left: 41px;
+      }
+    }
+    input:checked + label {
+      border-bottom: 3px solid $dark-green !important;
+      background-color: transparent;
+      color: $dark-green;
+    }
+    .tab {
+      background-color: transparent;
+      padding: 36px 55px 51px 55px;
+      border-top: 2px solid $light-grey;
+
+      body[dir="ltr"] & {
+        padding: 36px 55px 51px 55px;
+      }
+
+      .horizontal-tab-link {
+        display: inline-block;
+        a {
+          text-decoration: none;
+        }
+
+        svg {
+          display: inline;
+        }
+        .animation-container svg {
+          body[dir="ltr"] & {
+            transform: rotate(180deg) !important;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.block--horizontal-tabs {
+  padding-top: 0;
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 151px;
+  }
+}

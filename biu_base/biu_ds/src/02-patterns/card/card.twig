@@ -1,0 +1,200 @@
+{#
+# Available variables:
+# - card__base_class - base classname of the wrapper.
+# - card__modifiers - array of modifiers to add to the base classname of the wrapper.
+# - card__blockname - blockname prepended to the base classname of the wrapper(s) and each component.
+#
+# - card__wrapped_with_link - indicates if whole card should be wrapped with link' if so we should reset all other
+#                             links potentially live inside in card content.
+#                             @TODO, create JS code to perform this in case links somehow creeped into the content.
+#
+# - card__image__src - the actual image file location.
+# - card__image__alt - (optional) the alt text for screen readers and when the image cannot load.
+# - card__image__output_image_tag - whether to print the picture element or not.
+# - card__image - the markup that contains the image, usually prepared elswere.
+#
+# - card__body__base_class - hard coded set to card__body.
+# - card__body__modifiers - array of modifiers to add to the card__body classname.
+# - card__body__blockname - disabled, will not accept external variables.
+#                           Intentionally left empty, hard coded to ''
+#                           since we manually attached card to body in base class
+#
+# - card__heading - the content of the title component.
+# - card__heading__link - (optional) the url the title should link to. Defaults to card__link_url.
+# - card__heading__base_class - base classname of the title component. Defaults to "heading".
+# - card__heading__blockname - blockname to add to the base classname of the title - defaults to 'card'.
+# - card__heading__modifiers - array of modifiers to add to the base classname of the title.  - defaults to card__modifiers
+# - card__heading__link_base_class - base class to add to the title link - defaults to 'heading-link'.
+#
+# - card__subheading - the content of the subtitle component.
+# - card__subheading__link - (optional) the url the subtitle should link to.
+# - card__subheading__base_class - base classname of the subtitle component. Defaults to "subheading".
+# - card__subheading__modifiers - array of modifiers to add to the base classname of the subtitle. defaults to card__modifiers
+#
+# - card__content - the content scction of of the card body, below hedings and above read more link.
+# - card__content__base_class - base classname of the body component. Defaults to "content" rendered to card__content.
+# - card__content__modifiers - array of modifiers to add to the base classname of card__content, defaults to card__modifiers.
+#
+# - card__link_text - the content of the link component.
+# - card__link_url - the url the entire card or its read more  should link to.
+# - card__link_base_class - base classname of the link component. Defaults to "link".
+# - card__link_blockname - override link blockname. Defaults to card__base_class.
+# - card__link_attributes - array of attribute,value pairs for the link attribute.
+# - card__link_modifiers - array of modifiers to add to the base classname of the link. defaults to card__modifiers.
+#}
+{% set card__base_class = 'card' %}
+
+{# We need to make sure card__heading__additional_classes exists
+ # because later we need to merge it with another array or add
+ # array items. #}
+{% if card__heading__additional_classes is empty %}
+  {% set card__heading__additional_classes = ['heading'] %}
+{% endif %}
+
+{# Card wrapper element #}
+{% block card_opening_element %}
+  {% if card__link_url and card__wrapped_with_link %}
+    {#
+    # card__link_url indicates that whole card should wrapped in single link tachor tag.
+    # In this case, we should unset all inner links (heading link, subheading link and read more link)
+    #}
+    {% set card__heading__link = "" %}
+    {% set card__subheading__link = "" %}
+    {% set card__read_more__link = "" %}
+    <a href="{{ card__link_url }}" {{ bem(card__base_class, card__modifiers, card__blockname, card__additional_classes) }}>
+  {% else %}
+    {# Set card wrapper to be normal div #}
+    <div {{ bem(card__base_class, card__modifiers, card__blockname, card__additional_classes) }}>
+  {% endif %}
+{% endblock %}
+
+    {# Image #}
+    {% block card__img %}
+      {% if card__image or card__image__src %}
+        <div {{ bem('image', card__modifiers, 'card') }}>
+          {% if card__image__src %}
+            {% include "@ds_elements/images/image/responsive-image.twig" with {
+              image_blockname: card__base_class,
+              output_image_tag: card__image__output_image_tag,
+              image_src: card__image__src,
+              image_alt: card__image__alt,
+            } %}
+          {% elseif card__image %}
+            {{ card__image|raw }}
+          {% endif %}
+          {% if card__type_tag %}
+            <span class="card__tag">{{ card__type_tag }}</span>
+          {% endif %}
+        </div><!-- /.card__image -->
+      {% endif %}
+    {% endblock %}
+
+    {# Card Body #}
+    {% block card_body_openning %}
+      <div {{ bem('card__body', card__modifiers,'', card__body__additional_classes) }}>
+    {% endblock %}
+
+    {% block card_header %}
+      {# Heading #}
+      {% if card__heading %}
+        {{ title_prefix }}
+        {% include "@ds_elements/text/headings/_heading.twig" with {
+          heading_base_class: card__heading__base_class|default('card__heading'),
+          heading_modifiers: card__modifiers,
+          heading_level: card__heading__level,
+          heading_is_div: card__heading_is_div,
+          heading: card__heading,
+          heading__additional_classes: card__heading__additional_classes|merge(['heading']),
+          heading_url: card__heading__link,
+          heading_link_base_class: card__heading__link_base_class|default('heading-link'),
+          heading_link_blockname: card__base_class,
+        } %}
+        {{ title_suffix }}
+      {% endif %}
+      {# Subheading #}
+      {% if card__subheading %}
+        {% if card__subheading_is_normal_text %}
+          {# When sub heading shouldnt wrapped with heading tag #}
+          <div {{ bem('subheading', card__modifiers, card__base_class, card__subheading__additional_classes) }}>
+            {{ card__subheading }}
+          </div>
+        {% else %}
+          {% include "@ds_elements/text/headings/_heading.twig" with {
+            heading_base_class: card__heading__base_class|default('card__subheading'),
+            heading_modifiers: card__modifiers,
+            heading__additional_classes: ['heading'],
+            heading_is_div: card__subheading_is_div,
+            heading_level: card__subheading__level,
+            heading: card__subheading,
+            heading_url: card__subheading__link,
+          } %}
+        {% endif %}
+      {% endif %}
+    {% endblock %}
+
+        {% block header_separator %}{% endblock %}
+
+      {# Card Content #}
+      {% if card__content %}
+        <div {{ bem('card__content', card__modifiers, '', card__content__additional_classes) }} >
+          {{ card__content|raw }}
+        </div>
+      {% endif %}
+
+      {# Read More #}
+      {% if card__wrapped_with_link %}
+        {# Read More text sould not include link #}
+        {% if card__link_text %}
+          <div {{ bem('footer', card__modifiers, 'card', card__footer__additional_classes) }} >
+          {% include "@ds_elements/links/link/span-replace-link.twig" with {
+            link_base_class: card__link_base_class|default('link'),
+            link_blockname: card__base_class,
+            link_attributes: card__link_attributes,
+            link_content: card__link_text,
+            link_url: card__link_url,
+            link_modifiers: card__modifiers,
+            link_extra_classes: ['arrowed']
+          } %}
+        {% endif %}
+        </div><!-- ends card__footer -->
+        {# NOT  is not wrapped with single link #}
+      {% elseif card__link_url and card__link_text %}
+        <div {{ bem('footer', card__modifiers, 'card', card__footer__additional_classes) }} >
+          {# Card is not wrapped with single link #}
+          {% embed "@ds_elements/links/link/link.twig" with {
+            link_base_class: card__link__base_class|default('link'),
+            link_blockname: card__base_class,
+            link_attributes: card__link__attributes,
+            link_url: card__link_url,
+            link_modifiers: card__modifiers,
+            link_extra_classes: ['arrowed']
+          } %}
+            {% block link_content %}
+              <span {{ bem('link-text', card__modifiers,'card', card__link__additional_classes) }}>
+              {{ card__link_text }}
+            </span>
+            {% endblock %}
+          {% endembed %}
+        </div>
+      {% elseif card__link %}
+        <div {{ bem('footer', card__modifiers, 'card', card__footer__additional_classes) }} >
+          {{ card__link }}
+        </div><!-- ends card__footer -->
+      {% endif %}
+    {% block card_body_closing %}
+      </div><!-- /.card__body -->
+    {% endblock %}
+
+{# Ends Card wrapper element #}
+{% block card_closing_element %}
+  {% if not card__wrapped_with_link %}
+    {# Set card wrapper to be normal div #}
+   </div><!-- /div.card -->
+  {% elseif card__link_url and card__wrapped_with_link %}
+    {#
+    # card__link_url indicates that whole card should wrapped in single link tachor tag.
+    # In this case, we should unset all inner links (heading link, subheading link and read more link)
+    #}
+    </a>
+  {% endif %}
+{% endblock %}

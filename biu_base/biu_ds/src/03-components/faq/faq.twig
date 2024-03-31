@@ -1,0 +1,12 @@
+<div class="faq-block__wrapper">
+  {% if label %}
+    {% include "@ds_elements/text/headings/_heading.twig" with {
+    "heading_level": 2,
+    "heading": label,
+    "heading__additional_classes": "faq-block__title",
+    } %}
+  {% endif %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
+</div>

@@ -1,0 +1,83 @@
+{{ attach_library('biu_base/site-header') }}
+{% set header__base_class = 'header' %}
+{# If `directory` is defined, set the path relative for Drupal.
+ # Otherwise, set the path relative to the Component Library. #}
+<header {{ bem(header__base_class) }}>
+  <div class="mobile-input-group">
+    <a href="javascript:void(0)" onclick="javascript:location.href='{{ search_url }}'">
+    <span class="search-icon"><img src="/themes/custom/biu_base/assets/images/icons/search.svg" alt="{{ 'Search'|t }}" class="pale-green"></span>
+    </a>
+  </div>
+  <div {{ bem('inner', [], header__base_class) }}>
+    <div {{ bem('primary', [], header__base_class) }}>
+      <div {{ bem('branding', [], header__base_class) }}>
+        {% block header__branding %}
+        {% include "@molecules/site-logo/site-logo.twig" with {
+          site_logo__base_class: "site-logo",
+          site_logo__modifiers: [],
+          site__url: path('<front>'),
+          link_attributes: { title : "Bar-Ilan University"|t},
+          item__name: site_logo,
+          icon__url:  "/themes/custom/biu_base/dist/icons.svg",
+        } %}
+        {% endblock %}
+      </div>
+      <div class="menu-wrap-left">
+        <div class="menu-left-top">
+          <div {{ bem('menu', [], header__base_class) }}>
+            {% block secondary_menu %}
+              {% include "@molecules/menus/main-menu/main-menu.twig" with {
+                menu_class: "secondary-menu",
+                menu_items: secondary_menu,
+              }  %}
+            {% endblock %}
+          </div>
+          <div class="d-flex">
+         {{ drupal_block('language_block:language_interface') }}
+          <a href="javascript:void(0)" class="accessibility-icon"><img src="/themes/custom/biu_base/assets/images/icons/accessibility.svg" alt={{ 'Accessibility'|t }}></a>
+          </div>
+          <div {{ bem('register-wrap',"","","mobile-register") }}>
+            <ul {{ bem('main-menu') }}>
+              <li {{ bem('main-menu__item') }} >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="menu-left-bottom">
+          <div {{ bem('menu', [], header__base_class) }}>
+            {% block header_menu %}
+              {% include "@molecules/menus/main-menu/main-menu.twig" with {
+                menu_class: "main-menu",
+                menu_items: menu__items,
+              }  %}
+            {% endblock %}
+          </div>
+         {#  <div {{ bem('secondary', [], header__base_class) }}>
+            {% block header__breadcrumbs %}
+              {% include "@molecules/menus/breadcrumbs/breadcrumbs.twig" %}
+            {% endblock %}
+          </div>#}
+          <div class="search-wrap">
+            <div class="input-group">
+              <label for="header-search" class="visually-hidden">{{ 'Search'|t }}</label>
+              <form id="search-form-google" action="{{ search_url }}" method="get">
+              <input type="text" id="header-search" name="keys" class="form-control" placeholder="{{ 'Search'|t }}">
+              </form>
+              <span class="input-group-append">
+                <a href="javascript:void(0)" onclick="javascript:document.getElementById('search-form-google').submit()">
+                  <span class="search-icon"><img src="/themes/custom/biu_base/assets/images/icons/search.svg" alt="{{ 'Search'|t }}" class="pale-green" /></span>
+                </a>
+              </span>
+            </div>
+            <div {{ bem('register-wrap') }}>
+              <ul {{ bem('main-menu') }}>
+                <li {{ bem('main-menu__item') }} >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

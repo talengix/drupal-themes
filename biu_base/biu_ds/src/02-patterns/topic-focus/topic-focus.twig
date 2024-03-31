@@ -1,0 +1,18 @@
+<div class="col-md-4">
+	<div class="topic-focus__item">
+		<img src="{{ image_src }}" class="topic-focus__image" alt="{{image_alt}}">
+    <h5 class="topic-focus__title">{{ title }}</h5>
+    <p class="topic-focus__text">{{ text }}</p>
+    {% include "@ds_elements/links/link/arrow-link.twig" with {
+      item__content: '',
+      item__url: link,
+      is_external: is_external,
+      item__link_title: '',
+      link_base_class: "link",
+      link_modifiers: [],
+      link_container_base_class: "topic-focus__link",
+      link_container_modifiers: [],
+      arrow_src: "/themes/custom/biu_base/assets/animations/arrow.json",
+    } %}
+	</div>
+</div>

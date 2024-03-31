@@ -1,0 +1,149 @@
+.large-media-container .large-media {
+  position: relative;
+  width: 100vw;
+  min-height: 455px;
+
+  body[dir="ltr"] & {
+    right: calc(50vw - 50%);
+  }
+
+  body[dir="rtl"] & {
+    left: calc(50vw - 50%);
+  }
+
+  .overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-blend-mode: overlay;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 66%, $black 105%);
+  }
+
+  picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .text-container {
+    @include container;
+
+    .text-wrapper {
+      position: absolute;
+      bottom: 0;
+      width: span(1.1 of 2);
+      z-index: 2;
+
+      h3 {
+        font-size: 28px;
+        font-weight: normal;
+        margin: 0;
+        padding-bottom: 6px;
+      }
+
+      h5 {
+        font-size: 16px;
+        font-weight: normal;
+        margin: 0;
+        padding-bottom: 6px;
+      }
+
+      .large-media-read-more {
+        font-size: 16px;
+        font-weight: normal;
+        color: $pale-green;
+        padding-bottom: 10px;
+
+        svg {
+          width: 43px !important;
+          height: 13px !important;
+          position: relative;
+          top: 2px;
+          body[dir="ltr"] & {
+            transform: rotate(180deg) !important;
+          }
+        }
+      }
+
+      body[dir="ltr"] & {
+        h3 {
+          font-size: 28px;
+          font-weight: normal;
+          line-height: unset;
+          margin: 0;
+        }
+
+        h5 {
+          font-size: 16px;
+          font-weight: normal;
+          line-height: unset;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    max-width: 1366px;
+    min-height: 500px;
+    body[dir="ltr"] & {
+      right: calc((1366px - 1174px) / 2);
+    }
+    body[dir="rtl"] & {
+      left: calc((1366px - 1174px) / 2);
+    }
+
+    .text-container {
+      padding-right: 95px;
+
+      .text-wrapper {
+        width: span(5 of 12);
+
+        h3 {
+          font-size: 48px;
+          font-weight: normal;
+          padding-bottom: 15px;
+        }
+
+        h5 {
+          font-size: 22px;
+          font-weight: normal;
+          padding-bottom: 15px;
+        }
+
+        .large-media-read-more {
+          padding-bottom: 48px;
+        }
+
+        body[dir="ltr"] & {
+          h3 {
+            font-size: 48px;
+            font-weight: normal;
+            margin-bottom: 25px;
+          }
+
+          h5 {
+            font-size: 22px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-desk-wide, desk-wide) {
+    .text-container {
+      margin: auto;
+    }
+  }
+}

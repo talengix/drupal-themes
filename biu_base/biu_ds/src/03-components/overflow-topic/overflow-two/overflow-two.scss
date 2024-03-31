@@ -1,0 +1,53 @@
+@import '../../../00-base/01-colors/_colors-vars.scss';
+@import "../../../00-base/base/global";
+@import './overflow-card';
+
+.overflow-block {
+  &__card--two {
+    margin: 0;
+  }
+
+  &__wrap--two {
+    padding: 30px 0 50px;
+    max-width: 1174px;
+    margin: 0 auto;
+  }
+
+  &__title--two {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: $bar-ilan-green;
+    text-align: center;
+    margin-bottom: 35px;
+
+    @include dark-section;
+  }
+
+
+  &__sub-title--two {
+    font-size: 1.25rem;
+    color: $bar-ilan-green;
+    text-align: center;
+    max-width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    @include ds-breakpoint($bp-tab) {
+      max-width: 50%;
+    }
+
+    @include dark-section;
+  }
+
+  &__content--two {
+    @include dark-section;
+
+    .col-md-4 {
+      margin-top: 25px;
+    }
+
+    .overflow-block__card-body--two {
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+link_base_class: "link"
+link_modifiers: []
+link_container_base_class: "link-container"
+link_container_modifiers: []
+item__url: 'https://github.com/biu_base-ds/biu_base-design-system'
+item__content: 'This is my link text'

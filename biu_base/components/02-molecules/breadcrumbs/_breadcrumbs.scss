@@ -1,0 +1,23 @@
+#block-breadcrumbs .breadcrumb__link {
+  font-size: 12px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: $dark-green;
+
+  &:link, &:visited, &:focus {
+    color: $dark-green;
+  }
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+}
+
+.path-frontpage {
+  #block-breadcrumbs {
+    display: none;
+  }
+}

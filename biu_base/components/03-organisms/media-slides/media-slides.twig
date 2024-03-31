@@ -1,0 +1,177 @@
+{{ attach_library('biu_base/media-slides') }}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, component_additional_classes) }}>
+  <div class="swiper-wrapper media-slides-wrapper" aria-label="slider">
+    {% for item in items %}
+      {% set text = item.card__body|render|striptags %}
+      {% include "@molecules/media-slide/media-slide.twig" with {
+        "image": item.card__image,
+        "mobile_image": item.card__image_mobile,
+        "component_base_class": item.card__base_class,
+        "label": item.card__heading,
+        "sub_title": item.card__subheading,
+        "body": text|length > 200 ? text|slice(0, 200) ~ '...' : text,
+        "link_title": item.card__link.0.title,
+        "link_url": item.card__link.0.url,
+        "media_slide_additional_classes": item.media_slide_additional_classes,
+      } %}
+      {% include "@ds_patterns/media-slide/media-slide.twig" with {
+        "image": item.card__image,
+        "mobile_image": item.card__image_mobile,
+        "component_base_class": item.card__base_class,
+        "label": item.card__heading,
+        "sub_title": item.card__subheading,
+        "body": text|length > 200 ? text|slice(0, 200) ~ '...' : text,
+        "link_title": item.card__link.0.title,
+        "link_url": item.card__link.0.url,
+        "media_slide_additional_classes": item.media_slide_additional_classes,
+      } %}
+    {% endfor %}
+  </div>
+  <div class="media-slider-nav-page">
+    <div class="progress-container">
+      <div id="progress"></div>
+    </div>
+    <div class="media-slides-nav">
+      <div class="expand-link">
+        <div class="swiper-button-prev icon-expand">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'right-arrow',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-light']
+          } %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'right-arrow-dark',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-dark']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'right-arrow',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-light']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'right-arrow-dark',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-dark']
+          } %}
+        </div>
+        <div class="swiper-button-prev icon-contract">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'arrow-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-light']
+          } %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'arrow-dark-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-dark']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'arrow-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-light']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'arrow-dark-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-dark']
+          } %}
+        </div>
+      </div>
+      <div class="expand-link-next">
+        <div class="swiper-button-next icon-expand-next">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'left-arrow',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-light']
+          } %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'regular-dark',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-dark']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'left-arrow',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-light']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'regular-dark',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-dark']
+          } %}
+        </div>
+        <div class="swiper-button-next icon-contract-next">
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'arrow-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-light']
+          } %}
+          {% include "@atoms/images/icons/_icon.twig" with {
+            icon_name: 'arrow-dark-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-dark']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'arrow-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-light']
+          } %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'arrow-dark-circle',
+            icon_url: icon_url,
+            icon_modifiers: ['arrow-circle-dark']
+          } %}
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="media-slider-control">
+      <div class="play">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'play',
+          icon_url: icon_url,
+          icon_modifiers: ['play-circle-light']
+        } %}
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'play-dark',
+          icon_url: icon_url,
+          icon_modifiers: ['play-circle-dark']
+        } %}
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_name: 'play',
+          icon_url: icon_url,
+          icon_modifiers: ['play-circle-light']
+        } %}
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_name: 'play-dark',
+          icon_url: icon_url,
+          icon_modifiers: ['play-circle-dark']
+        } %}
+      </div>
+      <div class="pause">
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'pause',
+          icon_url: icon_url,
+          icon_modifiers: ['pause-circle-light']
+        } %}
+        {% include "@atoms/images/icons/_icon.twig" with {
+          icon_name: 'pause-dark',
+          icon_url: icon_url,
+          icon_modifiers: ['pause-circle-dark']
+        } %}
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_name: 'pause',
+          icon_url: icon_url,
+          icon_modifiers: ['pause-circle-light']
+        } %}
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_name: 'pause-dark',
+          icon_url: icon_url,
+          icon_modifiers: ['pause-circle-dark']
+        } %}
+      </div>
+    </div>
+  </div>
+</div>
+

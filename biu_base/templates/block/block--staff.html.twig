@@ -1,0 +1,8 @@
+<div {{ bem('block', [], '','staff-block') }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% block content %}
+    {% include "@ds_components/staff/staff.twig" with {
+    }%}
+  {% endblock %}
+</div>

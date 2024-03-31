@@ -1,0 +1,5 @@
+component_base_class: "media-slide-item"
+image_link__image__src: "https://placeimg.com/773/356/any"
+image_alt: "Media slide image"
+label: "Media slide title"
+sub_title: "This is description for media slide item"

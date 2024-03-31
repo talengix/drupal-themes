@@ -1,0 +1,37 @@
+@import '../../00-base/01-colors/_colors-vars.scss';
+
+.information {
+  &__wrap {
+    padding: 50px 0;
+  }
+  &__title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    &::after {
+      content: "";
+      display: block;
+      width: 105px;
+      height: 4px;
+      background-color: $tiffany-blue;
+      margin: 10px auto 0;
+    }
+  }
+
+  &__text {
+    font-size: calc(20/16*1rem);
+    text-align: center;
+
+    .block--information.left & {
+      text-align: left;
+    }
+
+    .block--information.right & {
+      text-align: right;
+    }
+  }
+
+  &__item {
+    padding: 50px;
+  }
+}

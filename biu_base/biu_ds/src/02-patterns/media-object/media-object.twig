@@ -1,0 +1,21 @@
+<div {{ bem('media-object', media_object__modifiers, '', media_object__additional_classes) }}>
+  <div class="media-object__media">
+    {# Media/image #}
+    {% block media_object__img %}
+      {% if media_object__image %}
+        {{ media_object__image }}
+      {% endif %}
+    {% endblock %}
+  </div>
+  {# Body/Content #}
+  <div {{ bem('media-object__body', media_object__body__modifiers, '', media_object__body__additional_classes) }}>
+    {% block media_object__bd %}
+      {% if media_object__title %}
+        {{ media_object__title }}
+      {% endif %}
+      {% if media_object__body %}
+        {{ media_object__body }}
+      {% endif %}
+    {% endblock %}
+  </div>
+</div>

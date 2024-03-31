@@ -1,0 +1,39 @@
+uuid: 703538fb-28ad-40e9-9ff9-b92b9ee456dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.centered_card_desktop
+    - image.style.centered_card_mobile
+  theme:
+    - biu_base
+id: centered_card
+label: 'Centered card'
+image_style_mappings:
+  -
+    breakpoint_id: biu_base.desk-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: centered_card_desktop
+  -
+    breakpoint_id: biu_base.desk
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: centered_card_desktop
+  -
+    breakpoint_id: biu_base.tab-wide
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: centered_card_mobile
+  -
+    breakpoint_id: biu_base.tab
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: centered_card_mobile
+  -
+    breakpoint_id: biu_base.mobile
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: centered_card_mobile
+breakpoint_group: biu_base
+fallback_image_style: centered_card_mobile

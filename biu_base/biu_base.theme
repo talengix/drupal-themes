@@ -1,0 +1,1011 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Field\EntityReferenceFieldItemListInterface;
+use Drupal\Core\Field\FieldItemInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\node\Entity\Node;
+use Drupal\node\NodeInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\ParagraphInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\group\Context\GroupRouteContextTrait;
+use Drupal\group\Entity\Group;
+
+/**
+ * Implements hook_theme_preprocess_html().
+ */
+function biu_base_preprocess_html(&$variables) {
+  // Add dir attribute to body so we will match storybook.
+  $language_interface = \Drupal::languageManager()->getCurrentLanguage();
+  $variables['attributes']['dir'] = $language_interface->getDirection();
+  if ($language_interface->getId() == 'en') {
+    $variables['language_accessibility'] = 'EN';
+  }
+  else {
+    $variables['language_accessibility'] = 'HE';
+  }
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function biu_base_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+
+  // Provide suggestion for block templates by custom block type.
+  if (!empty($variables['elements']['content']['#block_content'])) {
+    $block = $variables['elements']['content']['#block_content'];
+    // Add `block--BLOCK-TYPE.html.twig`.
+    $suggestions[] = 'block__' . $block->bundle();
+    $view_mode = $variables['elements']['#configuration']['view_mode'];
+    if (!empty($view_mode)) {
+      // Add `block--BLOCK-TYPE--VIEW-MODE.html.twig`.
+      $suggestions[] = 'block__' . $block->bundle() . '__' . $view_mode;
+    }
+  }
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function biu_base_theme_suggestions_links_alter(array &$suggestions, array $variables) {
+
+  // Add template suggestion for layout builder inline blocks.
+  $is_layout_builder = isset($variables["attributes"]["data-layout-builder-target-highlight-id"]);
+  if ($is_layout_builder && $variables["attributes"]["class"][0] == 'inline-block-list') {
+    $suggestions[] = 'links__layout_builder__inline_block_list';
+  }
+
+}
+
+/**
+ * Implements hook _preprocess_page().
+ */
+function biu_base_preprocess_page(&$variables) {
+
+  $variables['page']['footer'] = [
+    '#theme_wrappers' => ['region'],
+    '#region' => 'footer',
+    'phantom_block' => [
+      '#markup' => ' ',
+      '#weight' => "-100",
+    ],
+  ];
+  $variables['page']['header'] = [
+    '#theme_wrappers' => ['region'],
+    '#region' => 'header',
+    'phantom_block' => [
+      '#markup' => ' ',
+      '#weight' => "-100",
+    ],
+  ];
+
+  $variables['#attached']['library'][] = 'core/drupal.dialog.ajax';
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node instanceof NodeInterface) {
+      $variables['#attached']['drupalSettings']['biu_data'] = ['node_id' => $node->id()];
+    }
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function biu_base_preprocess_node(&$vars) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $vars['language'] = $language;
+}
+
+/**
+ * Implements hook_preprocess_region().
+ */
+function biu_base_preprocess_region(&$variables) {
+  $groupPageInfo = _getGroupPageInfo();
+  if (isset($variables['region']) && ($variables['region'] == 'header' || $variables['region'] == 'footer') && !empty($groupPageInfo)){
+    $variables['group_page_info'] = $groupPageInfo;
+  }
+
+  if (isset($variables['region']) && $variables['region'] == 'grpmenu') {
+    $routeName = \Drupal::routeMatch()->getRouteName();
+
+    if($routeName == 'entity.user.canonical') {
+      unset($variables['content']);
+    }
+  }
+
+  if (isset($variables['content']) && $variables['region'] == 'content') {
+    $current_path = \Drupal::service('path.current')->getPath();
+    $routeNameSplit = explode('/',$current_path);
+    if(isset($routeNameSplit[2]) && $routeNameSplit[2] == 'publications') {
+      $variables['attributes']['class'][] = 'publications-lobby-page';
+    }
+  }
+
+  // show language block
+  $showLanguageBlock = false;
+  if (isset($variables['region']) && $variables['region'] == 'header') {
+    $entity = \Drupal::routeMatch()->getParameter('node');
+
+    if($entity instanceof NodeInterface) {
+      $group = findGroupfromNode($entity);
+      if($group) {
+        $entity = $group;
+      }
+    } else {
+      $entity = \Drupal::routeMatch()->getParameter('group');
+    }
+
+    if ($entity instanceof Group) {
+      $published = 0;
+      foreach ($entity->getTranslationLanguages() as $langcode => $language) {
+        $published += \Drupal::service('content_translation.manager')->getTranslationMetadata($entity->getTranslation($langcode))
+          ->isPublished();
+      }
+
+      // get current user
+      $user = \Drupal::currentUser();
+      if($published > 1 || $user->hasPermission('view own unpublished content')) {
+        $showLanguageBlock = true;
+      }
+    } else {
+      $showLanguageBlock = true;
+    }
+
+    if($showLanguageBlock) {
+      $variables['language_block'] = \Drupal::service('plugin.manager.block')
+        ->createInstance('language_dropdown_block:language_interface')
+        ->build();
+    }
+  }
+}
+
+/**
+ * Check external links in a menu.
+ *
+ * @param array $menu
+ *   The current menu.
+ */
+function custom_check_is_external(array &$menu) {
+  foreach ($menu as &$item) {
+    $item['is_external'] = UrlHelper::isExternal($item['url']);
+    if (isset($item['below']) && !empty($item['below'])) {
+      custom_check_is_external($item['below']);
+    }
+  }
+}
+
+/**
+ * Get menu tree for renderable form in twig file.
+ */
+function _get_menu_tree($menu_name) {
+  $menu_tree = \Drupal::menuTree();
+  // Build the typical default set of menu tree parameters.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+  // Load the tree based on this set of parameters.
+  $tree = $menu_tree->load($menu_name, $parameters);
+  // Transform the tree using the manipulators you want.
+  $manipulators = [
+    // Only show links that are accessible for the current user.
+    ['callable' => 'menu.default_tree_manipulators:checkAccess'],
+    // Use the default sorting of menu links.
+    ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+  ];
+  $tree = $menu_tree->transform($tree, $manipulators);
+  // Finally, build a renderable array from the transformed tree.
+  $menu_tmp = $menu_tree->build($tree);
+
+  if (empty($menu_tmp['#items'])) {
+    $menu_tmp['#items'] = [];
+  }
+
+  $menu = [];
+  foreach ($menu_tmp['#items'] as $item) {
+    $childItems = [];
+    if (!empty($item['below'])) {
+      foreach ($item['below'] as $child) {
+        $grandchildItems = [];
+        if (!empty($child['below'])) {
+          foreach ($child['below'] as $grandchild) {
+            $grandchildItems[] = [
+              'url' => $grandchild['url']->toString(),
+              'title' => $grandchild['title'],
+              'in_active_trail' => $grandchild['in_active_trail'],
+              'is_title' => $menu_name === 'footer' || $menu_name === 'english-footer',
+            ];
+          }
+        }
+        $childItems[] = [
+          'url' => $child['url']->toString(),
+          'title' => $child['title'],
+          'in_active_trail' => $child['in_active_trail'],
+          'below' => !empty($child['below']) ? $grandchildItems : '',
+          'is_title' => $menu_name === 'footer' || $menu_name === 'english-footer',
+        ];
+      }
+    }
+    $menu[] = [
+      'url' => $item['url']->toString(),
+      'title' => $item['title'],
+      'in_active_trail' => $item['in_active_trail'],
+      'below' => !empty($item['below']) ? $childItems : '',
+      'is_title' => $menu_name === 'footer' || $menu_name === 'english-footer',
+    ];
+  }
+
+  return $menu;
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function biu_base_preprocess_block(&$variables) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $language;
+  $block_name = $variables['derivative_plugin_id'];
+
+
+  if($variables['base_plugin_id'] == 'page_title_block') {
+    $routeName = \Drupal::routeMatch()->getRouteName();
+    $routeNameSplit = explode('.',$routeName);
+    if(isset($routeNameSplit[1]) && $routeNameSplit[1] == 'events') {
+      $variables['attributes']['class'][] = 'hidden';
+    }
+  }
+
+  if ($block_name == 'card_grid') {
+    if (isset($variables['elements']['#configuration']['block_styles']['card_grid_styles']['dropdown_class'])) {
+      $variables['card_grid_styles'] = $variables['elements']['#configuration']['block_styles']['card_grid_styles']['dropdown_class'];
+    }
+    else {
+      $variables['card_grid_styles'] = "interest_domains";
+    }
+  }
+  elseif ($block_name == 'information_banner') {
+    $setting_config = \Drupal::config('biu_site_settings.settings');
+    $campus_map = $setting_config->get('campus_map');
+    if (!empty($campus_map)) {
+      $variables['map_link'] = $campus_map;
+      $variables['map_title'] = t('map');
+    }
+    $university_virtual_tour = $setting_config->get('university_virtual_tour');
+    if (!empty($university_virtual_tour)) {
+      $variables['virtual_tour_link'] = $university_virtual_tour;
+      $variables['virtual_tour_title'] = t('virtual tour');
+    }
+  }
+  elseif ($block_name == 'image_strip') {
+    $variables['items'] = [];
+    foreach ($variables["elements"]["content"]["#block_content"]->field_image_strip_content as $media_item) {
+      if ($media_item->entity->hasTranslation($language)) {
+        $curr_lang_entity = $media_item->entity->getTranslation($language);
+      }
+      else {
+        $curr_lang_entity = $media_item->entity;
+      }
+
+      $mobile_image = NULL;
+      $desktop_image = NULL;
+
+      if (!empty($curr_lang_entity->field_mobile_media_image->referencedEntities()[0])) {
+        $mobile_image = [
+          '#theme' => 'image_style',
+          '#style_name' => 'linked_images_strip',
+          '#uri' => $curr_lang_entity->field_mobile_media_image->referencedEntities()[0]->field_media_image->entity->getFileUri(),
+        ];
+      }
+      if (!empty($curr_lang_entity->field_media_content->referencedEntities()[0]->field_media_image)) {
+        $desktop_image = [
+          '#theme' => 'image_style',
+          '#style_name' => 'linked_images_strip',
+          '#uri' => $curr_lang_entity->field_media_content->referencedEntities()[0]->field_media_image->referencedEntities()[0]->uri->value,
+        ];
+      }
+      if ($mobile_image && $desktop_image) {
+        $item = [];
+        $item['component_base_class'] = 'media-item';
+        $item['component_modifiers'] = ['strip'];
+        $item['additional_classes'] = ['swiper-slide'];
+        $item['card__image_mobile'] = \Drupal::service('renderer')->render($mobile_image);
+        $item['card__image'] = \Drupal::service('renderer')->render($desktop_image);
+        $item['card__link'] = $curr_lang_entity->field_link;
+        $variables['items'][] = $item;
+      }
+    }
+  }
+  elseif ($block_name == 'event_strip') {
+    $items = [];
+    $groupEntity = (new class { use GroupRouteContextTrait; })->getBestCandidate();
+    $domain = $groupEntity->field_site_name->value;
+    if ($language == 'he') {
+      $items =  \Drupal::state()->get("biu_events.eventsStripDataHe" . $domain);
+    }
+    else {
+      $items =  \Drupal::state()->get('biu_events.eventsStripDataEn' . $domain);
+    }
+    if (empty($items)) {
+      $variables['items'] = [];
+      return;
+    }
+    $eventsItems = [];
+    foreach ($items as $event_item) {
+      if ($language == 'he') {
+        $item_url = '/' . $domain . '/our-event/' . $event_item['nid'];
+      }
+      else {
+        $item_url = '/en/' . $domain . '/our-event/' . $event_item['nid'];
+      }
+      $event_item = [
+        'item_url' => $item_url ,
+        'event_start_date_day' => $event_item['start_date_day'],
+        'event_start_date_month' => $event_item['start_date_month'],
+        'event_mode' => $event_item['mode'],
+        'image_src' => $event_item['image'],
+        'image_alt' => $event_item['image_alt'],
+        'invite' => $event_item['invite'],
+        'cost' => $event_item['cost'],
+        'type' => $event_item['type'],
+        'label' => $event_item['label'],
+        'sub_title' => $event_item['subtitle'],
+        'event_date_display_one' => $event_item['date_display_one'],
+        'event_date_display_two' => $event_item['date_display_two'],
+        'event_time_display' => $event_item['time_display'],
+        'calendar__links' => $event_item['calendar_links'],
+      ];
+      $eventsItems[] = $event_item;
+    }
+    $variables['items'] = $eventsItems;
+    if ($language == 'he') {
+      $variables['lobby_url'] = '/' . $domain . '/our-events';
+    }
+    else {
+      $variables['lobby_url'] = '/' . $language . '/' . $domain . '/our-events';
+    }
+  } elseif ($block_name == 'media_slides') {
+    $variables['background'] = '';
+  } elseif ($block_name == 'hero_one' || $block_name == 'hero_two') {
+    $variables['items'] = [];
+    $blockContent = $variables["elements"]["content"]["#block_content"];
+
+    foreach ($blockContent->field_hero_image as $itemObj) {
+      $item = [];
+      $item['title'] = $variables["configuration"]["label"];
+      $item['text'] = $blockContent->field_text->value;
+      $imageStyle = _image_style($itemObj->entity->uri->value, $block_name);
+      $item['hero_image'] = '<img alt="' . $itemObj->alt . '" src="' . $imageStyle['url'] . '" />';
+
+      if (isset($blockContent->field_link[0]->uri)) {
+        $item['link'] = Url::fromUri($blockContent->field_link[0]->uri)->toString();
+        $item['link_title'] = $blockContent->field_link[0]->title;
+        $item['is_external'] = UrlHelper::isExternal($blockContent->field_link[0]->uri);
+      }
+      $variables['items'][] = $item;
+    }
+
+    $variables['hero_background'] = '';
+  }
+  elseif ($block_name == 'quotes_one'){
+    $quoteContent = $variables["elements"]["content"]["#block_content"];
+
+    if(isset($quoteContent->field_image->referencedEntities()[0])) {
+      $variables['quotes_image'] = '<img alt="' . $quoteContent->field_image->alt . '" src="' . $quoteContent->field_image->referencedEntities()[0]->createFileUrl() . '" />';
+    }
+    $variables['quotes_text'] = $quoteContent->field_text->value;
+
+    if(isset($quoteContent->field_person_image->referencedEntities()[0])){
+      $imageStyle = _image_style($quoteContent->field_person_image->referencedEntities()[0]->uri->value, 'quotes_person');
+      $variables['person_image'] = '<img alt="' . $quoteContent->field_person_image	->alt . '" src="' . $imageStyle['url'] . '" />';
+    }
+    $variables['person_name'] = $quoteContent->field_person_name->value;
+    $variables['color_theme'] = '';
+  }
+  elseif ($block_name == 'quotes_two'){
+    $quoteContent = $variables["elements"]["content"]["#block_content"];
+
+    if(isset($quoteContent->field_image->referencedEntities()[0])) {
+      $quoteImage = _image_style($quoteContent->field_image->referencedEntities()[0]->uri->value, $block_name);
+      $variables['quotes_image_url'] = $quoteImage['url'];
+    }
+    $variables['quotes_text'] = $quoteContent->field_text->value;
+
+    if(isset($quoteContent->field_person_image->referencedEntities()[0])){
+      $imageStyle = _image_style($quoteContent->field_person_image->referencedEntities()[0]->uri->value, 'quotes_person');
+      $variables['person_image'] = '<img alt="' . $quoteContent->field_person_image	->alt . '" src="' . $imageStyle['url'] . '" />';
+    }
+    $variables['person_name'] = $quoteContent->field_person_name->value;
+  }
+  elseif($block_name == 'messages_one'){
+    $messagesContent = $variables["elements"]["content"]["#block_content"];
+    $variables['background_color'] = '';
+
+    $variables['items'] = [];
+    foreach($messagesContent->field_item as $itemObj) {
+      if(!isset($itemObj->target_id)) continue;
+      $itemEntity = Paragraph::load($itemObj->target_id);
+      if(!isset($itemEntity)) continue;
+
+      if($itemEntity->hasTranslation($language)) {
+        $itemEntity = $itemEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['title'] = $itemEntity->field_title->value;
+      $item['text'] = $itemEntity->field_text->value;
+      if(!empty($itemEntity->field_date->value)) {
+        $item['date'] = \Drupal::service('date.formatter')->format(strtotime($itemEntity->field_date->value), 'custom', 'd/m/Y');
+      }
+      if(isset($itemEntity->field_link[0]->uri)){
+        $item['link'] = Url::fromUri($itemEntity->field_link[0]->uri)->toString();
+        $item['link_title'] = $itemEntity->field_link[0]->title;
+        $item['is_external'] = UrlHelper::isExternal($itemEntity->field_link[0]->uri);
+      }
+
+      $variables['items'][] = $item;
+    }
+
+  }
+  elseif($block_name == 'messages_two'){
+    $messagesContent = $variables["elements"]["content"]["#block_content"];
+    $variables['background_color'] = '';
+
+    $variables['items'] = [];
+    foreach($messagesContent->field_item as $itemObj) {
+      if(!isset($itemObj->target_id)) continue;
+      $itemEntity = Paragraph::load($itemObj->target_id);
+      if(!isset($itemEntity)) continue;
+
+      if($itemEntity->hasTranslation($language)) {
+        $itemEntity = $itemEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['text'] = $itemEntity->field_title->value;
+
+      if(isset($itemEntity->field_link[0]->uri)){
+        $item['link'] = Url::fromUri($itemEntity->field_link[0]->uri)->toString();
+      }
+
+      $variables['items'][] = $item;
+    }
+
+  }
+  elseif ($block_name == 'overflow_one') {
+    $overflowContent = $variables["elements"]["content"]["#block_content"];
+    $variables['sub_title'] = $overflowContent->field_sub_title->value;
+
+    $variables['items'] = [];
+    foreach($overflowContent->field_item as $itemObj) {
+      if(!isset($itemObj->target_id)) continue;
+      $itemEntity = Paragraph::load($itemObj->target_id);
+      if(!isset($itemEntity)) continue;
+
+      if($itemEntity->hasTranslation($language)) {
+        $itemEntity = $itemEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['title'] = $itemEntity->field_title->value;
+      if(isset($itemEntity->field_image_upload->referencedEntities()[0])) {
+        $imageStyle = _image_style($itemEntity->field_image_upload->referencedEntities()[0]->uri->value, $block_name);
+        $item['image'] = '<img alt="' . $itemEntity->field_image_upload	->alt . '" src="' . $imageStyle['url'] . '" />';
+      }
+
+      $variables['items'][] = $item;
+    }
+  }
+  elseif ($block_name == 'overflow_two') {
+    $overflowContent = $variables["elements"]["content"]["#block_content"];
+    $variables['sub_title'] = $overflowContent->field_sub_title->value;
+    $variables['background_color'] = '';
+
+    $variables['items'] = [];
+    foreach($overflowContent->field_item as $itemObj) {
+      if(!isset($itemObj->target_id)) continue;
+      $itemEntity = Paragraph::load($itemObj->target_id);
+      if(!isset($itemEntity)) continue;
+
+      if($itemEntity->hasTranslation($language)) {
+        $itemEntity = $itemEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['text'] = $itemEntity->field_text->value;
+
+      if(isset($itemEntity->field_link[0]->uri)) {
+        $item['link'] = Url::fromUri($itemEntity->field_link[0]->uri)->toString();
+      }
+
+      $variables['items'][] = $item;
+    }
+  }
+  elseif ($block_name == 'overflow_three') {
+    $overflowContent = $variables["elements"]["content"]["#block_content"];
+    $variables['items'] = [];
+    foreach($overflowContent->field_item as $itemObj) {
+      if(!isset($itemObj->target_id)) continue;
+      $itemEntity = Paragraph::load($itemObj->target_id);
+      if(!isset($itemEntity)) continue;
+
+      if($itemEntity->hasTranslation($language)) {
+        $itemEntity = $itemEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['title'] = $itemEntity->field_title->value;
+      $item['text'] = $itemEntity->field_text->value;
+      if(isset($itemEntity->field_image_upload->referencedEntities()[0])) {
+        $imageStyle = _image_style($itemEntity->field_image_upload->referencedEntities()[0]->uri->value, $block_name);
+        $item['image'] = '<img alt="' . $itemEntity->field_image_upload	->alt . '" src="' . $imageStyle['url'] . '" />';
+      }
+
+      $variables['items'][] = $item;
+    }
+  }
+  elseif ($block_name == 'topics_focus') {
+    $variables['items'] = [];
+    foreach($variables["elements"]["content"]["#block_content"]->field_item as $topic) {
+      if(!isset($topic->target_id)) continue;
+      $topicEntity = Paragraph::load($topic->target_id);
+      if(!isset($topicEntity)) continue;
+      if($topicEntity->hasTranslation($language)) {
+        $topicEntity = $topicEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['title'] = $topicEntity->field_title->value;
+      $item['text'] = $topicEntity->field_text->value;
+      if(isset($topicEntity->field_link[0]->uri)) {
+        $item['link'] = Url::fromUri($topicEntity->field_link[0]->uri)->toString();
+      }
+      if(!empty($topicEntity->field_image_upload->referencedEntities()[0]->uri->value)) {
+        $imageStyle = _image_style($topicEntity->field_image_upload->referencedEntities()[0]->uri->value, $block_name);
+        $item['image_src'] = $imageStyle['url'];
+        $item['image_alt'] = $topicEntity->field_image_upload->alt;
+      }
+      else {
+        $item['image_src'] = '';
+        $item['image_alt'] = '';
+      }
+
+      $variables['items'][] = $item;
+    }
+
+    $variables['topics_focus_background'] = '';
+  }
+  elseif ($block_name == 'information') {
+    $variables['items'] = [];
+    foreach($variables["elements"]["content"]["#block_content"]->field_item as $informationItem) {
+      if(!isset($informationItem->target_id)) continue;
+      $informationEntity = Paragraph::load($informationItem->target_id);
+      if(!isset($informationEntity)) continue;
+      if($informationEntity->hasTranslation($language)){
+        $itemEntity = $informationEntity->getTranslation($language);
+      } else {
+        $itemEntity = $informationEntity;
+      }
+
+      $item = [];
+      $item['title'] = $itemEntity->field_title->value;
+      $item['description'] = $itemEntity->field_text->value;
+
+      $variables['items'][] = $item;
+    }
+  }
+  elseif ($block_name == 'video_one'){
+    $videoContent = $variables["elements"]["content"]["#block_content"];
+    $variables['text'] = $videoContent->field_text->value;
+    $variables['background_color'] = '';
+    if(isset($videoContent->field_link[0]->uri)) {
+      $variables['link'] = Url::fromUri($videoContent->field_link[0]->uri)->toString();
+      $variables['link_title'] = $videoContent->field_link[0]->title;
+    }
+  }
+  elseif ($block_name == 'video_two'){
+    $videoContent = $variables["elements"]["content"]["#block_content"];
+    $variables['background_color'] = '';
+    $variables['text'] = $videoContent->field_text->value;
+  }
+  elseif ($block_name == 'catalog_search') {
+    $setting_config = \Drupal::config('biu_site_settings.settings');
+    $variables['catalog_link'] = $setting_config->get('catalog_link');
+  }
+  elseif ($block_name == 'link_list') {
+    $variables['items'] = [];
+    $variables['background_color'] = '';
+    foreach ($variables["elements"]["content"]["#block_content"]->field_item as $item) {
+      if(!isset($item->target_id)) continue;
+      $itemEntity = Paragraph::load($item->target_id);
+      if(!isset($itemEntity)) continue;
+      if($itemEntity->hasTranslation($language)) {
+        $itemEntity = $itemEntity->getTranslation($language);
+      }
+
+      $item = [];
+      $item['link_url'] = Url::fromUri($itemEntity->field_link[0]->uri)->toString();
+      $item['link_title'] = $itemEntity->field_link[0]->title;
+      $item['link_content'] = $itemEntity->field_link[0]->title;
+      $item['icon_url'] = "/themes/custom/biu_base/dist/icons.svg";
+      $item['is_external'] = UrlHelper::isExternal($item['link_url']);
+      $variables['items'][] = $item;
+    }
+  }
+  elseif ($block_name == 'medium_hero') {
+    $description_value = $variables['elements']['content']['#block_content']->get('field_description')->value;
+    $variables['elements']['content']['#block_content']->get('field_description')->value = str_replace("\r\n", "<br>", $description_value);
+  } else if($block_name == NULL && $variables['plugin_id'] == 'webform_block') {
+    // dump($variables);
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function biu_base_preprocess_menu(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node && $node instanceof NodeInterface) {
+    $variables["node_label"] = $node->title->value;
+  }
+}
+
+/**
+ * Implements hook_preprocess_menu__group_menu().
+ */
+function biu_base_preprocess_menu__group_menu(&$variables) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  remove_group_menu_item_untranslated($variables['items'], $language);
+}
+
+/**
+ * Remove the menu item that has no translation to the menu item or translated menu item not publihsed
+ */
+function remove_group_menu_item_untranslated(&$items, $language) {
+  foreach($items as $id => $item) {
+    $itemEntity = $item['original_link'];
+    $uuid = $itemEntity->getDerivativeId();
+    $entity = \Drupal::service('entity.repository')
+      ->loadEntityByUuid('menu_link_content', $uuid);
+
+    $entityLanguage = $entity->language()->getId();
+    if($entity->hasTranslation($language)){
+      $entityTranslation = $entity->getTranslation($language);
+      $entityTranslationStatus = $entityTranslation->content_translation_status->value;
+      if($entityTranslationStatus == '0') {
+        unset($items[$id]);
+      }
+    } else {
+      unset($items[$id]);
+    }
+    if(isset($items[$id]) && count($item['below']) > 0) {
+      remove_group_menu_item_untranslated($items[$id]['below'], $language);
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function biu_base_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  if ($node = \Drupal::routeMatch()->getParameter('node')) {
+    if ($node instanceof NodeInterface) {
+      $suggestions[] = 'page__' . $node->bundle();
+    }
+    else {
+      $node = \Drupal::entityTypeManager()->getStorage('node')->load($node);
+      if ($node && $node instanceof NodeInterface) {
+        $suggestions[] = 'page__' . $node->bundle();
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_links__language_block().
+ */
+function biu_base_preprocess_links__language_block(&$variables) {
+  foreach ($variables['links'] as $i => $link) {
+    /** @var \Drupal\language\Entity\ConfigurableLanguage $linkLanguage */
+    $linkLanguage = $link['link']['#options']['language'];
+    $variables['links'][$i]['link']['#title'] = $linkLanguage->get('id');
+  }
+}
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function biu_base_preprocess_paragraph(&$variables) {
+  $node = \Drupal::request()->attributes->get('node');
+  if (!empty($node) && $node instanceof NodeInterface) {
+    $variables['node_type'] = $node->getType();
+  }
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $language;
+
+  $paragraph_bundle = $variables['paragraph']->bundle();
+  if ($paragraph_bundle == 'image_strip') {
+    $variables['items'] = [];
+    foreach ($variables['paragraph']->field_image_strip_upload as $media_item) {
+
+      $mobile_image = NULL;
+      $desktop_image = NULL;
+
+      $mobile_image = [
+        '#theme' => 'image_style',
+        '#style_name' => 'images_strip',
+        '#uri' => $media_item->entity->getFileUri(),
+      ];
+
+      $desktop_image = [
+        '#theme' => 'image_style',
+        '#style_name' => 'images_strip',
+        '#uri' => $media_item->entity->getFileUri(),
+      ];
+
+      if ($mobile_image && $desktop_image) {
+        $item = [];
+        $item['component_base_class'] = 'media-item';
+        $item['component_modifiers'] = ['strip'];
+        $item['additional_classes'] = ['swiper-slide'];
+        $item['card__image_mobile'] = \Drupal::service('renderer')->render($mobile_image);
+        $item['card__image'] = \Drupal::service('renderer')->render($desktop_image);
+        $item['card__link'] = $variables['paragraph']->field_image_strip_link;
+        $variables['items'][] = $item;
+      }
+    }
+  }
+
+  if ($paragraph_bundle == 'contact') {
+    $setting_config = \Drupal::config('biu_site_settings.settings');
+    $campus_map = $setting_config->get('campus_map');
+    if (!empty($campus_map)) {
+      $variables['campus_map'] = $campus_map;
+      $variables['campus_map_title'] = t('To the campus page');
+    }
+  }
+
+  if ($paragraph_bundle == 'links') {
+    $variables['items'] = [];
+    foreach ($variables['paragraph']->field_links as $link) {
+      $item = [];
+      $item['link_url'] = Url::fromUri($link->uri)->toString();
+      $item['link_title'] = $link->title;
+      $item['link_content'] = $link->title;
+      $item['icon_url'] = "/themes/custom/biu_base/dist/icons.svg";
+      $item['is_external'] = UrlHelper::isExternal($item['link_url']);;
+      $variables['items'][] = $item;
+
+    }
+  }
+}
+
+/**
+ * Implements hook_form_form_id_alter().
+ */
+function biu_base_form_search_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['basic']['keys']['#title'] = t('Search');
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function biu_base_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!empty($form['#webform_id']) && $form['#webform_id'] == 'general_contact_form') {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof NodeInterface && $node->getType() == 'contact') {
+      $form['actions']['submit']['#prefix'] = '<div class="animation-container-general-contact" data-src="/themes/custom/biu_base/assets/animations/white-arrow.json">';
+      $form['actions']['submit']['#suffix'] = '</div>';
+      $form['#attached']['library'][] = 'biu_contact_form/candidate-contact-form';
+      if (!empty($node->get('field_referral_classification'))) {
+        foreach ($node->get('field_referral_classification') as $referral_classification) {
+          if (!empty($referral_classification)) {
+            $option = $referral_classification->second;
+            $email = $referral_classification->first;
+            $referral_options[$option] = $email;
+          }
+        }
+        $referral_option = array_flip($referral_options);
+        $form['elements']['referral_classification']['#options'] = $referral_option;
+      }
+    }
+  }
+
+  if (!empty($form['#webform_id']) && $form['#webform_id'] == 'contact') {
+    $form['actions']['submit']['#prefix'] = '<div class="animation-container" data-src="/themes/custom/biu_base/assets/animations/white-arrow.json">';
+    $form['actions']['submit']['#suffix'] = '</div>';
+  }
+}
+
+/**
+ * Template_preprocess_views_view_table()
+ */
+function biu_base_preprocess_views_view_table(&$variables) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['language'] = $language;
+}
+
+/**
+ * Implements hook_preprocess_item_list__search_results().
+ */
+function biu_base_preprocess_item_list__search_results(&$variables) {
+  $keywords = \Drupal::request()->query->get('keys');
+  if ($keywords == '') {
+    $variables['empty']['#markup'] = '<div class="result-message-empty"><img src ="/themes/custom/biu_base/assets/images/icons/group-4.png"><h3>' . t('Please enter some keywords.') . '</h3></div>';
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function biu_base_preprocess_breadcrumb(&$variables) {
+  $bcArr['breadcrumbitems'] = [];
+  /** @var \Drupal\Core\Link $link */
+  foreach ($variables['links'] as $key => $link) {
+    $bcArr['breadcrumbitems'][$key] = [$link->getText()];
+  }
+  $variables['#attached']['drupalSettings']['breadcrumbsItems'] = $bcArr['breadcrumbitems'];
+}
+
+/**
+ * Implements hook_preprocess().
+ */
+function biu_base_preprocess(&$variables) {
+  $variables['biu_ds_path'] = '/themes/custom/biu_base/biu_ds';
+  $variables['base_path'] = $GLOBALS['base_url'];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function biu_base_preprocess_block__links_by_category(&$variables) {
+  /** @var \Drupal\block_content\BlockContentInterface $block */
+  $block = $variables['content']['#block_content'];
+  $list = $block->get('field_links_by_category');
+  if (!$list instanceof EntityReferenceFieldItemListInterface || $list->isEmpty()) {
+    return;
+  }
+  $variables['items'] = array_map(static function (ParagraphInterface $paragraph) {
+    return [
+      'category' => $paragraph->get('field_links_category')->value,
+      'links' => array_map(static function (FieldItemInterface $item) {
+        $element = $item->view();
+        return [
+          'link_content' => $element['#link_title'],
+          'link_url' => $element['#link'] instanceof Url ? $element['#link'] : Url::fromUri($element['#link']),
+        ];
+      }, iterator_to_array($paragraph->get('field_link_library')
+        ->filter('_biu_base_filter_links_library'))),
+    ];
+  }, $list->referencedEntities());
+}
+
+/**
+ * Filters empty links library.
+ *
+ * @param \Drupal\Core\Field\FieldItemInterface $item
+ *   The field item.
+ *
+ * @return bool
+ *   TRUE if the item is not empty, FALSE otherwise.
+ */
+function _biu_base_filter_links_library(FieldItemInterface $item): bool {
+  if ($item->link_from_library) {
+    return $item->target_id !== NULL;
+  }
+  return !empty($item->title) && !empty($item->url);
+}
+
+/**
+ * Get group page header and footer info
+ *
+ * @return array
+ */
+function _getGroupPageInfo(){
+  $groupEntity = (new class { use GroupRouteContextTrait; })->getBestCandidate();
+  $routeName = \Drupal::routeMatch()->getRouteName();
+
+  if(!isset($groupEntity)) {
+    $routeNameSplit = explode('.',$routeName);
+    $eventArray = explode('_', $routeNameSplit[0]);
+
+    if(count($eventArray) == 2 && $eventArray[0] == 'group') {
+      $groupId = $eventArray[1];
+      $groupEntity = Group::load($groupId);
+    }
+  }
+  $pageInfo = [];
+  if(isset($groupEntity) && $routeName != 'entity.user.canonical'){
+    $language = \Drupal::languageManager()->getCurrentLanguage();
+    if($groupEntity->hasTranslation($language->getId())) {
+      $groupEntity = $groupEntity->getTranslation($language->getId());
+    }
+    $header = &$pageInfo['header'];
+    if(isset($groupEntity->field_site_logo->referencedEntities()[0])) {
+      $logoStyled = _image_style($groupEntity->field_site_logo->referencedEntities()[0]->uri->value, 'logo');
+      $header['logo_src'] =  $logoStyled['url'];
+    }
+    $site_url = $groupEntity->toUrl('canonical', ['language' => $language])->toString();
+    $site_url_class = $site_url;
+
+    if (str_starts_with($site_url_class, '/')) {
+      $site_url_class = substr($site_url_class, 1);
+    }
+    if (str_starts_with($site_url_class, 'he/')) {
+      $site_url_class = substr($site_url_class, 3);
+    }
+    if (str_starts_with($site_url_class, 'en/')) {
+      $site_url_class = substr($site_url_class, 3);
+    }
+    $header['site_url'] = $site_url;
+    $header['site_url_class'] = $site_url_class;
+    $header['site_url_name'] = $groupEntity->field_site_name->value;
+    $header['site_name'] = $groupEntity->label->value;
+    $header['slogan'] = $groupEntity->field_site_slogan->value;
+
+
+    $footer = &$pageInfo['footer'];
+
+    if(isset($groupEntity->field_address)){
+      $addressView = $groupEntity->field_address->view(['label' => 'hidden', 'type' => 'address_plain']);
+      $footer['address'] = \Drupal::service('renderer')->renderPlain($addressView);
+    }
+
+    $footer['phone'] = $groupEntity->field_site_phone->value;
+    $footer['fax'] = $groupEntity->field_site_fax->value;
+    $footer['free_text'] = $groupEntity->field_free_text->value;
+    $footer['email'] = $groupEntity->field_email->value;
+
+    $social_links = &$footer['social_links'];
+
+    if(isset($groupEntity->field_social_facebook[0]->uri)) {
+      $social_links['facebook'] = Url::fromUri($groupEntity->field_social_facebook[0]->uri)->toString();
+    }
+
+    if(isset($groupEntity->field_instagram[0]->uri)) {
+      $social_links['instagram'] = Url::fromUri($groupEntity->field_instagram[0]->uri)->toString();
+    }
+
+    if(isset($groupEntity->field_social_twitter[0]->uri)) {
+      $social_links['twitter'] = Url::fromUri($groupEntity->field_social_twitter[0]->uri)->toString();
+    }
+
+    if(isset($groupEntity->field_social_linkedin[0]->uri)) {
+      $social_links['linkedin'] = Url::fromUri($groupEntity->field_social_linkedin[0]->uri)->toString();
+    }
+
+    if(isset($groupEntity->field_youtube[0]->uri)) {
+      $social_links['youtube'] = Url::fromUri($groupEntity->field_youtube[0]->uri)->toString();
+    }
+
+    if(isset($groupEntity->field_external_site[0]->uri)) {
+      $social_links['external_site'] = Url::fromUri($groupEntity->field_external_site[0]->uri)->toString();
+    }
+  }
+
+  return $pageInfo;
+}
+
+function _image_style($uri, $image_style){
+  $style = Imagestyle::load($image_style);
+
+  $image = [];
+
+  if(isset($style)) {
+    $image['uri'] = $style->buildUri($uri);
+    $image['url'] = $style->buildUrl($uri);
+  } else {
+    $image['uri'] = $uri;
+    $image['url'] = file_create_url($uri);
+  }
+
+  return $image;
+}

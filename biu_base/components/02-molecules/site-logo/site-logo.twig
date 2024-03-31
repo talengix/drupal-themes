@@ -1,0 +1,16 @@
+<div {{ bem(site_logo__base_class, site_logo__modifiers, site_logo__blockname, site_logo__extra_classes) }}>
+  {% embed "@atoms/links/link/link.twig" with {
+    link_url: site__url,
+    link_base_class: 'site-link',
+    link_modifiers: [],
+    link_attributes: link_attributes,
+  } %}
+    {% block link_content %}
+      {% include "@atoms/images/icons/_icon.twig" with {
+        icon_name: item__name,
+        icon_url: icon__url,
+        icon_modifiers: []
+      } %}
+    {% endblock %}
+  {% endembed %}
+</div>

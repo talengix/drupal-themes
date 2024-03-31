@@ -1,0 +1,36 @@
+@charset "UTF-8";
+$font-path: $ds_assets_url + "/fonts/";
+
+@font-face {
+  font-family: "FedraSansBarilan";
+  src: url("#{$font-path}FedraSansBarilan-Book.woff2") format("woff2"),
+  url("#{$font-path}FedraSansBarilan-Book.woff") format("woff"),
+  url("#{$font-path}FedraSansBarilan-Book.otf") format("otf"),
+  url("#{$font-path}FedraSansBarilan-Book.eot") format("eot");
+  // normal will calculated from 100-400
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "FedraSansBarilan";
+  src: url("#{$font-path}FedraSansBarilan-Medium.woff2") format("woff2"),
+  url("#{$font-path}FedraSansBarilan-Medium.woff") format("woff"),
+  url("#{$font-path}FedraSansBarilan-Medium.otf") format("otf"),
+  url("#{$font-path}FedraSansBarilan-Medium.eot") format("eot");
+  // instead of font-weight: bold; We set range of 500-900 to force/apply
+  // all heavy sizes including "bold"
+  font-weight: 500 900;
+  font-style: normal;
+}
+
+//@font-face {
+//  font-family: "FedraSansBarilan";
+//  src: url("#{$font-path}FedraSansBarilan-Light.woff2") format("woff2"),
+//  url("#{$font-path}FedraSansBarilan-Light.woff") format("woff"),
+//  url("#{$font-path}FedraSansBarilan-Light.otf") format("otf"),
+//  url("#{$font-path}FedraSansBarilan-Light.eot") format("eot");
+//  font-weight: 100;
+//  font-style: normal;
+//}
+
+$font-body: "FedraSansBarilan","HelveticaNeue","Helvetica","Arial",sans-serif;

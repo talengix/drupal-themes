@@ -1,0 +1,14 @@
+<div {{ bem(large_media_base_class, large_media_modifiers, large_media_blockname, large_media_extra_classes) }}>
+  {% block grid_content %}
+    {% include "@molecules/large-media/large-media.twig" with {
+      large_media__base_class: 'large-media',
+      large_media__modifiers: ['full'],
+      image_link__base_class: 'large-media-image',
+      large_media_label: large_media__label,
+      large_media_subtitle: large_media__subtitle,
+      image: image,
+      link: link,
+      link_title: link_title
+    } %}
+  {% endblock %}
+</div>

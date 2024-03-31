@@ -1,0 +1,116 @@
+@import '../../../00-base/01-colors/_colors-vars.scss';
+@import "../../../00-base/base/global";
+
+.video {
+  &__wrap {
+    &--one {
+      padding: 60px 15px;
+      background-color: $light-gray;
+
+      @include background-color;
+    }
+  }
+
+  &__inner {
+    &--one {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+
+      @include ds-breakpoint($bp-tab){
+        flex-direction: row;
+      }
+
+      @include ds-breakpoint($bp-desk){
+        width: 1160px;
+      }
+    }
+  }
+
+  &__video-embed {
+    &--one {
+      max-width: 699px;
+      width: 100%;
+
+      @include ds-breakpoint($bp-tab){
+        width: 699px;
+      }
+    }
+  }
+
+  &__title {
+    &--one {
+      font-size: 2.5rem;
+      color: $bar-ilan-green;
+      font-weight: 600;
+      margin-top: 0;
+      
+      @include dark-section;
+    }
+  }
+
+  &__text {
+    &--one {
+      font-size: 1rem;
+      color: $bar-ilan-green;
+      
+      @include dark-section;
+    }
+  }
+
+  &__body {
+    &--one {
+      margin-left: 45px;
+      text-align: right;
+
+      @include ds-breakpoint($bp-tab){
+        width: 430px;
+      }
+
+      body[dir="ltr"] & {
+        text-align: left;
+        margin-left: 0;
+        margin-right: 45px;
+      }
+
+      .link-container {
+        text-align: right;
+        max-width: 300px;
+
+        body[dir="ltr"] & {
+          text-align: left;
+        }
+
+        .animation-container {
+          background-color: $jungle-green;
+          position: relative;
+        }
+
+        a {
+          font-size: 1rem;
+          color: $white;
+          display: block;
+          padding: 8px 25px;
+          text-decoration: none;
+        }
+
+        svg {
+          width: 43px !important;
+          height: 13px !important;
+          position: absolute;
+          left: 20px;
+          top: calc(50% - 7px);
+
+          body[dir="ltr"] & {
+            right: 20px;
+            left: auto;
+            transform: rotate(180deg) !important;
+          }
+        }
+      }
+    }
+  }
+}

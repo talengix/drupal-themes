@@ -1,0 +1,30 @@
+uuid: 418884be-0d38-45b2-89dd-ea95e6fa5f27
+langcode: he
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - media.type.image
+    - responsive_image.styles.large_hero
+  module:
+    - responsive_image
+id: media.image.default
+targetEntityType: media
+bundle: image
+mode: default
+content:
+  field_media_image:
+    label: visually_hidden
+    weight: 0
+    settings:
+      responsive_image_style: large_hero
+      image_link: ''
+    third_party_settings: {  }
+    type: responsive_image
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

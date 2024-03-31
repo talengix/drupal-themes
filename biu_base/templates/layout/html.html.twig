@@ -1,0 +1,95 @@
+{#
+/**
+ * @file
+ * Theme override for the basic structure of a single Drupal page.
+ *
+ * Variables:
+ * - logged_in: A flag indicating if user is logged in.
+ * - root_path: The root path of the current page (e.g., node, admin, user).
+ * - node_type: The content type for the current node, if the page is a node.
+ * - head_title: List of text elements that make up the head_title variable.
+ *   May contain one or more of the following:
+ *   - title: The title of the page.
+ *   - name: The name of the site.
+ *   - slogan: The slogan of the site.
+ * - page_top: Initial rendered markup. This should be printed before 'page'.
+ * - page: The rendered page markup.
+ * - page_bottom: Closing rendered markup. This variable should be printed after
+ *   'page'.
+ * - db_offline: A flag indicating if the database is offline.
+ * - placeholder_token: The token for generating head, css, js and js-bottom
+ *   placeholders.
+ *
+ * @see template_preprocess_html()
+ */
+#}
+
+{%
+  set body_classes = [
+  logged_in ? 'user-logged-in',
+  not root_path ? 'path-frontpage' : 'path-' ~ root_path|clean_class,
+  node_type ? 'page-node-type-' ~ node_type|clean_class,
+]
+%}
+
+<!DOCTYPE html>
+<html{{ html_attributes }}>
+  <head>
+    <meta name="facebook-domain-verification" content="bclakim2gp2bfl7vv4s45ezketxbdq" />
+    <head-placeholder token="{{ placeholder_token|raw }}">
+    <title>{{ head_title|safe_join(' | ') }}</title>
+    <css-placeholder token="{{ placeholder_token|raw }}">
+    <js-placeholder token="{{ placeholder_token|raw }}">
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MGNR7HN"></script>
+  </head>
+  <body{{ attributes.addClass(body_classes) }}>
+    {#
+      Keyboard navigation/accessibility link to main content section in
+      page.html.twig.
+    #}
+    <a href="#main-content" class="visually-hidden focusable">
+      {{ 'Skip to main content'|t }}
+    </a>
+    {{ page_top }}
+    {{ page }}
+    {{ page_bottom }}
+    <!-- Accessibility - biu.ac.il-->
+
+    <script data-cfasync="false">
+      window.interdeal = {
+        sitekey   : "191e16fced85428966cc33a3026c7c8d",
+        Position  : "Left",
+        Menulang  : "{{ language_accessibility }}",
+        domains	 : {
+          js  : "https://js.nagich.co.il/",
+          acc : "https://access.nagich.co.il/"
+        },
+        isPartial : true,
+        btnStyle  : {
+          color : {
+            main   : "#122231",
+            second : "#fff"
+          },
+          vPosition : ["20%",undefined], //Y-axis position of the widget, left side is reffering to the desktop version, the right side is for mobile.
+          scale	  : ["0.35","0.35"], //Size of the widget, the left side is referring to the desktop version, the right side is for mobile.
+          icon	  : {
+            type	: 11, //You can choose between 1- 14 icons, or set value as string like "Accessibility".
+            shape	: "circle", //You can choose the following shapes: "circle", "rectangle", "rounded", "semicircle".
+            outline	: true //true / false.
+          }
+        }	}
+    </script>
+    <script>
+      (function(doc, head, body){
+        var coreCall             = doc.createElement('script');
+        coreCall.src             = 'https://js.nagich.co.il/core/2.1.10/accessibility.js';
+        coreCall.defer           = true;
+        coreCall.integrity       = 'sha512-PWvjZ/e9EGeHEPppEOqscViKxQIW1/5rJeFedXLJiv0IrltJPvuhrYOiUsOkQ49FaZ5HSDp51/O/6V9uL2nNIA==';
+        coreCall.crossOrigin     = 'anonymous';
+        coreCall.setAttribute('data-cfasync', true );
+        body? body.appendChild(coreCall) : head.appendChild(coreCall);
+      })(document, document.head, document.body);
+    </script>
+    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+  </body>
+</html>

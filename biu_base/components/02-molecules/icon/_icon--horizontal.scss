@@ -1,0 +1,56 @@
+.icon--horizontal {
+  body[dir="ltr"] & {
+    @include gallery(1 of 2);
+  }
+
+  body[dir="rtl"] & {
+    @include gallery(1 of 2, right);
+  }
+
+  position: relative;
+  height: 0;
+  padding-bottom: span(1 of 2);
+  text-decoration: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px 0 rgba($dark-green, 0.1);
+  border: solid 1px $bar-ilan-green;
+  background-color: $pale-green;
+  text-align: center;
+  margin-bottom: $spacing-xs * 5.5;
+
+  .icon-horizontal-content {
+    position: absolute;
+    top: calc(50% - 40px);
+    width: 100%;
+    text-align: center;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: normal;
+    color: $color-heading;
+    margin: 0;
+  }
+
+  svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    padding-bottom: span(2 of 12);
+    body[dir="ltr"] & {
+      @include gallery(2 of 12);
+    }
+    body[dir="rtl"] & {
+      @include gallery(2 of 12, right);
+    }
+  }
+}
+
+a.icon--horizontal {
+  &:hover, &:focus {
+    border-color: $jungle-green;
+    box-shadow: 0 8px 24px 0 rgba($dark-green, 0.1);
+  }
+}

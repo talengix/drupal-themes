@@ -1,0 +1,117 @@
+.ui-widget-overlay {
+  background-color: $dark-green !important;
+  opacity: 0.91 !important;
+}
+
+.ui-dialog {
+  .ui-dialog-titlebar-close {
+    background-color: transparent;
+    right: 35px;
+    top: 35px;
+    z-index: 999;
+    border: 0;
+    margin: 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+
+    .ui-button-icon {
+      background-image: url('/themes/custom/biu_base/assets/images/icons/close-dark.svg');
+      background-position: center;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+ul.ui-autocomplete {
+  border: solid 1px rgba(0, 40, 15, 0.2);
+  background-color: $white !important;
+  z-index: 999;
+  max-height: 136px;
+  overflow: scroll;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  padding: 3px 0 7px;
+  color: $dark-green;
+  overflow-x: hidden;
+
+  body[dir="ltr"] & {
+    text-align: left;
+  }
+
+  .ui-menu-item {
+    display: block;
+
+    .ui-menu-item-wrapper {
+      color: $dark-green;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      padding: 12px 21px 14px 34px;
+
+      body[dir="ltr"] & {
+        padding: 12px 34px 14px 21px;
+      }
+    }
+
+    .ui-menu-item-wrapper.ui-state-active {
+      background-color: #F1F5F4 !important;
+      border-color: $white;
+
+      &:hover {
+        background-color: #F1F5F4 !important;
+        border-color: $white;
+      }
+    }
+  }
+
+  .ui-menu-item:hover {
+    background: $light-grey !important;
+    border-color: $white;
+  }
+}
+
+@include grid-breakpoint($mq-desk, desk) {
+  ul.ui-autocomplete {
+    max-width: 542px;
+
+    .ui-menu-item {
+      .ui-state-active {
+        background: $light-grey !important;
+        border-color: $white;
+      }
+
+      .ui-state-active:hover {
+        background: $light-grey !important;
+        border-color: $white;
+      }
+    }
+  }
+  .ui-widget.ui-widget-content {
+    position: absolute !important;
+    z-index: 1;
+  }
+}
+
+.submission-failed-msg {
+  padding-top: 150px;
+  padding-bottom: 200px;
+  text-align: center;
+  color: $dark-green;
+  font-weight: 500;
+  font-size: 24px;
+}

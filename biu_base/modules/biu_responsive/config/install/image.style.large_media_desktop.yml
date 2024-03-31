@@ -1,0 +1,17 @@
+uuid: b1610742-e46c-45be-9853-a9b08fb216a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: large_media_desktop
+label: 'Large media - desktop'
+effects:
+  dced2aa1-ce5a-4ce1-95ea-86707499554a:
+    uuid: dced2aa1-ce5a-4ce1-95ea-86707499554a
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1366
+      height: 708
+      crop_type: focal_point

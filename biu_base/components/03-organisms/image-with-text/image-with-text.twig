@@ -1,0 +1,12 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+    <div class="image-wrapper">
+      {{ image }}
+      <div class="image-alt">{{ image_alt }}</div>
+    </div>
+    {% include "@molecules/free-text/free-text.twig" with {
+      "free_text_class": "image-with-text--text",
+      "free_text_class__modifiers": [],
+      "free_text_body": free_text_content,
+    } %}
+
+</div>

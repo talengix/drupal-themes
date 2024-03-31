@@ -1,0 +1,91 @@
+.ui-widget.ui-widget-content,
+.ui-widget-header {
+  border: none;
+  background-color: transparent;
+}
+
+.gallery-modal-content {
+  background: transparent;
+  .swiper-pagination-fraction {
+    display: none;
+    margin: 0 0 15px 0;
+    font-size: calc(26 / 16 * 1rem);
+    @include grid-breakpoint($mq-desk, desk) {
+      display: block;
+      width: 50%;
+      top: -45px;
+      bottom: auto;
+      left: auto;
+      text-align: right;
+    }
+  }
+}
+
+.gallery-swiper {
+  overflow: hidden;
+  height: 80%;
+  position: relative;
+}
+
+.gallery-slide-item {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  figcaption {
+    position: relative;
+    display: flex;
+    bottom: 0;
+    background: #000;
+    opacity: 0.8;
+    color: $white;
+    padding: 8px 0 8px 10px;
+    font-size: 0.8rem;
+
+    .current-item {
+      width: 66px;
+      border-left: 1px solid $white;
+      font-size: calc(26 / 16 * 1rem);
+      font-weight: 600;
+      padding: 5px 10px;
+      align-self: center;
+      justify-self: center;
+    }
+
+    .caption {
+      padding-right: 15px;
+    }
+
+    @include grid-breakpoint($mq-desk, desk) {
+      position: absolute;
+      font-size: calc(20 / 16 * 1rem);
+    }
+  }
+}
+
+.thumbnail-swiper {
+  display: none;
+  padding: 15px 0;
+  height: 20%;
+  overflow: hidden;
+  .swiper-slide {
+    img {
+      display: block;
+      max-width: 144px;
+      max-height: 144px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+  .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    display: block;
+  }
+}

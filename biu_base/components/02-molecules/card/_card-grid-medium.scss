@@ -1,0 +1,49 @@
+.card-grid-medium {
+  width: span(2 of 2);
+  position: relative;
+  display: block;
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  svg {
+    width: 43px !important;
+    height: 13px !important;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+
+    body[dir="ltr"] & {
+      transform: rotate(180deg) !important;
+      left: auto;
+      right: 20px;
+    }
+  }
+
+  .card-grid-medium__content {
+    color: $bar-ilan-green;
+    background-color: $pale-green;
+    padding: 20px;
+    min-height: 110px;
+    h5 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    .card-grid-medium__body {
+      font-size: 14px;
+      line-height: 1.43;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    width: span(3 of 12);
+  }
+}

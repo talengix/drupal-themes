@@ -1,0 +1,36 @@
+// Story book styling
+.statistics-card{
+  .heading{
+    font-size: 44.8px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    text-align: center;
+    color: $dark-green;
+    margin:0 0 6px;
+  }
+  .subheading{
+    font-size: 17.6px;
+    font-weight: 500;
+    margin: 0;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: $dark-green;
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .heading {
+      font-size: 56px;
+      line-height: 1.02;
+      margin:0 0 14px;
+    }
+    .subheading{
+      font-size: 20px;
+    }
+  }
+}

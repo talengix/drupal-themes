@@ -1,0 +1,67 @@
+{% if not additional_classes %}
+  {% set additional_classes = [] %}
+{% endif %}
+{% set additional_classes = additional_classes|merge(['swiper']) %}
+
+<div {{ bem('alumni-strip', component_modifiers, '', additional_classes) }}>
+  <div class="alumni-strip__header">
+    {% include "@ds_elements/text/headings/_heading.twig" with {
+      heading_level: 2,
+      heading: view_title,
+      heading_is_div: true,
+      heading_modifiers: ['secondary'],
+      heading__additional_classes: ['alumni-strip__heading']
+    } %}
+    <div class="alumni-strip__nav flex">
+      <div class="alumni-strip__prev">
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_title: 'Previous'|t,
+          icon_name: 'large-arrow-dark',
+          icon_full_url: icon_full_url,
+          icon_modifiers: []
+        } %}
+      </div>
+      <div class="alumni-strip__next">
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_title: 'Next'|t,
+          icon_name: 'large-arrow-dark',
+          icon_full_url: icon_full_url,
+          icon_modifiers: []
+        } %}
+      </div>
+    </div>
+  </div>
+  <ul class="swiper-wrapper alumni-strip__swiper-wrapper list-reset">
+    {% for item in items %}
+      {% set card_text = item.card__content %}
+      {% if card_text|length > 230 %}
+        {#        {% set card_text = card_text|slice(0, 230) ~ '...' %} #}
+        {% set card_text = card_text|truncate(230, true) ~ '...' %}
+      {% endif %}
+      <li class="swiper-slide alumni-strip__slide">
+        {% include "@ds_components/alumni-strip/card-alumni.twig" with {
+          card__image: item.card__image,
+          card__additional_classes: ['swiper-slide--alumni', 'swiper-slide'],
+          card__base_class: item.card__base_class,
+          card__modifiers: item.card__modifiers,
+          card__heading__modifiers: item.card__heading__modifiers,
+          card__subheading__modifiers: item.card__subheading__modifiers,
+          card__content__modifiers: item.card__content__modifiers,
+          card__content__modifiers: item.card__content__modifiers,
+          card__heading: item.card__heading,
+          card__subheading: item.card__subheading,
+          card__content: card_text,
+          card__link_url: item.card__link_url,
+          card__link_title: item.card__link_title,
+        } %}
+      </li>
+    {% endfor %}
+  </ul>
+  <div class="row">
+    <div class="col-md-8 swiper-pagination alumni-strip__pagination"></div>
+    <a class="col-sm-6 alumni-strip__more-link arrowed" href="{{ component__read_more_url }}">
+      {{ component__read_more_title }}
+    </a>
+  </div>
+</div>
+

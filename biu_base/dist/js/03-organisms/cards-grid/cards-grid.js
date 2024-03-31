@@ -1,0 +1,1 @@
+"use strict";Drupal.behaviors.cardsGridStrip={attach:function attach(){if(window.matchMedia("(min-width: 1200px)").matches)new Swiper(".swiper-cards-grid",{loop:!1,slidesPerView:"auto",navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"}})}};

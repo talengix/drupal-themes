@@ -1,0 +1,28 @@
+{#
+/**
+* @file
+* Template for a block.
+*/
+#}
+{% embed '@storage/block/block.twig' with {
+  html_tag: 'div',
+} %}
+  {% block label %}
+    <div{{title_attributes.addClass(['block-title'])}}>{{ label }}</div>
+  {% endblock %}
+
+  {% block content %}
+    <div{{content_attributes.addClass('content')}}>
+      <div class="card card-product">
+        {{ content.field_image }}
+        <div class="card-body">
+          <h5 class="card-title">{{ content.field_title[0] }}</h5>
+          {% if content.field_text|render %}
+            {{ content.field_card_text[0] }}
+          {% endif %}
+          {{ content.field_card_text[0] }}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

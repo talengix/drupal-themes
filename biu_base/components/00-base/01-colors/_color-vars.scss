@@ -1,0 +1,120 @@
+// Grayscale
+$white: white;
+$near-white: #f2f2f2;
+$gray-lightest: #e5e5e5;
+$gray-lighter: #ccc;
+$gray-light: #888;
+$gray: #666;
+$gray-dark: #4c4c4c;
+$gray-darker: #333;
+$black: black;
+
+// Project
+$lime-green: #c3dc87;
+$pale-green: #f5faf0;
+$light-blue: #78cde6;
+$bar-ilan-green: #004128;
+$jungle-green: #006937;
+$dark-green: #00280f;
+$light-grey: #f3f4f8;
+$pink: #de5cb6;
+
+// Styleguide
+.sg-colors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sg-colors__list {
+  list-style: none;
+  margin: 1rem 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  border: solid 1px #dfdfdf;
+  border-radius: 1px;
+}
+
+.sg-colors__color {
+  padding: 4rem;
+  border: solid 1px #dfdfdf;
+
+  &--white {
+    background-color: $white;
+  }
+
+  &--near-white {
+    background-color: $near-white;
+  }
+
+  &--gray-lightest {
+    background-color: $gray-lightest;
+  }
+
+  &--gray-lighter {
+    background-color: $gray-lighter;
+  }
+
+  &--gray-light {
+    background-color: $gray-light;
+  }
+
+  &--gray {
+    background-color: $gray;
+  }
+
+  &--gray-dark {
+    background-color: $gray-dark;
+  }
+
+  &--gray-darker {
+    background-color: $gray-darker;
+  }
+
+  &--black {
+    background-color: $black;
+  }
+
+  &--lime-green {
+    background-color: $lime-green;
+  }
+
+  &--pale-green {
+    background-color: $pale-green;
+  }
+
+  &--light-blue {
+    background-color: $light-blue;
+  }
+
+  &--bar-ilan-green {
+    background-color: $bar-ilan-green;
+  }
+
+  &--jungle-green {
+    background-color: $jungle-green;
+  }
+
+  &--dark-green {
+    background-color: $dark-green;
+  }
+
+  &--light-grey {
+    background-color: $light-grey;
+  }
+
+  &--pink {
+    background-color: $pink;
+  }
+
+}
+
+.sg-info {
+  padding: 1rem;
+
+  code {
+    background-color: #eee;
+    padding: 0.15rem 0.25rem;
+    display: block;
+    margin-top: 0.25rem;
+  }
+}

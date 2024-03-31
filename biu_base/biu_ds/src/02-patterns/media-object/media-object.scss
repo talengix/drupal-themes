@@ -1,0 +1,14 @@
+@import "./../../00-base/base/global";
+
+.media-object {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-object__media {
+
+}
+
+.media-object__body {
+  padding: 0 1rem;
+}

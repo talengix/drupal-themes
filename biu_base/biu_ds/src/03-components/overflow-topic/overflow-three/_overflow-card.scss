@@ -1,0 +1,80 @@
+.overflow-block {
+
+  &__body {
+    padding: 15px 17px;
+    background-color: $light-gray;
+    position: relative;
+    
+    body[dir="ltr"] & {
+      text-align: left;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    svg {
+      width: 43px !important;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      height: 13px !important;
+
+      body[dir="ltr"] & {
+        right: 20px;
+        left: auto;
+        transform: rotate(180deg) translate3d(0, 0, 0) !important;
+      }
+    }
+
+  }
+
+  &__card--three {
+    display: block;
+    margin: 0 15px;
+
+    @include ds-breakpoint($bp-tab){
+      display: flex;
+      max-width: 772px;
+      margin: 0 auto !important;
+    }
+    
+
+    & > * {
+      width: 100%;
+      order: 2;
+      @include ds-breakpoint($bp-tab){
+        width: 50%;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__text--three {
+    color: $bar-ilan-green;
+    font-size: 1.375rem;
+  }
+
+  &__title-text--three {
+    color: $bar-ilan-green;
+    font-size: 2rem;
+    font-weight: 400;
+    display: inline-block;
+    margin: 5px 0 20px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 4px;
+      background: $tiffany-blue;
+      margin-top: 10px;
+    }
+
+  }
+}

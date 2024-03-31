@@ -1,0 +1,8 @@
+link_icon__base_class: "link-with-icon"
+link_icon__modifiers: ["donation"]
+link_icon__url: "https://www.facebook.com"
+link_icon__link_title:
+  - title: "Site title"
+item__name: "donate"
+link_icon_text: "Donations"
+arrow_json_name: "/themes/custom/biu_base/assets/animations/arrow.json"

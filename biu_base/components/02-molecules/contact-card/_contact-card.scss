@@ -1,0 +1,19 @@
+.contact-card {
+  width: span(1 of 2);
+  font-size: 14px;
+  font-weight: normal;
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: $dark-green;
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    width: span(2 of 3);
+  }
+}

@@ -1,0 +1,23 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  <div class="statistics-cards-heading">
+    {% include "@atoms/text/headings/_heading.twig" with {
+      "heading_level": 2,
+      "heading": block_title,
+      "heading_modifiers": []
+    } %}
+  </div>
+
+  <div class="statistics-cards-content">
+    {% for item in items %}
+      {% include "@molecules/statistics-card/statistics-card.twig" with {
+        card__base_class: "statistics-card",
+        card__modifiers: [],
+        card__image__src: item.image_url,
+        card__image__alt: item.image_alt,
+        card__heading: item.card_heading,
+        card__subheading: item.card_subheading,
+      } %}
+    {% endfor %}
+    <div style="clear: both;"></div>
+  </div>
+</div>

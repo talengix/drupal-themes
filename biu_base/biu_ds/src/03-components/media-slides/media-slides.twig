@@ -1,0 +1,124 @@
+<div {{ bem(component_base_class, component_modifiers, component_blockname, component_additional_classes) }}>
+  <div class="swiper-wrapper media-slides-wrapper" aria-label="slider">
+    {% for item in items %}
+      {% set text = item.card__body|render|striptags %}
+      {% include "@ds_patterns/media-slide/media-slide.twig" with {
+        "image": item.card__image,
+        "mobile_image": item.card__image_mobile,
+        "component_base_class": item.card__base_class,
+        "label": item.card__heading,
+        "sub_title": item.card__subheading,
+        "body": text|length > 200 ? text|slice(0, 200) ~ '...' : text,
+        "link_title": item.card__link_title,
+        "link_url": item.card__link,
+        "media_slide_additional_classes": item.media_slide_additional_classes,
+        "component_modifiers": component_modifiers
+      } %}
+    {% endfor %}
+  </div>
+  <div class="media-slider-nav-page">
+    <div class="progress-container">
+      <div id="progress"></div>
+    </div>
+    <div class="media-slides-nav">
+      <div class="expand-link">
+        <div class="swiper-button-prev icon-expand">
+          {% if 'dark' in component_modifiers %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'right-arrow',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-light']
+          } %}
+          {% else %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'right-arrow-dark',
+            icon_url: icon_url,
+            icon_modifiers: ['regular-arrow-dark']
+          } %}
+          {% endif %}
+        </div>
+        <div class="swiper-button-prev icon-contract">
+          {% if 'dark' in component_modifiers %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+              icon_name: 'arrow-circle',
+              icon_url: icon_url,
+              icon_modifiers: ['arrow-circle-light']
+            } %}
+          {% else %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+              icon_name: 'arrow-dark-circle',
+              icon_url: icon_url,
+              icon_modifiers: ['arrow-circle-dark']
+            } %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="expand-link-next">
+        <div class="swiper-button-next icon-expand-next">
+          {% if 'dark' in component_modifiers %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+              icon_name: 'left-arrow',
+              icon_url: icon_url,
+              icon_modifiers: ['regular-arrow-light']
+            } %}
+          {% else %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+              icon_name: 'regular-dark',
+              icon_url: icon_url,
+              icon_modifiers: ['regular-arrow-dark']
+            } %}
+          {% endif %}
+        </div>
+        <div class="swiper-button-next icon-contract-next">
+          {% if 'dark' in component_modifiers %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+              icon_name: 'arrow-circle',
+              icon_url: icon_url,
+              icon_modifiers: ['arrow-circle-light']
+            } %}
+          {% else %}
+            {% include "@ds_elements/images/icon/_icon.twig" with {
+              icon_name: 'arrow-dark-circle',
+              icon_url: icon_url,
+              icon_modifiers: ['arrow-circle-dark']
+            } %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="media-slider-control">
+      <div class="play">
+        {% if 'dark' in component_modifiers %}
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'play',
+            icon_url: icon_url,
+            icon_modifiers: ['play-circle-light']
+          } %}
+        {% else %}  
+          {% include "@ds_elements/images/icon/_icon.twig" with {
+            icon_name: 'play-dark',
+            icon_url: icon_url,
+            icon_modifiers: ['play-circle-dark']
+          } %}
+        {% endif %}
+      </div>
+      <div class="pause">
+      {% if 'dark' in component_modifiers %}
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_name: 'pause',
+          icon_url: icon_url,
+          icon_modifiers: ['pause-circle-light']
+        } %}
+      {% else %}
+        {% include "@ds_elements/images/icon/_icon.twig" with {
+          icon_name: 'pause-dark',
+          icon_url: icon_url,
+          icon_modifiers: ['pause-circle-dark']
+        } %}
+      {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+

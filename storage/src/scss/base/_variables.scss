@@ -1,0 +1,60 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and
+// $modal-content-box-shadow-xs.
+
+// To customize
+// - Copy paste the variable from node_modules/bootstrap/scss/_variables.scss
+// @see: https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+// - Change the value and remove the !default flag.
+//
+// e.g.
+// $body-bg: #000;
+// $body-color: $gray-100;
+// Color system
+
+// scss-docs-start gray-color-variables
+$white: #fff;
+$black: #000;
+$jungle-green: #113131;
+
+// twist primary colors
+$primary-blue-bright: #0e53f5;
+$primary-blue-dark: #1e2d64;
+$primary-blue-black: #03154a;
+
+// twist secondary colors
+$second-blue: #182179;
+$second-gray: #c6cad6;
+$second-aqua: #0ef5f5;
+
+// twist BG colors
+$bg-gray-light: #fafaff;
+$bg-flash-white: #f2f3fa;
+$bg-gadient-1: linear-gradient(180deg, #f5f7fe 0%, rgba(245, 247, 254, 0) 105.83%);
+$bg-gadient-2: linear-gradient(180deg, #f2f3fa 0%, rgba(242, 243, 250, 0.864583) 29.97%, rgba(242, 243, 250, 0) 95.91%);
+
+$font-din-2014: "DIN 2014", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+
+$font-family-base: inspect($font-din-2014);
+
+// Grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  max: 1600px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  max: 1560px
+);

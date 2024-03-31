@@ -1,0 +1,16 @@
+{% block catalog_banner_content %}
+  {% include "@molecules/catalog-banner/catalog-banner.twig" with {
+    catalog_banner_class: "catalog-banner",
+    catalog_banner__modifiers: [],
+    catalog_banner__blockname: '',
+    catalog_banner__extra_classes: ['clearfix'],
+    catalog_banner_heading: catalog_banner_heading,
+    catalog_banner_sub_heading: catalog_banner_subheading,
+    catalog_banner__link__url: catalog_banner_link_url,
+    catalog_banner__link__attributes: {"title" : catalog_banner_link_title},
+    catalog_banner__link__text: catalog_banner_link_title,
+    catalog_banner__body: catalog_banner_body,
+    catalog__image: catalog_img,
+    icon_url: icon_url,
+  } %}
+{% endblock %}

@@ -1,0 +1,6 @@
+footer_social__base_class: "footer-social-icon"
+footer_social__modifiers: ["footer"]
+social__url: "https://www.facebook.com"
+social__link_title:
+  - title: "Site title"
+item__name: "facebook"

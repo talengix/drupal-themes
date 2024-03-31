@@ -1,0 +1,32 @@
+/*
+ * General Layout
+*/
+
+$sidebar-width: 33%;
+$gutter: $space;
+$main-width: calc(100% - (#{$sidebar-width} + #{$gutter}));
+
+.layout.background-color-biu-green {
+  background-color: $bar-ilan-green;
+}
+
+.layout.background-color-gray {
+  background-color: $light-grey;
+}
+
+.layout.background-color-white {
+  background-color: $white;
+}
+
+.layout.background-color-pale-green {
+  background-color: $pale-green;
+}
+
+.layout.dark-section {
+  color: $white;
+}
+
+.layout-builder-block {
+  /* for layout builder preview */
+  background-color: transparent;
+}

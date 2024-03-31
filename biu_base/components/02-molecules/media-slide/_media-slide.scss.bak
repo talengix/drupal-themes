@@ -1,0 +1,107 @@
+.media-slide-item {
+
+  .media-slide-heading {
+    color: $white;
+
+    h3 {
+      margin: 20px 0;
+      font-size: 32px;
+      font-weight: normal;
+      line-height: 1.25;
+    }
+  }
+
+  .media-slide-content {
+    color: $white;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+
+    .body {
+      p {
+        margin: 9px 0;
+      }
+    }
+    .sub-title {
+      font-weight: 500;
+      padding-bottom: 8px;
+    }
+
+    .link-container {
+      a {
+        color: $white;
+        font-size: 16px;
+        display: inline-block;
+      }
+
+      svg {
+        height: 16px !important;
+        width: 43px !important;
+        padding: 4px;
+        vertical-align: middle;
+        body[dir="ltr"] &{
+          transform: rotate(180deg) !important;
+        }
+      }
+    }
+    .link-container--link-container-light-background {
+      display: none;
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    width: span(8 of 12);
+    margin-left: gutter(1);
+    .media-slide-text-wrapper {
+      margin-top: 100px;
+    }
+    .media-slide-heading {
+      width: span(4 of 8);
+
+      h3 {
+        font-size: 40px;
+        line-height: 1;
+        margin-top: 0;
+        margin-left: 16px;
+        body[dir="ltr"] & {
+          margin-left: auto;
+          margin-right: 16px;
+        }
+      }
+    }
+    .media-slide-content {
+      width: span(4 of 8);
+    }
+
+    .media-slide-img img {
+      width: 100%;
+    }
+  }
+  @include grid-breakpoint($mq-desk-wide, desk-wide) {
+    .media-slide-text-wrapper {
+      margin-top: 73px;
+    }
+  }
+}
+.background-color-gray, .background-color-white, .background-color-pale-green {
+  .media-slides-block {
+    .media-slide-item {
+      .media-slide-content {
+        color: $dark-green;
+        .link-container--link-container-light-background {
+          display: block !important;
+          a {
+            color: $dark-green;
+          }
+        }
+        .link-container--link-container-dark-background {
+          display: none;
+        }
+        .sub-title {
+          color: $dark-green;
+        }
+      }
+    }
+  }
+}

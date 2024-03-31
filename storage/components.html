@@ -1,0 +1,149 @@
+{# {% include '@radix/page/page.twig' %} #}
+{#
+/**
+ * @file
+ * Template for the main page.
+ */
+#}
+{% set page_classes = [
+  'py-5'
+]|merge(page_utility_classes ? page_utility_classes : []) %}
+
+<div class="page">
+  {% embed '@radix/navbar/navbar.twig' with {
+    container: 'fixed',
+    color: 'light',
+    utility_classes: [''],
+  } %}
+
+    {% block branding %}
+      {% if page.navbar_branding %}
+        {{ page.navbar_branding }}
+      {% endif %}
+    {% endblock %}
+
+    {% block left %}
+      {% if page.navbar_left %}
+        <div class="me-auto">
+          {{ page.navbar_left }}
+        </div>
+      {% endif %}
+    {% endblock %}
+
+    {% block right %}
+      {% if page.navbar_right %}
+   <div class="ms-auto">
+     {{ page.navbar_right }}
+   </div>
+      {% endif %}
+    {% endblock %}
+  {% endembed %}
+
+  <main{{ content_attributes.addClass(page_classes) }}>
+    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+
+    {% if page.header %}
+      <header class="page__header mb-3">
+        <div class="container">
+          {{ page.header }}
+        </div>
+      </header>
+    {% endif %}
+
+    {% if page.content %}
+      <div class="page__content">
+        <div class="container">
+          
+<h4 class="mt-5">Card Product</h4>
+<div class="card card-product">
+   <img src="/themes/custom/storage/images/card-product.png" class="" alt="...">
+   <div class="card-body">
+      <h5 class="card-title">Century Archive</h5>
+      <ul class="card-text list">
+         <li>Replaces costly tape 3rd/offline copy</li>
+         <li>No specialized temperature or operating conditions</li>
+         <li>Lower long term TCO (quantify)</li>
+         <li>Storage lifetime - 100+ years</li>
+      </ul>
+      <a href="#" class="btn btn-primary">learn more</a>
+   </div>
+</div>
+<h4 class="mt-5">Card Tech</h4>
+<div class="card card-tech">
+   <img src="/themes/custom/storage/images/cards-tech.svg" class="" alt="...">
+   <div class="card-body">
+      <h5 class="card-title">Lowest TCO*</h5>
+      <p class="card-text">Archival & Preservation data needs to last forever, with DNA you don’t need to migrate your data every few years and change technologies which resulting in the lowest TCO* over time.</p>
+      <p class="card-text note">*Total Cost of Ownership</p>
+   </div>
+</div>
+<h4 class="mt-5">Card Home</h4>
+<div class="card card-home">
+   <img src="/themes/custom/storage/images/card-home.png" class="" alt="...">
+   <div class="card-body">
+      <h5 class="card-title">Our solution</h5>
+      <p class="card-text">Target enrichment strategies for next generation sequencing.</p>
+      <a href="#" class="btn btn-primary">learn more</a>
+   </div>
+</div>
+<h4 class="mt-5">Card Resources</h4>
+<div class="card card-resource">
+   <div class="card-image">
+      <img src="/themes/custom/storage/images/card-resource.png" class="card-img-top" alt="...">
+      <div class="card-img-overlay d-flex justify-content-between w-100">
+         <span class="d-block type">video</span>
+         <span class="d-block date">may 31, 2018</span>
+      </div>
+   </div>
+   <div class="card-body">
+      <h5 class="card-title">Genome Res</h5>
+      <p class="card-text">Target enrichment strategies for next generation sequencing.</p>
+      <a href="#" class="btn btn-primary">Watch now</a>
+   </div>
+</div>
+<h4 class="mt-5">Card Collaboration</h4>
+<div class="card card-collaboration">
+   <img src="/themes/custom/storage/images/card-resource.png" class="card-img-top" alt="...">
+   <div class="card-body">
+      <img src="/themes/custom/storage/images/card-logo.png" class="card-logo d-block mt-4 mb-4" alt="...">
+      <h5 class="card-title">Feature Title To Talk
+      About Microsoft
+      </h5>
+      <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae magna curabitur nulla facilisi faucibus sit dictum. In ornare massa feugiat enim. Eleifend et convallis massa auctor quis ullamcorper dolor. Gravida amet est consectetur eget.</p>
+      <a href="#" class="btn btn-primary">Read More</a>
+   </div>
+</div>
+<h4 class="mt-5">Card Horizontal</h4>
+<div class="card card-horizontal img-left mb-3">
+   <div class="row g-0">
+      <div class="col-md-4">
+         <img src="/themes/custom/storage/images/frame.svg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+         <div class="card-body">
+            <h5 class="card-title">Law Firms</h5>
+            <h6 class="card-subtitle">Evidence? Patents? Your critical assets need to be protected.</h6>
+            <p class="card-text">Many legal documents must be saved forever. Do you trust your current storage method to last forever? DNA will give you that peace of mind and you can be sure that your documents will be readable in hundreds of years.</p>
+            <a href="#" class="btn btn-primary">Get started</a>
+         </div>
+      </div>
+   </div>
+</div>
+        </div>
+      </div>
+    {% endif %}
+  </main>
+
+  {% if page.footer %}
+    <footer class="page__footer">
+      <div class="container">
+        <div class="page__footer--top d-flex justify-content-md-between align-items-md-center">
+          {{ page.footer }}
+        </div>
+        <div class="page__footer--bottom">
+          {{ page.footer_bottom }}
+        </div>
+      </div>
+    </footer>
+  {% endif %}
+</div>

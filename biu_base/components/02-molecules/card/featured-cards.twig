@@ -1,0 +1,79 @@
+{{ attach_library('biu_base/featured-cards') }}
+<div {{ bem(featured_card__base_class,featured_card__modifiers,featured_card__blockname,featured_card__extra_classes) }}>
+  {% if card__link__url %}
+  <div class="animation-container" data-src="/themes/custom/biu_base/assets/animations/arrow.json">
+    {% if card__link_type=='external' %}
+    <a target="_blank" href="{{ card__link__url }}" title="{{ card__link__text }}" aria-label="{{ card__link__label }}">
+      {% else  %}
+          <a href="{{ card__link__url }}" title="{{ card__link__text }}" aria-label="{{ card__link__label }}">
+      {% endif %}
+      {% endif %}
+      <div class="header-content">
+        {% if video %}
+          {{ video_content|raw }}
+        {% else %}
+          {# Image #}
+          {% block card__img %}
+            {% if card__image__src %}
+              {% include "@atoms/images/image/responsive-image.twig" with {
+                image_blockname: card__base_class,
+                output_image_tag: card__image__output_image_tag,
+                image_src: card__image__src,
+                image_alt: card__image__alt,
+              } %}
+            {% endif %}
+          {% endblock %}
+        {% endif %}
+        <div class="category {{ show_category }}">
+          {{ featured_article_tag|t }}
+        </div>
+      </div>
+      {# Content #}
+      <div {{ bem('content', []) }}>
+        {# Card event date #}
+        {% if card__event_date %}
+          <div class="card-event-date">
+            {{ card__event_date.value|date('d.m.y') }}
+          </div>
+        {% endif %}
+        {# Heading #}
+        {% if card__heading %}
+          {% include "@atoms/text/headings/_heading.twig" with {
+            heading_base_class: card__heading__base_class|default('heading'),
+            heading_modifiers: [],
+            heading_blockname: card__base_class,
+            heading_level: 4,
+            heading: card__heading,
+          } %}
+        {% endif %}
+        {# Body #}
+          <div class="body">
+            {{ card__body }}
+          </div>
+          <div class="date">{{ card__change_date }}</div>
+        {# Link #}
+      </div>
+    </a>
+    {% if calendar__links %}
+      <div class="calendar-links">
+        {% include "@molecules/link-with-icon/link-with-icon.twig" with {
+          link_icon__base_class: "calendar-links-toggle",
+          link_icon__modifiers: [],
+          link_icon__url: "javascript:void(0)",
+          link_icon__link_title: 'Save in calendar'|t,
+          item__name: "calendar",
+          link_icon_text: 'Save in calendar'|t,
+          link_icon__extra_classes: [],
+          icon_url: "/themes/custom/biu_base/dist/icons.svg",
+        } %}
+        <ul class="calendar-links-dropdown">
+          {% for link in calendar__links %}
+            <li>
+              <a href="{{ link.url }}" target="_blank"> {{ link.type_name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,0 +1,295 @@
+.general-page-extra-content .general_page-contact, .block.general_page-contact {
+  h3 {
+    font-size: 28px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.14;
+    letter-spacing: normal;
+    margin: 37px 0 18px 0;
+    text-align: right;
+
+    body[dir="ltr"] & {
+      text-align: left;
+    }
+  }
+}
+
+.block.general_page-contact {
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  h2 {
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  h3 {
+    margin-top: 0;
+
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+.general_page-contact {
+
+  .main-contact {
+    color: $dark-green;
+    background: $pale-green;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+
+      li {
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+
+        a {
+          direction: ltr;
+          color: inherit;
+          text-decoration: none;
+
+          &:hover, &:focus {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+      margin-left: 13px;
+      margin-top: 2px;
+
+      body[dir="ltr"] & {
+        margin-left: 0;
+        margin-right: 13px;
+      }
+    }
+
+    .email-phone {
+      display: flex;
+      border-bottom: 1px solid $lime-green;
+      padding: 10px 0;
+    }
+
+    .location-link {
+      display: flex;
+      padding: 10px 0;
+    }
+
+    div.link-container {
+      text-align: unset;
+      padding: 0;
+
+      a {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    .main-contact {
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: right;
+      padding: 17px 30px 20px 30px;
+
+      body[dir="ltr"] & {
+        text-align: left;
+      }
+
+      svg {
+        width: 44px;
+        height: 44px;
+        margin-left: 8px;
+
+        body[dir="ltr"] & {
+          margin-right: 8px;
+        }
+      }
+
+      .email-phone {
+        width: span(6 of 12);
+        float: left;
+        border-left: 1px solid $lime-green;
+        padding-left: 30px;
+        border-bottom: 0;
+
+        body[dir="ltr"] & {
+          padding-left: 0;
+          padding-right: 30px;
+          border-left: 0;
+          border-right: 1px solid $lime-green;
+        }
+      }
+
+      .location-link {
+        width: span(6 of 12);
+        padding-right: 30px;
+
+        body[dir="ltr"] & {
+          padding-right: 0;
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+  @include grid-breakpoint($mq-tab-wide, tab-wide) {
+    .main-contact {
+      padding: 17px 30px 20px 30px;
+      .email-phone {
+        border-right: 1px solid #c3dc87;
+        border-bottom: 0;
+        padding-right: 30px;
+        width: span(6 of 12);
+        float: left;
+        border-left: 0;
+      }
+      .location-link {
+        padding-left: 30px;
+        width: span(6 of 12);
+      }
+    }
+  }
+}
+
+.contact-page-sec {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  .main-contact {
+    background: transparent;
+
+    h6 {
+      font-size: 18px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      margin: 9px 0 0;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      letter-spacing: normal;
+      margin: 15px 0 22px;
+      position: relative;
+      padding-bottom: 20px;
+
+      &::after {
+        content: "";
+        border-bottom: 1px solid;
+        width: 30px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        bottom: 0;
+      }
+    }
+
+    ul {
+      display: block;
+      width: 100%;
+    }
+
+    .email-phone {
+      display: block;
+
+      svg.icon {
+        vertical-align: top;
+
+        body[dir="ltr"] & {
+          float: left;
+          width: 20%;
+        }
+      }
+    }
+
+    .location-link {
+      display: block;
+      @include grid-breakpoint($mq-desk, desk) {
+        float: left;
+      }
+
+      svg.icon {
+        vertical-align: top;
+
+        body[dir="ltr"] & {
+          float: left;
+          width: 20%;
+        }
+      }
+
+      ul li {
+        svg {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include grid-breakpoint($mq-desk, desk) {
+    text-align: right;
+    margin: 0;
+
+    .main-contact {
+      background: $pale-green;
+      padding-left: 0;
+      padding-right: 0;
+
+      p {
+        &::after {
+          right: 0;
+          transform: none;
+          body[dir="ltr"] & {
+            right: auto;
+            left:0;
+          }
+        }
+      }
+
+      h6 {
+        margin: 0;
+      }
+      ul{
+        display: inline-block;
+        width: 75%;
+      }
+    }
+  }
+}
+.general-text-content{
+  margin: 0 !important;
+  font-weight: normal;
+  clear: both;
+  p {
+    font-size: 16px !important;
+    margin: 15px 0 5px !important;
+    padding-bottom: 0 !important;
+    font-weight: normal !important;
+    &::after {
+      border-bottom: none !important;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+card__base_class: "card-grid-medium"
+card__link__url: "https://google.com"
+card__link__text: "Card link"
+card__image__src: "https://placeimg.com/319/232/tech"
+card__image__alt: "Image alt"
+card__heading: "תלמוד"
+

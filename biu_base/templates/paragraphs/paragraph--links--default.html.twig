@@ -1,0 +1,11 @@
+<div class="paragraph-links">
+  {{ title_prefix }}
+  {{ title_suffix }}
+    {% include "@organisms/link-list/link-list.twig" with {
+      "items": items,
+      "block_title": paragraph.field_title.value,
+      "link_list_base_class": "links",
+      "link_list_modifiers" : ["list"],
+      "link_list_extraclass": "clearfix"
+    } %}
+</div>

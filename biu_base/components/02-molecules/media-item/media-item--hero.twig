@@ -1,0 +1,42 @@
+{% set label = label|striptags('<br>') %}
+<div {{ bem(component_base_class, component_modifiers, component_blockname, additional_classes) }}>
+  <a href="{{ link_url }}" title="{{ link_title }}" class="large-hero-click"></a>
+  <div class="wave-anim" data-src="/themes/custom/biu_base/assets/animations/wave.json"></div>
+    <div class="text-wrapper">
+      {% if is_title_h1 == 'true' %}
+        <h1 class="h1 h1--light">{{ label | raw }}</h1>
+      {% else %}
+        <h3 class="h1 h1--light">{{ label | raw }}</h3>
+      {% endif %}
+
+      {% if sub_title %}
+        {% include "@atoms/text/headings/_heading.twig" with {
+          "heading_level": 6,
+          "heading": sub_title,
+          "heading_modifiers": ['light']
+        } %}
+      {% endif %}
+
+      {% if link_url %}
+        {% include "@molecules/link/arrow-link.twig" with {
+          item__content: link_title,
+          item__url: link_url,
+          item__link_title: link_title,
+          link_container_base_class: "large-hero-link",
+          arrow_src: "/themes/custom/biu_base/assets/animations/white-arrow.json",
+          link_container_modifiers: [],
+          link_modifiers: [],
+        } %}
+      {% endif %}
+
+    </div>
+    <div {{ bem('media-wrapper', [media_type]) }}>
+      {# @todo swiper-lazy class + image--desktop #}
+      <div class="mobile-media">
+        {{ mobile_image }}
+      </div>
+      <div class="desktop-media">
+        {{ media_content }}
+      </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+layout_onecol-fw:
+  label: 'One column full width'
+  path: layouts/onecol-fw
+  template: layout--onecol-fw
+  library: layout_discovery/onecol-fw
+  category: 'Columns: 1'
+  default_region: content
+  icon_map:
+    - [content]
+  regions:
+    content:
+      label: Content
+  classes:
+    bg-color:
+      label: 'Background color'
+      multiple: false
+      required: false
+      options:
+        'background-color-biu-green dark-section': 'BIU Green background (#004128)'
+        'background-color-gray light-section': 'Gray background (#f3f4f8)'
+        'background-color-white light-section': 'White background'
+        'background-color-pale-green light-section': 'Pale green background (#f5faf0)'
+      description: 'Select the background color for this section.'
+    
+layout_onecol:
+  label: 'One column'
+  path: layouts/onecol
+  template: layout--onecol
+  library: layout_discovery/onecol
+  category: 'Columns: 1'
+  default_region: content
+  icon_map:
+    - [content]
+  regions:
+    content:
+      label: Content
+  classes:
+    bg-color:
+      label: 'Background color'
+      multiple: false
+      required: false
+      options:
+        'background-color-biu-green dark-section': 'BIU Green background (#004128)'
+        'background-color-gray light-section': 'Gray background (#f3f4f8)'
+        'background-color-white light-section': 'White background'
+        'background-color-pale-green light-section': 'Pale green background (#f5faf0)'
+      description: 'Select the background color for this section.'
+ 

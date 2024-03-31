@@ -1,0 +1,90 @@
+@import '../../../00-base/01-colors/_colors-vars.scss';
+@import "../../../00-base/base/global";
+
+.video {
+  &__wrap {
+    &--two {
+      padding: 60px 15px;
+    }
+  }
+
+  &__inner {
+    &--two {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+
+      @include ds-breakpoint($bp-tab){
+        flex-direction: row;
+        width: 690px;
+      }
+
+      @include ds-breakpoint($bp-tab-wide){
+        width: 773px;
+      }
+
+    }
+  }
+
+  &__video-embed {
+    &--two {
+      width: 100%;
+
+      @include ds-breakpoint($bp-tab){
+        max-width: 345px;
+        width: 345px;
+      }
+
+      @include ds-breakpoint($bp-tab-wide){
+        max-width: 389px;
+        width: 389px;
+      }
+
+    }
+  }
+
+  &__title {
+    &--two {
+      font-size: 2.5rem;
+      color: $bar-ilan-green;
+      font-weight: 600;
+      margin-top: 0;
+
+      @include dark-section;
+    }
+  }
+
+  &__text {
+    &--two {
+      font-size: 1.375rem;
+      color: $bar-ilan-green;
+      margin: 0;
+
+      body[dir="ltr"] & {
+        text-align: left;
+      }
+
+      @include dark-section;
+    }
+  }
+
+  &__body {
+    &--two {
+      margin-top: 30px;
+      text-align: right;
+      align-self: center;
+
+      @include ds-breakpoint($bp-tab){
+        max-width: 280px;
+        margin-top: 0;
+      }
+
+      @include ds-breakpoint($bp-tab-wide){
+        max-width: 325px;
+        margin-top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div {{ bem(card__base_class,card__modifiers,card__blockname,card__extra_classes) }}>
+  <div data-src="/themes/custom/biu_base/assets/animations/arrow.json" class="animation-container">
+    <a href="{{ card__link__url }}" title="{{ card__link__text }}">
+      {# Image #}
+      {% block card__img %}
+        {{ card__image }}
+      {% endblock %}
+      {# Content #}
+      <div {{ bem('content', card__content__modifiers, card__base_class) }}>
+        {# Heading #}
+        {% if card__heading %}
+          {% include "@atoms/text/headings/_heading.twig" with {
+            heading_base_class: card__heading__base_class|default('heading'),
+            heading_modifiers: card__heading__modifiers,
+            heading_blockname: card__base_class,
+            heading_level: 5,
+            heading: card__heading,
+          } %}
+        {% endif %}
+        {% if card__body %}
+          <p class ="card-grid-medium__body">
+            {{ card__body|striptags('<br>')|raw }}
+          </p>
+        {% endif %}
+      </div>
+    </a>
+  </div>
+</div>
